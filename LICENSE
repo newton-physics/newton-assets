@@ -177,7 +177,7 @@
 
 ------------------------------------------------------------------------------
 
-This product bundles the ANYmal C Robot Description, which is available under
+This product bundles the ANYmal C Robot Description (URDF & USD), which is available under
 a BSD-3-Clause license with the following terms:
 
 Copyright 2020, ANYbotics AG.
