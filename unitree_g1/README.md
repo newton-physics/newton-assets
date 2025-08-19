@@ -1,4 +1,4 @@
-# Unitree G1 Description (URDF & MJCF)
+# Unitree G1 Description (URDF, USD, and MJCF)
 
 ## Overview
 
