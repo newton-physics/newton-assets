@@ -1,5 +1,5 @@
 <mujoco model="g1_dual_arm">
-  <compiler angle="radian" meshdir="meshes"/>
+  <compiler angle="radian" meshdir="../meshes"/>
 
   <asset>
     <mesh name="waist_yaw_link" file="waist_yaw_link.STL"/>

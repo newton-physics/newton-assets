@@ -1,6 +1,6 @@
 <robot name="g1_29dof_lock_waist">
   <mujoco>
-    <compiler meshdir="meshes" discardvisual="false"/>
+    <compiler meshdir="../meshes" discardvisual="false"/>
   </mujoco>
 
   <!-- [CAUTION] uncomment when convert to mujoco -->

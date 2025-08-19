@@ -1,6 +1,6 @@
 <robot name="dex3_1_r">
   <mujoco>
-    <compiler meshdir="meshes" discardvisual="false"/>
+    <compiler meshdir="../meshes" discardvisual="false"/>
   </mujoco>
 
   <!-- [CAUTION] uncomment when convert to mujoco -->

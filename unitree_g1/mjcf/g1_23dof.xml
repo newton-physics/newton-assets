@@ -1,5 +1,5 @@
 <mujoco model="g1_23dof">
-  <compiler angle="radian" meshdir="meshes"/>
+  <compiler angle="radian" meshdir="../meshes"/>
 
   <asset>
     <mesh name="pelvis" file="pelvis.STL"/>
