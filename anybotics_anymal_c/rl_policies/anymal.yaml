@@ -1,9 +1,4 @@
 num_dofs: 12
-asset_dir: "anymal_usd"
-policy_path:
-  mjw: "mjw_anymal.pt"
-  physx: "physx_anymal.pt"
-asset_path: "anymal_c.usd"
 action_scale: 0.5
 mjw_joint_names:
   - "LF_HAA"

@@ -1,7 +1,4 @@
 num_dofs: 43
-policy_path:
-  mjw: "mjw_g1_29DOF.pt"
-asset_path: "g1_isaac.usd"
 action_scale: 0.5
 mjw_joint_names:
   - "left_hip_pitch_joint"

@@ -1,9 +1,4 @@
 num_dofs: 12
-asset_dir: "go2_usd"
-policy_path:
-  mjw: "mjw_go2.pt"
-  physx: "physx_go2.pt"
-asset_path: "go2.usd"
 action_scale: 0.25
 mjw_joint_names:
   - "FL_hip_joint"
