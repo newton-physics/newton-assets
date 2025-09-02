@@ -7,7 +7,7 @@ Contributors should store possibly large simulation assets such as models, textu
 # Contributing to Assets
 
 * Before proposing to add any assets to the Newton project, make sure that the assets are properly licensed for use and distribution. If you are unsure about the license, open a new discussion.
-* Therefore, along with a pull request to a code repository that relies on new assets, open a corresponding pull request in this repository repository.
+* In addition to the pull request to the code repository that relies on the new assets, open a corresponding pull request in this assets repository.
 * Follow the file structure of existing assets, i.e. the parent folder should be `manufacturer_robot_model`, and contain
     * subfolders that contain the different asset types and formats
     * a LICENSE file with an appropriate, permissive license, see first point above
