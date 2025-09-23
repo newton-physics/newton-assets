@@ -1,0 +1,59 @@
+{
+    "version": "1.0",
+    "file_records": [
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/UniversalRobots/UR10/ur10_instanceable.usd",
+            "source_hash": "be42cf57da7fca25ab959062a37eb82893e096f5",
+            "target_url": "./ur10_instanceable.usd",
+            "target_hash": "9fd843ae40563367f4e3493b52d8f2c0149a28e6"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/UniversalRobots/UR10/Props/ur10_base.usd",
+            "source_hash": "93075bf27690945b1a8456aa17fc6c90e949b919",
+            "target_url": "./Props/ur10_base.usd",
+            "target_hash": "33ccb8d200c4b07009fca37f99ed59668f7e8ac3"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/UniversalRobots/UR10/Props/ur10_forearm.usd",
+            "source_hash": "2826fd1a65ca0fbb82f75c9dd5e6733719dcf004",
+            "target_url": "./Props/ur10_forearm.usd",
+            "target_hash": "f027db35a818ff4faacde5c78d8c5c333a47391d"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/UniversalRobots/UR10/Props/ur10_shoulder.usd",
+            "source_hash": "46158554d7ae43e89b7e4cc5b0e6c7528ac51e6f",
+            "target_url": "./Props/ur10_shoulder.usd",
+            "target_hash": "ea32542c2f77d2cde0c9301fb326c00a424a03f0"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/UniversalRobots/UR10/Props/ur10_upper_arm.usd",
+            "source_hash": "aa3732e51d391a5cf7f772c285b3e724964f22ba",
+            "target_url": "./Props/ur10_upper_arm.usd",
+            "target_hash": "238e536c0a3bcaeb70e557a63213e107327a5d00"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/UniversalRobots/UR10/Props/ur10_wrist_1.usd",
+            "source_hash": "619f4a64961c6416a1b8c7d8ec01842b8fbefb1d",
+            "target_url": "./Props/ur10_wrist_1.usd",
+            "target_hash": "b88bf1365897b0eb9fd6bb94dab5e07d15cc622b"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/UniversalRobots/UR10/Props/ur10_wrist_2.usd",
+            "source_hash": "42cbed4fcae36cf8d18f3bc9cb0e5327c0876529",
+            "target_url": "./Props/ur10_wrist_2.usd",
+            "target_hash": "adf6e82f0ce1209a4001182e95bc7a90595eb071"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/UniversalRobots/UR10/Props/ur10_wrist_3.usd",
+            "source_hash": "5c06043a0440a41b254e9325337d71437d279597",
+            "target_url": "./Props/ur10_wrist_3.usd",
+            "target_hash": "f8458726b950ada4322a1e22c18dd210f9d626bc"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/UniversalRobots/UR10/Materials/material_library.usd",
+            "source_hash": "879e5406f27ce37bdb9b04db6366e129433d5c0f",
+            "target_url": "./Materials/material_library.usd",
+            "target_hash": "2e38833c7c36cc436dbac60eba554e6ca0fb98ef"
+        }
+    ]
+}
