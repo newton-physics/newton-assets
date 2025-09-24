@@ -1,0 +1,1098 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (1.5302642395743864, 1.564667429625597, 1.2693882446996159)
+                double3 target = (0.07549092189196105, 0.109894111943172, -0.1853850382599449)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./anymal_c.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "anymal"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "anymal"
+{
+    quatd xformOp:orient = (1, 0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def Xform "base" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.017793946, -0.00017816867, 0.0085043395)
+        float3 physics:diagonalInertia = (0.21451251, 1.7852155, 1.8358448)
+        float physics:mass = 26.37317
+        quatf physics:principalAxes = (0.9998288, -0.0017501094, 0.018194536, -0.0029048587)
+        bool physxArticulation:enabledSelfCollisions = 0
+        int physxArticulation:solverPositionIterationCount = 32
+        int physxArticulation:solverVelocityIterationCount = 16
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def PhysicsRevoluteJoint "LF_HAA" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/base>
+            rel physics:body1 = </anymal/LF_HIP>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.2999, 0.104, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.25881907, 0.9659258, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+            quatd xformOp:orient = (0.2588190734386444, 0.9659258127212524, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.29989999532699585, 0.10400000214576721, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def PhysicsRevoluteJoint "LH_HAA" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/base>
+            rel physics:body1 = </anymal/LH_HIP>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.2999, 0.104, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (-0.9659258, 0.25881907, -5.3535302e-8, 5.3535302e-8)
+            quatf physics:localRot1 = (-4.371139e-8, 0, 1, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+            quatd xformOp:orient = (-1.1313341374830088e-8, 4.222195926217864e-8, 0.9659258127212524, -0.2588190734386444)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-0.29989999532699585, 0.10400000214576721, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def PhysicsRevoluteJoint "RF_HAA" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/base>
+            rel physics:body1 = </anymal/RF_HIP>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.2999, -0.104, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.25881907, -0.9659258, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+            quatd xformOp:orient = (0.2588190734386444, -0.9659258127212524, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.29989999532699585, -0.10400000214576721, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def PhysicsRevoluteJoint "RH_HAA" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/base>
+            rel physics:body1 = </anymal/RH_HIP>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.2999, -0.104, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9659258, 0.25881907, 3.0908616e-8, -3.0908616e-8)
+            quatf physics:localRot1 = (-4.371139e-8, 0, 1, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+            quatd xformOp:orient = (-1.1313341374830088e-8, -4.222195926217864e-8, -0.9659258127212524, -0.2588190734386444)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-0.29989999532699585, -0.10400000214576721, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "battery"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "bottom_shell"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "depth_camera_left_camera"
+        {
+            quatd xformOp:orient = (0.6830126643180847, -0.1830126941204071, 0.1830126941204071, 0.6830126643180847)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0.07645999640226364, 0.02905000001192093)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "depth_camera_right_camera"
+        {
+            quatd xformOp:orient = (0.6830126643180847, 0.1830126941204071, 0.1830126941204071, -0.6830126643180847)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, -0.07645999640226364, 0.02905000001192093)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "docking_hatch_cover"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.34299999475479126, 0, -0.07000000029802322)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "face_front"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.41449999809265137, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "face_rear"
+        {
+            quatd xformOp:orient = (-4.371138828673793e-8, -0, 0, 1)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-0.41449999809265137, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "handle"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "hatch"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "imu_link"
+        {
+            quatd xformOp:orient = (0.7071067690849304, 0, 0, 0.7071067690849304)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.24879999458789825, 0.008349999785423279, 0.04628000035881996)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "lidar_cage"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-0.36399999260902405, 0, 0.07349999994039536)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "remote"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "top_shell"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/base/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/base/collisions>
+        )
+        {
+        }
+    }
+
+    def Xform "LF_HIP" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.056660637, -0.015293974, -0.008297847)
+        float3 physics:diagonalInertia = (0.0032908127, 0.004918678, 0.005857289)
+        float physics:mass = 2.781
+        quatf physics:principalAxes = (0.98227215, 0.18615049, 0.02151291, -0.00516215)
+        quatd xformOp:orient = (0.2588190734386444, 0.9659258127212524, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.29989999532699585, 0.10400000214576721, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "LF_hip_fixed"
+        {
+            quatd xformOp:orient = (0.2588190734386444, -0.9659258127212524, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LF_HIP/visuals>
+        )
+        {
+        }
+
+        def PhysicsRevoluteJoint "LF_HFE" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/LF_HIP>
+            rel physics:body1 = </anymal/LF_THIGH>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.059899993, -0.07258159, -0.041905005)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.18301272, -0.68301266, 0.68301266, 0.18301272)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+        }
+    }
+
+    def Xform "LF_THIGH" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.030814724, 0.000046495177, -0.24569571)
+        float3 physics:diagonalInertia = (0.030249981, 0.029894285, 0.0041846544)
+        float physics:mass = 3.0709999
+        quatf physics:principalAxes = (0.99316585, -0.005152415, -0.08065911, 0.08419679)
+        quatd xformOp:orient = (0.7071067094802856, 0, 0, 0.7071067094802856)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.35979998111724854, 0.1878100037574768, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "LF_thigh_fixed"
+        {
+            quatd xformOp:orient = (0.7071067690849304, 0, 0, -0.7071067690849304)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LF_THIGH/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LF_THIGH/collisions>
+        )
+        {
+        }
+
+        def PhysicsRevoluteJoint "LF_KFE" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/LF_THIGH>
+            rel physics:body1 = </anymal/LF_SHANK>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.10029999, -5.978346e-9, -0.28499994)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.99999994, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+        }
+    }
+
+    def Xform "LF_SHANK" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.006859668, -0.034527674, 0.0009771042)
+        float3 physics:diagonalInertia = (0.0011125111, 0.0003276418, 0.0008964407)
+        float physics:mass = 0.33841997
+        quatf physics:principalAxes = (0.9998393, 0.011727952, -0.0011538108, -0.013513744)
+        quatd xformOp:orient = (0.7071066498756409, 0, 0, 0.7071066498756409)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.35979998111724854, 0.28810998797416687, -0.284999817609787)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "LF_shank_fixed"
+        {
+            quatd xformOp:orient = (0.7071067690849304, 0, 0, -0.7071067690849304)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LF_SHANK/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LF_SHANK/collisions>
+        )
+        {
+        }
+
+        def PhysicsFixedJoint "LF_shank_fixed_LF_FOOT"
+        {
+            rel physics:body0 = </anymal/LF_SHANK>
+            rel physics:body1 = </anymal/LF_FOOT>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.013049994, -0.08795, -0.33796993)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, -0.70710677)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+
+    def Xform "LF_FOOT" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00948, -0.00948, 0.1468)
+        float3 physics:diagonalInertia = (0.0031691105, 0.0031773741, 0.00008018941)
+        float physics:mass = 0.25
+        quatf physics:principalAxes = (0.923767, 0.014384665, -0.0059582945, -0.38263845)
+        quatd xformOp:orient = (0.9999998211860657, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.44774994254112244, 0.3011600077152252, -0.6229695081710815)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LF_FOOT/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LF_FOOT/collisions>
+        )
+        {
+        }
+    }
+
+    def Xform "LH_HIP" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.05676332, 0.015293971, -0.0082978485)
+        float3 physics:diagonalInertia = (0.003290636, 0.0049205036, 0.005859281)
+        float physics:mass = 2.781
+        quatf physics:principalAxes = (0.9822677, -0.18612793, -0.021915281, -0.0051302155)
+        quatd xformOp:orient = (-1.1313341374830088e-8, 4.222195926217864e-8, 0.9659258127212524, -0.2588190734386444)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.29989999532699585, 0.10400000214576721, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "LH_hip_fixed"
+        {
+            quatd xformOp:orient = (-1.1313341374830088e-8, 4.222195926217864e-8, 0.9659258127212524, -0.2588190734386444)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LH_HIP/visuals>
+        )
+        {
+        }
+
+        def PhysicsRevoluteJoint "LH_HFE" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/LH_HIP>
+            rel physics:body1 = </anymal/LH_THIGH>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.05990001, 0.07258159, -0.041905005)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.18301271, 0.6830127, 0.6830126, -0.18301274)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+        }
+    }
+
+    def Xform "LH_THIGH" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.030814724, 0.000046495177, -0.24569571)
+        float3 physics:diagonalInertia = (0.03025113, 0.029893285, 0.0041845045)
+        float physics:mass = 3.0709999
+        quatf physics:principalAxes = (0.99277496, -0.0051273536, -0.080668464, 0.08868096)
+        quatd xformOp:orient = (-0.7071067690849304, -2.9802322387695312e-8, -3.69763277774382e-8, -0.7071067690849304)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.35979998111724854, 0.1878100037574768, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "LH_thigh_fixed"
+        {
+            quatd xformOp:orient = (0.7071067690849304, 0, 0, -0.7071067690849304)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LH_THIGH/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LH_THIGH/collisions>
+        )
+        {
+        }
+
+        def PhysicsRevoluteJoint "LH_KFE" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/LH_THIGH>
+            rel physics:body1 = </anymal/LH_SHANK>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.10029999, -5.978346e-9, -0.28499994)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.99999994, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+        }
+    }
+
+    def Xform "LH_SHANK" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0068596713, 0.034527674, 0.0009771042)
+        float3 physics:diagonalInertia = (0.001112511, 0.00032764184, 0.0008964407)
+        float physics:mass = 0.33841997
+        quatf physics:principalAxes = (0.99983925, -0.0117279515, -0.0011538108, 0.013513685)
+        quatd xformOp:orient = (-0.7071067094802856, -2.9802320611338473e-8, -3.697632422472452e-8, -0.7071067094802856)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.3598000109195709, 0.28810998797416687, -0.28499993681907654)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "LH_shank_fixed"
+        {
+            quatd xformOp:orient = (0.7071067690849304, 0, 0, -0.7071067690849304)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LH_SHANK/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LH_SHANK/collisions>
+        )
+        {
+        }
+
+        def PhysicsFixedJoint "LH_shank_fixed_LH_FOOT"
+        {
+            rel physics:body0 = </anymal/LH_SHANK>
+            rel physics:body1 = </anymal/LH_FOOT>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.013050005, 0.08795, -0.33796993)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, -0.70710677)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+
+    def Xform "LH_FOOT" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.00948, -0.00948, 0.1468)
+        float3 physics:diagonalInertia = (0.0031691105, 0.0031773741, 0.00008018941)
+        float physics:mass = 0.25
+        quatf physics:principalAxes = (0.923767, 0.014384665, 0.0059582945, 0.38263845)
+        quatd xformOp:orient = (-0.9999998807907104, 5.07278663519628e-9, -4.7219629095707205e-8, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.4477500319480896, 0.30115997791290283, -0.6229697465896606)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LH_FOOT/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/LH_FOOT/collisions>
+        )
+        {
+        }
+    }
+
+    def Xform "RF_HIP" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.056763325, 0.015293974, -0.008297847)
+        float3 physics:diagonalInertia = (0.0032906355, 0.0049205036, 0.005859281)
+        float physics:mass = 2.781
+        quatf physics:principalAxes = (0.9822677, -0.18612793, -0.021915287, -0.0051301825)
+        quatd xformOp:orient = (0.2588190734386444, -0.9659258127212524, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.29989999532699585, -0.10400000214576721, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "RF_hip_fixed"
+        {
+            quatd xformOp:orient = (0.2588190734386444, 0.9659258127212524, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RF_HIP/visuals>
+        )
+        {
+        }
+
+        def PhysicsRevoluteJoint "RF_HFE" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/RF_HIP>
+            rel physics:body1 = </anymal/RF_THIGH>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.059899993, 0.07258159, -0.041905005)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (-0.68301266, 0.1830127, 0.1830127, 0.68301266)
+            quatf physics:localRot1 = (-4.371139e-8, 0, 1, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+        }
+    }
+
+    def Xform "RF_THIGH" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.030814724, 0.000046503843, -0.24569571)
+        float3 physics:diagonalInertia = (0.030251132, 0.029893287, 0.0041845045)
+        float physics:mass = 3.0709999
+        quatf physics:principalAxes = (0.9927749, -0.005127351, -0.080668464, 0.08868119)
+        quatd xformOp:orient = (0.7071067094802856, 0, 0, -0.7071067094802856)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.35979998111724854, -0.1878100037574768, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "RF_thigh_fixed"
+        {
+            quatd xformOp:orient = (0.7071067690849304, 0, 0, 0.7071067690849304)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RF_THIGH/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RF_THIGH/collisions>
+        )
+        {
+        }
+
+        def PhysicsRevoluteJoint "RF_KFE" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/RF_THIGH>
+            rel physics:body1 = </anymal/RF_SHANK>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.10029999, 5.978346e-9, -0.28499994)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (-4.3711385e-8, 0, 0.99999994, 0)
+            quatf physics:localRot1 = (-4.371139e-8, 0, 1, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+        }
+    }
+
+    def Xform "RF_SHANK" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.006859668, 0.034527674, 0.0009771042)
+        float3 physics:diagonalInertia = (0.0011125111, 0.0003276418, 0.0008964407)
+        float physics:mass = 0.33841997
+        quatf physics:principalAxes = (0.9998393, -0.011727952, -0.0011538108, 0.013513744)
+        quatd xformOp:orient = (0.7071066498756409, 0, 0, -0.7071066498756409)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.35979998111724854, -0.28810998797416687, -0.284999817609787)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "RF_shank_fixed"
+        {
+            quatd xformOp:orient = (0.7071067690849304, 0, 0, 0.7071067690849304)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RF_SHANK/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RF_SHANK/collisions>
+        )
+        {
+        }
+
+        def PhysicsFixedJoint "RF_shank_fixed_RF_FOOT"
+        {
+            rel physics:body0 = </anymal/RF_SHANK>
+            rel physics:body1 = </anymal/RF_FOOT>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.013049994, 0.08795, -0.33796993)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+
+    def Xform "RF_FOOT" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00948, 0.00948, 0.1468)
+        float3 physics:diagonalInertia = (0.0031691105, 0.0031773741, 0.00008018941)
+        float physics:mass = 0.25
+        quatf physics:principalAxes = (0.923767, -0.014384665, -0.0059582945, 0.38263845)
+        quatd xformOp:orient = (0.9999998211860657, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.44774994254112244, -0.3011600077152252, -0.6229695081710815)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RF_FOOT/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RF_FOOT/collisions>
+        )
+        {
+        }
+    }
+
+    def Xform "RH_HIP" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.056660626, -0.015293977, -0.008297847)
+        float3 physics:diagonalInertia = (0.0032908134, 0.004918677, 0.005857289)
+        float physics:mass = 2.781
+        quatf physics:principalAxes = (0.98227215, 0.18615055, 0.021512896, -0.005162155)
+        quatd xformOp:orient = (-1.1313341374830088e-8, -4.222195926217864e-8, -0.9659258127212524, -0.2588190734386444)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.29989999532699585, -0.10400000214576721, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "RH_hip_fixed"
+        {
+            quatd xformOp:orient = (-1.1313341374830088e-8, -4.222195926217864e-8, -0.9659258127212524, -0.2588190734386444)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RH_HIP/visuals>
+        )
+        {
+        }
+
+        def PhysicsRevoluteJoint "RH_HFE" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/RH_HIP>
+            rel physics:body1 = </anymal/RH_THIGH>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.059899993, -0.07258159, -0.041905005)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.6830127, 0.18301268, -0.18301271, 0.6830126)
+            quatf physics:localRot1 = (-4.371139e-8, 0, 1, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+        }
+    }
+
+    def Xform "RH_THIGH" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.030814724, 0.000046503843, -0.24569571)
+        float3 physics:diagonalInertia = (0.030249983, 0.029894285, 0.0041846544)
+        float physics:mass = 3.0709999
+        quatf physics:principalAxes = (0.99316597, -0.0051523102, -0.08065912, 0.08419576)
+        quatd xformOp:orient = (-0.7071067094802856, -2.9802322387695312e-8, 3.69763277774382e-8, 0.7071067094802856)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.35979998111724854, -0.1878100037574768, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "RH_thigh_fixed"
+        {
+            quatd xformOp:orient = (0.7071067690849304, 0, 0, 0.7071067690849304)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RH_THIGH/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RH_THIGH/collisions>
+        )
+        {
+        }
+
+        def PhysicsRevoluteJoint "RH_KFE" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 80
+            float drive:angular:physics:stiffness = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </anymal/RH_THIGH>
+            rel physics:body1 = </anymal/RH_SHANK>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.10029999, 5.978346e-9, -0.28499994)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (-4.3711385e-8, 0, 0.99999994, 0)
+            quatf physics:localRot1 = (-4.371139e-8, 0, 1, 0)
+            float physics:lowerLimit = -inf
+            float physics:upperLimit = inf
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 1145.9156
+        }
+    }
+
+    def Xform "RH_SHANK" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0068596713, -0.034527674, 0.0009771042)
+        float3 physics:diagonalInertia = (0.001112511, 0.00032764184, 0.0008964407)
+        float physics:mass = 0.33841997
+        quatf physics:principalAxes = (0.99983925, 0.0117279515, -0.0011538108, -0.013513685)
+        quatd xformOp:orient = (-0.7071066498756409, -2.9802320611338473e-8, 3.697632422472452e-8, 0.7071066498756409)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.35979995131492615, -0.28810998797416687, -0.284999817609787)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "RH_shank_fixed"
+        {
+            quatd xformOp:orient = (0.7071067690849304, 0, 0, 0.7071067690849304)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RH_SHANK/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RH_SHANK/collisions>
+        )
+        {
+        }
+
+        def PhysicsFixedJoint "RH_shank_fixed_RH_FOOT"
+        {
+            rel physics:body0 = </anymal/RH_SHANK>
+            rel physics:body1 = </anymal/RH_FOOT>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.013050005, -0.08795, -0.33796993)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.70710677, 0, 0, 0.70710677)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+
+    def Xform "RH_FOOT" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.00948, 0.00948, 0.1468)
+        float3 physics:diagonalInertia = (0.0031691105, 0.0031773741, 0.00008018941)
+        float physics:mass = 0.25
+        quatf physics:principalAxes = (0.923767, -0.014384665, 0.0059582945, -0.38263845)
+        quatd xformOp:orient = (-0.9999998211860657, 5.07278663519628e-9, 4.7219629095707205e-8, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.44774991273880005, -0.30115994811058044, -0.6229695081710815)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RH_FOOT/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usd@</anymal/RH_FOOT/collisions>
+        )
+        {
+        }
+    }
+}
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:dlss:frameGeneration = 0
+                string omni:rtx:material:db:rtSensorNameToIdMap = "DefaultMaterial:0;AsphaltStandardMaterial:1;AsphaltWeatheredMaterial:2;VegetationGrassMaterial:3;WaterStandardMaterial:4;GlassStandardMaterial:5;FiberGlassMaterial:6;MetalAlloyMaterial:7;MetalAluminumMaterial:8;MetalAluminumOxidizedMaterial:9;PlasticStandardMaterial:10;RetroMarkingsMaterial:11;RetroSignMaterial:12;RubberStandardMaterial:13;SoilClayMaterial:14;ConcreteRoughMaterial:15;ConcreteSmoothMaterial:16;OakTreeBarkMaterial:17;FabricStandardMaterial:18;PlexiGlassStandardMaterial:19;MetalSilverMaterial:20"
+                bool omni:rtx:material:db:syncLoads = 1
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:lightcache:cached:dontResolveConflicts = 1
+                int omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                int omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                uint omni:rtx:viewTile:limit = 4294967295
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+        }
+    }
+}
+

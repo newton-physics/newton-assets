@@ -1,0 +1,1301 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary audioSettings = {
+            double dopplerLimit = 2
+            double dopplerScale = 1
+            string enableDistanceDelay = "off"
+            string enableDoppler = "off"
+            string enableInterauralDelay = "off"
+            double nonSpatialTimeScale = 1
+            double spatialTimeScale = 1
+            double speedOfSound = 340
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (1000.0000000000011, -2.220446049250315e-13, 0)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (2.3164561507987576, 2.3164561507987664, 2.3164561507987695)
+                double radius = 352.5978442499678
+                double3 target = (-1.8429911374795438e-8, -1.842990160483282e-8, 3.6859810315093e-8)
+            }
+            dictionary Right = {
+                double3 position = (0, -1000, -2.220446049250313e-13)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 1000)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./ur10_instanceable.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            double "rtx:post:lensDistortion:cameraFocalLength" = 18.14756202697754
+        }
+    }
+    defaultPrim = "ur10"
+    metersPerUnit = 1
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        custom float inputs:angle = 1
+        custom float inputs:intensity = 3000
+        custom float inputs:shaping:cone:angle = 180
+        custom float inputs:shaping:cone:softness = 0
+        custom float inputs:shaping:focus = 0
+        custom color3f inputs:shaping:focusTint = (0, 0, 0)
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (45, 0, 90)
+        double3 xformOp:scale = (0.009999999776482582, 0.009999999776482582, 0.009999999776482582)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def PhysicsScene "physicsScene" (
+        prepend apiSchemas = ["PhysxSceneAPI"]
+    )
+    {
+        vector3f physics:gravityDirection = (0, 0, -1)
+        float physics:gravityMagnitude = 9.8
+        float physxScene:bounceThreshold = 200
+        uniform token physxScene:broadphaseType = "MBP"
+        uniform token physxScene:collisionSystem = "PCM"
+        bool physxScene:enableCCD = 1
+        bool physxScene:enableEnhancedDeterminism = 0
+        bool physxScene:enableGPUDynamics = 0
+        bool physxScene:enableStabilization = 1
+        float physxScene:frictionCorrelationDistance = 0.00025
+        float physxScene:frictionOffsetThreshold = 0.04
+        uniform token physxScene:frictionType = "patch"
+        uint physxScene:gpuConstraintBufferCapacity = 33554432
+        uint physxScene:gpuContactBufferCapacity = 25165824
+        uint physxScene:gpuContactStreamSize = 524288
+        uint physxScene:gpuForceStreamCapacity = 1048576
+        uint physxScene:gpuFoundLostPairsCapacity = 262144
+        uint physxScene:gpuHeapCapacity = 67108864
+        uint physxScene:gpuMaxNumPartitions = 8
+        uint physxScene:gpuPatchStreamSize = 81920
+        uint physxScene:gpuTempBufferCapacity = 16777216
+        uniform token physxScene:solverType = "TGS"
+    }
+}
+
+def Xform "ur10" (
+    prepend apiSchemas = ["PhysxArticulationAPI", "PhysicsArticulationRootAPI"]
+)
+{
+    bool physxArticulation:enabledSelfCollisions = 0
+    float physxArticulation:sleepThreshold = 50.000004
+    int physxArticulation:solverPositionIterationCount = 32
+    int physxArticulation:solverVelocityIterationCount = 32
+    float physxArticulation:stabilizationThreshold = 10000
+
+    def PhysicsJoint "rootJoint" (
+    )
+    {
+        uniform token articulationType = "articulatedRoot"
+        rel physics:body0 = </ur10/base_link>
+        float physics:breakForce = inf
+        float physics:breakTorque = inf
+        point3f physics:localPos0 = (0, 0, 0)
+        point3f physics:localPos1 = (0, 0, 0)
+        quatf physics:localRot0 = (1, 0, 0, 0)
+    }
+
+    def Xform "base_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        instanceable = false
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        point3f physics:centerOfMass = (0, 0, 0)
+        float physics:mass = 200
+        vector3f physics:velocity = (0, 0, 0)
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (3.4721864e-10, -1.5107773e-11, 0) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Cylinder "cylinder" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-1.5, -7.5000005, -7.5000005), (1.5, 7.5000005, 7.5000005)]
+            double height = 0.029999999329447746
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.07500000309199084
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0.01999999910593034, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def PhysicsRevoluteJoint "shoulder_pan_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            uniform token articulationType = "articulatedJoint"
+            float drive:angular:physics:damping = 34.906586
+            float drive:angular:physics:maxForce = 1979.9999
+            float drive:angular:physics:stiffness = 349.06586
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "acceleration"
+            float jointFriction = 0
+            custom token physics:axis = "X"
+            rel physics:body0 = </ur10/base_link>
+            rel physics:body1 = </ur10/shoulder_link>
+            float physics:breakForce = 3300
+            float physics:breakTorque = 33
+            bool physics:collisionEnabled = 0
+            point3f physics:localPos0 = (0, 0, 0.1273)
+            point3f physics:localPos1 = (0, 9.536743e-9, 0)
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.7071069, 0, -0.7071067, 0)
+            custom float physics:lowerLimit = -359.99973
+            custom float physics:upperLimit = 359.99973
+            bool physxJoint:enableProjection = 0
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 119.97737
+            float physxLimit:angular:bounceThreshold = 0
+            float physxLimit:angular:contactDistance = 0
+            float physxLimit:angular:damping = 0
+            float physxLimit:angular:restitution = 0
+            float physxLimit:angular:stiffness = 0
+        }
+
+        def "ur10_base" (
+            prepend references = @./Props/ur10_base.usd@
+        )
+        {
+            over "ID125_001" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID125_001fa3" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+        }
+    }
+
+    def Xform "shoulder_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        instanceable = false
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        point3f physics:centerOfMass = (0, 0, 0)
+        float physics:mass = 7.1
+        vector3f physics:velocity = (0, 0, 0)
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-5.2125416e-13, -1.4305114e-8, 0.1273) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Cylinder "cylinder" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-8.5, -7.5000005, -7.5000005), (8.5, 7.5000005, 7.5000005)]
+            double height = 0.1699999962002039
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.07500000309199084
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (7.530331745269507e-13, -2.38418573772492e-9, 0.002699904381485929, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Cylinder "cylinder_0" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-4.25, -7.5000005, -7.5000005), (4.25, 7.5000005, 7.5000005)]
+            double height = 0.08499999810010195
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.07500000309199084
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 2.028159258316009e-7, 0.9999997971840742, 0), (0, -0.9999997971840742, 2.028159258316009e-7, 0), (7.530331745269507e-13, 0.04249999711290006, 0.0006999152742345194, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def PhysicsRevoluteJoint "shoulder_lift_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            uniform token articulationType = "articulatedJoint"
+            float drive:angular:physics:damping = 34.906586
+            float drive:angular:physics:maxForce = 1979.9999
+            float drive:angular:physics:stiffness = 349.06586
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "acceleration"
+            float jointFriction = 0
+            custom token physics:axis = "X"
+            rel physics:body0 = </ur10/shoulder_link>
+            rel physics:body1 = </ur10/upper_arm_link>
+            float physics:breakForce = 3300
+            float physics:breakTorque = 33
+            bool physics:collisionEnabled = 0
+            point3f physics:localPos0 = (0, 0.220941, 0) (
+                customData = {
+                    dictionary omni = {
+                        dictionary kit = {
+                            dictionary property = {
+                                dictionary usd = {
+                                    float2 soft_range_ui = (0, 0)
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+            point3f physics:localPos1 = (0, -3.5527136e-17, -4.2351646e-24) (
+                customData = {
+                    dictionary omni = {
+                        dictionary kit = {
+                            dictionary property = {
+                                dictionary usd = {
+                                    float2 soft_range_ui = (0, 0)
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+            quatf physics:localRot0 = (0.5, 0.5, 0.5, 0.5)
+            quatf physics:localRot1 = (0.70710677, -7.170626e-8, -7.170626e-8, 0.70710677)
+            custom float physics:lowerLimit = -359.99973
+            custom float physics:upperLimit = 359.99973
+            bool physxJoint:enableProjection = 0
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 119.97737
+            float physxLimit:angular:bounceThreshold = 0
+            float physxLimit:angular:contactDistance = 0
+            float physxLimit:angular:damping = 0
+            float physxLimit:angular:restitution = 0
+            float physxLimit:angular:stiffness = 0
+        }
+
+        def "ur10_shoulder" (
+            prepend references = @./Props/ur10_shoulder.usd@
+        )
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (7.530331745269507e-13, -2.38418573772492e-9, -0.12730008794441616)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+            over "ID461_001" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID461_001fa3" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID461_001SVM" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID461_001ORK" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+        }
+    }
+
+    def Xform "upper_arm_link" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        instanceable = false
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        point3f physics:centerOfMass = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 12.7
+        bool physics:rigidBodyEnabled = 1
+        uniform bool physics:startsAsleep = 0
+        vector3f physics:velocity = (0, 0, 0)
+        float physxRigidBody:angularDamping = 0.05
+        bool physxRigidBody:enableCCD = 0
+        bool physxRigidBody:enableSpeculativeCCD = 0
+        float physxRigidBody:linearDamping = 0
+        int physxRigidBody:lockedPosAxis = 0
+        int physxRigidBody:lockedRotAxis = 0
+        float physxRigidBody:maxAngularVelocity = 100
+        float physxRigidBody:maxDepenetrationVelocity = inf
+        float physxRigidBody:maxLinearVelocity = inf
+        float physxRigidBody:sleepThreshold = 0.5
+        int physxRigidBody:solverPositionIterationCount = 4
+        int physxRigidBody:solverVelocityIterationCount = 1
+        float physxRigidBody:stabilizationThreshold = 0.0009999999
+        quatf xformOp:orient = (0.7071067, 0, 0.7071068, 0) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0.220941, 0.1273) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Cylinder "cylinder" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-8.75, -7.5000005, -7.5000005), (8.75, 7.5000005, 7.5000005)]
+            double height = 0.1749999960884452
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.07500000309199084
+            matrix4d xformOp:transform = ( (2.6631610916538767e-7, 0, 0.9999999999999647, 0), (-0.9999997971840389, 2.028159258316009e-7, 2.6631605515223946e-7, 0), (-2.0281592583159376e-7, -0.9999997971840742, 5.40131482442478e-14, 0), (-0.0007000064693390051, -0.044941004702277354, 1.8642300234628187e-10, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Cylinder "cylinder_0" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-30.599998, -6, -6), (30.599998, 6, 6)]
+            double height = 0.6119999558031566
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.05999999865889549
+            matrix4d xformOp:transform = ( (0.9999997971840929, 0, -6.35001293206457e-8, 0), (0, 1, 0, 0), (6.35001293206457e-8, 0, 0.9999997971840929, 0), (-0.0006999249766129541, -0.044941004702277354, 0.30599998762473346, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Cylinder "cylinder_1" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-6.8, -6, -6), (6.8, 6, 6)]
+            double height = 0.1360000007748603
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.05999999865889549
+            matrix4d xformOp:transform = ( (2.6631610916538767e-7, 0, 0.9999999999999647, 0), (-0.9999997971840389, 2.028159258316009e-7, 2.6631605515223946e-7, 0), (-2.0281592583159376e-7, -0.9999997971840742, 5.40131482442478e-14, 0), (-0.0006998434838868853, -0.044941004702277354, 0.6119999750630438, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def "ur10_upper_arm" (
+            prepend references = @./Props/ur10_upper_arm.usd@
+        )
+        {
+            float3 xformOp:rotateXYZ = (0, -89.999985, -0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-0.0007000064693390051, -0.044941004702277354, 1.8642300234628187e-10)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+            over "ID251_001" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID251_001fa3" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID251_001SVM" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID251_001ORK" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID251_001P1u" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+        }
+
+        def PhysicsRevoluteJoint "elbow_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            uniform token articulationType = "articulatedJoint"
+            float drive:angular:physics:damping = 34.906586
+            float drive:angular:physics:maxForce = 899.99994
+            float drive:angular:physics:stiffness = 349.06586
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "acceleration"
+            float jointFriction = 0
+            custom token physics:axis = "X"
+            rel physics:body0 = </ur10/upper_arm_link>
+            rel physics:body1 = </ur10/forearm_link>
+            float physics:breakForce = 1500
+            float physics:breakTorque = 14.999999
+            bool physics:collisionEnabled = 0
+            point3f physics:localPos0 = (0, -0.1719, 0.612)
+            point3f physics:localPos1 = (0, 0, 0) (
+                customData = {
+                    dictionary omni = {
+                        dictionary kit = {
+                            dictionary property = {
+                                dictionary usd = {
+                                    float2 soft_range_ui = (0, 0)
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+            quatf physics:localRot0 = (0.7071068, 0, 0, 0.7071067)
+            quatf physics:localRot1 = (0.7071068, -8.485979e-9, -5.0632828e-8, 0.7071067)
+            custom float physics:lowerLimit = -359.99973
+            custom float physics:upperLimit = 359.99973
+            bool physxJoint:enableProjection = 0
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 180.02335
+            float physxLimit:angular:bounceThreshold = 0
+            float physxLimit:angular:contactDistance = 0
+            float physxLimit:angular:damping = 0
+            float physxLimit:angular:restitution = 0
+            float physxLimit:angular:stiffness = 0
+        }
+    }
+
+    def Xform "forearm_link" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        instanceable = false
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        point3f physics:centerOfMass = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 4.27
+        bool physics:rigidBodyEnabled = 1
+        uniform bool physics:startsAsleep = 0
+        vector3f physics:velocity = (0, 0, 0)
+        float physxRigidBody:angularDamping = 0.05
+        bool physxRigidBody:enableCCD = 0
+        bool physxRigidBody:enableSpeculativeCCD = 0
+        float physxRigidBody:linearDamping = 0
+        int physxRigidBody:lockedPosAxis = 0
+        int physxRigidBody:lockedRotAxis = 0
+        float physxRigidBody:maxAngularVelocity = 100
+        float physxRigidBody:maxDepenetrationVelocity = inf
+        float physxRigidBody:maxLinearVelocity = inf
+        float physxRigidBody:sleepThreshold = 0.5
+        int physxRigidBody:solverPositionIterationCount = 4
+        int physxRigidBody:solverVelocityIterationCount = 1
+        float physxRigidBody:stabilizationThreshold = 0.0009999999
+        quatf xformOp:orient = (0.7071067, 0, 0.7071068, 0) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.6119999, 0.049041033, 0.12729995) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Cylinder "cylinder" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-6.3, -6, -6), (6.3, 6, 6)]
+            double height = 0.12600000099837771
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.05999999865889549
+            matrix4d xformOp:transform = ( (2.6631610916538767e-7, 0, 0.9999999999999647, 0), (-0.9999997971840389, 2.028159258316009e-7, 2.6631605515223946e-7, 0), (-2.0281592583159376e-7, -0.9999997971840742, 5.40131482442478e-14, 0), (-0.0007000446163286967, -0.0041510393287754275, -3.796053967581134e-8, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Cylinder "cylinder_0" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-28.600002, -4.7, -4.7), (28.600002, 4.7, 4.7)]
+            double height = 0.5720000329911699
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.046999997042119546
+            matrix4d xformOp:transform = ( (0.9999997971840929, 0, -6.35001293206457e-8, 0), (0, 1, 0, 0), (6.35001293206457e-8, 0, 0.9999997971840929, 0), (-0.0006999684499196206, -0.0010410403972631688, 0.28599996899829244, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Cylinder "cylinder_1" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-5.9, -4.7, -4.7), (5.9, 4.7, 4.7)]
+            double height = 0.11799999926984306
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.046999997042119546
+            matrix4d xformOp:transform = ( (2.6631610916538767e-7, 0, 0.9999999999999647, 0), (-0.9999997971840389, 2.028159258316009e-7, 2.6631605515223946e-7, 0), (-2.0281592583159376e-7, -0.9999997971840742, 5.40131482442478e-14, 0), (-0.0006998922835105446, 0.0017589585089916226, 0.5719999759571242, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def "ur10_forearm" (
+            prepend references = @./Props/ur10_forearm.usd@
+        )
+        {
+            float3 xformOp:rotateXYZ = (0, -89.999985, -0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-0.0007000446163286967, -0.0010410403972631688, -3.796053967581134e-8)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+            over "ID71_001" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID71_001fa3" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID71_001SVM" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID71_001ORK" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID71_001P1u" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+        }
+
+        def PhysicsRevoluteJoint "wrist_1_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            uniform token articulationType = "articulatedJoint"
+            float drive:angular:physics:damping = 34.906586
+            float drive:angular:physics:maxForce = 336
+            float drive:angular:physics:stiffness = 349.06586
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "acceleration"
+            float jointFriction = 0
+            custom token physics:axis = "X"
+            rel physics:body0 = </ur10/forearm_link>
+            rel physics:body1 = </ur10/wrist_1_link>
+            float physics:breakForce = 560
+            float physics:breakTorque = 5.6
+            bool physics:collisionEnabled = 0
+            point3f physics:localPos0 = (0, 0, 0.57229996)
+            point3f physics:localPos1 = (0, 0, 0) (
+                customData = {
+                    dictionary omni = {
+                        dictionary kit = {
+                            dictionary property = {
+                                dictionary usd = {
+                                    float2 soft_range_ui = (0, 0)
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+            quatf physics:localRot0 = (0.5, 0.5, 0.5, 0.5)
+            quatf physics:localRot1 = (0.70710677, 7.170626e-8, 7.170626e-8, 0.70710677)
+            custom float physics:lowerLimit = -359.99973
+            custom float physics:upperLimit = 359.99973
+            bool physxJoint:enableProjection = 0
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 180.02335
+            float physxLimit:angular:bounceThreshold = 0
+            float physxLimit:angular:contactDistance = 0
+            float physxLimit:angular:damping = 0
+            float physxLimit:angular:restitution = 0
+            float physxLimit:angular:stiffness = 0
+        }
+    }
+
+    def Xform "wrist_1_link" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        instanceable = false
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        point3f physics:centerOfMass = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 1
+        bool physics:rigidBodyEnabled = 1
+        uniform bool physics:startsAsleep = 0
+        vector3f physics:velocity = (0, 0, 0)
+        float physxRigidBody:angularDamping = 0.05
+        bool physxRigidBody:disableGravity = 0
+        bool physxRigidBody:enableCCD = 0
+        bool physxRigidBody:enableSpeculativeCCD = 0
+        float physxRigidBody:linearDamping = 0
+        int physxRigidBody:lockedPosAxis = 0
+        int physxRigidBody:lockedRotAxis = 0
+        float physxRigidBody:maxAngularVelocity = 100
+        float physxRigidBody:maxContactImpulse = inf
+        float physxRigidBody:maxDepenetrationVelocity = inf
+        float physxRigidBody:maxLinearVelocity = inf
+        float physxRigidBody:sleepThreshold = 0.5
+        int physxRigidBody:solverPositionIterationCount = 4
+        int physxRigidBody:solverVelocityIterationCount = 1
+        float physxRigidBody:stabilizationThreshold = 0.0009999999
+        quatf xformOp:orient = (6.123234e-17, 0, 1, 0) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (1.1843, 0.04904088, 0.12729993) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Cylinder "cylinder" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-2.75, -4.7, -4.7), (2.75, 4.7, 4.7)]
+            double height = 0.0549999987706542
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.046999997042119546
+            matrix4d xformOp:transform = ( (-1, 1.224646799147353e-16, 1.2246467691574846e-16, 0), (-1.2246462724017417e-16, 2.0281592595406557e-7, -0.9999997971840742, 0), (-1.224646799147347e-16, -0.9999997971840742, -2.0281592595406557e-7, 0), (0.0002999114923198931, 0.08745911045091348, -0.000700063689796675, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Cylinder "cylinder_0" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-5.9, -4.7, -4.7), (5.9, 4.7, 4.7)]
+            double height = 0.11799999926984306
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.046999997042119546
+            matrix4d xformOp:transform = ( (-1, 1.224646799147353e-16, 1.2246467691574846e-16, 0), (1.2246467991473532e-16, 1, 1.224646799147353e-16, 0), (-1.2246467691574846e-16, 1.2246467991473532e-16, -1, 0), (0.0002999114923198931, 0.11495911341251919, 0.0020999389417483316, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def "ur10_wrist_1" (
+            prepend references = @./Props/ur10_wrist_1.usd@
+        )
+        {
+            float3 xformOp:rotateXYZ = (180, 7.016709e-15, 180)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.0002999114923198931, 0.11495911341251919, -0.000700063689796675)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+            over "ID239_001" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID239_001fa3" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID239_001SVM" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+        }
+
+        def PhysicsRevoluteJoint "wrist_2_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            uniform token articulationType = "articulatedJoint"
+            float drive:angular:physics:damping = 34.906586
+            float drive:angular:physics:maxForce = 336
+            float drive:angular:physics:stiffness = 349.06586
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "acceleration"
+            float jointFriction = 0
+            custom token physics:axis = "X"
+            rel physics:body0 = </ur10/wrist_1_link>
+            rel physics:body1 = </ur10/wrist_2_link>
+            float physics:breakForce = 560
+            float physics:breakTorque = 5.6
+            bool physics:collisionEnabled = 0
+            point3f physics:localPos0 = (0, 0.11489999, 0) (
+                customData = {
+                    dictionary omni = {
+                        dictionary kit = {
+                            dictionary property = {
+                                dictionary usd = {
+                                    float2 soft_range_ui = (0, 0)
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+            point3f physics:localPos1 = (0, 0, 0) (
+                customData = {
+                    dictionary omni = {
+                        dictionary kit = {
+                            dictionary property = {
+                                dictionary usd = {
+                                    float2 soft_range_ui = (0, 0)
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+            quatf physics:localRot0 = (0.70710677, 0, -0.70710677, 0)
+            quatf physics:localRot1 = (0.7071068, 4.4953377e-10, -0.7071067, 4.4953383e-10)
+            custom float physics:lowerLimit = -359.99973
+            custom float physics:upperLimit = 359.99973
+            bool physxJoint:enableProjection = 0
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 180.02335
+            float physxLimit:angular:bounceThreshold = 0
+            float physxLimit:angular:contactDistance = 0
+            float physxLimit:angular:damping = 0
+            float physxLimit:angular:restitution = 0
+            float physxLimit:angular:stiffness = 0
+        }
+    }
+
+    def Xform "wrist_2_link" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        instanceable = false
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        point3f physics:centerOfMass = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 1
+        bool physics:rigidBodyEnabled = 1
+        uniform bool physics:startsAsleep = 0
+        vector3f physics:velocity = (0, 0, 0)
+        float physxRigidBody:angularDamping = 0.05
+        bool physxRigidBody:enableCCD = 0
+        bool physxRigidBody:enableSpeculativeCCD = 0
+        float physxRigidBody:linearDamping = 0
+        int physxRigidBody:lockedPosAxis = 0
+        int physxRigidBody:lockedRotAxis = 0
+        float physxRigidBody:maxAngularVelocity = 100
+        float physxRigidBody:maxDepenetrationVelocity = inf
+        float physxRigidBody:maxLinearVelocity = inf
+        float physxRigidBody:sleepThreshold = 0.5
+        int physxRigidBody:solverPositionIterationCount = 4
+        int physxRigidBody:solverVelocityIterationCount = 1
+        float physxRigidBody:stabilizationThreshold = 0.0009999999
+        quatf xformOp:orient = (6.123234e-17, 7.3032425e-10, 1, 0) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (1.1843, 0.163941, 0.12729986) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Cylinder "cylinder" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-2.7, -4.7, -4.7), (2.7, 4.7, 4.7)]
+            double height = 0.05399999974668024
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.046999997042119546
+            matrix4d xformOp:transform = ( (-1, -1.224646799147353e-16, 1.2246467691574848e-16, 0), (-1.2246467991473532e-16, 1, -1.224646799147353e-16, 0), (-1.2246467691574848e-16, -1.2246467991473532e-16, -1, 0), (0.0002999114923949264, 0.000058994291512952664, 0.08829984974190924, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Cylinder "cylinder_0" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-5.9, -4.7, -4.7), (5.9, 4.7, 4.7)]
+            double height = 0.11799999926984306
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.046999997042119546
+            matrix4d xformOp:transform = ( (-1, -1.224646799147353e-16, 1.2246467691574848e-16, 0), (-1.2246467691574907e-16, 2.0281592570913625e-7, -0.9999997971840742, 0), (1.2246463023916106e-16, -0.9999997971840742, -2.0281592570913625e-7, 0), (0.0002999114923949264, 0.0028589969230579594, 0.11529985170141188, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def "ur10_wrist_2" (
+            prepend references = @./Props/ur10_wrist_2.usd@
+        )
+        {
+            float3 xformOp:rotateXYZ = (-180, -1.8427729e-14, -180)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.0002999114923949264, 0.000058994291512952664, 0.11529985170141188)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+            over "ID347_001" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID347_001fa3" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID347_001SVM" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID347_001ORK" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+        }
+
+        def PhysicsRevoluteJoint "wrist_3_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            uniform token articulationType = "articulatedJoint"
+            float drive:angular:physics:damping = 34.906586
+            float drive:angular:physics:maxForce = 336
+            float drive:angular:physics:stiffness = 349.06586
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "acceleration"
+            float jointFriction = 0
+            custom token physics:axis = "X"
+            rel physics:body0 = </ur10/wrist_2_link>
+            rel physics:body1 = </ur10/wrist_3_link>
+            float physics:breakForce = 560
+            float physics:breakTorque = 5.6
+            bool physics:collisionEnabled = 0
+            point3f physics:localPos0 = (0, 0, 0.11569999)
+            point3f physics:localPos1 = (0, 0, 0) (
+                customData = {
+                    dictionary omni = {
+                        dictionary kit = {
+                            dictionary property = {
+                                dictionary usd = {
+                                    float2 soft_range_ui = (0, 0)
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+            quatf physics:localRot0 = (0.7071068, 0, 0, 0.7071067)
+            quatf physics:localRot1 = (0.7071068, -1.2873779e-24, -1.793454e-17, 0.7071067)
+            custom float physics:lowerLimit = -359.99973
+            custom float physics:upperLimit = 359.99973
+            bool physxJoint:enableProjection = 0
+            float physxJoint:jointFriction = 0
+            float physxJoint:maxJointVelocity = 180.02335
+            float physxLimit:angular:bounceThreshold = 0
+            float physxLimit:angular:contactDistance = 0
+            float physxLimit:angular:damping = 0
+            float physxLimit:angular:restitution = 0
+            float physxLimit:angular:stiffness = 0
+        }
+    }
+
+    def Xform "wrist_3_link" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        instanceable = false
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        point3f physics:centerOfMass = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0.365
+        bool physics:rigidBodyEnabled = 1
+        uniform bool physics:startsAsleep = 0
+        vector3f physics:velocity = (0, 0, 0)
+        float physxRigidBody:angularDamping = 0.05
+        bool physxRigidBody:disableGravity = 0
+        bool physxRigidBody:enableCCD = 0
+        bool physxRigidBody:enableSpeculativeCCD = 0
+        float physxRigidBody:linearDamping = 0
+        int physxRigidBody:lockedPosAxis = 0
+        int physxRigidBody:lockedRotAxis = 0
+        float physxRigidBody:maxAngularVelocity = 100
+        float physxRigidBody:maxContactImpulse = inf
+        float physxRigidBody:maxDepenetrationVelocity = inf
+        float physxRigidBody:maxLinearVelocity = inf
+        float physxRigidBody:sleepThreshold = 0.5
+        int physxRigidBody:solverPositionIterationCount = 4
+        int physxRigidBody:solverVelocityIterationCount = 1
+        float physxRigidBody:stabilizationThreshold = 0.0009999999
+        quatf xformOp:orient = (6.123234e-17, 0, 1, 0) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (1.1843, 0.163941, 0.011599935) (
+            customData = {
+                dictionary omni = {
+                    dictionary kit = {
+                        dictionary property = {
+                            dictionary usd = {
+                                float2 soft_range_ui = (0, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Cylinder "cylinder" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            float3[] extent = [(-1.5, -4.7, -4.7), (1.5, 4.7, 4.7)]
+            double height = 0.029999999329447746
+            custom string name = "cylinder"
+            color3f[] primvars:displayColor = [(1, 0, 1)]
+            float[] primvars:displayOpacity = [0.25]
+            uniform token purpose = "guide"
+            double radius = 0.046999997042119546
+            matrix4d xformOp:transform = ( (-1, 1.224646799147353e-16, 1.2246467691574848e-16, 0), (-1.224646272401742e-16, 2.0281592595406557e-7, -0.9999997971840742, 0), (-1.224646799147347e-16, -0.9999997971840742, -2.0281592595406557e-7, 0), (0.0002999114923198931, 0.07705898053067217, -0.0004000747114403147, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def "ur10_wrist_3" (
+            prepend references = @./Props/ur10_wrist_3.usd@
+        )
+        {
+            float3 xformOp:rotateXYZ = (180, -1.8427729e-14, 180)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.0002999114923198931, 0.09205898079144248, -0.00040007471144031247)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+            over "ID275_001" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+
+            over "ID275_001fa3" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                matrix4d xformOp:transform = ( (0.9999999776482582, 0, 0, 0), (0, 0.9999999776482582, 0, 0), (0, 0, 0.9999999776482582, 0), (0, 0, 0, 1) )
+            }
+        }
+
+        def PhysicsFixedJoint "ee_joint"
+        {
+            rel physics:body0 = </ur10/wrist_3_link>
+            rel physics:body1 = </ur10/ee_link>
+            float physics:breakForce = inf
+            float physics:breakTorque = inf
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (-0.09219999, 1.9984014e-17, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (-0.5, 0.5, 0.5, 0.5)
+        }
+    }
+
+    def Xform "ee_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        vector3f physics:angularVelocity = (0, 0, 0)
+        point3f physics:centerOfMass = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0.01
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (0, 0, 0)
+        float physxRigidBody:maxDepenetrationVelocity = 0.049999997
+        float physxRigidBody:maxLinearVelocity = inf
+        float physxRigidBody:sleepThreshold = 5e-7
+        float physxRigidBody:stabilizationThreshold = 1e-9
+        quatf xformOp:orient = (0.5, -0.5, -0.5, 0.5)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (1.1842999002866463, 0.2561409893004374, 0.011599935033918873)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:dlss:frameGeneration = 0
+                string omni:rtx:material:db:rtSensorNameToIdMap = "DefaultMaterial:0;AsphaltStandardMaterial:1;AsphaltWeatheredMaterial:2;VegetationGrassMaterial:3;WaterStandardMaterial:4;GlassStandardMaterial:5;FiberGlassMaterial:6;MetalAlloyMaterial:7;MetalAluminumMaterial:8;MetalAluminumOxidizedMaterial:9;PlasticStandardMaterial:10;RetroMarkingsMaterial:11;RetroSignMaterial:12;RubberStandardMaterial:13;SoilClayMaterial:14;ConcreteRoughMaterial:15;ConcreteSmoothMaterial:16;OakTreeBarkMaterial:17;FabricStandardMaterial:18;PlexiGlassStandardMaterial:19;MetalSilverMaterial:20"
+                bool omni:rtx:material:db:syncLoads = 1
+                float omni:rtx:post:lensDistortion:cameraFocalLength = 18.147562
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:lightcache:cached:dontResolveConflicts = 1
+                int omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                int omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                uint omni:rtx:viewTile:limit = 4294967295
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+        }
+    }
+}
+

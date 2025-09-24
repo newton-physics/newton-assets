@@ -1,0 +1,101 @@
+{
+    "version": "1.0",
+    "file_records": [
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/anymal_d.usd",
+            "source_hash": "46c069ce252a2717ea34c2aec1ba6ddc208998ae",
+            "target_url": "./anymal_d.usd",
+            "target_hash": "a7cb0ffb806c9073870206df2f2ea724f6651f22"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/instanceable_meshes.usd",
+            "source_hash": "2ff39b85a795aac74ceade6168da361d354b8bb8",
+            "target_url": "./Props/instanceable_meshes.usd",
+            "target_hash": "40cee7d303c5a30a947a35db4bda33bbfc63f008"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/base.jpg",
+            "source_hash": "47c3fd90002b0fa6a4fbf4b60f8176f29ae588ae",
+            "target_url": "./Props/materials/base.jpg",
+            "target_hash": "de29c96b3ef5504b08c4e2cc2f322f09a1313867"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/battery.jpg",
+            "source_hash": "e321ecb10c268b53acc5acfa6e65f2c2d09c733c",
+            "target_url": "./Props/materials/battery.jpg",
+            "target_hash": "7e5b5ef3de3aedb8e8d64caf432742b4bae36d16"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/bottom_shell.jpg",
+            "source_hash": "082c4219edc705964c61ec974c0a401e95ed378b",
+            "target_url": "./Props/materials/bottom_shell.jpg",
+            "target_hash": "65b364321a6c064b54aef5a951b01b366a41ff72"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/docking_socket.jpg",
+            "source_hash": "17898b2b2835599ae3f93effbb26cf45379d07bd",
+            "target_url": "./Props/materials/docking_socket.jpg",
+            "target_hash": "43f45df8a413283bf244d0b6cb826a2d76310e66"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/drive.jpg",
+            "source_hash": "f6ae40fb4e5178690a91ac7795bc5fb4d94fdacf",
+            "target_url": "./Props/materials/drive.jpg",
+            "target_hash": "c5b975a502a951ed7b9f423ed7e988e9f2280414"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/face_shell.jpg",
+            "source_hash": "16157c85872fc08c307f39387d45b580cc11020e",
+            "target_url": "./Props/materials/face_shell.jpg",
+            "target_hash": "329902f42146f7c62c4196b2d55538bd44bdcb27"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/foot.jpg",
+            "source_hash": "110eebd5fe7875032129c6bd13964290bbbd0a02",
+            "target_url": "./Props/materials/foot.jpg",
+            "target_hash": "b4a29cb02d3035a0a727a5d50b8015474a239053"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/hatch.jpg",
+            "source_hash": "f977e394bc972d427750e680d66e62f4660884d3",
+            "target_url": "./Props/materials/hatch.jpg",
+            "target_hash": "4493dbbab9b1200e747befa72dd86771b508420c"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/hip.jpg",
+            "source_hash": "661caf9500c726f02b4b139ad332211b935cb628",
+            "target_url": "./Props/materials/hip.jpg",
+            "target_hash": "04d1997f79efc1db69f55b101941d95e02e9d111"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/lidar.jpg",
+            "source_hash": "4c74ec1db802940039d3b1c75d7d72b7b7b511b3",
+            "target_url": "./Props/materials/lidar.jpg",
+            "target_hash": "1331397617344e670640f1294a102ea1f805406e"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/lidar_guard.jpg",
+            "source_hash": "338536f03ca2aff4d86a543d289910edea141109",
+            "target_url": "./Props/materials/lidar_guard.jpg",
+            "target_hash": "41c74552d377bb565b5f25e2371e809f7aa53851"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/shank.jpg",
+            "source_hash": "db876495501bbf5c79b64dfd4a0fad1510397265",
+            "target_url": "./Props/materials/shank.jpg",
+            "target_hash": "cf9ef0f112e5964443f4612f56c40a3ee4d6f72a"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/thigh.jpg",
+            "source_hash": "c157ecf115d98fe99ab1f4dd386884ebe5881f6c",
+            "target_url": "./Props/materials/thigh.jpg",
+            "target_hash": "ff518406d625f9dda228fae57e6bc406d60cfa22"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/ANYbotics/ANYmal-D/Props/materials/top_shell.jpg",
+            "source_hash": "ad4c5108fad0dff9b380cacf0f292e23bc08707d",
+            "target_url": "./Props/materials/top_shell.jpg",
+            "target_hash": "734e30b598e2022a28f8e22739e413499d8da380"
+        }
+    ]
+}

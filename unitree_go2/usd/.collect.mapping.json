@@ -1,0 +1,17 @@
+{
+    "version": "1.0",
+    "file_records": [
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/Unitree/Go2/go2.usd",
+            "source_hash": "074c514c7de73ae7b6dccfcc3bc798094df6f6b9",
+            "target_url": "./go2.usd",
+            "target_hash": "b18df94b2216fa588c25998f0b93ac4566a7df5e"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.0/Isaac/IsaacLab/Robots/Unitree/Go2/Props/instanceable_meshes.usd",
+            "source_hash": "e8ae43102f0e273908cb08cd061016a91bf8ba02",
+            "target_url": "./Props/instanceable_meshes.usd",
+            "target_hash": "845ba19d3fab10804aee112ffe5e9a89cddfc862"
+        }
+    ]
+}
