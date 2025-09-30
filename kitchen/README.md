@@ -2,7 +2,8 @@
 
 ## Changelog
 
-See [CHANGELOG.md](./CHANGELOG.md) for a full history of changes.
+### [30/09/2025]
+- Initial release.
 
 ## Overview
 
