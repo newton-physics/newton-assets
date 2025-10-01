@@ -1,4 +1,4 @@
-# Kitchen Environment Description (MJCF)
+# Robocasa Kitchen Environment Assets
 
 ## Changelog
 
@@ -7,16 +7,23 @@
 
 ## Overview
 
-This package contains a simplified description (MJCF) of a kitchen environment inspired by [Robocasa](https://github.com/robocasa/robocasa).
+This package contains a kitchen environment inspired by [Robocasa](https://github.com/robocasa/robocasa).
 Most elements in the scene are movable and can be interacted with, making the environment suitable for manipulation tasks.
 
 <p float="left">
   <img src="kitchen_1.jpg" width="400">
 </p>
 
-## Creation steps
+The subfolders contain:
+- **mjcf**: Robot description format files that reference files in
+- **meshes**: Mesh and texture data for the MJCF description
+
+## Source
 
 ### MJCF
+
+The MJCF and mesh files were retrieved from the [mujoco_warp](https://github.com/google-deepmind/mujoco_warp) repository at `5a1b755`.
+For convenience, the steps followed to create this asset are reproduced below:
 
 1. Several kitchen environment xml files were generated using [Robocasa](https://github.com/robocasa/robocasa).
 2. One file was selected as a reference, while others were used to swap furnitures.
