@@ -1,4 +1,4 @@
-# Franke Emika Panda Simulation Assets
+# Franka Emika Panda Simulation Assets
 
 ## Overview
 
@@ -19,4 +19,4 @@ The mesh paths were updated to match the asset folder name.
 
 ## License
 
-This model is released under a [Apache License](LICENSE).
+This model is released under an [Apache License](LICENSE).
