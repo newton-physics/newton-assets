@@ -19,6 +19,8 @@ The subfolders contain:
 
 The MJCF, URDF and mesh files were retrieved from the [unitree_ros repository](https://github.com/unitreerobotics/unitree_ros/tree/master/robots/h1_description) at a3b70ca.
 
+In the URDF, the mesh paths were updated to match the asset folder name.
+
 ### USD
 
 The USD model was collected using IsaacSim from the IsaacLab robot assets. The specific source URLs are available in the [collection record](usd/.collect.mapping.json).
