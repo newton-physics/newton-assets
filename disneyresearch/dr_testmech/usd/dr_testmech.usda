@@ -432,6 +432,14 @@ def Xform "DR_TestMech"
         }
 
         def PhysicsJoint "link1_2" (
+            prepend apiSchemas = [
+                "PhysicsLimitAPI:transX",
+                "PhysicsLimitAPI:transY",
+                "PhysicsLimitAPI:transZ",
+                "PhysicsLimitAPI:rotX",
+                "PhysicsLimitAPI:rotY",
+                "PhysicsLimitAPI:rotZ",
+            ]
             customData = {
                 string dofs = "universal"
                 string uuid = "8a92ec0e-cd1c-4799-8734-e23989c62f32"
@@ -444,6 +452,18 @@ def Xform "DR_TestMech"
             point3f physics:localPos1 = (7.246e-9, 0.0030371458, 0.01632974)
             quatf physics:localRot0 = (-0.66036534, 0.004958965, 0.7251846, -0.19493671)
             quatf physics:localRot1 = (-0.66036534, 0.004958965, 0.7251846, -0.19493671)
+            float limit:transX:physics:low = 1
+            float limit:transX:physics:high = -1
+            float limit:transY:physics:low = 1
+            float limit:transY:physics:high = -1
+            float limit:transZ:physics:low = 1
+            float limit:transZ:physics:high = -1
+            float limit:rotX:physics:low = -inf
+            float limit:rotX:physics:high = inf
+            float limit:rotY:physics:low = -inf
+            float limit:rotY:physics:high = inf
+            float limit:rotZ:physics:low = 1
+            float limit:rotZ:physics:high = -1
         }
 
         def PhysicsSphericalJoint "link2_1" (
@@ -476,6 +496,14 @@ def Xform "DR_TestMech"
         }
 
         def PhysicsJoint "link3_1" (
+            prepend apiSchemas = [
+                "PhysicsLimitAPI:transX",
+                "PhysicsLimitAPI:transY",
+                "PhysicsLimitAPI:transZ",
+                "PhysicsLimitAPI:rotX",
+                "PhysicsLimitAPI:rotY",
+                "PhysicsLimitAPI:rotZ",
+            ]
             customData = {
                 string dofs = "universal"
                 string uuid = "783f3717-2c2d-46e0-9606-0588045e4d2f"
@@ -488,6 +516,18 @@ def Xform "DR_TestMech"
             point3f physics:localPos1 = (-0.011397031, -0.022175519, 0.0018314008)
             quatf physics:localRot0 = (0.73026824, 0.6280843, -0.26245406, -0.05776094)
             quatf physics:localRot1 = (0.73026824, 0.6280843, -0.26245406, -0.05776094)
+            float limit:transX:physics:low = 1
+            float limit:transX:physics:high = -1
+            float limit:transY:physics:low = 1
+            float limit:transY:physics:high = -1
+            float limit:transZ:physics:low = 1
+            float limit:transZ:physics:high = -1
+            float limit:rotX:physics:low = -inf
+            float limit:rotX:physics:high = inf
+            float limit:rotY:physics:low = -inf
+            float limit:rotY:physics:high = inf
+            float limit:rotZ:physics:low = 1
+            float limit:rotZ:physics:high = -1
         }
 
         def PhysicsSphericalJoint "link3_2" (
@@ -505,6 +545,14 @@ def Xform "DR_TestMech"
         }
 
         def PhysicsJoint "base_slider" (
+            prepend apiSchemas = [
+                "PhysicsLimitAPI:transX",
+                "PhysicsLimitAPI:transY",
+                "PhysicsLimitAPI:transZ",
+                "PhysicsLimitAPI:rotX",
+                "PhysicsLimitAPI:rotY",
+                "PhysicsLimitAPI:rotZ",
+            ]
             customData = {
                 string dofs = "cylindrical"
                 string uuid = "9d54166d-5944-4ea1-85a0-0f25fb69e51e"
@@ -517,6 +565,18 @@ def Xform "DR_TestMech"
             point3f physics:localPos1 = (7.246e-9, -0.002448488, -0.013164462)
             quatf physics:localRot0 = (0.7690431, 0.639197, -8.5380934e-17, 7.096512e-17)
             quatf physics:localRot1 = (0.7690431, 0.639197, -8.5380934e-17, 7.096512e-17)
+            float limit:transX:physics:low = -inf
+            float limit:transX:physics:high = inf
+            float limit:transY:physics:low = 1
+            float limit:transY:physics:high = -1
+            float limit:transZ:physics:low = 1
+            float limit:transZ:physics:high = -1
+            float limit:rotX:physics:low = -inf
+            float limit:rotX:physics:high = inf
+            float limit:rotY:physics:low = 1
+            float limit:rotY:physics:high = -1
+            float limit:rotZ:physics:low = 1
+            float limit:rotZ:physics:high = -1
         }
 
         def PhysicsRevoluteJoint "base_clevis" (
@@ -578,6 +638,14 @@ def Xform "DR_TestMech"
         }
 
         def PhysicsJoint "driver_ee" (
+            prepend apiSchemas = [
+                "PhysicsLimitAPI:transX",
+                "PhysicsLimitAPI:transY",
+                "PhysicsLimitAPI:transZ",
+                "PhysicsLimitAPI:rotX",
+                "PhysicsLimitAPI:rotY",
+                "PhysicsLimitAPI:rotZ",
+            ]
             customData = {
                 string dofs = "cartesian"
                 string uuid = "b983b33a-2836-4e03-98fd-37f18c861b3c"
@@ -590,6 +658,18 @@ def Xform "DR_TestMech"
             point3f physics:localPos1 = (-0.08868168, -0.057145655, 0.000993483)
             quatf physics:localRot0 = (0.70710677, 0.5, 0.5, 0)
             quatf physics:localRot1 = (0.70710677, 0.5, 0.5, 0)
+            float limit:transX:physics:low = -inf
+            float limit:transX:physics:high = inf
+            float limit:transY:physics:low = -inf
+            float limit:transY:physics:high = inf
+            float limit:transZ:physics:low = -inf
+            float limit:transZ:physics:high = inf
+            float limit:rotX:physics:low = 1
+            float limit:rotX:physics:high = -1
+            float limit:rotY:physics:low = 1
+            float limit:rotY:physics:high = -1
+            float limit:rotZ:physics:low = 1
+            float limit:rotZ:physics:high = -1
         }
     }
 
