@@ -413,8 +413,8 @@ def Xform "DR_TestMech"
             point3f physics:localPos1 = (0.0025311403, 0.0064945305, -0.006382113)
             quatf physics:localRot0 = (0.6532815, 0.6532815, -0.27059805, -0.27059805)
             quatf physics:localRot1 = (0.6532815, 0.6532815, -0.27059805, -0.27059805)
-            float physics:lowerLimit = -inf
-            float physics:upperLimit = inf
+            float physics:lowerLimit = -3600
+            float physics:upperLimit = 3600
         }
 
         def PhysicsSphericalJoint "link1_1" (
@@ -458,10 +458,10 @@ def Xform "DR_TestMech"
             float limit:transY:physics:high = -1
             float limit:transZ:physics:low = 1
             float limit:transZ:physics:high = -1
-            float limit:rotX:physics:low = -inf
-            float limit:rotX:physics:high = inf
-            float limit:rotY:physics:low = -inf
-            float limit:rotY:physics:high = inf
+            float limit:rotX:physics:low = -180
+            float limit:rotX:physics:high = 180
+            float limit:rotY:physics:low = -180
+            float limit:rotY:physics:high = 180
             float limit:rotZ:physics:low = 1
             float limit:rotZ:physics:high = -1
         }
@@ -522,10 +522,10 @@ def Xform "DR_TestMech"
             float limit:transY:physics:high = -1
             float limit:transZ:physics:low = 1
             float limit:transZ:physics:high = -1
-            float limit:rotX:physics:low = -inf
-            float limit:rotX:physics:high = inf
-            float limit:rotY:physics:low = -inf
-            float limit:rotY:physics:high = inf
+            float limit:rotX:physics:low = -180
+            float limit:rotX:physics:high = 180
+            float limit:rotY:physics:low = -180
+            float limit:rotY:physics:high = 180
             float limit:rotZ:physics:low = 1
             float limit:rotZ:physics:high = -1
         }
@@ -571,8 +571,8 @@ def Xform "DR_TestMech"
             float limit:transY:physics:high = -1
             float limit:transZ:physics:low = 1
             float limit:transZ:physics:high = -1
-            float limit:rotX:physics:low = -inf
-            float limit:rotX:physics:high = inf
+            float limit:rotX:physics:low = -180
+            float limit:rotX:physics:high = 180
             float limit:rotY:physics:low = 1
             float limit:rotY:physics:high = -1
             float limit:rotZ:physics:low = 1
