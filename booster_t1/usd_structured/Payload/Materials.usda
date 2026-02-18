@@ -1,0 +1,356 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a6"
+    }
+    defaultPrim = "T1"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "T1"
+{
+    def Scope "Materials"
+    {
+        def Material "light_gray" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/light_gray>
+        )
+        {
+        }
+
+        def Material "medium_gray" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/medium_gray>
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "Trunk"
+        {
+            over "Trunk" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </T1/Materials/light_gray>
+            }
+
+            over "Box" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </T1/Materials/medium_gray>
+            }
+
+            over "H1"
+            {
+                over "H1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </T1/Materials/medium_gray>
+                }
+
+                over "H2"
+                {
+                    over "H2" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </T1/Materials/medium_gray>
+                    }
+
+                    over "Sphere" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </T1/Materials/medium_gray>
+                    }
+                }
+            }
+
+            over "AL1"
+            {
+                over "AL1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </T1/Materials/light_gray>
+                }
+
+                over "AL2"
+                {
+                    over "AL2" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </T1/Materials/medium_gray>
+                    }
+
+                    over "AL3"
+                    {
+                        over "AL3" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </T1/Materials/medium_gray>
+                        }
+
+                        over "Cylinder" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </T1/Materials/medium_gray>
+                        }
+
+                        over "left_hand_link"
+                        {
+                            over "left_hand_link" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </T1/Materials/medium_gray>
+                            }
+
+                            over "Cylinder" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </T1/Materials/medium_gray>
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "AR1"
+            {
+                over "AR1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </T1/Materials/light_gray>
+                }
+
+                over "AR2"
+                {
+                    over "AR2" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </T1/Materials/medium_gray>
+                    }
+
+                    over "AR3"
+                    {
+                        over "AR3" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </T1/Materials/medium_gray>
+                        }
+
+                        over "Cylinder" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </T1/Materials/medium_gray>
+                        }
+
+                        over "right_hand_link"
+                        {
+                            over "right_hand_link" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </T1/Materials/medium_gray>
+                            }
+
+                            over "Cylinder" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </T1/Materials/medium_gray>
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "Waist"
+            {
+                over "Waist" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </T1/Materials/medium_gray>
+                }
+
+                over "Hip_Pitch_Left"
+                {
+                    over "Hip_Pitch_Left" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </T1/Materials/light_gray>
+                    }
+
+                    over "Hip_Roll_Left"
+                    {
+                        over "Hip_Roll_Left" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </T1/Materials/medium_gray>
+                        }
+
+                        over "Hip_Yaw_Left"
+                        {
+                            over "Hip_Yaw_Left" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </T1/Materials/medium_gray>
+                            }
+
+                            over "Cylinder" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </T1/Materials/medium_gray>
+                            }
+
+                            over "Shank_Left"
+                            {
+                                over "Shank_Left" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </T1/Materials/medium_gray>
+                                }
+
+                                over "Cylinder" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </T1/Materials/medium_gray>
+                                }
+
+                                over "Ankle_Cross_Left"
+                                {
+                                    over "Ankle_Cross_Left" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </T1/Materials/medium_gray>
+                                    }
+
+                                    over "left_foot_link"
+                                    {
+                                        over "left_foot_link" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </T1/Materials/medium_gray>
+                                        }
+
+                                        over "Box" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </T1/Materials/medium_gray>
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                over "Hip_Pitch_Right"
+                {
+                    over "Hip_Pitch_Right" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </T1/Materials/light_gray>
+                    }
+
+                    over "Hip_Roll_Right"
+                    {
+                        over "Hip_Roll_Right" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </T1/Materials/medium_gray>
+                        }
+
+                        over "Hip_Yaw_Right"
+                        {
+                            over "Hip_Yaw_Right" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </T1/Materials/medium_gray>
+                            }
+
+                            over "Cylinder" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </T1/Materials/medium_gray>
+                            }
+
+                            over "Shank_Right"
+                            {
+                                over "Shank_Right" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </T1/Materials/medium_gray>
+                                }
+
+                                over "Cylinder" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </T1/Materials/medium_gray>
+                                }
+
+                                over "Ankle_Cross_Right"
+                                {
+                                    over "Ankle_Cross_Right" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </T1/Materials/medium_gray>
+                                    }
+
+                                    over "right_foot_link"
+                                    {
+                                        over "right_foot_link" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </T1/Materials/medium_gray>
+                                        }
+
+                                        over "Box" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </T1/Materials/medium_gray>
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
