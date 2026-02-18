@@ -1,0 +1,29 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a6"
+    }
+    defaultPrim = "apptronik_apollo"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "apptronik_apollo" (
+    prepend apiSchemas = ["GeomModelAPI"]
+    assetInfo = {
+        string name = "apptronik_apollo"
+    }
+    kind = "component"
+    prepend payload = @./Payload/Contents.usda@
+)
+{
+    float3[] extentsHint = [(-0.2236526, -0.32248095, -0.07098494), (0.18094502, 0.3262743, 1.7899506), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-0.175, -0.3244249, -0.005874039), (0.145, 0.3244249, 1.52255)]
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend payload = @./Payload/Contents.usda@</PhysicsScene>
+)
+{
+}
+
