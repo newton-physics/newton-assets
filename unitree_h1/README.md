@@ -10,8 +10,9 @@ The subfolders contain:
 
 - **urdf**: Robot description format files
 - **mjcf**: MuJoCo XML files
-- **meshes**: Mesh data consumbed by both URDF and MJCF
+- **meshes**: Mesh data consumed by both URDF and MJCF
 - **usd**: Universal Scene Description format files
+- **usd_structured**: Structured USD layer files, converted from MuJoCo Menagerie MJCF
 
 ## Sources
 
