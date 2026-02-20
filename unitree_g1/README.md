@@ -6,9 +6,11 @@ This package includes a universal humanoid robot description (URDF & MJCF) for t
 
 The subfolders contain:
 
-- **urdf**: Robot description format files
+- **meshes**: 3D mesh files referenced by the robot descriptions
 - **mjcf**: MuJoCo XML files
 - **rl_policies**: Pre-trained reinforcement learning policies for locomotion
+- **urdf**: Robot description format files
+- **usd**: Flat USD files
 - **usd_structured**: Structured USD layer files, converted from MuJoCo Menagerie MJCF
 
 MJCF/URDF for the G1 robot:
