@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a6"
+        string creator = "MuJoCo USD Converter v0.1.0a7"
     }
     defaultPrim = "allegro_left"
     kilogramsPerUnit = 1
@@ -170,9 +170,17 @@ def Xform "allegro_left"
     def "Geometry"
     {
         def "palm" (
-            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysicsFilteredPairsAPI"]
         )
         {
+            prepend rel physics:filteredPairs = [
+                </allegro_left/Geometry/palm/ff_base>,
+                </allegro_left/Geometry/palm/mf_base>,
+                </allegro_left/Geometry/palm/rf_base>,
+                </allegro_left/Geometry/palm/th_base>,
+                </allegro_left/Geometry/palm/th_base/th_proximal>,
+            ]
+
             over "base_link_left" (
                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
             )

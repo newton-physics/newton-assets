@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a6"
+        string creator = "MuJoCo USD Converter v0.1.0a7"
     }
     defaultPrim = "apptronik_apollo"
     kilogramsPerUnit = 1
@@ -1026,7 +1026,7 @@ def Xform "apptronik_apollo"
                                                         uniform token physics:axis = "X"
                                                         rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link/r_shoulder_fe_link/r_elbow_fe_link/r_wrist_roll_link/r_wrist_yaw_link>
                                                         rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link/r_shoulder_fe_link/r_elbow_fe_link/r_wrist_roll_link/r_wrist_yaw_link/r_wrist_pitch_link>
-                                                        point3f physics:localPos0 = (0, -1.3877788e-17, 0)
+                                                        point3f physics:localPos0 = (0, 2.7755576e-17, -1.110223e-16)
                                                         point3f physics:localPos1 = (0, 0, 0)
                                                         quatf physics:localRot0 = (0.7071053, 0, 0, -0.70710826)
                                                         quatf physics:localRot1 = (1, 0, 0, 0)

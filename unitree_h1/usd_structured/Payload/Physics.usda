@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a6"
+        string creator = "MuJoCo USD Converter v0.1.0a7"
     }
     defaultPrim = "h1"
     kilogramsPerUnit = 1
@@ -638,11 +638,15 @@ def Xform "h1"
             }
 
             def "torso_link" (
-                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
             )
             {
                 point3f physics:centerOfMass = (0.000489, 0.002797, 0.20484)
                 float3 physics:diagonalInertia = (0.487315, 0.409628, 0.127837)
+                prepend rel physics:filteredPairs = [
+                    </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link>,
+                    </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link>,
+                ]
                 float physics:mass = 17.789
                 quatf physics:principalAxes = (0.999989, -0.00130808, -0.00282289, -0.00349105)
 

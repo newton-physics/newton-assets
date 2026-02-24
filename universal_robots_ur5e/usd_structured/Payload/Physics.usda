@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a6"
+        string creator = "MuJoCo USD Converter v0.1.0a7"
     }
     defaultPrim = "ur5e"
     kilogramsPerUnit = 1
@@ -190,7 +190,7 @@ def Xform "ur5e"
                         rel physics:body1 = </ur5e/Geometry/base/shoulder_link/upper_arm_link>
                         point3f physics:localPos0 = (0, 0.138, 0)
                         point3f physics:localPos1 = (0, 0, 0)
-                        quatf physics:localRot0 = (-0.70710677, 2.4651903e-32, -0.70710677, 5.24791e-17)
+                        quatf physics:localRot0 = (-0.70710677, 0, -0.70710677, 5.24791e-17)
                         quatf physics:localRot1 = (1, 0, 0, 0)
                         float physics:lowerLimit = -360.00027
                         float physics:upperLimit = 360.00027

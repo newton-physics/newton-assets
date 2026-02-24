@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a6"
+        string creator = "MuJoCo USD Converter v0.1.0a7"
     }
     defaultPrim = "left_shadow_hand"
     kilogramsPerUnit = 1
@@ -341,11 +341,12 @@ def Xform "left_shadow_hand"
             }
 
             def "lh_wrist" (
-                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
             )
             {
                 point3f physics:centerOfMass = (0, 0, 0.029)
                 float3 physics:diagonalInertia = (0.000064, 0.0000438, 0.000035)
+                prepend rel physics:filteredPairs = </left_shadow_hand/Geometry/lh_forearm>
                 float physics:mass = 0.1
                 quatf physics:principalAxes = (0.5, 0.5, 0.5, 0.5)
 
@@ -1274,11 +1275,12 @@ def Xform "left_shadow_hand"
                         }
 
                         def "lh_thproximal" (
-                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
                         )
                         {
                             point3f physics:centerOfMass = (0, 0, 0.019)
                             float3 physics:diagonalInertia = (0.0000136, 0.0000136, 0.00000313)
+                            prepend rel physics:filteredPairs = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_thhub/lh_thmiddle>
                             float physics:mass = 0.04
                             quatf physics:principalAxes = (1, 0, 0, 0)
 
@@ -1436,7 +1438,7 @@ def Xform "left_shadow_hand"
                                             rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_thhub/lh_thmiddle/lh_thdistal>
                                             point3f physics:localPos0 = (0, 0, 0.032)
                                             point3f physics:localPos1 = (0, 0, 0)
-                                            quatf physics:localRot0 = (0.70710677, 5.551115e-17, 1.3877788e-16, -0.70710677)
+                                            quatf physics:localRot0 = (0.70710677, 0, 8.326673e-17, -0.70710677)
                                             quatf physics:localRot1 = (1, 0, 0, 0)
                                             float physics:lowerLimit = -14.999978
                                             float physics:upperLimit = 90.00021
