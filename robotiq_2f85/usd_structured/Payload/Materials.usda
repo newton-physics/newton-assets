@@ -1,15 +1,15 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a6"
+        string creator = "MuJoCo USD Converter v0.1.0a7"
     }
-    defaultPrim = "Dual_wrist_camera"
+    defaultPrim = "robotiq_2f85"
     kilogramsPerUnit = 1
     metersPerUnit = 1
     upAxis = "Z"
 )
 
-def Xform "Dual_wrist_camera"
+def Xform "robotiq_2f85"
 {
     def Scope "Materials"
     {
@@ -19,8 +19,8 @@ def Xform "Dual_wrist_camera"
         {
         }
 
-        def Material "metal" (
-            prepend references = @./MaterialsLibrary.usdc@</Materials/metal>
+        def Material "gray" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/gray>
         )
         {
         }
@@ -28,119 +28,127 @@ def Xform "Dual_wrist_camera"
 
     over "Geometry"
     {
-        over "base"
+        over "base_mount"
         {
-            over "base" (
+            over "base_mount" (
                 prepend apiSchemas = ["MaterialBindingAPI"]
             )
             {
-                rel material:binding = </Dual_wrist_camera/Materials/black>
+                rel material:binding = </robotiq_2f85/Materials/black>
             }
 
-            over "base_coupling" (
-                prepend apiSchemas = ["MaterialBindingAPI"]
-            )
+            over "base"
             {
-                rel material:binding = </Dual_wrist_camera/Materials/black>
-            }
-
-            over "tn__ca0185open_VF58" (
-                prepend apiSchemas = ["MaterialBindingAPI"]
-            )
-            {
-                rel material:binding = </Dual_wrist_camera/Materials/metal>
-            }
-
-            over "left_driver"
-            {
-                over "driver" (
+                over "base" (
                     prepend apiSchemas = ["MaterialBindingAPI"]
                 )
                 {
-                    rel material:binding = </Dual_wrist_camera/Materials/metal>
+                    rel material:binding = </robotiq_2f85/Materials/black>
                 }
 
-                over "left_coupler"
+                over "right_driver"
                 {
-                    over "coupler" (
+                    over "driver" (
                         prepend apiSchemas = ["MaterialBindingAPI"]
                     )
                     {
-                        rel material:binding = </Dual_wrist_camera/Materials/black>
-                    }
-                }
-            }
-
-            over "left_spring_link"
-            {
-                over "spring_link" (
-                    prepend apiSchemas = ["MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding = </Dual_wrist_camera/Materials/black>
-                }
-
-                over "left_follower"
-                {
-                    over "follower" (
-                        prepend apiSchemas = ["MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding = </Dual_wrist_camera/Materials/black>
+                        rel material:binding = </robotiq_2f85/Materials/gray>
                     }
 
-                    over "tongue" (
-                        prepend apiSchemas = ["MaterialBindingAPI"]
-                    )
+                    over "right_coupler"
                     {
-                        rel material:binding = </Dual_wrist_camera/Materials/metal>
+                        over "coupler" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </robotiq_2f85/Materials/black>
+                        }
                     }
                 }
-            }
 
-            over "right_driver"
-            {
-                over "driver" (
-                    prepend apiSchemas = ["MaterialBindingAPI"]
-                )
+                over "right_spring_link"
                 {
-                    rel material:binding = </Dual_wrist_camera/Materials/metal>
-                }
-
-                over "right_coupler"
-                {
-                    over "coupler" (
+                    over "spring_link" (
                         prepend apiSchemas = ["MaterialBindingAPI"]
                     )
                     {
-                        rel material:binding = </Dual_wrist_camera/Materials/black>
-                    }
-                }
-            }
-
-            over "right_spring_link"
-            {
-                over "spring_link" (
-                    prepend apiSchemas = ["MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding = </Dual_wrist_camera/Materials/black>
-                }
-
-                over "right_follower"
-                {
-                    over "tongue" (
-                        prepend apiSchemas = ["MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding = </Dual_wrist_camera/Materials/metal>
+                        rel material:binding = </robotiq_2f85/Materials/black>
                     }
 
-                    over "follower" (
+                    over "right_follower"
+                    {
+                        over "follower" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </robotiq_2f85/Materials/black>
+                        }
+
+                        over "right_pad"
+                        {
+                            over "right_silicone_pad"
+                            {
+                                over "silicone_pad" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </robotiq_2f85/Materials/black>
+                                }
+                            }
+                        }
+                    }
+                }
+
+                over "left_driver"
+                {
+                    over "driver" (
                         prepend apiSchemas = ["MaterialBindingAPI"]
                     )
                     {
-                        rel material:binding = </Dual_wrist_camera/Materials/black>
+                        rel material:binding = </robotiq_2f85/Materials/gray>
+                    }
+
+                    over "left_coupler"
+                    {
+                        over "coupler" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </robotiq_2f85/Materials/black>
+                        }
+                    }
+                }
+
+                over "left_spring_link"
+                {
+                    over "spring_link" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </robotiq_2f85/Materials/black>
+                    }
+
+                    over "left_follower"
+                    {
+                        over "follower" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </robotiq_2f85/Materials/black>
+                        }
+
+                        over "left_pad"
+                        {
+                            over "left_silicone_pad"
+                            {
+                                over "silicone_pad" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </robotiq_2f85/Materials/black>
+                                }
+                            }
+                        }
                     }
                 }
             }
