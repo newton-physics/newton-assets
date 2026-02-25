@@ -3,7 +3,7 @@
     customLayerData = {
         string creator = "MuJoCo USD Converter v0.1.0a7"
     }
-    defaultPrim = "robotiq_2f85"
+    defaultPrim = "Dual_wrist_camera"
     kilogramsPerUnit = 1
     metersPerUnit = 1
     subLayers = [
@@ -14,7 +14,7 @@
     upAxis = "Z"
 )
 
-def Xform "robotiq_2f85"
+def Xform "Dual_wrist_camera"
 {
 }
 
