@@ -28,6 +28,10 @@ The USD model was collected using IsaacSim from the IsaacLab robot assets. The s
 
 For changes made to the model for simulation in Newton, please refer to the Git commit history of this folder.
 
+### Changelog
+
+- 2026-02-26: Added `physics:principalAxes` quaternions for inertia tensors in `usd/h1_minimal.usda`.
+
 ## License
 
 This model is released under a [BSD-3-Clause License](LICENSE).
