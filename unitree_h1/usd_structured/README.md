@@ -16,5 +16,4 @@ The following warnings were emitted during conversion, due to unsupported featur
 
 ```
 [Warning] [mujoco_usd_converter._impl.convert.warn] lights are not supported
-[Warning] [mujoco_usd_converter._impl.convert.warn] excludes are not supported
 ```

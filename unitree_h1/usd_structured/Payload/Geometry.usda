@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a7"
+        string creator = "MuJoCo USD Converter v0.1.0a8"
     }
     defaultPrim = "h1"
     kilogramsPerUnit = 1
@@ -21,11 +21,9 @@ def Xform "h1"
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def Mesh "pelvis" (
-                prepend apiSchemas = ["MjcImageableAPI"]
                 prepend references = @./GeometryLibrary.usdc@</Geometry/pelvis>
             )
             {
-                uniform int mjc:group = 2
                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                     interpolation = "constant"
                 )
@@ -48,11 +46,9 @@ def Xform "h1"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "left_hip_yaw_link" (
-                    prepend apiSchemas = ["MjcImageableAPI"]
                     prepend references = @./GeometryLibrary.usdc@</Geometry/left_hip_yaw_link>
                 )
                 {
-                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -96,11 +92,9 @@ def Xform "h1"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "left_hip_roll_link" (
-                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/left_hip_roll_link>
                     )
                     {
-                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -144,11 +138,9 @@ def Xform "h1"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "left_hip_pitch_link" (
-                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/left_hip_pitch_link>
                         )
                         {
-                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -236,11 +228,9 @@ def Xform "h1"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "left_knee_link" (
-                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/left_knee_link>
                             )
                             {
-                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -303,11 +293,9 @@ def Xform "h1"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "left_ankle_link" (
-                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/left_ankle_link>
                                 )
                                 {
-                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -402,11 +390,9 @@ def Xform "h1"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "right_hip_yaw_link" (
-                    prepend apiSchemas = ["MjcImageableAPI"]
                     prepend references = @./GeometryLibrary.usdc@</Geometry/right_hip_yaw_link>
                 )
                 {
-                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -450,11 +436,9 @@ def Xform "h1"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "right_hip_roll_link" (
-                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/right_hip_roll_link>
                     )
                     {
-                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -498,11 +482,9 @@ def Xform "h1"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "right_hip_pitch_link" (
-                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/right_hip_pitch_link>
                         )
                         {
-                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -590,11 +572,9 @@ def Xform "h1"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "right_knee_link" (
-                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/right_knee_link>
                             )
                             {
-                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -657,11 +637,9 @@ def Xform "h1"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "right_ankle_link" (
-                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/right_ankle_link>
                                 )
                                 {
-                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -756,11 +734,9 @@ def Xform "h1"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "torso_link" (
-                    prepend apiSchemas = ["MjcImageableAPI"]
                     prepend references = @./GeometryLibrary.usdc@</Geometry/torso_link>
                 )
                 {
-                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -776,11 +752,9 @@ def Xform "h1"
                 }
 
                 def Mesh "logo_link" (
-                    prepend apiSchemas = ["MjcImageableAPI"]
                     prepend references = @./GeometryLibrary.usdc@</Geometry/logo_link>
                 )
                 {
-                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -902,11 +876,9 @@ def Xform "h1"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "left_shoulder_pitch_link" (
-                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/left_shoulder_pitch_link>
                     )
                     {
-                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -929,11 +901,9 @@ def Xform "h1"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "left_shoulder_roll_link" (
-                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/left_shoulder_roll_link>
                         )
                         {
-                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -977,11 +947,9 @@ def Xform "h1"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "left_shoulder_yaw_link" (
-                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/left_shoulder_yaw_link>
                             )
                             {
-                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -1025,11 +993,9 @@ def Xform "h1"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "left_elbow_link" (
-                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/left_elbow_link>
                                 )
                                 {
-                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -1096,11 +1062,9 @@ def Xform "h1"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "right_shoulder_pitch_link" (
-                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/right_shoulder_pitch_link>
                     )
                     {
-                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -1123,11 +1087,9 @@ def Xform "h1"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "right_shoulder_roll_link" (
-                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/right_shoulder_roll_link>
                         )
                         {
-                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -1171,11 +1133,9 @@ def Xform "h1"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "right_shoulder_yaw_link" (
-                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/right_shoulder_yaw_link>
                             )
                             {
-                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -1219,11 +1179,9 @@ def Xform "h1"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "right_elbow_link" (
-                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/right_elbow_link>
                                 )
                                 {
-                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )

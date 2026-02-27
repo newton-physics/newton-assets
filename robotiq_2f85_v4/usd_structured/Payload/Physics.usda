@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a7"
+        string creator = "MuJoCo USD Converter v0.1.0a8"
     }
     defaultPrim = "Dual_wrist_camera"
     kilogramsPerUnit = 1
@@ -112,7 +112,43 @@ def Xform "Dual_wrist_camera"
                 </Dual_wrist_camera/Geometry/base/right_spring_link>,
             ]
             float physics:mass = 0.777441
-            quatf physics:principalAxes = (1, -0.00152849, 0, 0)
+            quatf physics:principalAxes = (0.9999988, -0.0015284881, 0, 0)
+
+            over "base" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                uniform int mjc:group = 2
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 0
+                float physics:density = 1000
+            }
+
+            over "base_coupling" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                uniform int mjc:group = 2
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 0
+                float physics:density = 1000
+            }
+
+            over "tn__ca0185open_VF58" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                uniform int mjc:group = 2
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 0
+                float physics:density = 1000
+            }
 
             over "base_1" (
                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -142,7 +178,19 @@ def Xform "Dual_wrist_camera"
                 point3f physics:centerOfMass = (0, 0.0177547, 0.00107314)
                 float3 physics:diagonalInertia = (0.00000172352, 0.00000160906, 3.22006e-7)
                 float physics:mass = 0.00899563
-                quatf physics:principalAxes = (0.681301, 0.732003, 0, 0)
+                quatf physics:principalAxes = (0.6813012, 0.7320032, 0, 0)
+
+                over "driver" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
 
                 over "driver_1" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -182,7 +230,19 @@ def Xform "Dual_wrist_camera"
                     float3 physics:diagonalInertia = (0.00000416206, 0.00000352216, 8.88131e-7)
                     prepend rel physics:filteredPairs = </Dual_wrist_camera/Geometry/base/left_spring_link/left_follower>
                     float physics:mass = 0.0140974
-                    quatf physics:principalAxes = (0.705636, -0.0455904, 0.0455904, 0.705636)
+                    quatf physics:principalAxes = (0.70563555, -0.045590367, 0.045590367, 0.70563555)
+
+                    over "coupler" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
 
                     over "coupler_1" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -214,7 +274,19 @@ def Xform "Dual_wrist_camera"
                 point3f physics:centerOfMass = (-8.65005e-9, 0.0181624, 0.0212658)
                 float3 physics:diagonalInertia = (0.00000896853, 0.00000671733, 0.00000263931)
                 float physics:mass = 0.0221642
-                quatf physics:principalAxes = (0.663403, -0.244737, 0.244737, 0.663403)
+                quatf physics:principalAxes = (0.66340315, -0.24473707, 0.24473707, 0.66340315)
+
+                over "spring_link" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
 
                 over "spring_link_1" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -253,7 +325,31 @@ def Xform "Dual_wrist_camera"
                     point3f physics:centerOfMass = (0, -0.011046, 0.0124786)
                     float3 physics:diagonalInertia = (0.00000267415, 0.0000024559, 6.02031e-7)
                     float physics:mass = 0.0125222
-                    quatf physics:principalAxes = (1, 0.1664, 0, 0)
+                    quatf physics:principalAxes = (0.98643655, 0.16414304, 0, 0)
+
+                    over "follower" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
+
+                    over "tongue" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
 
                     over "follower_1" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -347,7 +443,19 @@ def Xform "Dual_wrist_camera"
                 point3f physics:centerOfMass = (2.96931e-12, 0.0177547, 0.00107314)
                 float3 physics:diagonalInertia = (0.00000172352, 0.00000160906, 3.22006e-7)
                 float physics:mass = 0.00899563
-                quatf physics:principalAxes = (0.681301, 0.732003, 0, 0)
+                quatf physics:principalAxes = (0.6813012, 0.7320032, 0, 0)
+
+                over "driver" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
 
                 over "driver_1" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -391,7 +499,19 @@ def Xform "Dual_wrist_camera"
                     float3 physics:diagonalInertia = (0.00000416206, 0.00000352216, 8.88131e-7)
                     prepend rel physics:filteredPairs = </Dual_wrist_camera/Geometry/base/right_spring_link/right_follower>
                     float physics:mass = 0.0140974
-                    quatf physics:principalAxes = (0.705636, -0.0455904, 0.0455904, 0.705636)
+                    quatf physics:principalAxes = (0.70563555, -0.045590367, 0.045590367, 0.70563555)
+
+                    over "coupler" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
 
                     over "coupler_1" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -423,7 +543,19 @@ def Xform "Dual_wrist_camera"
                 point3f physics:centerOfMass = (-8.65005e-9, 0.0181624, 0.0212658)
                 float3 physics:diagonalInertia = (0.00000896853, 0.00000671733, 0.00000263931)
                 float physics:mass = 0.0221642
-                quatf physics:principalAxes = (0.663403, -0.244737, 0.244737, 0.663403)
+                quatf physics:principalAxes = (0.66340315, -0.24473707, 0.24473707, 0.66340315)
+
+                over "spring_link" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
 
                 over "spring_link_1" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -462,7 +594,31 @@ def Xform "Dual_wrist_camera"
                     point3f physics:centerOfMass = (0, -0.011046, 0.0124786)
                     float3 physics:diagonalInertia = (0.00000267415, 0.0000024559, 6.02031e-7)
                     float physics:mass = 0.0125222
-                    quatf physics:principalAxes = (1, 0.1664, 0, 0)
+                    quatf physics:principalAxes = (0.98643655, 0.16414304, 0, 0)
+
+                    over "tongue" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
+
+                    over "follower" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </Dual_wrist_camera/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
 
                     over "tongue_1" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]

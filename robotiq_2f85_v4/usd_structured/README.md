@@ -9,12 +9,3 @@ The pertinent simulation data is contained in the [Physics Layer](./Payload/Phys
 Larger structural changes (e.g. adding new bodies or colliders) would require editing several layers & is best done with a USD aware application rather than by manual edits.
 
 The body hierarchy in this asset is nested, with child bodies specified relative to their parent body, just like the original MJCF. This is a newer feature in OpenUSD & requires at least USD v25.11 for full support, though it is possible to parse nested bodies in older runtimes as well.
-
-## Warnings
-
-The following warnings were emitted during conversion, due to unsupported features in the converter:
-
-```
-[Warning] [mujoco_usd_converter._impl.convert.warn] equalities are not supported
-[Warning] [mujoco_usd_converter._impl.convert.warn] excludes are not supported
-```

@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a7"
+        string creator = "MuJoCo USD Converter v0.1.0a8"
     }
     defaultPrim = "T1"
     kilogramsPerUnit = 1
@@ -239,7 +239,19 @@ def Xform "T1"
             point3f physics:centerOfMass = (0.0551365, -0.00000142058, 0.105062)
             float3 physics:diagonalInertia = (0.0915404, 0.0767787, 0.0556055)
             float physics:mass = 11.7
-            quatf physics:principalAxes = (0.99996, 0.0000140561, -0.00899532, -0.0000139249)
+            quatf physics:principalAxes = (0.9999595, 0.000014056093, -0.008995315, -0.000013924893)
+
+            over "Trunk" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                uniform int mjc:group = 2
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 0
+                float physics:density = 1000
+            }
 
             over "Box" (
                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -265,7 +277,19 @@ def Xform "T1"
                 point3f physics:centerOfMass = (-0.000508, -0.001403, 0.057432)
                 float3 physics:diagonalInertia = (0.000241549, 0.00022351, 0.000149941)
                 float physics:mass = 0.44391
-                quatf physics:principalAxes = (0.763881, -0.0132172, 0.00173419, 0.645219)
+                quatf physics:principalAxes = (0.7638812, -0.013217202, 0.0017341905, 0.6452192)
+
+                over "H1" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
 
                 def PhysicsRevoluteJoint "AAHead_yaw" (
                     prepend apiSchemas = ["MjcJointAPI"]
@@ -293,7 +317,19 @@ def Xform "T1"
                     point3f physics:centerOfMass = (0.007802, 0.001262, 0.098631)
                     float3 physics:diagonalInertia = (0.00203553, 0.00192467, 0.00172381)
                     float physics:mass = 0.631019
-                    quatf physics:principalAxes = (0.988453, 0.106172, -0.0745686, -0.0782786)
+                    quatf physics:principalAxes = (0.9884531, 0.10617202, -0.07456861, -0.07827861)
+
+                    over "H2" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
 
                     over "Sphere" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -333,7 +369,19 @@ def Xform "T1"
                 point3f physics:centerOfMass = (-0.000677, 0.044974, 0)
                 float3 physics:diagonalInertia = (0.001367, 0.00129329, 0.000292711)
                 float physics:mass = 0.53
-                quatf physics:principalAxes = (0.50423, 0.495734, -0.50423, 0.495734)
+                quatf physics:principalAxes = (0.50422996, 0.49573395, -0.50422996, 0.49573395)
+
+                over "AL1" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
 
                 def PhysicsRevoluteJoint "Left_Shoulder_Pitch" (
                     prepend apiSchemas = ["MjcJointAPI"]
@@ -361,7 +409,19 @@ def Xform "T1"
                     point3f physics:centerOfMass = (0.003862, 0.037976, 0)
                     float3 physics:diagonalInertia = (0.000401, 0.00034538, 0.00017662)
                     float physics:mass = 0.16
-                    quatf physics:principalAxes = (0.487991, 0.511727, -0.487991, 0.511727)
+                    quatf physics:principalAxes = (0.48799115, 0.51172715, -0.48799115, 0.51172715)
+
+                    over "AL2" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
 
                     def PhysicsRevoluteJoint "Left_Shoulder_Roll" (
                         prepend apiSchemas = ["MjcJointAPI"]
@@ -390,6 +450,18 @@ def Xform "T1"
                         float3 physics:diagonalInertia = (0.012869, 0.012798, 0.000620953)
                         float physics:mass = 1.02
                         quatf physics:principalAxes = (0.70641, 0.707803, 0, 0)
+
+                        over "AL3" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
 
                         over "Cylinder" (
                             prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -427,7 +499,19 @@ def Xform "T1"
                             point3f physics:centerOfMass = (-0.000108, 0.109573, 0.000591)
                             float3 physics:diagonalInertia = (0.008159, 0.00813104, 0.000214962)
                             float physics:mass = 0.327214
-                            quatf physics:principalAxes = (0.707866, 0.706347, -0.0000522939, -0.000214913)
+                            quatf physics:principalAxes = (0.70786583, 0.7063468, -0.00005229389, -0.00021491294)
+
+                            over "left_hand_link" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
 
                             over "Cylinder" (
                                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -469,7 +553,19 @@ def Xform "T1"
                 point3f physics:centerOfMass = (-0.000677, -0.044974, 0)
                 float3 physics:diagonalInertia = (0.001367, 0.00129329, 0.000292711)
                 float physics:mass = 0.53
-                quatf physics:principalAxes = (0.50423, 0.495734, -0.50423, 0.495734)
+                quatf physics:principalAxes = (0.50422996, 0.49573395, -0.50422996, 0.49573395)
+
+                over "AR1" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
 
                 def PhysicsRevoluteJoint "Right_Shoulder_Pitch" (
                     prepend apiSchemas = ["MjcJointAPI"]
@@ -497,7 +593,19 @@ def Xform "T1"
                     point3f physics:centerOfMass = (0.003862, -0.037976, 0)
                     float3 physics:diagonalInertia = (0.000401, 0.00034538, 0.00017662)
                     float physics:mass = 0.16
-                    quatf physics:principalAxes = (0.511727, 0.487991, -0.511727, 0.487991)
+                    quatf physics:principalAxes = (0.51172715, 0.48799115, -0.51172715, 0.48799115)
+
+                    over "AR2" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
 
                     def PhysicsRevoluteJoint "Right_Shoulder_Roll" (
                         prepend apiSchemas = ["MjcJointAPI"]
@@ -526,6 +634,18 @@ def Xform "T1"
                         float3 physics:diagonalInertia = (0.012869, 0.012798, 0.000620953)
                         float physics:mass = 1.02
                         quatf physics:principalAxes = (0.707803, 0.70641, 0, 0)
+
+                        over "AR3" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
 
                         over "Cylinder" (
                             prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -563,7 +683,19 @@ def Xform "T1"
                             point3f physics:centerOfMass = (-0.000108, -0.109573, 0.000591)
                             float3 physics:diagonalInertia = (0.008159, 0.00813104, 0.000214962)
                             float physics:mass = 0.327214
-                            quatf physics:principalAxes = (0.706347, 0.707866, 0.000214913, 0.0000522939)
+                            quatf physics:principalAxes = (0.7063468, 0.70786583, 0.00021491294, 0.00005229389)
+
+                            over "right_hand_link" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
 
                             over "Cylinder" (
                                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -607,6 +739,18 @@ def Xform "T1"
                 float physics:mass = 2.581
                 quatf physics:principalAxes = (0.983649, 0.000360386, -0.180076, 0.00269791)
 
+                over "Waist" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
+
                 def PhysicsRevoluteJoint "Waist_1" (
                     prepend apiSchemas = ["MjcJointAPI"]
                     displayName = "Waist"
@@ -634,7 +778,19 @@ def Xform "T1"
                     point3f physics:centerOfMass = (0.000534, -0.007296, -0.018083)
                     float3 physics:diagonalInertia = (0.00180547, 0.00145926, 0.00125327)
                     float physics:mass = 1.021
-                    quatf physics:principalAxes = (0.975141, 0.2211, 0.0145808, 0.0017406)
+                    quatf physics:principalAxes = (0.97514063, 0.22109993, 0.014580795, 0.0017405994)
+
+                    over "Hip_Pitch_Left" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
 
                     def PhysicsRevoluteJoint "Left_Hip_Pitch" (
                         prepend apiSchemas = ["MjcJointAPI"]
@@ -662,7 +818,19 @@ def Xform "T1"
                         point3f physics:centerOfMass = (0.001101, 0.000024, -0.05375)
                         float3 physics:diagonalInertia = (0.001743, 0.00151729, 0.000514712)
                         float physics:mass = 0.385
-                        quatf physics:principalAxes = (0.707081, -0.00599604, -0.00599604, 0.707081)
+                        quatf physics:principalAxes = (0.7070814, -0.005996043, -0.005996043, 0.7070814)
+
+                        over "Hip_Roll_Left" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
 
                         def PhysicsRevoluteJoint "Left_Hip_Roll" (
                             prepend apiSchemas = ["MjcJointAPI"]
@@ -690,7 +858,19 @@ def Xform "T1"
                             point3f physics:centerOfMass = (-0.007233, 0.000206, -0.089184)
                             float3 physics:diagonalInertia = (0.0257334, 0.0253024, 0.00259215)
                             float physics:mass = 2.166
-                            quatf physics:principalAxes = (0.696808, -0.033953, -0.0315708, 0.715758)
+                            quatf physics:principalAxes = (0.6968078, -0.033952992, -0.031570792, 0.71575785)
+
+                            over "Hip_Yaw_Left" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
 
                             over "Cylinder" (
                                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -728,7 +908,19 @@ def Xform "T1"
                                 point3f physics:centerOfMass = (-0.006012, 0.000259, -0.124318)
                                 float3 physics:diagonalInertia = (0.0346951, 0.0345375, 0.00185844)
                                 float physics:mass = 1.73
-                                quatf physics:principalAxes = (0.997573, 0.00144024, -0.023949, 0.0653706)
+                                quatf physics:principalAxes = (0.99757266, 0.0014402395, -0.02394899, 0.065370575)
+
+                                over "Shank_Left" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 2
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    bool physics:collisionEnabled = 0
+                                    float physics:density = 1000
+                                }
 
                                 over "Cylinder" (
                                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -766,7 +958,19 @@ def Xform "T1"
                                     point3f physics:centerOfMass = (-0.003722, 0, -0.007981)
                                     float3 physics:diagonalInertia = (0.000029, 0.0000256589, 0.0000113411)
                                     float physics:mass = 0.073
-                                    quatf physics:principalAxes = (0.443136, 0.551027, 0.551027, 0.443136)
+                                    quatf physics:principalAxes = (0.4431359, 0.5510269, 0.5510269, 0.4431359)
+
+                                    over "Ankle_Cross_Left" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 2
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        bool physics:collisionEnabled = 0
+                                        float physics:density = 1000
+                                    }
 
                                     def PhysicsRevoluteJoint "Left_Ankle_Pitch" (
                                         prepend apiSchemas = ["MjcJointAPI"]
@@ -794,7 +998,19 @@ def Xform "T1"
                                         point3f physics:centerOfMass = (-0.000249, 0, -0.00914)
                                         float3 physics:diagonalInertia = (0.00269786, 0.002385, 0.00218714)
                                         float physics:mass = 0.685
-                                        quatf physics:principalAxes = (0, 0.620755, 0, 0.784005)
+                                        quatf physics:principalAxes = (0, 0.6207549, 0, 0.7840048)
+
+                                        over "left_foot_link" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 2
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            bool physics:collisionEnabled = 0
+                                            float physics:density = 1000
+                                        }
 
                                         over "Box" (
                                             prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -838,7 +1054,19 @@ def Xform "T1"
                     point3f physics:centerOfMass = (0.000534, 0.007514, -0.018082)
                     float3 physics:diagonalInertia = (0.00180552, 0.0014632, 0.00124928)
                     float physics:mass = 1.021
-                    quatf physics:principalAxes = (0.973446, -0.228403, 0.0147148, -0.00419349)
+                    quatf physics:principalAxes = (0.9734464, -0.22840309, 0.014714806, -0.004193492)
+
+                    over "Hip_Pitch_Right" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
 
                     def PhysicsRevoluteJoint "Right_Hip_Pitch" (
                         prepend apiSchemas = ["MjcJointAPI"]
@@ -866,7 +1094,19 @@ def Xform "T1"
                         point3f physics:centerOfMass = (0.001099, 0.000024, -0.053748)
                         float3 physics:diagonalInertia = (0.001743, 0.00151729, 0.000514712)
                         float physics:mass = 0.385
-                        quatf physics:principalAxes = (0.707081, -0.00599604, -0.00599604, 0.707081)
+                        quatf physics:principalAxes = (0.7070814, -0.005996043, -0.005996043, 0.7070814)
+
+                        over "Hip_Roll_Right" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
 
                         def PhysicsRevoluteJoint "Right_Hip_Roll" (
                             prepend apiSchemas = ["MjcJointAPI"]
@@ -894,7 +1134,19 @@ def Xform "T1"
                             point3f physics:centerOfMass = (-0.007191, -0.000149, -0.08922)
                             float3 physics:diagonalInertia = (0.0257623, 0.0253298, 0.00259389)
                             float physics:mass = 2.17
-                            quatf physics:principalAxes = (0.714468, -0.0315638, -0.0336391, 0.698146)
+                            quatf physics:principalAxes = (0.71446794, -0.031563796, -0.033639096, 0.6981459)
+
+                            over "Hip_Yaw_Right" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
 
                             over "Cylinder" (
                                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -934,6 +1186,18 @@ def Xform "T1"
                                 float physics:mass = 1.79
                                 quatf physics:principalAxes = (0.99926, -0.000580963, -0.023461, -0.0304754)
 
+                                over "Shank_Right" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 2
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    bool physics:collisionEnabled = 0
+                                    float physics:density = 1000
+                                }
+
                                 over "Cylinder" (
                                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
                                 )
@@ -970,7 +1234,19 @@ def Xform "T1"
                                     point3f physics:centerOfMass = (-0.003722, 0, -0.007981)
                                     float3 physics:diagonalInertia = (0.000029, 0.0000256589, 0.0000113411)
                                     float physics:mass = 0.073
-                                    quatf physics:principalAxes = (0.443136, 0.551027, 0.551027, 0.443136)
+                                    quatf physics:principalAxes = (0.4431359, 0.5510269, 0.5510269, 0.4431359)
+
+                                    over "Ankle_Cross_Right" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 2
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        bool physics:collisionEnabled = 0
+                                        float physics:density = 1000
+                                    }
 
                                     def PhysicsRevoluteJoint "Right_Ankle_Pitch" (
                                         prepend apiSchemas = ["MjcJointAPI"]
@@ -998,7 +1274,19 @@ def Xform "T1"
                                         point3f physics:centerOfMass = (-0.000248, 0, -0.00914)
                                         float3 physics:diagonalInertia = (0.00269786, 0.002385, 0.00218714)
                                         float physics:mass = 0.685
-                                        quatf physics:principalAxes = (0, 0.620755, 0, 0.784005)
+                                        quatf physics:principalAxes = (0, 0.6207549, 0, 0.7840048)
+
+                                        over "right_foot_link" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </T1/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 2
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            bool physics:collisionEnabled = 0
+                                            float physics:density = 1000
+                                        }
 
                                         over "Box" (
                                             prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]

@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a7"
+        string creator = "MuJoCo USD Converter v0.1.0a8"
     }
     defaultPrim = "allegro_left"
     kilogramsPerUnit = 1

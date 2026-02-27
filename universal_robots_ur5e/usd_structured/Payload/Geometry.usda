@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a7"
+        string creator = "MuJoCo USD Converter v0.1.0a8"
     }
     defaultPrim = "ur5e"
     kilogramsPerUnit = 1
@@ -21,11 +21,9 @@ def Xform "ur5e"
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def Mesh "base_0" (
-                prepend apiSchemas = ["MjcImageableAPI"]
                 prepend references = @./GeometryLibrary.usdc@</Geometry/base_0>
             )
             {
-                uniform int mjc:group = 2
                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                     interpolation = "constant"
                 )
@@ -41,11 +39,9 @@ def Xform "ur5e"
             }
 
             def Mesh "base_1" (
-                prepend apiSchemas = ["MjcImageableAPI"]
                 prepend references = @./GeometryLibrary.usdc@</Geometry/base_1>
             )
             {
-                uniform int mjc:group = 2
                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                     interpolation = "constant"
                 )
@@ -68,11 +64,9 @@ def Xform "ur5e"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "shoulder_0" (
-                    prepend apiSchemas = ["MjcImageableAPI"]
                     prepend references = @./GeometryLibrary.usdc@</Geometry/shoulder_0>
                 )
                 {
-                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -88,11 +82,9 @@ def Xform "ur5e"
                 }
 
                 def Mesh "shoulder_1" (
-                    prepend apiSchemas = ["MjcImageableAPI"]
                     prepend references = @./GeometryLibrary.usdc@</Geometry/shoulder_1>
                 )
                 {
-                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -108,11 +100,9 @@ def Xform "ur5e"
                 }
 
                 def Mesh "shoulder_2" (
-                    prepend apiSchemas = ["MjcImageableAPI"]
                     prepend references = @./GeometryLibrary.usdc@</Geometry/shoulder_2>
                 )
                 {
-                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -156,11 +146,9 @@ def Xform "ur5e"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "upperarm_0" (
-                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/upperarm_0>
                     )
                     {
-                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -176,11 +164,9 @@ def Xform "ur5e"
                     }
 
                     def Mesh "upperarm_1" (
-                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/upperarm_1>
                     )
                     {
-                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -196,11 +182,9 @@ def Xform "ur5e"
                     }
 
                     def Mesh "upperarm_2" (
-                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/upperarm_2>
                     )
                     {
-                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -216,11 +200,9 @@ def Xform "ur5e"
                     }
 
                     def Mesh "upperarm_3" (
-                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/upperarm_3>
                     )
                     {
-                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -287,11 +269,9 @@ def Xform "ur5e"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "forearm_0" (
-                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/forearm_0>
                         )
                         {
-                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -307,11 +287,9 @@ def Xform "ur5e"
                         }
 
                         def Mesh "forearm_1" (
-                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/forearm_1>
                         )
                         {
-                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -327,11 +305,9 @@ def Xform "ur5e"
                         }
 
                         def Mesh "forearm_2" (
-                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/forearm_2>
                         )
                         {
-                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -347,11 +323,9 @@ def Xform "ur5e"
                         }
 
                         def Mesh "forearm_3" (
-                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/forearm_3>
                         )
                         {
-                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -418,11 +392,9 @@ def Xform "ur5e"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "wrist1_0" (
-                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/wrist1_0>
                             )
                             {
-                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -438,11 +410,9 @@ def Xform "ur5e"
                             }
 
                             def Mesh "wrist1_1" (
-                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/wrist1_1>
                             )
                             {
-                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -458,11 +428,9 @@ def Xform "ur5e"
                             }
 
                             def Mesh "wrist1_2" (
-                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/wrist1_2>
                             )
                             {
-                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -506,11 +474,9 @@ def Xform "ur5e"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "wrist2_0" (
-                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/wrist2_0>
                                 )
                                 {
-                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -526,11 +492,9 @@ def Xform "ur5e"
                                 }
 
                                 def Mesh "wrist2_1" (
-                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/wrist2_1>
                                 )
                                 {
-                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -546,11 +510,9 @@ def Xform "ur5e"
                                 }
 
                                 def Mesh "wrist2_2" (
-                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/wrist2_2>
                                 )
                                 {
-                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -617,11 +579,9 @@ def Xform "ur5e"
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                     def Mesh "wrist3" (
-                                        prepend apiSchemas = ["MjcImageableAPI"]
                                         prepend references = @./GeometryLibrary.usdc@</Geometry/wrist3>
                                     )
                                     {
-                                        uniform int mjc:group = 2
                                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                             interpolation = "constant"
                                         )
