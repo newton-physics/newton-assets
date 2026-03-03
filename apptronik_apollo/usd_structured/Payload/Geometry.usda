@@ -1,0 +1,1949 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a8"
+    }
+    defaultPrim = "apptronik_apollo"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "apptronik_apollo"
+{
+    def Scope "Geometry"
+    {
+        def Xform "base_link"
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 1.0813)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Mesh "pelvis_link" (
+                prepend references = @./GeometryLibrary.usdc@</Geometry/pelvis_link>
+            )
+            {
+                color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
+                    interpolation = "constant"
+                )
+                int[] primvars:displayColor:indices = None
+                float[] primvars:displayOpacity = [1] (
+                    interpolation = "constant"
+                )
+                int[] primvars:displayOpacity:indices = None
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Capsule "collision_capsule_body_pelvis"
+            {
+                uniform token axis = "Z"
+                float3[] extent = [(-0.1, -0.1, -0.19), (0.1, 0.1, 0.19)]
+                double height = 0.18
+                color3f[] primvars:displayColor = [(0, 1, 0)] (
+                    interpolation = "constant"
+                )
+                int[] primvars:displayColor:indices = None
+                float[] primvars:displayOpacity = [0.4] (
+                    interpolation = "constant"
+                )
+                int[] primvars:displayOpacity:indices = None
+                uniform token purpose = "guide"
+                double radius = 0.1
+                quatf xformOp:orient = (0.7073882, 0.70682526, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.06, 0, -0.08)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "torso_oak_d_pro_w_rear_frame_link"
+            {
+                quatf xformOp:orient = (0.0006896342, -0.50001085, 0.0003981721, 0.8660188)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.164306, 5e-8, 0.0140886)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "torso_oak_d_pro_w_front_frame_link"
+            {
+                quatf xformOp:orient = (0.8660248, -1.2104152e-14, 0.5000011, -3.942358e-15)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.087306, -5e-8, 0.0480886)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "torso_roll_link"
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.03, 0, 0.03125)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Mesh "torso_roll_link" (
+                    prepend references = @./GeometryLibrary.usdc@</Geometry/torso_roll_link>
+                )
+                {
+                    color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                        interpolation = "constant"
+                    )
+                    int[] primvars:displayColor:indices = None
+                    float[] primvars:displayOpacity = [1] (
+                        interpolation = "constant"
+                    )
+                    int[] primvars:displayOpacity:indices = None
+                    quatf xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "torso_pitch_link"
+                {
+                    quatf xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Mesh "torso_pitch_link" (
+                        prepend references = @./GeometryLibrary.usdc@</Geometry/torso_pitch_link>
+                    )
+                    {
+                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                            interpolation = "constant"
+                        )
+                        int[] primvars:displayColor:indices = None
+                        float[] primvars:displayOpacity = [1] (
+                            interpolation = "constant"
+                        )
+                        int[] primvars:displayOpacity:indices = None
+                        quatf xformOp:orient = (1, 0, 0, 0)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "torso_link"
+                    {
+                        quatf xformOp:orient = (1, 0, 0, 0)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Mesh "torso_link" (
+                            prepend references = @./GeometryLibrary.usdc@</Geometry/torso_link>
+                        )
+                        {
+                            color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayColor:indices = None
+                            float[] primvars:displayOpacity = [1] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayOpacity:indices = None
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Capsule "collision_cylinder_torso"
+                        {
+                            uniform token axis = "Z"
+                            float3[] extent = [(-0.16, -0.16, -0.21), (0.16, 0.16, 0.21)]
+                            double height = 0.1
+                            color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayColor:indices = None
+                            float[] primvars:displayOpacity = [0.4] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayOpacity:indices = None
+                            uniform token purpose = "guide"
+                            double radius = 0.16
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (-0.045, 0, 0.2)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Mesh "neck_mount_fix_link" (
+                            prepend references = @./GeometryLibrary.usdc@</Geometry/neck_mount_fix_link>
+                        )
+                        {
+                            color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayColor:indices = None
+                            float[] primvars:displayOpacity = [1] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayOpacity:indices = None
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Mesh "battery_mount_fix" (
+                            prepend references = @./GeometryLibrary.usdc@</Geometry/battery_mount_fix>
+                        )
+                        {
+                            color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayColor:indices = None
+                            float[] primvars:displayOpacity = [1] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayOpacity:indices = None
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Sphere "imu"
+                        {
+                            float3[] extent = [(-0.005, -0.005, -0.005), (0.005, 0.005, 0.005)]
+                            color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayColor:indices = None
+                            float[] primvars:displayOpacity = [1] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayOpacity:indices = None
+                            uniform token purpose = "guide"
+                            double radius = 0.005
+                            quatf xformOp:orient = (-9.38184e-7, -0.70710546, -9.381874e-7, 0.7071081)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0.067, 5.54705e-16, 0.124874)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "neck_yaw_link"
+                        {
+                            quatf xformOp:orient = (0.9914449, 0, 0.130526, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (-0.0303298, 0, 0.32841)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Mesh "neck_yaw_link" (
+                                prepend references = @./GeometryLibrary.usdc@</Geometry/neck_yaw_link>
+                            )
+                            {
+                                color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayColor:indices = None
+                                float[] primvars:displayOpacity = [1] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayOpacity:indices = None
+                                quatf xformOp:orient = (1, 0, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "neck_roll_link"
+                            {
+                                quatf xformOp:orient = (-0.00000132679, 1, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (-0.025, 0, 0.2)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                def Xform "neck_pitch_link"
+                                {
+                                    quatf xformOp:orient = (0.0000011752701, 0.88579905, 6.1572405e-7, -0.46406904)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                    def Mesh "afh_2_1_link" (
+                                        prepend references = @./GeometryLibrary.usdc@</Geometry/afh_2_1_link>
+                                    )
+                                    {
+                                        color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        quatf xformOp:orient = (0.9387941, 0, 0.34447885, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0, 0, 0)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+                                }
+                            }
+                        }
+
+                        def Xform "l_shoulder_aa_link"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (-0.05, 0.2, 0.32)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Mesh "l_shoulder_aa_link" (
+                                prepend references = @./GeometryLibrary.usdc@</Geometry/l_shoulder_aa_link>
+                            )
+                            {
+                                color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayColor:indices = None
+                                float[] primvars:displayOpacity = [1] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayOpacity:indices = None
+                                quatf xformOp:orient = (1, 0, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "l_shoulder_ie_link"
+                            {
+                                quatf xformOp:orient = (1, 0, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                def Mesh "l_shoulder_ie_link" (
+                                    prepend references = @./GeometryLibrary.usdc@</Geometry/l_shoulder_ie_link>
+                                )
+                                {
+                                    color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                        interpolation = "constant"
+                                    )
+                                    int[] primvars:displayColor:indices = None
+                                    float[] primvars:displayOpacity = [1] (
+                                        interpolation = "constant"
+                                    )
+                                    int[] primvars:displayOpacity:indices = None
+                                    quatf xformOp:orient = (1, 0, 0, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Xform "l_shoulder_fe_link"
+                                {
+                                    quatf xformOp:orient = (0.9914449, 0, 0, -0.130526)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0.0104822, 0.03912, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                    def Mesh "l_shoulder_fe_link" (
+                                        prepend references = @./GeometryLibrary.usdc@</Geometry/l_shoulder_fe_link>
+                                    )
+                                    {
+                                        color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0, 0, 0)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Capsule "collision_capsule_body_l_arm_1"
+                                    {
+                                        uniform token axis = "Z"
+                                        float3[] extent = [(-0.055, -0.055, -0.195), (0.055, 0.055, 0.195)]
+                                        double height = 0.28
+                                        color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [0.4] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.055
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (-0.005, 0.01, -0.16)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Capsule "collision_capsule_body_l_arm_2"
+                                    {
+                                        uniform token axis = "Z"
+                                        float3[] extent = [(-0.055, -0.055, -0.11), (0.055, 0.055, 0.11)]
+                                        double height = 0.11
+                                        color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [0.4] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.055
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0.05, 0.005, -0.125)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Capsule "collision_capsule_body_l_arm_3"
+                                    {
+                                        uniform token axis = "Z"
+                                        float3[] extent = [(-0.055, -0.055, -0.075), (0.055, 0.055, 0.075)]
+                                        double height = 0.04
+                                        color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [0.4] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.055
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (-0.06, 0.0025, -0.13)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Xform "l_elbow_fe_link"
+                                    {
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0.025, 0, -0.315)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                        def Mesh "l_elbow_fe_link" (
+                                            prepend references = @./GeometryLibrary.usdc@</Geometry/l_elbow_fe_link>
+                                        )
+                                        {
+                                            color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                interpolation = "constant"
+                                            )
+                                            int[] primvars:displayColor:indices = None
+                                            float[] primvars:displayOpacity = [1] (
+                                                interpolation = "constant"
+                                            )
+                                            int[] primvars:displayOpacity:indices = None
+                                            quatf xformOp:orient = (1, 0, 0, 0)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            double3 xformOp:translate = (0, 0, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                        }
+
+                                        def Xform "l_wrist_roll_link"
+                                        {
+                                            quatf xformOp:orient = (0.7071053, 0, 0, 0.70710826)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            double3 xformOp:translate = (-0.04, 0, -0.06)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                            def Mesh "l_wrist_roll_link" (
+                                                prepend references = @./GeometryLibrary.usdc@</Geometry/l_wrist_roll_link>
+                                            )
+                                            {
+                                                color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
+                                                    interpolation = "constant"
+                                                )
+                                                int[] primvars:displayColor:indices = None
+                                                float[] primvars:displayOpacity = [1] (
+                                                    interpolation = "constant"
+                                                )
+                                                int[] primvars:displayOpacity:indices = None
+                                                quatf xformOp:orient = (1, 0, 0, 0)
+                                                float3 xformOp:scale = (1, 1, 1)
+                                                double3 xformOp:translate = (0, 0, 0)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                            }
+
+                                            def Capsule "collision_cylinder_l_arm"
+                                            {
+                                                uniform token axis = "Z"
+                                                float3[] extent = [(-0.04755, -0.04755, -0.15515), (0.04755, 0.04755, 0.15515)]
+                                                double height = 0.2152
+                                                color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                                    interpolation = "constant"
+                                                )
+                                                int[] primvars:displayColor:indices = None
+                                                float[] primvars:displayOpacity = [0.4] (
+                                                    interpolation = "constant"
+                                                )
+                                                int[] primvars:displayOpacity:indices = None
+                                                uniform token purpose = "guide"
+                                                double radius = 0.04755
+                                                quatf xformOp:orient = (1, 0, 0, 0)
+                                                float3 xformOp:scale = (1, 1, 1)
+                                                double3 xformOp:translate = (0, 0, -0.1)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                            }
+
+                                            def Xform "l_wrist_yaw_link"
+                                            {
+                                                quatf xformOp:orient = (1, 0, 0, 0)
+                                                float3 xformOp:scale = (1, 1, 1)
+                                                double3 xformOp:translate = (0.025, 0, -0.2)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                                def Mesh "l_wrist_yaw_link" (
+                                                    prepend references = @./GeometryLibrary.usdc@</Geometry/l_wrist_yaw_link>
+                                                )
+                                                {
+                                                    color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                        interpolation = "constant"
+                                                    )
+                                                    int[] primvars:displayColor:indices = None
+                                                    float[] primvars:displayOpacity = [1] (
+                                                        interpolation = "constant"
+                                                    )
+                                                    int[] primvars:displayOpacity:indices = None
+                                                    quatf xformOp:orient = (1, 0, 0, 0)
+                                                    float3 xformOp:scale = (1, 1, 1)
+                                                    double3 xformOp:translate = (0, 0, 0)
+                                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                }
+
+                                                def Xform "l_wrist_pitch_link"
+                                                {
+                                                    quatf xformOp:orient = (-0.7071053, 0, 0, 0.70710826)
+                                                    float3 xformOp:scale = (1, 1, 1)
+                                                    double3 xformOp:translate = (0, 0, 0)
+                                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                                    def Mesh "l_wrist_pitch_link" (
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/l_wrist_pitch_link>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0, 0, 0)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "wrist_adapter_mesh" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/wrist_adapter>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0, -0.0297676, -0.0277946)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "wrist_mesh" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/wristmesh>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.13052599, 0.9914449, 0, 0)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0, -0.0343657, -0.0392954)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "palm_mesh" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/FB_palm_ref>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.00516808, 0.043930896, 0.13037199, 0.9904779)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.0240477, -0.0463856, -0.0695448)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "index_mesh_1" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (-0.035550397, 0.7253039, -0.042990193, -0.68616486)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.0279216, -0.0502244, -0.134299)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "index_mesh_2" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.34643367, 0.63445014, -0.3989706, -0.5641624)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.0296624, -0.053984, -0.172686)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "middle_mesh_1" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.011463903, -0.7059312, 0.021002205, 0.7078762)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.00841718, -0.0488804, -0.137964)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "middle_mesh_2" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.35927317, 0.6061872, -0.3891435, -0.59331876)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.00814998, -0.0526507, -0.176389)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "ring_mesh_1" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (-0.0126044, -0.68539095, -0.0036554998, 0.72805697)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (-0.0117529, -0.049354, -0.135394)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "ring_mesh_2" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (-0.37152708, -0.5770446, 0.37619922, 0.6224639)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (-0.0139914, -0.0531239, -0.173755)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "pinky_mesh_1" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (-0.035041884, -0.68301773, -0.027438486, 0.7290446)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (-0.0308633, -0.0509308, -0.128792)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "pinky_mesh_2" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (-0.39047474, -0.5649089, 0.35537973, 0.6341235)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (-0.0330569, -0.0546993, -0.167156)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "thumb_mesh_1" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__thumbF1_tA>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.9865532, -0.12564895, 0.05602687, 0.08823906)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.0240477, -0.0463856, -0.0695448)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "thumb_mesh_2" (
+                                                        displayName = ""
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__thumbF2left_nG8>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (-0.5008909, 0.85917586, 0.035897795, -0.09816568)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.0499644, -0.0457352, -0.0874305)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Cube "collision_l_hand_plate"
+                                                    {
+                                                        float3[] extent = [(-1, -1, -1), (1, 1, 1)]
+                                                        color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [0.4] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        uniform token purpose = "guide"
+                                                        double size = 2
+                                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                                        float3 xformOp:scale = (0.041, 0.02, 0.083)
+                                                        double3 xformOp:translate = (0.00749988, -0.025, -0.112)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        def Xform "r_shoulder_aa_link"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (-0.05, -0.2, 0.32)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Mesh "r_shoulder_aa_link" (
+                                prepend references = @./GeometryLibrary.usdc@</Geometry/r_shoulder_aa_link>
+                            )
+                            {
+                                color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayColor:indices = None
+                                float[] primvars:displayOpacity = [1] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayOpacity:indices = None
+                                quatf xformOp:orient = (1, 0, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "r_shoulder_ie_link"
+                            {
+                                quatf xformOp:orient = (1, 0, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                def Mesh "r_shoulder_ie_link" (
+                                    prepend references = @./GeometryLibrary.usdc@</Geometry/r_shoulder_ie_link>
+                                )
+                                {
+                                    color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                        interpolation = "constant"
+                                    )
+                                    int[] primvars:displayColor:indices = None
+                                    float[] primvars:displayOpacity = [1] (
+                                        interpolation = "constant"
+                                    )
+                                    int[] primvars:displayOpacity:indices = None
+                                    quatf xformOp:orient = (1, 0, 0, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Xform "r_shoulder_fe_link"
+                                {
+                                    quatf xformOp:orient = (0.9914449, 0, 0, 0.130526)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0.0104822, -0.03912, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                    def Mesh "r_shoulder_fe_link" (
+                                        prepend references = @./GeometryLibrary.usdc@</Geometry/r_shoulder_fe_link>
+                                    )
+                                    {
+                                        color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0, 0, 0)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Capsule "collision_capsule_body_r_arm_1"
+                                    {
+                                        uniform token axis = "Z"
+                                        float3[] extent = [(-0.055, -0.055, -0.195), (0.055, 0.055, 0.195)]
+                                        double height = 0.28
+                                        color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [0.4] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.055
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (-0.005, -0.01, -0.16)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Capsule "collision_capsule_body_r_arm_2"
+                                    {
+                                        uniform token axis = "Z"
+                                        float3[] extent = [(-0.055, -0.055, -0.11), (0.055, 0.055, 0.11)]
+                                        double height = 0.11
+                                        color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [0.4] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.055
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0.05, -0.005, -0.125)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Capsule "collision_capsule_body_r_arm_3"
+                                    {
+                                        uniform token axis = "Z"
+                                        float3[] extent = [(-0.055, -0.055, -0.075), (0.055, 0.055, 0.075)]
+                                        double height = 0.04
+                                        color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [0.4] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.055
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (-0.06, -0.0025, -0.13)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Xform "r_elbow_fe_link"
+                                    {
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0.025, 0, -0.315)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                        def Mesh "r_elbow_fe_link" (
+                                            prepend references = @./GeometryLibrary.usdc@</Geometry/r_elbow_fe_link>
+                                        )
+                                        {
+                                            color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                interpolation = "constant"
+                                            )
+                                            int[] primvars:displayColor:indices = None
+                                            float[] primvars:displayOpacity = [1] (
+                                                interpolation = "constant"
+                                            )
+                                            int[] primvars:displayOpacity:indices = None
+                                            quatf xformOp:orient = (1, 0, 0, 0)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            double3 xformOp:translate = (0, 0, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                        }
+
+                                        def Xform "r_wrist_roll_link"
+                                        {
+                                            quatf xformOp:orient = (-0.7071053, 0, 0, 0.70710826)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            double3 xformOp:translate = (-0.04, 0, -0.06)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                            def Mesh "r_wrist_roll_link" (
+                                                prepend references = @./GeometryLibrary.usdc@</Geometry/r_wrist_roll_link>
+                                            )
+                                            {
+                                                color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
+                                                    interpolation = "constant"
+                                                )
+                                                int[] primvars:displayColor:indices = None
+                                                float[] primvars:displayOpacity = [1] (
+                                                    interpolation = "constant"
+                                                )
+                                                int[] primvars:displayOpacity:indices = None
+                                                quatf xformOp:orient = (1, 0, 0, 0)
+                                                float3 xformOp:scale = (1, 1, 1)
+                                                double3 xformOp:translate = (0, 0, 0)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                            }
+
+                                            def Capsule "collision_cylinder_r_arm"
+                                            {
+                                                uniform token axis = "Z"
+                                                float3[] extent = [(-0.04755, -0.04755, -0.15515), (0.04755, 0.04755, 0.15515)]
+                                                double height = 0.2152
+                                                color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                                    interpolation = "constant"
+                                                )
+                                                int[] primvars:displayColor:indices = None
+                                                float[] primvars:displayOpacity = [0.4] (
+                                                    interpolation = "constant"
+                                                )
+                                                int[] primvars:displayOpacity:indices = None
+                                                uniform token purpose = "guide"
+                                                double radius = 0.04755
+                                                quatf xformOp:orient = (1, 0, 0, 0)
+                                                float3 xformOp:scale = (1, 1, 1)
+                                                double3 xformOp:translate = (0, 0, -0.1)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                            }
+
+                                            def Xform "r_wrist_yaw_link"
+                                            {
+                                                quatf xformOp:orient = (-0.00000132679, 0, 0, 1)
+                                                float3 xformOp:scale = (1, 1, 1)
+                                                double3 xformOp:translate = (0.025, 0, -0.2)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                                def Mesh "r_wrist_yaw_link" (
+                                                    prepend references = @./GeometryLibrary.usdc@</Geometry/r_wrist_yaw_link>
+                                                )
+                                                {
+                                                    color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                        interpolation = "constant"
+                                                    )
+                                                    int[] primvars:displayColor:indices = None
+                                                    float[] primvars:displayOpacity = [1] (
+                                                        interpolation = "constant"
+                                                    )
+                                                    int[] primvars:displayOpacity:indices = None
+                                                    quatf xformOp:orient = (1, 0, 0, 0)
+                                                    float3 xformOp:scale = (1, 1, 1)
+                                                    double3 xformOp:translate = (0, 0, 0)
+                                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                }
+
+                                                def Xform "r_wrist_pitch_link"
+                                                {
+                                                    quatf xformOp:orient = (-0.7071053, 0, 0, 0.70710826)
+                                                    float3 xformOp:scale = (1, 1, 1)
+                                                    double3 xformOp:translate = (0, 0, 0)
+                                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                                    def Mesh "r_wrist_pitch_link" (
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/r_wrist_pitch_link>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0, 0, 0)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "wrist_adapter" (
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/wrist_adapter>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.00000132679, 0, 0, 1)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0, 0.0297676, -0.0277946)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "wristmesh" (
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/wristmesh>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (1.7318098e-7, 0.0000013154399, 0.9914449, 0.13052599)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (1.22016e-8, 0.0343657, -0.0392954)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "FB_palm_ref_MIR" (
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/FB_palm_ref_MIR>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.990478, 0.1303717, 0.043930598, 0.005166758)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.0240477, 0.0463855, -0.0695448)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "tn__idxF1_u7" (
+                                                        displayName = "idx-F1"
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.725304, -0.035549495, 0.6861649, 0.042989198)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.0279216, 0.0502243, -0.134299)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "tn__idxF2_u7" (
+                                                        displayName = "idx-F2"
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.6344498, 0.3464345, 0.5641629, 0.39896977)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.0296625, 0.053984, -0.172686)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "tn__idxF1_1_rA" (
+                                                        displayName = "idx-F1"
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.70593125, -0.011462902, 0.70787615, 0.021001302)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.00841723, 0.0488804, -0.137964)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "tn__idxF2_1_rA" (
+                                                        displayName = "idx-F2"
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.60618687, 0.3592741, 0.5933192, 0.3891426)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.00815005, 0.0526507, -0.176389)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "tn__idxF1_2_rA" (
+                                                        displayName = "idx-F1"
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.685391, 0.012605298, 0.7280569, -0.0036564094)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (-0.0117529, 0.0493541, -0.135394)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "tn__idxF2_2_rA" (
+                                                        displayName = "idx-F2"
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.5770441, 0.37152794, 0.6224643, 0.3761984)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (-0.0139913, 0.053124, -0.173755)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "tn__idxF1_3_rA" (
+                                                        displayName = "idx-F1"
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.6830176, 0.03504288, 0.7290446, -0.027439386)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (-0.0308632, 0.0509308, -0.128792)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "tn__idxF2_3_rA" (
+                                                        displayName = "idx-F2"
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.5649085, 0.3904755, 0.63412386, 0.35537893)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (-0.0330568, 0.0546993, -0.167156)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "tn__thumbF1MIR_ZF8" (
+                                                        displayName = "thumb-F1-MIR"
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__thumbF1MIR_ZF8>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (-0.12564902, 0.9865531, -0.08824041, -0.056026805)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.0240477, 0.0463855, -0.0695448)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Mesh "tn__thumbF2right_WI8" (
+                                                        displayName = "thumb-F2-right"
+                                                        prepend references = @./GeometryLibrary.usdc@</Geometry/tn__thumbF2right_WI8>
+                                                    )
+                                                    {
+                                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [1] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        quatf xformOp:orient = (0.85917556, -0.50089115, 0.09816644, -0.035898916)
+                                                        float3 xformOp:scale = (1, 1, 1)
+                                                        double3 xformOp:translate = (0.0499644, 0.0457351, -0.0874305)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+
+                                                    def Cube "collision_r_hand_plate"
+                                                    {
+                                                        float3[] extent = [(-1, -1, -1), (1, 1, 1)]
+                                                        color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayColor:indices = None
+                                                        float[] primvars:displayOpacity = [0.4] (
+                                                            interpolation = "constant"
+                                                        )
+                                                        int[] primvars:displayOpacity:indices = None
+                                                        uniform token purpose = "guide"
+                                                        double size = 2
+                                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                                        float3 xformOp:scale = (0.041, 0.02, 0.083)
+                                                        double3 xformOp:translate = (0.00749988, 0.025, -0.112)
+                                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            def Xform "l_hip_ie_link"
+            {
+                quatf xformOp:orient = (0.9576622, 0.12607801, -0.25660503, 0.033782605)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.02, 0.11, -0.16875)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Mesh "l_hip_ie_link" (
+                    prepend references = @./GeometryLibrary.usdc@</Geometry/l_hip_ie_link>
+                )
+                {
+                    color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                        interpolation = "constant"
+                    )
+                    int[] primvars:displayColor:indices = None
+                    float[] primvars:displayOpacity = [1] (
+                        interpolation = "constant"
+                    )
+                    int[] primvars:displayOpacity:indices = None
+                    quatf xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "l_hip_aa_link"
+                {
+                    quatf xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Mesh "l_hip_aa_link" (
+                        prepend references = @./GeometryLibrary.usdc@</Geometry/l_hip_aa_link>
+                    )
+                    {
+                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                            interpolation = "constant"
+                        )
+                        int[] primvars:displayColor:indices = None
+                        float[] primvars:displayOpacity = [1] (
+                            interpolation = "constant"
+                        )
+                        int[] primvars:displayOpacity:indices = None
+                        quatf xformOp:orient = (1, 0, 0, 0)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "l_hip_fe_link"
+                    {
+                        quatf xformOp:orient = (0.9576621, -0.12607898, 0.25660497, -0.033782795)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Mesh "l_hip_fe_link" (
+                            prepend references = @./GeometryLibrary.usdc@</Geometry/l_hip_fe_link>
+                        )
+                        {
+                            color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayColor:indices = None
+                            float[] primvars:displayOpacity = [1] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayOpacity:indices = None
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Capsule "collision_capsule_body_l_thigh"
+                        {
+                            uniform token axis = "Z"
+                            float3[] extent = [(-0.105, -0.105, -0.205), (0.105, 0.105, 0.205)]
+                            double height = 0.2
+                            color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayColor:indices = None
+                            float[] primvars:displayOpacity = [0.4] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayOpacity:indices = None
+                            uniform token purpose = "guide"
+                            double radius = 0.105
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0.005, -0.215)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "l_knee_fe_link"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (-0.05, 0, -0.425)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Mesh "l_knee_fe_link" (
+                                prepend references = @./GeometryLibrary.usdc@</Geometry/l_knee_fe_link>
+                            )
+                            {
+                                color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayColor:indices = None
+                                float[] primvars:displayOpacity = [1] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayOpacity:indices = None
+                                quatf xformOp:orient = (1, 0, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Capsule "collision_capsule_body_l_shin"
+                            {
+                                uniform token axis = "Z"
+                                float3[] extent = [(-0.071, -0.071, -0.221), (0.071, 0.071, 0.221)]
+                                double height = 0.3
+                                color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayColor:indices = None
+                                float[] primvars:displayOpacity = [0.4] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayOpacity:indices = None
+                                uniform token purpose = "guide"
+                                double radius = 0.071
+                                quatf xformOp:orient = (0.99804753, 0, 0.062459, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0.0476, 0.0061, -0.19)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "l_ankle_ie_link"
+                            {
+                                quatf xformOp:orient = (0.9876722, 0.086410075, -0.1300288, 0.011376083)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0.05, 0, -0.425)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                def Mesh "l_ankle_ie_link" (
+                                    prepend references = @./GeometryLibrary.usdc@</Geometry/l_ankle_ie_link>
+                                )
+                                {
+                                    color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                        interpolation = "constant"
+                                    )
+                                    int[] primvars:displayColor:indices = None
+                                    float[] primvars:displayOpacity = [1] (
+                                        interpolation = "constant"
+                                    )
+                                    int[] primvars:displayOpacity:indices = None
+                                    quatf xformOp:orient = (1, 0, 0, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Xform "l_foot_link"
+                                {
+                                    quatf xformOp:orient = (0.9659259, 0, 0.25881886, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                    def Mesh "l_foot_link" (
+                                        prepend references = @./GeometryLibrary.usdc@</Geometry/l_foot_link>
+                                    )
+                                    {
+                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0, 0, 0)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Cube "collision_l_sole"
+                                    {
+                                        float3[] extent = [(-1, -1, -1), (1, 1, 1)]
+                                        color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [0.4] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double size = 2
+                                        quatf xformOp:orient = (0.9874426, -0.07971737, -0.13242579, -0.03264415)
+                                        float3 xformOp:scale = (0.1, 0.0425, 0.009)
+                                        double3 xformOp:translate = (0.0646931, -0.00550529, -0.03843)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Sphere "l_foot_fr"
+                                    {
+                                        float3[] extent = [(-0.005, -0.005, -0.005), (0.005, 0.005, 0.005)]
+                                        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.005
+                                        quatf xformOp:orient = (0.9874426, -0.07971737, -0.13242579, -0.03264415)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0.16691678116063707, 0.03053374195104148, -0.026650374213004417)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Sphere "l_foot_br"
+                                    {
+                                        float3[] extent = [(-0.005, -0.005, -0.005), (0.005, 0.005, 0.005)]
+                                        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.005
+                                        quatf xformOp:orient = (0.9874426, -0.07971737, -0.13242579, -0.03264415)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (-0.025642327805547697, 0.03920477717077944, -0.07999643969460339)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Sphere "l_foot_fl"
+                                    {
+                                        float3[] extent = [(-0.005, -0.005, -0.005), (0.005, 0.005, 0.005)]
+                                        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.005
+                                        quatf xformOp:orient = (0.9874426, -0.07971737, -0.13242579, -0.03264415)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0.15964233531165534, -0.05320477312470491, -0.01400349592232621)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Sphere "l_foot_bl"
+                                    {
+                                        float3[] extent = [(-0.005, -0.005, -0.005), (0.005, 0.005, 0.005)]
+                                        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.005
+                                        quatf xformOp:orient = (0.9874426, -0.07971737, -0.13242579, -0.03264415)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (-0.032916773654529434, -0.04453373790496695, -0.06734956140392519)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            def Xform "r_hip_ie_link"
+            {
+                quatf xformOp:orient = (0.9576622, -0.12607801, -0.25660503, -0.033782605)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.02, -0.11, -0.16875)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Mesh "r_hip_ie_link" (
+                    prepend references = @./GeometryLibrary.usdc@</Geometry/r_hip_ie_link>
+                )
+                {
+                    color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                        interpolation = "constant"
+                    )
+                    int[] primvars:displayColor:indices = None
+                    float[] primvars:displayOpacity = [1] (
+                        interpolation = "constant"
+                    )
+                    int[] primvars:displayOpacity:indices = None
+                    quatf xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "r_hip_aa_link"
+                {
+                    quatf xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Mesh "r_hip_aa_link" (
+                        prepend references = @./GeometryLibrary.usdc@</Geometry/r_hip_aa_link>
+                    )
+                    {
+                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                            interpolation = "constant"
+                        )
+                        int[] primvars:displayColor:indices = None
+                        float[] primvars:displayOpacity = [1] (
+                            interpolation = "constant"
+                        )
+                        int[] primvars:displayOpacity:indices = None
+                        quatf xformOp:orient = (1, 0, 0, 0)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "r_hip_fe_link"
+                    {
+                        quatf xformOp:orient = (0.9576621, 0.12607898, 0.25660497, 0.033782795)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Mesh "r_hip_fe_link" (
+                            prepend references = @./GeometryLibrary.usdc@</Geometry/r_hip_fe_link>
+                        )
+                        {
+                            color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayColor:indices = None
+                            float[] primvars:displayOpacity = [1] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayOpacity:indices = None
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Capsule "collision_capsule_body_r_thigh"
+                        {
+                            uniform token axis = "Z"
+                            float3[] extent = [(-0.105, -0.105, -0.205), (0.105, 0.105, 0.205)]
+                            double height = 0.2
+                            color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayColor:indices = None
+                            float[] primvars:displayOpacity = [0.4] (
+                                interpolation = "constant"
+                            )
+                            int[] primvars:displayOpacity:indices = None
+                            uniform token purpose = "guide"
+                            double radius = 0.105
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, -0.005, -0.215)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "r_knee_fe_link"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (-0.05, 0, -0.425)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Mesh "r_knee_fe_link" (
+                                prepend references = @./GeometryLibrary.usdc@</Geometry/r_knee_fe_link>
+                            )
+                            {
+                                color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayColor:indices = None
+                                float[] primvars:displayOpacity = [1] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayOpacity:indices = None
+                                quatf xformOp:orient = (1, 0, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Capsule "collision_capsule_body_r_shin"
+                            {
+                                uniform token axis = "Z"
+                                float3[] extent = [(-0.071, -0.071, -0.221), (0.071, 0.071, 0.221)]
+                                double height = 0.3
+                                color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayColor:indices = None
+                                float[] primvars:displayOpacity = [0.4] (
+                                    interpolation = "constant"
+                                )
+                                int[] primvars:displayOpacity:indices = None
+                                uniform token purpose = "guide"
+                                double radius = 0.071
+                                quatf xformOp:orient = (0.99804753, 0, 0.062459, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0.0476, 0.0061, -0.19)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "r_ankle_ie_link"
+                            {
+                                quatf xformOp:orient = (0.9876722, -0.086410075, -0.1300288, -0.011376083)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0.05, 0, -0.425)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                def Mesh "r_ankle_ie_link" (
+                                    prepend references = @./GeometryLibrary.usdc@</Geometry/r_ankle_ie_link>
+                                )
+                                {
+                                    color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                        interpolation = "constant"
+                                    )
+                                    int[] primvars:displayColor:indices = None
+                                    float[] primvars:displayOpacity = [1] (
+                                        interpolation = "constant"
+                                    )
+                                    int[] primvars:displayOpacity:indices = None
+                                    quatf xformOp:orient = (1, 0, 0, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Xform "r_foot_link"
+                                {
+                                    quatf xformOp:orient = (0.9659259, 0, 0.25881886, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                    def Mesh "r_foot_link" (
+                                        prepend references = @./GeometryLibrary.usdc@</Geometry/r_foot_link>
+                                    )
+                                    {
+                                        color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0, 0, 0)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Cube "collision_r_sole"
+                                    {
+                                        float3[] extent = [(-1, -1, -1), (1, 1, 1)]
+                                        color3f[] primvars:displayColor = [(0, 1, 0)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [0.4] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double size = 2
+                                        quatf xformOp:orient = (0.9874426, 0.07971737, -0.13242579, 0.03264415)
+                                        float3 xformOp:scale = (0.1, 0.0425, 0.009)
+                                        double3 xformOp:translate = (0.0646931, 0.00550529, -0.03843)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Sphere "r_foot_fr"
+                                    {
+                                        float3[] extent = [(-0.005, -0.005, -0.005), (0.005, 0.005, 0.005)]
+                                        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.005
+                                        quatf xformOp:orient = (0.9874426, 0.07971737, -0.13242579, 0.03264415)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0.15964233531165534, 0.05320477312470491, -0.01400349592232621)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Sphere "r_foot_br"
+                                    {
+                                        float3[] extent = [(-0.005, -0.005, -0.005), (0.005, 0.005, 0.005)]
+                                        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.005
+                                        quatf xformOp:orient = (0.9874426, 0.07971737, -0.13242579, 0.03264415)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (-0.032916773654529434, 0.04453373790496695, -0.06734956140392519)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Sphere "r_foot_fl"
+                                    {
+                                        float3[] extent = [(-0.005, -0.005, -0.005), (0.005, 0.005, 0.005)]
+                                        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.005
+                                        quatf xformOp:orient = (0.9874426, 0.07971737, -0.13242579, 0.03264415)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0.16691678116063707, -0.03053374195104148, -0.026650374213004417)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Sphere "r_foot_bl"
+                                    {
+                                        float3[] extent = [(-0.005, -0.005, -0.005), (0.005, 0.005, 0.005)]
+                                        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayColor:indices = None
+                                        float[] primvars:displayOpacity = [1] (
+                                            interpolation = "constant"
+                                        )
+                                        int[] primvars:displayOpacity:indices = None
+                                        uniform token purpose = "guide"
+                                        double radius = 0.005
+                                        quatf xformOp:orient = (0.9874426, 0.07971737, -0.13242579, 0.03264415)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (-0.025642327805547697, -0.03920477717077944, -0.07999643969460339)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        def Xform "world_link"
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+}
+

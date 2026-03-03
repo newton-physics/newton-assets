@@ -1,0 +1,1280 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a8"
+    }
+    defaultPrim = "h1"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "h1"
+{
+    def Scope "Physics"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI", "MjcMaterialAPI"]
+        )
+        {
+            float newton:rollingFriction = 0.0001
+            float newton:torsionalFriction = 0.005
+            float physics:dynamicFriction = 1
+        }
+
+        def MjcActuator "left_hip_yaw"
+        {
+            uniform double mjc:ctrlRange:max = 200
+            uniform double mjc:ctrlRange:min = -200
+            rel mjc:target = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_yaw>
+        }
+
+        def MjcActuator "left_hip_roll"
+        {
+            uniform double mjc:ctrlRange:max = 200
+            uniform double mjc:ctrlRange:min = -200
+            rel mjc:target = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_roll_link/left_hip_roll>
+        }
+
+        def MjcActuator "left_hip_pitch"
+        {
+            uniform double mjc:ctrlRange:max = 200
+            uniform double mjc:ctrlRange:min = -200
+            rel mjc:target = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_roll_link/left_hip_pitch_link/left_hip_pitch>
+        }
+
+        def MjcActuator "left_knee"
+        {
+            uniform double mjc:ctrlRange:max = 300
+            uniform double mjc:ctrlRange:min = -300
+            rel mjc:target = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_roll_link/left_hip_pitch_link/left_knee_link/left_knee>
+        }
+
+        def MjcActuator "left_ankle"
+        {
+            uniform double mjc:ctrlRange:max = 40
+            uniform double mjc:ctrlRange:min = -40
+            rel mjc:target = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_roll_link/left_hip_pitch_link/left_knee_link/left_ankle_link/left_ankle>
+        }
+
+        def MjcActuator "right_hip_yaw"
+        {
+            uniform double mjc:ctrlRange:max = 200
+            uniform double mjc:ctrlRange:min = -200
+            rel mjc:target = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_yaw>
+        }
+
+        def MjcActuator "right_hip_roll"
+        {
+            uniform double mjc:ctrlRange:max = 200
+            uniform double mjc:ctrlRange:min = -200
+            rel mjc:target = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_roll_link/right_hip_roll>
+        }
+
+        def MjcActuator "right_hip_pitch"
+        {
+            uniform double mjc:ctrlRange:max = 200
+            uniform double mjc:ctrlRange:min = -200
+            rel mjc:target = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_roll_link/right_hip_pitch_link/right_hip_pitch>
+        }
+
+        def MjcActuator "right_knee"
+        {
+            uniform double mjc:ctrlRange:max = 300
+            uniform double mjc:ctrlRange:min = -300
+            rel mjc:target = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_roll_link/right_hip_pitch_link/right_knee_link/right_knee>
+        }
+
+        def MjcActuator "right_ankle"
+        {
+            uniform double mjc:ctrlRange:max = 40
+            uniform double mjc:ctrlRange:min = -40
+            rel mjc:target = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_roll_link/right_hip_pitch_link/right_knee_link/right_ankle_link/right_ankle>
+        }
+
+        def MjcActuator "torso"
+        {
+            uniform double mjc:ctrlRange:max = 200
+            uniform double mjc:ctrlRange:min = -200
+            rel mjc:target = </h1/Geometry/pelvis/torso_link/torso_1>
+        }
+
+        def MjcActuator "left_shoulder_pitch"
+        {
+            uniform double mjc:ctrlRange:max = 40
+            uniform double mjc:ctrlRange:min = -40
+            rel mjc:target = </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link/left_shoulder_pitch>
+        }
+
+        def MjcActuator "left_shoulder_roll"
+        {
+            uniform double mjc:ctrlRange:max = 40
+            uniform double mjc:ctrlRange:min = -40
+            rel mjc:target = </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_roll>
+        }
+
+        def MjcActuator "left_shoulder_yaw"
+        {
+            uniform double mjc:ctrlRange:max = 18
+            uniform double mjc:ctrlRange:min = -18
+            rel mjc:target = </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_shoulder_yaw>
+        }
+
+        def MjcActuator "left_elbow"
+        {
+            uniform double mjc:ctrlRange:max = 18
+            uniform double mjc:ctrlRange:min = -18
+            rel mjc:target = </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_elbow>
+        }
+
+        def MjcActuator "right_shoulder_pitch"
+        {
+            uniform double mjc:ctrlRange:max = 40
+            uniform double mjc:ctrlRange:min = -40
+            rel mjc:target = </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link/right_shoulder_pitch>
+        }
+
+        def MjcActuator "right_shoulder_roll"
+        {
+            uniform double mjc:ctrlRange:max = 40
+            uniform double mjc:ctrlRange:min = -40
+            rel mjc:target = </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_roll>
+        }
+
+        def MjcActuator "right_shoulder_yaw"
+        {
+            uniform double mjc:ctrlRange:max = 18
+            uniform double mjc:ctrlRange:min = -18
+            rel mjc:target = </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_shoulder_yaw>
+        }
+
+        def MjcActuator "right_elbow"
+        {
+            uniform double mjc:ctrlRange:max = 18
+            uniform double mjc:ctrlRange:min = -18
+            rel mjc:target = </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_elbow>
+        }
+    }
+
+    def "Geometry"
+    {
+        def "pelvis" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            point3f physics:centerOfMass = (-0.0002, 0.00004, -0.04522)
+            float3 physics:diagonalInertia = (0.0490211, 0.0445821, 0.00824619)
+            float physics:mass = 5.39
+            quatf physics:principalAxes = (0.49830288, 0.49945387, -0.50049585, 0.5017409)
+
+            over "pelvis" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                uniform int mjc:group = 2
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 0
+                float physics:density = 1000
+            }
+
+            def "left_hip_yaw_link" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.04923, 0.0001, 0.0072)
+                float3 physics:diagonalInertia = (0.00304494, 0.00296885, 0.00189201)
+                float physics:mass = 2.244
+                quatf physics:principalAxes = (0.69699, 0.219193, 0.233287, 0.641667)
+
+                over "left_hip_yaw_link" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
+
+                over "Cylinder" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    float newton:contactGap = 0
+                    float physics:mass = 0
+                }
+
+                def PhysicsRevoluteJoint "left_hip_yaw" (
+                    prepend apiSchemas = ["MjcJointAPI"]
+                )
+                {
+                    uniform double mjc:armature = 0.1
+                    uniform double mjc:damping = 1
+                    uniform token physics:axis = "Z"
+                    rel physics:body0 = </h1/Geometry/pelvis>
+                    rel physics:body1 = </h1/Geometry/pelvis/left_hip_yaw_link>
+                    point3f physics:localPos0 = (0, 0.0875, -0.1742)
+                    point3f physics:localPos1 = (0, 0, 0)
+                    quatf physics:localRot0 = (1, 0, 0, 0)
+                    quatf physics:localRot1 = (1, 0, 0, 0)
+                    float physics:lowerLimit = -24.637186
+                    float physics:upperLimit = 24.637186
+                }
+
+                def "left_hip_roll_link" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (-0.0058, -0.00319, -0.00009)
+                    float3 physics:diagonalInertia = (0.00243264, 0.00225325, 0.00205492)
+                    float physics:mass = 2.232
+                    quatf physics:principalAxes = (0.043824214, 0.70721024, -0.07290752, 0.7018672)
+
+                    over "left_hip_roll_link" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
+
+                    over "Cylinder" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        float newton:contactGap = 0
+                        float physics:mass = 0
+                    }
+
+                    def PhysicsRevoluteJoint "left_hip_roll" (
+                        prepend apiSchemas = ["MjcJointAPI"]
+                    )
+                    {
+                        uniform double mjc:armature = 0.1
+                        uniform double mjc:damping = 1
+                        uniform token physics:axis = "X"
+                        rel physics:body0 = </h1/Geometry/pelvis/left_hip_yaw_link>
+                        rel physics:body1 = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_roll_link>
+                        point3f physics:localPos0 = (0.039468, 0, 0)
+                        point3f physics:localPos1 = (0, 0, 0)
+                        quatf physics:localRot0 = (1, 0, 0, 0)
+                        quatf physics:localRot1 = (1, 0, 0, 0)
+                        float physics:lowerLimit = -24.637186
+                        float physics:upperLimit = 24.637186
+                    }
+
+                    def "left_hip_pitch_link" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0.00746, -0.02346, -0.08193)
+                        float3 physics:diagonalInertia = (0.0829503, 0.0821457, 0.00510909)
+                        float physics:mass = 4.152
+                        quatf physics:principalAxes = (0.97982836, 0.051352218, -0.016985405, -0.19238207)
+
+                        over "left_hip_pitch_link" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
+
+                        over "Capsule" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            float newton:contactGap = 0
+                            float physics:mass = 0
+                        }
+
+                        over "Capsule_1" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            float newton:contactGap = 0
+                            float physics:mass = 0
+                        }
+
+                        over "Cylinder" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            float newton:contactGap = 0
+                            float physics:mass = 0
+                        }
+
+                        def PhysicsRevoluteJoint "left_hip_pitch" (
+                            prepend apiSchemas = ["MjcJointAPI"]
+                        )
+                        {
+                            uniform double mjc:armature = 0.1
+                            uniform double mjc:damping = 1
+                            uniform token physics:axis = "Y"
+                            rel physics:body0 = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_roll_link>
+                            rel physics:body1 = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_roll_link/left_hip_pitch_link>
+                            point3f physics:localPos0 = (0, 0.11536, 0)
+                            point3f physics:localPos1 = (0, 0, 0)
+                            quatf physics:localRot0 = (1, 0, 0, 0)
+                            quatf physics:localRot1 = (1, 0, 0, 0)
+                            float physics:lowerLimit = -89.95438
+                            float physics:upperLimit = 89.95438
+                        }
+
+                        def "left_knee_link" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (-0.00136, -0.00512, -0.1384)
+                            float3 physics:diagonalInertia = (0.0125237, 0.0123104, 0.0019428)
+                            float physics:mass = 1.721
+                            quatf physics:principalAxes = (0.6261322, -0.03422701, -0.041627713, 0.77785224)
+
+                            over "left_knee_link" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
+
+                            over "Capsule" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                float newton:contactGap = 0
+                                float physics:mass = 0
+                            }
+
+                            over "Sphere" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                float newton:contactGap = 0
+                                float physics:mass = 0
+                            }
+
+                            def PhysicsRevoluteJoint "left_knee" (
+                                prepend apiSchemas = ["MjcJointAPI"]
+                            )
+                            {
+                                uniform double mjc:armature = 0.1
+                                uniform double mjc:damping = 1
+                                uniform token physics:axis = "Y"
+                                rel physics:body0 = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_roll_link/left_hip_pitch_link>
+                                rel physics:body1 = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_roll_link/left_hip_pitch_link/left_knee_link>
+                                point3f physics:localPos0 = (0, 0, -0.4)
+                                point3f physics:localPos1 = (0, 0, 0)
+                                quatf physics:localRot0 = (1, 0, 0, 0)
+                                quatf physics:localRot1 = (1, 0, 0, 0)
+                                float physics:lowerLimit = -14.896903
+                                float physics:upperLimit = 117.456345
+                            }
+
+                            def "left_ankle_link" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            )
+                            {
+                                point3f physics:centerOfMass = (0.06722, 0.00015, -0.04497)
+                                float3 physics:diagonalInertia = (0.00220848, 0.00218961, 0.000214202)
+                                float physics:mass = 0.446
+                                quatf physics:principalAxes = (0.48910075, 0.5031968, 0.5657817, 0.4329718)
+
+                                over "left_ankle_link" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 2
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    bool physics:collisionEnabled = 0
+                                    float physics:density = 1000
+                                }
+
+                                over "Capsule" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "Capsule_1" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "Capsule_2" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                def PhysicsRevoluteJoint "left_ankle" (
+                                    prepend apiSchemas = ["MjcJointAPI"]
+                                )
+                                {
+                                    uniform double mjc:armature = 0.1
+                                    uniform double mjc:damping = 1
+                                    uniform token physics:axis = "Y"
+                                    rel physics:body0 = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_roll_link/left_hip_pitch_link/left_knee_link>
+                                    rel physics:body1 = </h1/Geometry/pelvis/left_hip_yaw_link/left_hip_roll_link/left_hip_pitch_link/left_knee_link/left_ankle_link>
+                                    point3f physics:localPos0 = (0, 0, -0.4)
+                                    point3f physics:localPos1 = (0, 0, 0)
+                                    quatf physics:localRot0 = (1, 0, 0, 0)
+                                    quatf physics:localRot1 = (1, 0, 0, 0)
+                                    float physics:lowerLimit = -49.84733
+                                    float physics:upperLimit = 29.793806
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            def "right_hip_yaw_link" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (-0.04923, -0.0001, 0.0072)
+                float3 physics:diagonalInertia = (0.00304494, 0.00296885, 0.00189201)
+                float physics:mass = 2.244
+                quatf physics:principalAxes = (0.641667, 0.233287, 0.219193, 0.69699)
+
+                over "right_hip_yaw_link" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
+
+                over "Cylinder" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    float newton:contactGap = 0
+                    float physics:mass = 0
+                }
+
+                def PhysicsRevoluteJoint "right_hip_yaw" (
+                    prepend apiSchemas = ["MjcJointAPI"]
+                )
+                {
+                    uniform double mjc:armature = 0.1
+                    uniform double mjc:damping = 1
+                    uniform token physics:axis = "Z"
+                    rel physics:body0 = </h1/Geometry/pelvis>
+                    rel physics:body1 = </h1/Geometry/pelvis/right_hip_yaw_link>
+                    point3f physics:localPos0 = (0, -0.0875, -0.1742)
+                    point3f physics:localPos1 = (0, 0, 0)
+                    quatf physics:localRot0 = (1, 0, 0, 0)
+                    quatf physics:localRot1 = (1, 0, 0, 0)
+                    float physics:lowerLimit = -24.637186
+                    float physics:upperLimit = 24.637186
+                }
+
+                def "right_hip_roll_link" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (-0.0058, 0.00319, -0.00009)
+                    float3 physics:diagonalInertia = (0.00243264, 0.00225325, 0.00205492)
+                    float physics:mass = 2.232
+                    quatf physics:principalAxes = (-0.043824214, 0.70721024, 0.07290752, 0.7018672)
+
+                    over "right_hip_roll_link" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
+
+                    over "Cylinder" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        float newton:contactGap = 0
+                        float physics:mass = 0
+                    }
+
+                    def PhysicsRevoluteJoint "right_hip_roll" (
+                        prepend apiSchemas = ["MjcJointAPI"]
+                    )
+                    {
+                        uniform double mjc:armature = 0.1
+                        uniform double mjc:damping = 1
+                        uniform token physics:axis = "X"
+                        rel physics:body0 = </h1/Geometry/pelvis/right_hip_yaw_link>
+                        rel physics:body1 = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_roll_link>
+                        point3f physics:localPos0 = (0.039468, 0, 0)
+                        point3f physics:localPos1 = (0, 0, 0)
+                        quatf physics:localRot0 = (1, 0, 0, 0)
+                        quatf physics:localRot1 = (1, 0, 0, 0)
+                        float physics:lowerLimit = -24.637186
+                        float physics:upperLimit = 24.637186
+                    }
+
+                    def "right_hip_pitch_link" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0.00746, 0.02346, -0.08193)
+                        float3 physics:diagonalInertia = (0.0829503, 0.0821457, 0.00510909)
+                        float physics:mass = 4.152
+                        quatf physics:principalAxes = (0.97982836, -0.051352218, -0.016985405, 0.19238207)
+
+                        over "right_hip_pitch_link" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
+
+                        over "Capsule" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            float newton:contactGap = 0
+                            float physics:mass = 0
+                        }
+
+                        over "Capsule_1" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            float newton:contactGap = 0
+                            float physics:mass = 0
+                        }
+
+                        over "Cylinder" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            float newton:contactGap = 0
+                            float physics:mass = 0
+                        }
+
+                        def PhysicsRevoluteJoint "right_hip_pitch" (
+                            prepend apiSchemas = ["MjcJointAPI"]
+                        )
+                        {
+                            uniform double mjc:armature = 0.1
+                            uniform double mjc:damping = 1
+                            uniform token physics:axis = "Y"
+                            rel physics:body0 = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_roll_link>
+                            rel physics:body1 = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_roll_link/right_hip_pitch_link>
+                            point3f physics:localPos0 = (0, -0.11536, 0)
+                            point3f physics:localPos1 = (0, 0, 0)
+                            quatf physics:localRot0 = (1, 0, 0, 0)
+                            quatf physics:localRot1 = (1, 0, 0, 0)
+                            float physics:lowerLimit = -89.95438
+                            float physics:upperLimit = 89.95438
+                        }
+
+                        def "right_knee_link" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (-0.00136, 0.00512, -0.1384)
+                            float3 physics:diagonalInertia = (0.0125237, 0.0123104, 0.0019428)
+                            float physics:mass = 1.721
+                            quatf physics:principalAxes = (0.77785224, -0.041627713, -0.03422701, 0.6261322)
+
+                            over "right_knee_link" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
+
+                            over "Capsule" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                float newton:contactGap = 0
+                                float physics:mass = 0
+                            }
+
+                            over "Sphere" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                float newton:contactGap = 0
+                                float physics:mass = 0
+                            }
+
+                            def PhysicsRevoluteJoint "right_knee" (
+                                prepend apiSchemas = ["MjcJointAPI"]
+                            )
+                            {
+                                uniform double mjc:armature = 0.1
+                                uniform double mjc:damping = 1
+                                uniform token physics:axis = "Y"
+                                rel physics:body0 = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_roll_link/right_hip_pitch_link>
+                                rel physics:body1 = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_roll_link/right_hip_pitch_link/right_knee_link>
+                                point3f physics:localPos0 = (0, 0, -0.4)
+                                point3f physics:localPos1 = (0, 0, 0)
+                                quatf physics:localRot0 = (1, 0, 0, 0)
+                                quatf physics:localRot1 = (1, 0, 0, 0)
+                                float physics:lowerLimit = -14.896903
+                                float physics:upperLimit = 117.456345
+                            }
+
+                            def "right_ankle_link" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            )
+                            {
+                                point3f physics:centerOfMass = (0.06722, -0.00015, -0.04497)
+                                float3 physics:diagonalInertia = (0.00220848, 0.00218961, 0.000214202)
+                                float physics:mass = 0.446
+                                quatf physics:principalAxes = (0.4329718, 0.5657817, 0.5031968, 0.48910075)
+
+                                over "right_ankle_link" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 2
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    bool physics:collisionEnabled = 0
+                                    float physics:density = 1000
+                                }
+
+                                over "Capsule" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "Capsule_1" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "Capsule_2" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                def PhysicsRevoluteJoint "right_ankle" (
+                                    prepend apiSchemas = ["MjcJointAPI"]
+                                )
+                                {
+                                    uniform double mjc:armature = 0.1
+                                    uniform double mjc:damping = 1
+                                    uniform token physics:axis = "Y"
+                                    rel physics:body0 = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_roll_link/right_hip_pitch_link/right_knee_link>
+                                    rel physics:body1 = </h1/Geometry/pelvis/right_hip_yaw_link/right_hip_roll_link/right_hip_pitch_link/right_knee_link/right_ankle_link>
+                                    point3f physics:localPos0 = (0, 0, -0.4)
+                                    point3f physics:localPos1 = (0, 0, 0)
+                                    quatf physics:localRot0 = (1, 0, 0, 0)
+                                    quatf physics:localRot1 = (1, 0, 0, 0)
+                                    float physics:lowerLimit = -49.84733
+                                    float physics:upperLimit = 29.793806
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            def "torso_link" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0.000489, 0.002797, 0.20484)
+                float3 physics:diagonalInertia = (0.487315, 0.409628, 0.127837)
+                prepend rel physics:filteredPairs = [
+                    </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link>,
+                    </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link>,
+                ]
+                float physics:mass = 17.789
+                quatf physics:principalAxes = (0.9999891, -0.0013080802, -0.0028228902, -0.0034910506)
+
+                over "torso_link" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
+
+                over "logo_link" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
+
+                over "head" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    float newton:contactGap = 0
+                    float physics:mass = 0
+                }
+
+                over "helmet" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    float newton:contactGap = 0
+                    float physics:mass = 0
+                }
+
+                over "torso" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    float newton:contactGap = 0
+                    float physics:mass = 0
+                }
+
+                over "hip" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    float newton:contactGap = 0
+                    float physics:mass = 0
+                }
+
+                over "imu" (
+                    prepend apiSchemas = ["MjcSiteAPI"]
+                )
+                {
+                    uniform int mjc:group = 4
+                }
+
+                def PhysicsRevoluteJoint "torso_1" (
+                    prepend apiSchemas = ["MjcJointAPI"]
+                    displayName = "torso"
+                )
+                {
+                    uniform double mjc:armature = 0.1
+                    uniform double mjc:damping = 1
+                    uniform token physics:axis = "Z"
+                    rel physics:body0 = </h1/Geometry/pelvis>
+                    rel physics:body1 = </h1/Geometry/pelvis/torso_link>
+                    point3f physics:localPos0 = (0, 0, 0)
+                    point3f physics:localPos1 = (0, 0, 0)
+                    quatf physics:localRot0 = (1, 0, 0, 0)
+                    quatf physics:localRot1 = (1, 0, 0, 0)
+                    float physics:lowerLimit = -134.64508
+                    float physics:upperLimit = 134.64508
+                }
+
+                def "left_shoulder_pitch_link" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0.005045, 0.053657, -0.015715)
+                    float3 physics:diagonalInertia = (0.00129936, 0.000987113, 0.000858198)
+                    float physics:mass = 1.033
+                    quatf physics:principalAxes = (0.8148581, 0.57923603, -0.020107202, -0.009364881)
+
+                    over "left_shoulder_pitch_link" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
+
+                    def PhysicsRevoluteJoint "left_shoulder_pitch" (
+                        prepend apiSchemas = ["MjcJointAPI"]
+                    )
+                    {
+                        uniform double mjc:armature = 0.1
+                        uniform double mjc:damping = 1
+                        uniform token physics:axis = "Y"
+                        rel physics:body0 = </h1/Geometry/pelvis/torso_link>
+                        rel physics:body1 = </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link>
+                        point3f physics:localPos0 = (0.0055, 0.15535, 0.42999)
+                        point3f physics:localPos1 = (0, 0, 0)
+                        quatf physics:localRot0 = (0.97629637, 0.216438, 0, 0)
+                        quatf physics:localRot1 = (1, 0, 0, 0)
+                        float physics:lowerLimit = -164.43889
+                        float physics:upperLimit = 164.43889
+                    }
+
+                    def "left_shoulder_roll_link" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0.000679, 0.00115, -0.094076)
+                        float3 physics:diagonalInertia = (0.00170388, 0.00158256, 0.00100336)
+                        float physics:mass = 0.793
+                        quatf physics:principalAxes = (0.732491, 0.00917179, 0.0766656, 0.676384)
+
+                        over "left_shoulder_roll_link" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
+
+                        over "left_shoulder" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            float newton:contactGap = 0
+                            float physics:mass = 0
+                        }
+
+                        def PhysicsRevoluteJoint "left_shoulder_roll" (
+                            prepend apiSchemas = ["MjcJointAPI"]
+                        )
+                        {
+                            uniform double mjc:armature = 0.1
+                            uniform double mjc:damping = 1
+                            uniform token physics:axis = "X"
+                            rel physics:body0 = </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link>
+                            rel physics:body1 = </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link>
+                            point3f physics:localPos0 = (-0.0055, 0.0565, -0.0165)
+                            point3f physics:localPos1 = (0, 0, 0)
+                            quatf physics:localRot0 = (0.97629637, -0.216438, 0, 0)
+                            quatf physics:localRot1 = (1, 0, 0, 0)
+                            float physics:lowerLimit = -19.480564
+                            float physics:upperLimit = 178.18988
+                        }
+
+                        def "left_shoulder_yaw_link" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0.01365, 0.002767, -0.16266)
+                            float3 physics:diagonalInertia = (0.00408038, 0.00370367, 0.000622687)
+                            float physics:mass = 0.839
+                            quatf physics:principalAxes = (0.7030418, -0.033122893, -0.047336187, 0.7087978)
+
+                            over "left_shoulder_yaw_link" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
+
+                            over "Capsule" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                float newton:contactGap = 0
+                                float physics:mass = 0
+                            }
+
+                            def PhysicsRevoluteJoint "left_shoulder_yaw" (
+                                prepend apiSchemas = ["MjcJointAPI"]
+                            )
+                            {
+                                uniform double mjc:armature = 0.1
+                                uniform double mjc:damping = 1
+                                uniform token physics:axis = "Z"
+                                rel physics:body0 = </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link>
+                                rel physics:body1 = </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link>
+                                point3f physics:localPos0 = (0, 0, -0.1343)
+                                point3f physics:localPos1 = (0, 0, 0)
+                                quatf physics:localRot0 = (1, 0, 0, 0)
+                                quatf physics:localRot1 = (1, 0, 0, 0)
+                                float physics:lowerLimit = -74.48451
+                                float physics:upperLimit = 254.96622
+                            }
+
+                            def "left_elbow_link" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            )
+                            {
+                                point3f physics:centerOfMass = (0.15908, -0.000144, -0.015776)
+                                float3 physics:diagonalInertia = (0.00601829, 0.00600579, 0.000408305)
+                                float physics:mass = 0.669
+                                quatf physics:principalAxes = (0.076523185, 0.72032684, 0.08531158, 0.6841018)
+
+                                over "left_elbow_link" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 2
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    bool physics:collisionEnabled = 0
+                                    float physics:density = 1000
+                                }
+
+                                over "Capsule" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "Sphere" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                def PhysicsRevoluteJoint "left_elbow" (
+                                    prepend apiSchemas = ["MjcJointAPI"]
+                                )
+                                {
+                                    uniform double mjc:armature = 0.1
+                                    uniform double mjc:damping = 1
+                                    uniform token physics:axis = "Y"
+                                    rel physics:body0 = </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link>
+                                    rel physics:body1 = </h1/Geometry/pelvis/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link>
+                                    point3f physics:localPos0 = (0.0185, 0, -0.198)
+                                    point3f physics:localPos1 = (0, 0, 0)
+                                    quatf physics:localRot0 = (1, 0, 0, 0)
+                                    quatf physics:localRot1 = (1, 0, 0, 0)
+                                    float physics:lowerLimit = -71.61973
+                                    float physics:upperLimit = 149.54198
+                                }
+                            }
+                        }
+                    }
+                }
+
+                def "right_shoulder_pitch_link" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0.005045, -0.053657, -0.015715)
+                    float3 physics:diagonalInertia = (0.00129936, 0.000987113, 0.000858198)
+                    float physics:mass = 1.033
+                    quatf physics:principalAxes = (0.57923603, 0.8148581, 0.009364881, 0.020107202)
+
+                    over "right_shoulder_pitch_link" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
+
+                    def PhysicsRevoluteJoint "right_shoulder_pitch" (
+                        prepend apiSchemas = ["MjcJointAPI"]
+                    )
+                    {
+                        uniform double mjc:armature = 0.1
+                        uniform double mjc:damping = 1
+                        uniform token physics:axis = "Y"
+                        rel physics:body0 = </h1/Geometry/pelvis/torso_link>
+                        rel physics:body1 = </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link>
+                        point3f physics:localPos0 = (0.0055, -0.15535, 0.42999)
+                        point3f physics:localPos1 = (0, 0, 0)
+                        quatf physics:localRot0 = (0.97629637, -0.216438, 0, 0)
+                        quatf physics:localRot1 = (1, 0, 0, 0)
+                        float physics:lowerLimit = -164.43889
+                        float physics:upperLimit = 164.43889
+                    }
+
+                    def "right_shoulder_roll_link" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0.000679, -0.00115, -0.094076)
+                        float3 physics:diagonalInertia = (0.00170388, 0.00158256, 0.00100336)
+                        float physics:mass = 0.793
+                        quatf physics:principalAxes = (0.676384, 0.0766656, 0.00917179, 0.732491)
+
+                        over "right_shoulder_roll_link" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
+
+                        over "right_shoulder" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            float newton:contactGap = 0
+                            float physics:mass = 0
+                        }
+
+                        def PhysicsRevoluteJoint "right_shoulder_roll" (
+                            prepend apiSchemas = ["MjcJointAPI"]
+                        )
+                        {
+                            uniform double mjc:armature = 0.1
+                            uniform double mjc:damping = 1
+                            uniform token physics:axis = "X"
+                            rel physics:body0 = </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link>
+                            rel physics:body1 = </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link>
+                            point3f physics:localPos0 = (-0.0055, -0.0565, -0.0165)
+                            point3f physics:localPos1 = (0, 0, 0)
+                            quatf physics:localRot0 = (0.97629637, 0.216438, 0, 0)
+                            quatf physics:localRot1 = (1, 0, 0, 0)
+                            float physics:lowerLimit = -178.18988
+                            float physics:upperLimit = 19.480564
+                        }
+
+                        def "right_shoulder_yaw_link" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0.01365, -0.002767, -0.16266)
+                            float3 physics:diagonalInertia = (0.00408038, 0.00370367, 0.000622687)
+                            float physics:mass = 0.839
+                            quatf physics:principalAxes = (0.7087978, -0.047336187, -0.033122893, 0.7030418)
+
+                            over "right_shoulder_yaw_link" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
+
+                            over "Capsule" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                float newton:contactGap = 0
+                                float physics:mass = 0
+                            }
+
+                            def PhysicsRevoluteJoint "right_shoulder_yaw" (
+                                prepend apiSchemas = ["MjcJointAPI"]
+                            )
+                            {
+                                uniform double mjc:armature = 0.1
+                                uniform double mjc:damping = 1
+                                uniform token physics:axis = "Z"
+                                rel physics:body0 = </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link>
+                                rel physics:body1 = </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link>
+                                point3f physics:localPos0 = (0, 0, -0.1343)
+                                point3f physics:localPos1 = (0, 0, 0)
+                                quatf physics:localRot0 = (1, 0, 0, 0)
+                                quatf physics:localRot1 = (1, 0, 0, 0)
+                                float physics:lowerLimit = -254.96622
+                                float physics:upperLimit = 74.48451
+                            }
+
+                            def "right_elbow_link" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            )
+                            {
+                                point3f physics:centerOfMass = (0.15908, 0.000144, -0.015776)
+                                float3 physics:diagonalInertia = (0.00601829, 0.00600579, 0.000408305)
+                                float physics:mass = 0.669
+                                quatf physics:principalAxes = (-0.076523185, 0.72032684, -0.08531158, 0.6841018)
+
+                                over "right_elbow_link" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 2
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    bool physics:collisionEnabled = 0
+                                    float physics:density = 1000
+                                }
+
+                                over "Capsule" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "Sphere" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </h1/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                def PhysicsRevoluteJoint "right_elbow" (
+                                    prepend apiSchemas = ["MjcJointAPI"]
+                                )
+                                {
+                                    uniform double mjc:armature = 0.1
+                                    uniform double mjc:damping = 1
+                                    uniform token physics:axis = "Y"
+                                    rel physics:body0 = </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link>
+                                    rel physics:body1 = </h1/Geometry/pelvis/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link>
+                                    point3f physics:localPos0 = (0.0185, 0, -0.198)
+                                    point3f physics:localPos1 = (0, 0, 0)
+                                    quatf physics:localRot0 = (1, 0, 0, 0)
+                                    quatf physics:localRot1 = (1, 0, 0, 0)
+                                    float physics:lowerLimit = -71.61973
+                                    float physics:upperLimit = 149.54198
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend apiSchemas = ["NewtonSceneAPI", "MjcSceneAPI"]
+)
+{
+    uniform token mjc:compiler:angle = "radian"
+    uniform int newton:maxSolverIterations = 100
+    uniform int newton:timeStepsPerSecond = 500
+    vector3f physics:gravityDirection = (0, 0, -1)
+    float physics:gravityMagnitude = 9.81
+}
+

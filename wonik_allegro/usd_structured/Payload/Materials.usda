@@ -1,0 +1,242 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a8"
+    }
+    defaultPrim = "allegro_left"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "allegro_left"
+{
+    def Scope "Materials"
+    {
+        def Material "black" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/black>
+        )
+        {
+        }
+
+        def Material "white" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/white>
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "palm"
+        {
+            over "base_link_left" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </allegro_left/Materials/black>
+            }
+
+            over "rf_base"
+            {
+                over "tn__link_00_XB" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </allegro_left/Materials/black>
+                }
+
+                over "rf_proximal"
+                {
+                    over "tn__link_10_XB" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </allegro_left/Materials/black>
+                    }
+
+                    over "rf_medial"
+                    {
+                        over "tn__link_20_XB" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </allegro_left/Materials/black>
+                        }
+
+                        over "rf_distal"
+                        {
+                            over "tn__link_30_XB" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </allegro_left/Materials/black>
+                            }
+
+                            over "rf_tip"
+                            {
+                                over "tn__link_30_tip_VH" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </allegro_left/Materials/white>
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "mf_base"
+            {
+                over "tn__link_00_XB" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </allegro_left/Materials/black>
+                }
+
+                over "mf_proximal"
+                {
+                    over "tn__link_10_XB" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </allegro_left/Materials/black>
+                    }
+
+                    over "mf_medial"
+                    {
+                        over "tn__link_20_XB" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </allegro_left/Materials/black>
+                        }
+
+                        over "mf_distal"
+                        {
+                            over "tn__link_30_XB" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </allegro_left/Materials/black>
+                            }
+
+                            over "mf_tip"
+                            {
+                                over "tn__link_30_tip_VH" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </allegro_left/Materials/white>
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "ff_base"
+            {
+                over "tn__link_00_XB" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </allegro_left/Materials/black>
+                }
+
+                over "ff_proximal"
+                {
+                    over "tn__link_10_XB" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </allegro_left/Materials/black>
+                    }
+
+                    over "ff_medial"
+                    {
+                        over "tn__link_20_XB" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </allegro_left/Materials/black>
+                        }
+
+                        over "ff_distal"
+                        {
+                            over "tn__link_30_XB" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </allegro_left/Materials/black>
+                            }
+
+                            over "ff_tip"
+                            {
+                                over "tn__link_30_tip_VH" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </allegro_left/Materials/white>
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "th_base"
+            {
+                over "tn__link_120_left_VK" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </allegro_left/Materials/black>
+                }
+
+                over "th_proximal"
+                {
+                    over "tn__link_130_nC" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </allegro_left/Materials/black>
+                    }
+
+                    over "th_medial"
+                    {
+                        over "tn__link_140_nC" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </allegro_left/Materials/black>
+                        }
+
+                        over "th_distal"
+                        {
+                            over "tn__link_150_nC" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </allegro_left/Materials/black>
+                            }
+
+                            over "th_tip"
+                            {
+                                over "tn__link_150_tip_lI" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </allegro_left/Materials/white>
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,239 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a8"
+    }
+    defaultPrim = "h1"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "h1"
+{
+    def Scope "Materials"
+    {
+        def Material "black" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/black>
+        )
+        {
+        }
+
+        def Material "white" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/white>
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "pelvis"
+        {
+            over "pelvis" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </h1/Materials/black>
+            }
+
+            over "left_hip_yaw_link"
+            {
+                over "left_hip_yaw_link" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </h1/Materials/black>
+                }
+
+                over "left_hip_roll_link"
+                {
+                    over "left_hip_roll_link" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </h1/Materials/black>
+                    }
+
+                    over "left_hip_pitch_link"
+                    {
+                        over "left_hip_pitch_link" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </h1/Materials/black>
+                        }
+
+                        over "left_knee_link"
+                        {
+                            over "left_knee_link" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </h1/Materials/black>
+                            }
+
+                            over "left_ankle_link"
+                            {
+                                over "left_ankle_link" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </h1/Materials/black>
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "right_hip_yaw_link"
+            {
+                over "right_hip_yaw_link" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </h1/Materials/black>
+                }
+
+                over "right_hip_roll_link"
+                {
+                    over "right_hip_roll_link" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </h1/Materials/black>
+                    }
+
+                    over "right_hip_pitch_link"
+                    {
+                        over "right_hip_pitch_link" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </h1/Materials/black>
+                        }
+
+                        over "right_knee_link"
+                        {
+                            over "right_knee_link" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </h1/Materials/black>
+                            }
+
+                            over "right_ankle_link"
+                            {
+                                over "right_ankle_link" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </h1/Materials/black>
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "torso_link"
+            {
+                over "torso_link" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </h1/Materials/black>
+                }
+
+                over "logo_link" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </h1/Materials/white>
+                }
+
+                over "left_shoulder_pitch_link"
+                {
+                    over "left_shoulder_pitch_link" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </h1/Materials/black>
+                    }
+
+                    over "left_shoulder_roll_link"
+                    {
+                        over "left_shoulder_roll_link" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </h1/Materials/black>
+                        }
+
+                        over "left_shoulder_yaw_link"
+                        {
+                            over "left_shoulder_yaw_link" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </h1/Materials/black>
+                            }
+
+                            over "left_elbow_link"
+                            {
+                                over "left_elbow_link" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </h1/Materials/black>
+                                }
+                            }
+                        }
+                    }
+                }
+
+                over "right_shoulder_pitch_link"
+                {
+                    over "right_shoulder_pitch_link" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </h1/Materials/black>
+                    }
+
+                    over "right_shoulder_roll_link"
+                    {
+                        over "right_shoulder_roll_link" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </h1/Materials/black>
+                        }
+
+                        over "right_shoulder_yaw_link"
+                        {
+                            over "right_shoulder_yaw_link" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </h1/Materials/black>
+                            }
+
+                            over "right_elbow_link"
+                            {
+                                over "right_elbow_link" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </h1/Materials/black>
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

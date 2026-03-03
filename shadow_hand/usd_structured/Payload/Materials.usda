@@ -1,0 +1,281 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a8"
+    }
+    defaultPrim = "left_shadow_hand"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "left_shadow_hand"
+{
+    def Scope "Materials"
+    {
+        def Material "gray" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/gray>
+        )
+        {
+        }
+
+        def Material "black" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/black>
+        )
+        {
+        }
+
+        def Material "metallic" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/metallic>
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "lh_forearm"
+        {
+            over "forearm_0" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </left_shadow_hand/Materials/gray>
+            }
+
+            over "forearm_1" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </left_shadow_hand/Materials/black>
+            }
+
+            over "lh_wrist"
+            {
+                over "wrist" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </left_shadow_hand/Materials/metallic>
+                }
+
+                over "lh_palm"
+                {
+                    over "palm" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </left_shadow_hand/Materials/black>
+                    }
+
+                    over "lh_ffknuckle"
+                    {
+                        over "f_knuckle" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </left_shadow_hand/Materials/metallic>
+                        }
+
+                        over "lh_ffproximal"
+                        {
+                            over "f_proximal" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </left_shadow_hand/Materials/black>
+                            }
+
+                            over "lh_ffmiddle"
+                            {
+                                over "f_middle" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </left_shadow_hand/Materials/black>
+                                }
+
+                                over "lh_ffdistal"
+                                {
+                                    over "f_distal_pst" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </left_shadow_hand/Materials/black>
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    over "lh_mfknuckle"
+                    {
+                        over "f_knuckle" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </left_shadow_hand/Materials/metallic>
+                        }
+
+                        over "lh_mfproximal"
+                        {
+                            over "f_proximal" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </left_shadow_hand/Materials/black>
+                            }
+
+                            over "lh_mfmiddle"
+                            {
+                                over "f_middle" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </left_shadow_hand/Materials/black>
+                                }
+
+                                over "lh_mfdistal"
+                                {
+                                    over "f_distal_pst" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </left_shadow_hand/Materials/black>
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    over "lh_rfknuckle"
+                    {
+                        over "f_knuckle" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </left_shadow_hand/Materials/metallic>
+                        }
+
+                        over "lh_rfproximal"
+                        {
+                            over "f_proximal" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </left_shadow_hand/Materials/black>
+                            }
+
+                            over "lh_rfmiddle"
+                            {
+                                over "f_middle" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </left_shadow_hand/Materials/black>
+                                }
+
+                                over "lh_rfdistal"
+                                {
+                                    over "f_distal_pst" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </left_shadow_hand/Materials/black>
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    over "lh_lfmetacarpal"
+                    {
+                        over "lf_metacarpal" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </left_shadow_hand/Materials/black>
+                        }
+
+                        over "lh_lfknuckle"
+                        {
+                            over "f_knuckle" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </left_shadow_hand/Materials/metallic>
+                            }
+
+                            over "lh_lfproximal"
+                            {
+                                over "f_proximal" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </left_shadow_hand/Materials/black>
+                                }
+
+                                over "lh_lfmiddle"
+                                {
+                                    over "f_middle" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </left_shadow_hand/Materials/black>
+                                    }
+
+                                    over "lh_lfdistal"
+                                    {
+                                        over "f_distal_pst" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </left_shadow_hand/Materials/black>
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    over "lh_thbase"
+                    {
+                        over "lh_thproximal"
+                        {
+                            over "th_proximal" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </left_shadow_hand/Materials/black>
+                            }
+
+                            over "lh_thhub"
+                            {
+                                over "lh_thmiddle"
+                                {
+                                    over "th_middle" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </left_shadow_hand/Materials/black>
+                                    }
+
+                                    over "lh_thdistal"
+                                    {
+                                        over "th_distal_pst" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </left_shadow_hand/Materials/black>
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

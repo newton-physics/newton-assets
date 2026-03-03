@@ -1,0 +1,1805 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a8"
+    }
+    defaultPrim = "left_shadow_hand"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "left_shadow_hand"
+{
+    def Scope "Physics"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI", "MjcMaterialAPI"]
+        )
+        {
+            float newton:rollingFriction = 0.0001
+            float newton:torsionalFriction = 0.005
+            float physics:dynamicFriction = 1
+        }
+
+        def MjcTendon "lh_FFJ0"
+        {
+            uniform token mjc:actuatorfrclimited = "false"
+            prepend rel mjc:path = [
+                </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_ffknuckle/lh_ffproximal/lh_ffmiddle/lh_FFJ2>,
+                </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_ffknuckle/lh_ffproximal/lh_ffmiddle/lh_ffdistal/lh_FFJ1>,
+            ]
+            uniform double[] mjc:path:coef = [1, 1]
+            uniform int[] mjc:path:indices = [0, 1]
+            uniform token mjc:type = "fixed"
+        }
+
+        def MjcTendon "lh_MFJ0"
+        {
+            uniform token mjc:actuatorfrclimited = "false"
+            prepend rel mjc:path = [
+                </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_mfknuckle/lh_mfproximal/lh_mfmiddle/lh_MFJ2>,
+                </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_mfknuckle/lh_mfproximal/lh_mfmiddle/lh_mfdistal/lh_MFJ1>,
+            ]
+            uniform double[] mjc:path:coef = [1, 1]
+            uniform int[] mjc:path:indices = [0, 1]
+            uniform token mjc:type = "fixed"
+        }
+
+        def MjcTendon "lh_RFJ0"
+        {
+            uniform token mjc:actuatorfrclimited = "false"
+            prepend rel mjc:path = [
+                </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_rfknuckle/lh_rfproximal/lh_rfmiddle/lh_RFJ2>,
+                </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_rfknuckle/lh_rfproximal/lh_rfmiddle/lh_rfdistal/lh_RFJ1>,
+            ]
+            uniform double[] mjc:path:coef = [1, 1]
+            uniform int[] mjc:path:indices = [0, 1]
+            uniform token mjc:type = "fixed"
+        }
+
+        def MjcTendon "lh_LFJ0"
+        {
+            uniform token mjc:actuatorfrclimited = "false"
+            prepend rel mjc:path = [
+                </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_lfknuckle/lh_lfproximal/lh_lfmiddle/lh_LFJ2>,
+                </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_lfknuckle/lh_lfproximal/lh_lfmiddle/lh_lfdistal/lh_LFJ1>,
+            ]
+            uniform double[] mjc:path:coef = [1, 1]
+            uniform int[] mjc:path:indices = [0, 1]
+            uniform token mjc:type = "fixed"
+        }
+
+        def MjcActuator "lh_A_WRJ2"
+        {
+            uniform double[] mjc:biasPrm = [0, -10, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 0.174533
+            uniform double mjc:ctrlRange:min = -0.523599
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            uniform double[] mjc:gainPrm = [10, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_WRJ2>
+        }
+
+        def MjcActuator "lh_A_WRJ1"
+        {
+            uniform double[] mjc:biasPrm = [0, -8, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 0.488692
+            uniform double mjc:ctrlRange:min = -0.698132
+            uniform double mjc:forceRange:max = 5
+            uniform double mjc:forceRange:min = -5
+            uniform double[] mjc:gainPrm = [8, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_WRJ1>
+        }
+
+        def MjcActuator "lh_A_THJ5"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.4, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.0472
+            uniform double mjc:ctrlRange:min = -1.0472
+            uniform double mjc:forceRange:max = 3
+            uniform double mjc:forceRange:min = -3
+            uniform double[] mjc:gainPrm = [0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_THJ5>
+        }
+
+        def MjcActuator "lh_A_THJ4"
+        {
+            uniform double[] mjc:biasPrm = [0, -1, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.22173
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_THJ4>
+        }
+
+        def MjcActuator "lh_A_THJ3"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.5, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 0.20944
+            uniform double mjc:ctrlRange:min = -0.20944
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            uniform double[] mjc:gainPrm = [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_thhub/lh_THJ3>
+        }
+
+        def MjcActuator "lh_A_THJ2"
+        {
+            uniform double[] mjc:biasPrm = [0, -1.5, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 0.698132
+            uniform double mjc:ctrlRange:min = -0.698132
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            uniform double[] mjc:gainPrm = [1.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_thhub/lh_thmiddle/lh_THJ2>
+        }
+
+        def MjcActuator "lh_A_THJ1"
+        {
+            uniform double[] mjc:biasPrm = [0, -1, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.5708
+            uniform double mjc:ctrlRange:min = -0.261799
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_thhub/lh_thmiddle/lh_thdistal/lh_THJ1>
+        }
+
+        def MjcActuator "lh_A_FFJ4"
+        {
+            uniform double[] mjc:biasPrm = [0, -1, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 0.349066
+            uniform double mjc:ctrlRange:min = -0.349066
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_ffknuckle/lh_FFJ4>
+        }
+
+        def MjcActuator "lh_A_FFJ3"
+        {
+            uniform double[] mjc:biasPrm = [0, -1, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.5708
+            uniform double mjc:ctrlRange:min = -0.261799
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_ffknuckle/lh_ffproximal/lh_FFJ3>
+        }
+
+        def MjcActuator "lh_A_FFJ0"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.5, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 3.1415
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            uniform double[] mjc:gainPrm = [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </left_shadow_hand/Physics/lh_FFJ0>
+        }
+
+        def MjcActuator "lh_A_MFJ4"
+        {
+            uniform double[] mjc:biasPrm = [0, -1, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 0.349066
+            uniform double mjc:ctrlRange:min = -0.349066
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_mfknuckle/lh_MFJ4>
+        }
+
+        def MjcActuator "lh_A_MFJ3"
+        {
+            uniform double[] mjc:biasPrm = [0, -1, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.5708
+            uniform double mjc:ctrlRange:min = -0.261799
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_mfknuckle/lh_mfproximal/lh_MFJ3>
+        }
+
+        def MjcActuator "lh_A_MFJ0"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.5, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 3.1415
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            uniform double[] mjc:gainPrm = [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </left_shadow_hand/Physics/lh_MFJ0>
+        }
+
+        def MjcActuator "lh_A_RFJ4"
+        {
+            uniform double[] mjc:biasPrm = [0, -1, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 0.349066
+            uniform double mjc:ctrlRange:min = -0.349066
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_rfknuckle/lh_RFJ4>
+        }
+
+        def MjcActuator "lh_A_RFJ3"
+        {
+            uniform double[] mjc:biasPrm = [0, -1, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.5708
+            uniform double mjc:ctrlRange:min = -0.261799
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_rfknuckle/lh_rfproximal/lh_RFJ3>
+        }
+
+        def MjcActuator "lh_A_RFJ0"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.5, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 3.1415
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            uniform double[] mjc:gainPrm = [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </left_shadow_hand/Physics/lh_RFJ0>
+        }
+
+        def MjcActuator "lh_A_LFJ5"
+        {
+            uniform double[] mjc:biasPrm = [0, -1, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 0.785398
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_LFJ5>
+        }
+
+        def MjcActuator "lh_A_LFJ4"
+        {
+            uniform double[] mjc:biasPrm = [0, -1, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 0.349066
+            uniform double mjc:ctrlRange:min = -0.349066
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_lfknuckle/lh_LFJ4>
+        }
+
+        def MjcActuator "lh_A_LFJ3"
+        {
+            uniform double[] mjc:biasPrm = [0, -1, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.5708
+            uniform double mjc:ctrlRange:min = -0.261799
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            rel mjc:target = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_lfknuckle/lh_lfproximal/lh_LFJ3>
+        }
+
+        def MjcActuator "lh_A_LFJ0"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.5, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 3.1415
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            uniform double[] mjc:gainPrm = [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </left_shadow_hand/Physics/lh_LFJ0>
+        }
+    }
+
+    def "Geometry"
+    {
+        def "lh_forearm" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            point3f physics:centerOfMass = (0, 0, 0.09)
+            float3 physics:diagonalInertia = (0.0138, 0.0138, 0.00744)
+            float physics:mass = 3
+            quatf physics:principalAxes = (1, 0, 0, 0)
+
+            over "forearm_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                uniform int mjc:group = 2
+                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                uniform double[] mjc:solref = [0.005, 1]
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 0
+                float physics:density = 1000
+            }
+
+            over "forearm_1" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                uniform int mjc:group = 2
+                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                uniform double[] mjc:solref = [0.005, 1]
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 0
+                float physics:density = 1000
+            }
+
+            over "forearm_collision" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                uniform int mjc:group = 3
+                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                uniform double[] mjc:solref = [0.005, 1]
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                float physics:density = 1000
+            }
+
+            over "Box" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                uniform int mjc:group = 3
+                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                uniform double[] mjc:solref = [0.005, 1]
+                float newton:contactGap = 0
+                float physics:density = 1000
+            }
+
+            def PhysicsFixedJoint "PhysicsFixedJoint"
+            {
+                rel physics:body0 = </left_shadow_hand>
+                rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm>
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (6.123234e-17, 0.70710677, 4.5986944e-17, 0.70710677)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+            }
+
+            def "lh_wrist" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+            )
+            {
+                point3f physics:centerOfMass = (0, 0, 0.029)
+                float3 physics:diagonalInertia = (0.000064, 0.0000438, 0.000035)
+                prepend rel physics:filteredPairs = </left_shadow_hand/Geometry/lh_forearm>
+                float physics:mass = 0.1
+                quatf physics:principalAxes = (0.5, 0.5, 0.5, 0.5)
+
+                over "wrist" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 2
+                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                    uniform double[] mjc:solref = [0.005, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 0
+                    float physics:density = 1000
+                }
+
+                over "Cylinder" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                    uniform double[] mjc:solref = [0.005, 1]
+                    float newton:contactGap = 0
+                    float physics:density = 1000
+                }
+
+                over "Cylinder_1" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                    uniform double[] mjc:solref = [0.005, 1]
+                    float newton:contactGap = 0
+                    float physics:density = 1000
+                }
+
+                over "Cylinder_2" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                    uniform double[] mjc:solref = [0.005, 1]
+                    float newton:contactGap = 0
+                    float physics:density = 1000
+                }
+
+                over "Box" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                    uniform double[] mjc:solref = [0.005, 1]
+                    float newton:contactGap = 0
+                    float physics:density = 1000
+                }
+
+                over "Box_1" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                    uniform double[] mjc:solref = [0.005, 1]
+                    float newton:contactGap = 0
+                    float physics:density = 1000
+                }
+
+                def PhysicsRevoluteJoint "lh_WRJ2" (
+                    prepend apiSchemas = ["MjcJointAPI"]
+                )
+                {
+                    uniform double mjc:armature = 0.0002
+                    uniform double mjc:damping = 0.5
+                    uniform double mjc:frictionloss = 0.01
+                    uniform token physics:axis = "Y"
+                    rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm>
+                    rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist>
+                    point3f physics:localPos0 = (0.01, -9.62965e-34, 0.21301)
+                    point3f physics:localPos1 = (0, 0, 0)
+                    quatf physics:localRot0 = (-8.612732e-17, 0.70710677, 0.70710677, 1.110223e-16)
+                    quatf physics:localRot1 = (0, -1, 0, 0)
+                    float physics:lowerLimit = -30.000013
+                    float physics:upperLimit = 10.000004
+                }
+
+                def "lh_palm" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                )
+                {
+                    point3f physics:centerOfMass = (0, 0, 0.035)
+                    float3 physics:diagonalInertia = (0.0005287, 0.0003581, 0.000191)
+                    float physics:mass = 0.3
+                    quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                    over "palm" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 2
+                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                        uniform double[] mjc:solref = [0.005, 1]
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        bool physics:collisionEnabled = 0
+                        float physics:density = 1000
+                    }
+
+                    over "Box" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                        uniform double[] mjc:solref = [0.005, 1]
+                        float newton:contactGap = 0
+                        float physics:density = 1000
+                    }
+
+                    over "Box_1" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                        uniform double[] mjc:solref = [0.005, 1]
+                        float newton:contactGap = 0
+                        float physics:density = 1000
+                    }
+
+                    over "Box_2" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                        uniform double[] mjc:solref = [0.005, 1]
+                        float newton:contactGap = 0
+                        float physics:density = 1000
+                    }
+
+                    over "Box_3" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                        uniform double[] mjc:solref = [0.005, 1]
+                        float newton:contactGap = 0
+                        float physics:density = 1000
+                    }
+
+                    over "Box_4" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                        uniform double[] mjc:solref = [0.005, 1]
+                        float newton:contactGap = 0
+                        float physics:density = 1000
+                    }
+
+                    over "Box_5" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                        uniform double[] mjc:solref = [0.005, 1]
+                        float newton:contactGap = 0
+                        float physics:density = 1000
+                    }
+
+                    over "Box_6" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                        uniform double[] mjc:solref = [0.005, 1]
+                        float newton:contactGap = 0
+                        float physics:density = 1000
+                    }
+
+                    over "Box_7" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                        uniform double[] mjc:solref = [0.005, 1]
+                        float newton:contactGap = 0
+                        float physics:density = 1000
+                    }
+
+                    def PhysicsRevoluteJoint "lh_WRJ1" (
+                        prepend apiSchemas = ["MjcJointAPI"]
+                    )
+                    {
+                        uniform double mjc:armature = 0.0002
+                        uniform double mjc:damping = 0.5
+                        uniform double mjc:frictionloss = 0.01
+                        uniform token physics:axis = "X"
+                        rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist>
+                        rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm>
+                        point3f physics:localPos0 = (-5.169879e-26, -1.7347235e-18, 0.034)
+                        point3f physics:localPos1 = (0, 0, 0)
+                        quatf physics:localRot0 = (1, 0, 0, 0)
+                        quatf physics:localRot1 = (1, 0, 0, 0)
+                        float physics:lowerLimit = -40.000015
+                        float physics:upperLimit = 27.999989
+                    }
+
+                    def "lh_ffknuckle" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (3.2e-7, 2.6e-7, 2.6e-7)
+                        float physics:mass = 0.008
+                        quatf physics:principalAxes = (0.5, 0.5, -0.5, 0.5)
+
+                        over "f_knuckle" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                            uniform double[] mjc:solref = [0.005, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
+
+                        over "Cylinder" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                            uniform double[] mjc:solref = [0.005, 1]
+                            float newton:contactGap = 0
+                            float physics:density = 1000
+                        }
+
+                        def PhysicsRevoluteJoint "lh_FFJ4" (
+                            prepend apiSchemas = ["MjcJointAPI"]
+                        )
+                        {
+                            uniform double mjc:armature = 0.0002
+                            uniform double mjc:damping = 0.05
+                            uniform double mjc:frictionloss = 0.01
+                            uniform token physics:axis = "Y"
+                            rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm>
+                            rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_ffknuckle>
+                            point3f physics:localPos0 = (-0.033, 0, 0.095)
+                            point3f physics:localPos1 = (0, 0, 0)
+                            quatf physics:localRot0 = (1, 0, 0, 0)
+                            quatf physics:localRot1 = (1, 0, 0, 0)
+                            float physics:lowerLimit = -20.000008
+                            float physics:upperLimit = 20.000008
+                        }
+
+                        def "lh_ffproximal" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0, 0, 0.0225)
+                            float3 physics:diagonalInertia = (0.00001, 0.0000098, 0.0000018)
+                            float physics:mass = 0.03
+                            quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                            over "f_proximal" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                uniform double[] mjc:solref = [0.005, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
+
+                            over "Capsule" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                uniform double[] mjc:solref = [0.005, 1]
+                                float newton:contactGap = 0
+                                float physics:density = 1000
+                            }
+
+                            def PhysicsRevoluteJoint "lh_FFJ3" (
+                                prepend apiSchemas = ["MjcJointAPI"]
+                            )
+                            {
+                                uniform double mjc:armature = 0.0002
+                                uniform double mjc:damping = 0.05
+                                uniform double mjc:frictionloss = 0.01
+                                uniform token physics:axis = "X"
+                                rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_ffknuckle>
+                                rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_ffknuckle/lh_ffproximal>
+                                point3f physics:localPos0 = (0, 0, 0)
+                                point3f physics:localPos1 = (0, 0, 0)
+                                quatf physics:localRot0 = (1, 0, 0, 0)
+                                quatf physics:localRot1 = (1, 0, 0, 0)
+                                float physics:lowerLimit = -14.999978
+                                float physics:upperLimit = 90.00021
+                            }
+
+                            def "lh_ffmiddle" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            )
+                            {
+                                point3f physics:centerOfMass = (0, 0, 0.0125)
+                                float3 physics:diagonalInertia = (0.0000027, 0.0000026, 8.7e-7)
+                                float physics:mass = 0.017
+                                quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                                over "f_middle" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 2
+                                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                    uniform double[] mjc:solref = [0.005, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    bool physics:collisionEnabled = 0
+                                    float physics:density = 1000
+                                }
+
+                                over "Capsule" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                    uniform double[] mjc:solref = [0.005, 1]
+                                    float newton:contactGap = 0
+                                    float physics:density = 1000
+                                }
+
+                                def PhysicsRevoluteJoint "lh_FFJ2" (
+                                    prepend apiSchemas = ["MjcJointAPI"]
+                                )
+                                {
+                                    uniform double mjc:armature = 0.0002
+                                    uniform double mjc:damping = 0.05
+                                    uniform double mjc:frictionloss = 0.01
+                                    uniform token physics:axis = "X"
+                                    rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_ffknuckle/lh_ffproximal>
+                                    rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_ffknuckle/lh_ffproximal/lh_ffmiddle>
+                                    point3f physics:localPos0 = (0, 0, 0.045)
+                                    point3f physics:localPos1 = (0, 0, 0)
+                                    quatf physics:localRot0 = (1, 0, 0, 0)
+                                    quatf physics:localRot1 = (1, 0, 0, 0)
+                                    float physics:lowerLimit = 0
+                                    float physics:upperLimit = 90.00021
+                                }
+
+                                def "lh_ffdistal" (
+                                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                )
+                                {
+                                    point3f physics:centerOfMass = (0, 0, 0.0130769)
+                                    float3 physics:diagonalInertia = (0.00000128092, 0.00000112092, 5.3e-7)
+                                    float physics:mass = 0.013
+                                    quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                                    over "f_distal_pst" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 2
+                                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                        uniform double[] mjc:solref = [0.005, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        bool physics:collisionEnabled = 0
+                                        float physics:density = 1000
+                                    }
+
+                                    over "f_distal_pst_1" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                        uniform double[] mjc:solref = [0.005, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:density = 1000
+                                    }
+
+                                    def PhysicsRevoluteJoint "lh_FFJ1" (
+                                        prepend apiSchemas = ["MjcJointAPI"]
+                                    )
+                                    {
+                                        uniform double mjc:armature = 0.0002
+                                        uniform double mjc:damping = 0.05
+                                        uniform double mjc:frictionloss = 0.01
+                                        uniform token physics:axis = "X"
+                                        rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_ffknuckle/lh_ffproximal/lh_ffmiddle>
+                                        rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_ffknuckle/lh_ffproximal/lh_ffmiddle/lh_ffdistal>
+                                        point3f physics:localPos0 = (0, 0, 0.025)
+                                        point3f physics:localPos1 = (0, 0, 0)
+                                        quatf physics:localRot0 = (1, 0, 0, 0)
+                                        quatf physics:localRot1 = (1, 0, 0, 0)
+                                        float physics:lowerLimit = 0
+                                        float physics:upperLimit = 90.00021
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    def "lh_mfknuckle" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (3.2e-7, 2.6e-7, 2.6e-7)
+                        float physics:mass = 0.008
+                        quatf physics:principalAxes = (0.5, 0.5, -0.5, 0.5)
+
+                        over "f_knuckle" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                            uniform double[] mjc:solref = [0.005, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
+
+                        over "Cylinder" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                            uniform double[] mjc:solref = [0.005, 1]
+                            float newton:contactGap = 0
+                            float physics:density = 1000
+                        }
+
+                        def PhysicsRevoluteJoint "lh_MFJ4" (
+                            prepend apiSchemas = ["MjcJointAPI"]
+                        )
+                        {
+                            uniform double mjc:armature = 0.0002
+                            uniform double mjc:damping = 0.05
+                            uniform double mjc:frictionloss = 0.01
+                            uniform token physics:axis = "Y"
+                            rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm>
+                            rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_mfknuckle>
+                            point3f physics:localPos0 = (-0.011, 0, 0.099)
+                            point3f physics:localPos1 = (0, 0, 0)
+                            quatf physics:localRot0 = (1, 0, 0, 0)
+                            quatf physics:localRot1 = (1, 0, 0, 0)
+                            float physics:lowerLimit = -20.000008
+                            float physics:upperLimit = 20.000008
+                        }
+
+                        def "lh_mfproximal" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0, 0, 0.0225)
+                            float3 physics:diagonalInertia = (0.00001, 0.0000098, 0.0000018)
+                            float physics:mass = 0.03
+                            quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                            over "f_proximal" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                uniform double[] mjc:solref = [0.005, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
+
+                            over "Capsule" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                uniform double[] mjc:solref = [0.005, 1]
+                                float newton:contactGap = 0
+                                float physics:density = 1000
+                            }
+
+                            def PhysicsRevoluteJoint "lh_MFJ3" (
+                                prepend apiSchemas = ["MjcJointAPI"]
+                            )
+                            {
+                                uniform double mjc:armature = 0.0002
+                                uniform double mjc:damping = 0.05
+                                uniform double mjc:frictionloss = 0.01
+                                uniform token physics:axis = "X"
+                                rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_mfknuckle>
+                                rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_mfknuckle/lh_mfproximal>
+                                point3f physics:localPos0 = (0, 0, 0)
+                                point3f physics:localPos1 = (0, 0, 0)
+                                quatf physics:localRot0 = (1, 0, 0, 0)
+                                quatf physics:localRot1 = (1, 0, 0, 0)
+                                float physics:lowerLimit = -14.999978
+                                float physics:upperLimit = 90.00021
+                            }
+
+                            def "lh_mfmiddle" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            )
+                            {
+                                point3f physics:centerOfMass = (0, 0, 0.0125)
+                                float3 physics:diagonalInertia = (0.0000027, 0.0000026, 8.7e-7)
+                                float physics:mass = 0.017
+                                quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                                over "f_middle" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 2
+                                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                    uniform double[] mjc:solref = [0.005, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    bool physics:collisionEnabled = 0
+                                    float physics:density = 1000
+                                }
+
+                                over "Capsule" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                    uniform double[] mjc:solref = [0.005, 1]
+                                    float newton:contactGap = 0
+                                    float physics:density = 1000
+                                }
+
+                                def PhysicsRevoluteJoint "lh_MFJ2" (
+                                    prepend apiSchemas = ["MjcJointAPI"]
+                                )
+                                {
+                                    uniform double mjc:armature = 0.0002
+                                    uniform double mjc:damping = 0.05
+                                    uniform double mjc:frictionloss = 0.01
+                                    uniform token physics:axis = "X"
+                                    rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_mfknuckle/lh_mfproximal>
+                                    rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_mfknuckle/lh_mfproximal/lh_mfmiddle>
+                                    point3f physics:localPos0 = (0, 1.7347235e-18, 0.045)
+                                    point3f physics:localPos1 = (0, 0, 0)
+                                    quatf physics:localRot0 = (1, 0, 0, 0)
+                                    quatf physics:localRot1 = (1, 0, 0, 0)
+                                    float physics:lowerLimit = 0
+                                    float physics:upperLimit = 90.00021
+                                }
+
+                                def "lh_mfdistal" (
+                                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                )
+                                {
+                                    point3f physics:centerOfMass = (0, 0, 0.0130769)
+                                    float3 physics:diagonalInertia = (0.00000128092, 0.00000112092, 5.3e-7)
+                                    float physics:mass = 0.013
+                                    quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                                    over "f_distal_pst" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 2
+                                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                        uniform double[] mjc:solref = [0.005, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        bool physics:collisionEnabled = 0
+                                        float physics:density = 1000
+                                    }
+
+                                    over "f_distal_pst_1" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                        uniform double[] mjc:solref = [0.005, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:density = 1000
+                                    }
+
+                                    def PhysicsRevoluteJoint "lh_MFJ1" (
+                                        prepend apiSchemas = ["MjcJointAPI"]
+                                    )
+                                    {
+                                        uniform double mjc:armature = 0.0002
+                                        uniform double mjc:damping = 0.05
+                                        uniform double mjc:frictionloss = 0.01
+                                        uniform token physics:axis = "X"
+                                        rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_mfknuckle/lh_mfproximal/lh_mfmiddle>
+                                        rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_mfknuckle/lh_mfproximal/lh_mfmiddle/lh_mfdistal>
+                                        point3f physics:localPos0 = (0, -1.7347235e-18, 0.025)
+                                        point3f physics:localPos1 = (0, 0, 0)
+                                        quatf physics:localRot0 = (1, 0, 0, 0)
+                                        quatf physics:localRot1 = (1, 0, 0, 0)
+                                        float physics:lowerLimit = 0
+                                        float physics:upperLimit = 90.00021
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    def "lh_rfknuckle" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (3.2e-7, 2.6e-7, 2.6e-7)
+                        float physics:mass = 0.008
+                        quatf physics:principalAxes = (0.5, 0.5, -0.5, 0.5)
+
+                        over "f_knuckle" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                            uniform double[] mjc:solref = [0.005, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
+
+                        over "Cylinder" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                            uniform double[] mjc:solref = [0.005, 1]
+                            float newton:contactGap = 0
+                            float physics:density = 1000
+                        }
+
+                        def PhysicsRevoluteJoint "lh_RFJ4" (
+                            prepend apiSchemas = ["MjcJointAPI"]
+                        )
+                        {
+                            uniform double mjc:armature = 0.0002
+                            uniform double mjc:damping = 0.05
+                            uniform double mjc:frictionloss = 0.01
+                            uniform token physics:axis = "Y"
+                            rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm>
+                            rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_rfknuckle>
+                            point3f physics:localPos0 = (0.011, 1.7347235e-18, 0.095)
+                            point3f physics:localPos1 = (0, 0, 0)
+                            quatf physics:localRot0 = (2.7755576e-17, -1, 0, 0)
+                            quatf physics:localRot1 = (0, -1, 0, 0)
+                            float physics:lowerLimit = -20.000008
+                            float physics:upperLimit = 20.000008
+                        }
+
+                        def "lh_rfproximal" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0, 0, 0.0225)
+                            float3 physics:diagonalInertia = (0.00001, 0.0000098, 0.0000018)
+                            float physics:mass = 0.03
+                            quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                            over "f_proximal" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                uniform double[] mjc:solref = [0.005, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
+
+                            over "Capsule" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                uniform double[] mjc:solref = [0.005, 1]
+                                float newton:contactGap = 0
+                                float physics:density = 1000
+                            }
+
+                            def PhysicsRevoluteJoint "lh_RFJ3" (
+                                prepend apiSchemas = ["MjcJointAPI"]
+                            )
+                            {
+                                uniform double mjc:armature = 0.0002
+                                uniform double mjc:damping = 0.05
+                                uniform double mjc:frictionloss = 0.01
+                                uniform token physics:axis = "X"
+                                rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_rfknuckle>
+                                rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_rfknuckle/lh_rfproximal>
+                                point3f physics:localPos0 = (0, 0, 0)
+                                point3f physics:localPos1 = (0, 0, 0)
+                                quatf physics:localRot0 = (1, 0, 0, 0)
+                                quatf physics:localRot1 = (1, 0, 0, 0)
+                                float physics:lowerLimit = -14.999978
+                                float physics:upperLimit = 90.00021
+                            }
+
+                            def "lh_rfmiddle" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            )
+                            {
+                                point3f physics:centerOfMass = (0, 0, 0.0125)
+                                float3 physics:diagonalInertia = (0.0000027, 0.0000026, 8.7e-7)
+                                float physics:mass = 0.017
+                                quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                                over "f_middle" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 2
+                                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                    uniform double[] mjc:solref = [0.005, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    bool physics:collisionEnabled = 0
+                                    float physics:density = 1000
+                                }
+
+                                over "Capsule" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                    uniform double[] mjc:solref = [0.005, 1]
+                                    float newton:contactGap = 0
+                                    float physics:density = 1000
+                                }
+
+                                def PhysicsRevoluteJoint "lh_RFJ2" (
+                                    prepend apiSchemas = ["MjcJointAPI"]
+                                )
+                                {
+                                    uniform double mjc:armature = 0.0002
+                                    uniform double mjc:damping = 0.05
+                                    uniform double mjc:frictionloss = 0.01
+                                    uniform token physics:axis = "X"
+                                    rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_rfknuckle/lh_rfproximal>
+                                    rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_rfknuckle/lh_rfproximal/lh_rfmiddle>
+                                    point3f physics:localPos0 = (0, 0, 0.045)
+                                    point3f physics:localPos1 = (0, 0, 0)
+                                    quatf physics:localRot0 = (1, 0, 0, 0)
+                                    quatf physics:localRot1 = (1, 0, 0, 0)
+                                    float physics:lowerLimit = 0
+                                    float physics:upperLimit = 90.00021
+                                }
+
+                                def "lh_rfdistal" (
+                                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                )
+                                {
+                                    point3f physics:centerOfMass = (0, 0, 0.0130769)
+                                    float3 physics:diagonalInertia = (0.00000128092, 0.00000112092, 5.3e-7)
+                                    float physics:mass = 0.013
+                                    quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                                    over "f_distal_pst" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 2
+                                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                        uniform double[] mjc:solref = [0.005, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        bool physics:collisionEnabled = 0
+                                        float physics:density = 1000
+                                    }
+
+                                    over "f_distal_pst_1" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                        uniform double[] mjc:solref = [0.005, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:density = 1000
+                                    }
+
+                                    def PhysicsRevoluteJoint "lh_RFJ1" (
+                                        prepend apiSchemas = ["MjcJointAPI"]
+                                    )
+                                    {
+                                        uniform double mjc:armature = 0.0002
+                                        uniform double mjc:damping = 0.05
+                                        uniform double mjc:frictionloss = 0.01
+                                        uniform token physics:axis = "X"
+                                        rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_rfknuckle/lh_rfproximal/lh_rfmiddle>
+                                        rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_rfknuckle/lh_rfproximal/lh_rfmiddle/lh_rfdistal>
+                                        point3f physics:localPos0 = (0, 0, 0.025)
+                                        point3f physics:localPos1 = (0, 0, 0)
+                                        quatf physics:localRot0 = (1, 0, 0, 0)
+                                        quatf physics:localRot1 = (1, 0, 0, 0)
+                                        float physics:lowerLimit = 0
+                                        float physics:upperLimit = 90.00021
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    def "lh_lfmetacarpal" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0.04)
+                        float3 physics:diagonalInertia = (0.00001638, 0.0000145, 0.000004272)
+                        float physics:mass = 0.03
+                        quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                        over "lf_metacarpal" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 2
+                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                            uniform double[] mjc:solref = [0.005, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            bool physics:collisionEnabled = 0
+                            float physics:density = 1000
+                        }
+
+                        over "Box" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                            uniform double[] mjc:solref = [0.005, 1]
+                            float newton:contactGap = 0
+                            float physics:density = 1000
+                        }
+
+                        def PhysicsRevoluteJoint "lh_LFJ5" (
+                            prepend apiSchemas = ["MjcJointAPI"]
+                        )
+                        {
+                            uniform double mjc:armature = 0.0002
+                            uniform double mjc:damping = 0.05
+                            uniform double mjc:frictionloss = 0.01
+                            uniform token physics:axis = "X"
+                            rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm>
+                            rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal>
+                            point3f physics:localPos0 = (0.033, 1.7347235e-18, 0.02071)
+                            point3f physics:localPos1 = (0, 0, 0)
+                            quatf physics:localRot0 = (0.88701075, 2.7755576e-17, 0.46174878, 0)
+                            quatf physics:localRot1 = (0.88701075, 0, 0.46174878, 0)
+                            float physics:lowerLimit = 0
+                            float physics:upperLimit = 44.999992
+                        }
+
+                        def "lh_lfknuckle" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0, 0, 0)
+                            float3 physics:diagonalInertia = (3.2e-7, 2.6e-7, 2.6e-7)
+                            float physics:mass = 0.008
+                            quatf physics:principalAxes = (0.5, 0.5, -0.5, 0.5)
+
+                            over "f_knuckle" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                uniform double[] mjc:solref = [0.005, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
+
+                            over "Cylinder" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                uniform double[] mjc:solref = [0.005, 1]
+                                float newton:contactGap = 0
+                                float physics:density = 1000
+                            }
+
+                            def PhysicsRevoluteJoint "lh_LFJ4" (
+                                prepend apiSchemas = ["MjcJointAPI"]
+                            )
+                            {
+                                uniform double mjc:armature = 0.0002
+                                uniform double mjc:damping = 0.05
+                                uniform double mjc:frictionloss = 0.01
+                                uniform token physics:axis = "Y"
+                                rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal>
+                                rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_lfknuckle>
+                                point3f physics:localPos0 = (0, -1.7347235e-18, 0.06579)
+                                point3f physics:localPos1 = (0, 0, 0)
+                                quatf physics:localRot0 = (2.7755576e-17, -1, 0, 0)
+                                quatf physics:localRot1 = (0, -1, 0, 0)
+                                float physics:lowerLimit = -20.000008
+                                float physics:upperLimit = 20.000008
+                            }
+
+                            def "lh_lfproximal" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            )
+                            {
+                                point3f physics:centerOfMass = (0, 0, 0.0225)
+                                float3 physics:diagonalInertia = (0.00001, 0.0000098, 0.0000018)
+                                float physics:mass = 0.03
+                                quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                                over "f_proximal" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 2
+                                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                    uniform double[] mjc:solref = [0.005, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    bool physics:collisionEnabled = 0
+                                    float physics:density = 1000
+                                }
+
+                                over "Capsule" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                    uniform double[] mjc:solref = [0.005, 1]
+                                    float newton:contactGap = 0
+                                    float physics:density = 1000
+                                }
+
+                                def PhysicsRevoluteJoint "lh_LFJ3" (
+                                    prepend apiSchemas = ["MjcJointAPI"]
+                                )
+                                {
+                                    uniform double mjc:armature = 0.0002
+                                    uniform double mjc:damping = 0.05
+                                    uniform double mjc:frictionloss = 0.01
+                                    uniform token physics:axis = "X"
+                                    rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_lfknuckle>
+                                    rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_lfknuckle/lh_lfproximal>
+                                    point3f physics:localPos0 = (0, 0, 0)
+                                    point3f physics:localPos1 = (0, 0, 0)
+                                    quatf physics:localRot0 = (1, 0, 0, 0)
+                                    quatf physics:localRot1 = (1, 0, 0, 0)
+                                    float physics:lowerLimit = -14.999978
+                                    float physics:upperLimit = 90.00021
+                                }
+
+                                def "lh_lfmiddle" (
+                                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                )
+                                {
+                                    point3f physics:centerOfMass = (0, 0, 0.0125)
+                                    float3 physics:diagonalInertia = (0.0000027, 0.0000026, 8.7e-7)
+                                    float physics:mass = 0.017
+                                    quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                                    over "f_middle" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 2
+                                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                        uniform double[] mjc:solref = [0.005, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        bool physics:collisionEnabled = 0
+                                        float physics:density = 1000
+                                    }
+
+                                    over "Capsule" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                        uniform double[] mjc:solref = [0.005, 1]
+                                        float newton:contactGap = 0
+                                        float physics:density = 1000
+                                    }
+
+                                    def PhysicsRevoluteJoint "lh_LFJ2" (
+                                        prepend apiSchemas = ["MjcJointAPI"]
+                                    )
+                                    {
+                                        uniform double mjc:armature = 0.0002
+                                        uniform double mjc:damping = 0.05
+                                        uniform double mjc:frictionloss = 0.01
+                                        uniform token physics:axis = "X"
+                                        rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_lfknuckle/lh_lfproximal>
+                                        rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_lfknuckle/lh_lfproximal/lh_lfmiddle>
+                                        point3f physics:localPos0 = (0, 1.7347235e-18, 0.045)
+                                        point3f physics:localPos1 = (0, 0, 0)
+                                        quatf physics:localRot0 = (1, 0, 0, 0)
+                                        quatf physics:localRot1 = (1, 0, 0, 0)
+                                        float physics:lowerLimit = 0
+                                        float physics:upperLimit = 90.00021
+                                    }
+
+                                    def "lh_lfdistal" (
+                                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                    )
+                                    {
+                                        point3f physics:centerOfMass = (0, 0, 0.0130769)
+                                        float3 physics:diagonalInertia = (0.00000128092, 0.00000112092, 5.3e-7)
+                                        float physics:mass = 0.013
+                                        quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                                        over "f_distal_pst" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 2
+                                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                            uniform double[] mjc:solref = [0.005, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            bool physics:collisionEnabled = 0
+                                            float physics:density = 1000
+                                        }
+
+                                        over "f_distal_pst_1" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                            uniform double[] mjc:solref = [0.005, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        def PhysicsRevoluteJoint "lh_LFJ1" (
+                                            prepend apiSchemas = ["MjcJointAPI"]
+                                        )
+                                        {
+                                            uniform double mjc:armature = 0.0002
+                                            uniform double mjc:damping = 0.05
+                                            uniform double mjc:frictionloss = 0.01
+                                            uniform token physics:axis = "X"
+                                            rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_lfknuckle/lh_lfproximal/lh_lfmiddle>
+                                            rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_lfmetacarpal/lh_lfknuckle/lh_lfproximal/lh_lfmiddle/lh_lfdistal>
+                                            point3f physics:localPos0 = (0, -1.7347235e-18, 0.025)
+                                            point3f physics:localPos1 = (0, 0, 0)
+                                            quatf physics:localRot0 = (1, 0, 0, 0)
+                                            quatf physics:localRot1 = (1, 0, 0, 0)
+                                            float physics:lowerLimit = 0
+                                            float physics:upperLimit = 90.00021
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    def "lh_thbase" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0, 0, 0)
+                        float3 physics:diagonalInertia = (1.6e-7, 1.6e-7, 1.6e-7)
+                        float physics:mass = 0.01
+                        quatf physics:principalAxes = (1, 0, 0, 0)
+
+                        over "Sphere" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                            uniform double[] mjc:solref = [0.005, 1]
+                            float newton:contactGap = 0
+                            float physics:density = 1000
+                        }
+
+                        def PhysicsRevoluteJoint "lh_THJ5" (
+                            prepend apiSchemas = ["MjcJointAPI"]
+                        )
+                        {
+                            uniform double mjc:armature = 0.0002
+                            uniform double mjc:damping = 0.05
+                            uniform double mjc:frictionloss = 0.01
+                            uniform token physics:axis = "Z"
+                            rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm>
+                            rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase>
+                            point3f physics:localPos0 = (-0.034, -0.00858, 0.029)
+                            point3f physics:localPos1 = (0, 0, 0)
+                            quatf physics:localRot0 = (-8.326673e-17, -0.38268292, -1.6653345e-16, 0.92387974)
+                            quatf physics:localRot1 = (1, 0, 0, 0)
+                            float physics:lowerLimit = -60.00014
+                            float physics:upperLimit = 60.00014
+                        }
+
+                        def "lh_thproximal" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
+                        )
+                        {
+                            point3f physics:centerOfMass = (0, 0, 0.019)
+                            float3 physics:diagonalInertia = (0.0000136, 0.0000136, 0.00000313)
+                            prepend rel physics:filteredPairs = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_thhub/lh_thmiddle>
+                            float physics:mass = 0.04
+                            quatf physics:principalAxes = (1, 0, 0, 0)
+
+                            over "th_proximal" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 2
+                                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                uniform double[] mjc:solref = [0.005, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                bool physics:collisionEnabled = 0
+                                float physics:density = 1000
+                            }
+
+                            over "Capsule" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                uniform double[] mjc:solref = [0.005, 1]
+                                float newton:contactGap = 0
+                                float physics:density = 1000
+                            }
+
+                            def PhysicsRevoluteJoint "lh_THJ4" (
+                                prepend apiSchemas = ["MjcJointAPI"]
+                            )
+                            {
+                                uniform double mjc:armature = 0.0002
+                                uniform double mjc:damping = 0.05
+                                uniform double mjc:frictionloss = 0.01
+                                uniform token physics:axis = "X"
+                                rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase>
+                                rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal>
+                                point3f physics:localPos0 = (0, 0, 0)
+                                point3f physics:localPos1 = (0, 0, 0)
+                                quatf physics:localRot0 = (0, 0, -1, 0)
+                                quatf physics:localRot1 = (0, 0, -1, 0)
+                                float physics:lowerLimit = 0
+                                float physics:upperLimit = 69.99997
+                            }
+
+                            def "lh_thhub" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            )
+                            {
+                                point3f physics:centerOfMass = (0, 0, 0)
+                                float3 physics:diagonalInertia = (0.000001, 0.000001, 3e-7)
+                                float physics:mass = 0.005
+                                quatf physics:principalAxes = (1, 0, 0, 0)
+
+                                over "Sphere" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                    uniform double[] mjc:solref = [0.005, 1]
+                                    float newton:contactGap = 0
+                                    float physics:density = 1000
+                                }
+
+                                def PhysicsRevoluteJoint "lh_THJ3" (
+                                    prepend apiSchemas = ["MjcJointAPI"]
+                                )
+                                {
+                                    uniform double mjc:armature = 0.0002
+                                    uniform double mjc:damping = 0.05
+                                    uniform double mjc:frictionloss = 0.01
+                                    uniform token physics:axis = "X"
+                                    rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal>
+                                    rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_thhub>
+                                    point3f physics:localPos0 = (2.7755576e-17, 0, 0.038)
+                                    point3f physics:localPos1 = (0, 0, 0)
+                                    quatf physics:localRot0 = (0, 0, -1, 0)
+                                    quatf physics:localRot1 = (0, 0, -1, 0)
+                                    float physics:lowerLimit = -12.000028
+                                    float physics:upperLimit = 12.000028
+                                }
+
+                                def "lh_thmiddle" (
+                                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                )
+                                {
+                                    point3f physics:centerOfMass = (0, 0, 0.016)
+                                    float3 physics:diagonalInertia = (0.0000051, 0.0000051, 0.00000121)
+                                    float physics:mass = 0.02
+                                    quatf physics:principalAxes = (1, 0, 0, 0)
+
+                                    over "th_middle" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 2
+                                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                        uniform double[] mjc:solref = [0.005, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        bool physics:collisionEnabled = 0
+                                        float physics:density = 1000
+                                    }
+
+                                    over "Capsule" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                        uniform double[] mjc:solref = [0.005, 1]
+                                        float newton:contactGap = 0
+                                        float physics:density = 1000
+                                    }
+
+                                    over "Sphere" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                        uniform double[] mjc:solref = [0.005, 1]
+                                        float newton:contactGap = 0
+                                        float physics:density = 1000
+                                    }
+
+                                    def PhysicsRevoluteJoint "lh_THJ2" (
+                                        prepend apiSchemas = ["MjcJointAPI"]
+                                    )
+                                    {
+                                        uniform double mjc:armature = 0.0002
+                                        uniform double mjc:damping = 0.05
+                                        uniform double mjc:frictionloss = 0.01
+                                        uniform token physics:axis = "Y"
+                                        rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_thhub>
+                                        rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_thhub/lh_thmiddle>
+                                        point3f physics:localPos0 = (2.7755576e-17, 0, -5.551115e-17)
+                                        point3f physics:localPos1 = (0, 0, 0)
+                                        quatf physics:localRot0 = (-1.3877788e-17, -1, 0, 0)
+                                        quatf physics:localRot1 = (0, -1, 0, 0)
+                                        float physics:lowerLimit = -40.000015
+                                        float physics:upperLimit = 40.000015
+                                    }
+
+                                    def "lh_thdistal" (
+                                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                    )
+                                    {
+                                        point3f physics:centerOfMass = (0, 0, 0.0145588)
+                                        float3 physics:diagonalInertia = (0.00000237794, 0.00000227794, 0.000001)
+                                        float physics:mass = 0.017
+                                        quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
+
+                                        over "th_distal_pst" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 2
+                                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                            uniform double[] mjc:solref = [0.005, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            bool physics:collisionEnabled = 0
+                                            float physics:density = 1000
+                                        }
+
+                                        over "th_distal_pst_1" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </left_shadow_hand/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solimp = [0.5, 0.99, 0.0001, 0.5, 2]
+                                            uniform double[] mjc:solref = [0.005, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        def PhysicsRevoluteJoint "lh_THJ1" (
+                                            prepend apiSchemas = ["MjcJointAPI"]
+                                        )
+                                        {
+                                            uniform double mjc:armature = 0.0002
+                                            uniform double mjc:damping = 0.05
+                                            uniform double mjc:frictionloss = 0.01
+                                            uniform token physics:axis = "X"
+                                            rel physics:body0 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_thhub/lh_thmiddle>
+                                            rel physics:body1 = </left_shadow_hand/Geometry/lh_forearm/lh_wrist/lh_palm/lh_thbase/lh_thproximal/lh_thhub/lh_thmiddle/lh_thdistal>
+                                            point3f physics:localPos0 = (0, 0, 0.032)
+                                            point3f physics:localPos1 = (0, 0, 0)
+                                            quatf physics:localRot0 = (0.70710677, 0, 8.326673e-17, -0.70710677)
+                                            quatf physics:localRot1 = (1, 0, 0, 0)
+                                            float physics:lowerLimit = -14.999978
+                                            float physics:upperLimit = 90.00021
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend apiSchemas = ["NewtonSceneAPI", "MjcSceneAPI"]
+)
+{
+    uniform token mjc:compiler:angle = "radian"
+    uniform token mjc:option:cone = "elliptic"
+    uniform double mjc:option:impratio = 10
+    uniform int newton:maxSolverIterations = 100
+    uniform int newton:timeStepsPerSecond = 500
+    vector3f physics:gravityDirection = (0, 0, -1)
+    float physics:gravityMagnitude = 9.81
+}
+

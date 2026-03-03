@@ -1,0 +1,507 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a8"
+    }
+    defaultPrim = "g1_29dof_with_hand_rev_1_0"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "g1_29dof_with_hand_rev_1_0"
+{
+    def Scope "Materials"
+    {
+        def Material "black" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/black>
+        )
+        {
+        }
+
+        def Material "metal" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/metal>
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "pelvis"
+        {
+            over "pelvis" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/black>
+            }
+
+            over "pelvis_contour_link" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+            }
+
+            over "left_hip_pitch_link"
+            {
+                over "left_hip_pitch_link" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/black>
+                }
+
+                over "left_hip_roll_link"
+                {
+                    over "left_hip_roll_link" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                    }
+
+                    over "left_hip_yaw_link"
+                    {
+                        over "left_hip_yaw_link" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                        }
+
+                        over "left_knee_link"
+                        {
+                            over "left_knee_link" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                            }
+
+                            over "left_ankle_pitch_link"
+                            {
+                                over "left_ankle_pitch_link" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                }
+
+                                over "left_ankle_roll_link"
+                                {
+                                    over "left_ankle_roll_link" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/black>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "right_hip_pitch_link"
+            {
+                over "right_hip_pitch_link" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/black>
+                }
+
+                over "right_hip_roll_link"
+                {
+                    over "right_hip_roll_link" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                    }
+
+                    over "right_hip_yaw_link"
+                    {
+                        over "right_hip_yaw_link" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                        }
+
+                        over "right_knee_link"
+                        {
+                            over "right_knee_link" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                            }
+
+                            over "right_ankle_pitch_link"
+                            {
+                                over "right_ankle_pitch_link" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                }
+
+                                over "right_ankle_roll_link"
+                                {
+                                    over "right_ankle_roll_link" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/black>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "waist_yaw_link"
+            {
+                over "waist_yaw_link" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                }
+
+                over "waist_roll_link"
+                {
+                    over "waist_roll_link" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                    }
+
+                    over "torso_link"
+                    {
+                        over "torso_link" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                        }
+
+                        over "logo_link" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/black>
+                        }
+
+                        over "head_link" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/black>
+                        }
+
+                        over "left_shoulder_pitch_link"
+                        {
+                            over "left_shoulder_pitch_link" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                            }
+
+                            over "left_shoulder_roll_link"
+                            {
+                                over "left_shoulder_roll_link" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                }
+
+                                over "left_shoulder_yaw_link"
+                                {
+                                    over "left_shoulder_yaw_link" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                    }
+
+                                    over "left_elbow_link"
+                                    {
+                                        over "left_elbow_link" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                        }
+
+                                        over "left_wrist_roll_link"
+                                        {
+                                            over "left_wrist_roll_link" (
+                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                            }
+
+                                            over "left_wrist_pitch_link"
+                                            {
+                                                over "left_wrist_pitch_link" (
+                                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                                )
+                                                {
+                                                    rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                }
+
+                                                over "left_wrist_yaw_link"
+                                                {
+                                                    over "left_wrist_yaw_link" (
+                                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                                    )
+                                                    {
+                                                        rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                    }
+
+                                                    over "left_hand_palm_link" (
+                                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                                    )
+                                                    {
+                                                        rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                    }
+
+                                                    over "left_hand_thumb_0_link"
+                                                    {
+                                                        over "left_hand_thumb_0_link" (
+                                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                                        )
+                                                        {
+                                                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                        }
+
+                                                        over "left_hand_thumb_1_link"
+                                                        {
+                                                            over "left_hand_thumb_1_link" (
+                                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                                            )
+                                                            {
+                                                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                            }
+
+                                                            over "left_hand_thumb_2_link"
+                                                            {
+                                                                over "left_hand_thumb_2_link" (
+                                                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                                                )
+                                                                {
+                                                                    rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+                                                    over "left_hand_middle_0_link"
+                                                    {
+                                                        over "left_hand_middle_0_link" (
+                                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                                        )
+                                                        {
+                                                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                        }
+
+                                                        over "left_hand_middle_1_link"
+                                                        {
+                                                            over "left_hand_middle_1_link" (
+                                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                                            )
+                                                            {
+                                                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                            }
+                                                        }
+                                                    }
+
+                                                    over "left_hand_index_0_link"
+                                                    {
+                                                        over "left_hand_index_0_link" (
+                                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                                        )
+                                                        {
+                                                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                        }
+
+                                                        over "left_hand_index_1_link"
+                                                        {
+                                                            over "left_hand_index_1_link" (
+                                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                                            )
+                                                            {
+                                                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        over "right_shoulder_pitch_link"
+                        {
+                            over "right_shoulder_pitch_link" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                            }
+
+                            over "right_shoulder_roll_link"
+                            {
+                                over "right_shoulder_roll_link" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                }
+
+                                over "right_shoulder_yaw_link"
+                                {
+                                    over "right_shoulder_yaw_link" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                    }
+
+                                    over "right_elbow_link"
+                                    {
+                                        over "right_elbow_link" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                        }
+
+                                        over "right_wrist_roll_link"
+                                        {
+                                            over "right_wrist_roll_link" (
+                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                            }
+
+                                            over "right_wrist_pitch_link"
+                                            {
+                                                over "right_wrist_pitch_link" (
+                                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                                )
+                                                {
+                                                    rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                }
+
+                                                over "right_wrist_yaw_link"
+                                                {
+                                                    over "right_wrist_yaw_link" (
+                                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                                    )
+                                                    {
+                                                        rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                    }
+
+                                                    over "right_hand_palm_link" (
+                                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                                    )
+                                                    {
+                                                        rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                    }
+
+                                                    over "right_hand_thumb_0_link"
+                                                    {
+                                                        over "right_hand_thumb_0_link" (
+                                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                                        )
+                                                        {
+                                                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                        }
+
+                                                        over "right_hand_thumb_1_link"
+                                                        {
+                                                            over "right_hand_thumb_1_link" (
+                                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                                            )
+                                                            {
+                                                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                            }
+
+                                                            over "right_hand_thumb_2_link"
+                                                            {
+                                                                over "right_hand_thumb_2_link" (
+                                                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                                                )
+                                                                {
+                                                                    rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+                                                    over "right_hand_middle_0_link"
+                                                    {
+                                                        over "right_hand_middle_0_link" (
+                                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                                        )
+                                                        {
+                                                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                        }
+
+                                                        over "right_hand_middle_1_link"
+                                                        {
+                                                            over "right_hand_middle_1_link" (
+                                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                                            )
+                                                            {
+                                                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                            }
+                                                        }
+                                                    }
+
+                                                    over "right_hand_index_0_link"
+                                                    {
+                                                        over "right_hand_index_0_link" (
+                                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                                        )
+                                                        {
+                                                            rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                        }
+
+                                                        over "right_hand_index_1_link"
+                                                        {
+                                                            over "right_hand_index_1_link" (
+                                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                                            )
+                                                            {
+                                                                rel material:binding = </g1_29dof_with_hand_rev_1_0/Materials/metal>
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

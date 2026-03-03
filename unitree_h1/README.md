@@ -10,8 +10,9 @@ The subfolders contain:
 
 - **urdf**: Robot description format files
 - **mjcf**: MuJoCo XML files
-- **meshes**: Mesh data consumbed by both URDF and MJCF
+- **meshes**: Mesh data consumed by both URDF and MJCF
 - **usd**: Universal Scene Description format files
+- **usd_structured**: Structured USD layer files, converted from MuJoCo Menagerie MJCF
 
 ## Sources
 
@@ -26,6 +27,10 @@ In the URDF, the mesh paths were updated to match the asset folder name.
 The USD model was collected using IsaacSim from the IsaacLab robot assets. The specific source URLs are available in the [collection record](usd/.collect.mapping.json).
 
 For changes made to the model for simulation in Newton, please refer to the Git commit history of this folder.
+
+### Changelog
+
+- 2026-02-26: Added `physics:principalAxes` quaternions for inertia tensors in `usd/h1_minimal.usda`.
 
 ## License
 

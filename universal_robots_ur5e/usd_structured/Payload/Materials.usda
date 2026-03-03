@@ -1,0 +1,205 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a8"
+    }
+    defaultPrim = "ur5e"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "ur5e"
+{
+    def Scope "Materials"
+    {
+        def Material "black" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/black>
+        )
+        {
+        }
+
+        def Material "jointgray" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/jointgray>
+        )
+        {
+        }
+
+        def Material "urblue" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/urblue>
+        )
+        {
+        }
+
+        def Material "linkgray" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/linkgray>
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "base"
+        {
+            over "base_0" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </ur5e/Materials/black>
+            }
+
+            over "base_1" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </ur5e/Materials/jointgray>
+            }
+
+            over "shoulder_link"
+            {
+                over "shoulder_0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </ur5e/Materials/urblue>
+                }
+
+                over "shoulder_1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </ur5e/Materials/black>
+                }
+
+                over "shoulder_2" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </ur5e/Materials/jointgray>
+                }
+
+                over "upper_arm_link"
+                {
+                    over "upperarm_0" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </ur5e/Materials/linkgray>
+                    }
+
+                    over "upperarm_1" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </ur5e/Materials/black>
+                    }
+
+                    over "upperarm_2" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </ur5e/Materials/jointgray>
+                    }
+
+                    over "upperarm_3" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </ur5e/Materials/urblue>
+                    }
+
+                    over "forearm_link"
+                    {
+                        over "forearm_0" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </ur5e/Materials/urblue>
+                        }
+
+                        over "forearm_1" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </ur5e/Materials/linkgray>
+                        }
+
+                        over "forearm_2" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </ur5e/Materials/black>
+                        }
+
+                        over "forearm_3" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </ur5e/Materials/jointgray>
+                        }
+
+                        over "wrist_1_link"
+                        {
+                            over "wrist1_0" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </ur5e/Materials/black>
+                            }
+
+                            over "wrist1_1" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </ur5e/Materials/urblue>
+                            }
+
+                            over "wrist1_2" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </ur5e/Materials/jointgray>
+                            }
+
+                            over "wrist_2_link"
+                            {
+                                over "wrist2_0" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </ur5e/Materials/black>
+                                }
+
+                                over "wrist2_1" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </ur5e/Materials/urblue>
+                                }
+
+                                over "wrist2_2" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </ur5e/Materials/jointgray>
+                                }
+
+                                over "wrist_3_link"
+                                {
+                                    over "wrist3" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </ur5e/Materials/linkgray>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

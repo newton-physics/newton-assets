@@ -65,6 +65,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (-0.04923, 0.0001, 0.0072)
         float3 physics:diagonalInertia = (0.00304494, 0.00296885, 0.00189201)
+        quatf physics:principalAxes = (0.2332869, 0.64166731, -0.69698986, -0.21919267)
         float physics:mass = 2.244
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0.08749999850988388, 0.9258000254631042, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -587,6 +588,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (-0.0058, -0.00319, -0.00009)
         float3 physics:diagonalInertia = (0.00243264, 0.00225325, 0.00205492)
+        quatf physics:principalAxes = (0.072907512, -0.70186704, 0.043824212, 0.70721043)
         float physics:mass = 2.232
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.03946800157427788, 0.08749999850988388, 0.9258000254631042, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -605,6 +607,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.00746, -0.02346, -0.08193)
         float3 physics:diagonalInertia = (0.0829503, 0.0821457, 0.00510909)
+        quatf physics:principalAxes = (0.051352228, -0.9798282, 0.19238282, -0.016985394)
         float physics:mass = 4.152
         token visibility = "inherited"
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.03946800157427788, 0.2028599977493286, 0.9258000254631042, 1) )
@@ -624,6 +627,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.06722, 0.00015, -0.04497)
         float3 physics:diagonalInertia = (0.00220848, 0.00218961, 0.000214202)
+        quatf physics:principalAxes = (0.51306127, 0.48658504, -0.48650758, -0.51314082)
         float physics:mass = 0.446
         token visibility = "inherited"
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.03946800157427788, 0.2028599977493286, 0.1257999837398529, 1) )
@@ -650,6 +654,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (-0.04923, -0.0001, 0.0072)
         float3 physics:diagonalInertia = (0.00304494, 0.00296885, 0.00189201)
+        quatf physics:principalAxes = (0.21919267, 0.69698986, -0.64166731, -0.2332869)
         float physics:mass = 2.244
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -0.08749999850988388, 0.9258000254631042, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -668,6 +673,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (-0.0058, 0.00319, -0.00009)
         float3 physics:diagonalInertia = (0.00243264, 0.00225325, 0.00205492)
+        quatf physics:principalAxes = (0.072907512, 0.70186704, 0.043824212, -0.70721043)
         float physics:mass = 2.232
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.03946800157427788, -0.08749999850988388, 0.9258000254631042, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -686,6 +692,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.00746, 0.02346, -0.08193)
         float3 physics:diagonalInertia = (0.0829503, 0.0821457, 0.00510909)
+        quatf physics:principalAxes = (0.016985394, -0.19238282, 0.9798282, -0.051352228)
         float physics:mass = 4.152
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.03946800157427788, -0.2028599977493286, 0.9258000254631042, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -704,6 +711,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (-0.00136, 0.00512, -0.1384)
         float3 physics:diagonalInertia = (0.0125237, 0.0123104, 0.0019428)
+        quatf physics:principalAxes = (0.7778524, -0.041627719, -0.034227004, 0.62613201)
         float physics:mass = 1.721
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.03946800157427788, -0.2028599977493286, 0.5257999897003174, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -722,6 +730,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.06722, -0.00015, -0.04497)
         float3 physics:diagonalInertia = (0.00220848, 0.00218961, 0.000214202)
+        quatf physics:principalAxes = (0.51306127, -0.48658504, -0.48650758, 0.51314082)
         float physics:mass = 0.446
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.03946800157427788, -0.2028599977493286, 0.1257999837398529, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -748,6 +757,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.000489, 0.002797, 0.20484)
         float3 physics:diagonalInertia = (0.487315, 0.409628, 0.127837)
+        quatf physics:principalAxes = (0.0013081023, 0.99998907, -0.003491047, 0.0028228867)
         float physics:mass = 17.789
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 1.100000023841858, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -818,6 +828,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.005045, 0.053657, -0.015715)
         float3 physics:diagonalInertia = (0.00129936, 0.000987113, 0.000858198)
+        quatf physics:principalAxes = (0.57923574, -0.81485824, 0.0093648777, -0.020107184)
         float physics:mass = 1.033
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 0.9063091237616301, 0.42261540197233494, 0), (0, -0.42261540197233494, 0.9063091237616301, 0), (0.005499999970197678, 0.155349999666214, 1.5299899578094482, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -836,6 +847,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.000679, 0.00115, -0.094076)
         float3 physics:diagonalInertia = (0.00170388, 0.00158256, 0.00100336)
+        quatf physics:principalAxes = (0.73249169, 0.009171748, 0.076665638, 0.67638316)
         float physics:mass = 0.793
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0.21352961659431458, 1.538913607597351, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -854,6 +866,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.01365, 0.002767, -0.16266)
         float3 physics:diagonalInertia = (0.00408038, 0.00370367, 0.000622687)
+        quatf physics:principalAxes = (0.047336184, -0.70879755, 0.7030421, -0.033122965)
         float physics:mass = 0.839
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0.21352961659431458, 1.4046136140823364, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -872,6 +885,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.15908, -0.000144, -0.015776)
         float3 physics:diagonalInertia = (0.00601829, 0.00600579, 0.000408305)
+        quatf physics:principalAxes = (0.72032683, -0.07652296, -0.68410187, 0.085311892)
         float physics:mass = 0.669
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.01850000023841858, 0.21352961659431458, 1.2066136598587036, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -890,6 +904,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.005045, -0.053657, -0.015715)
         float3 physics:diagonalInertia = (0.00129936, 0.000987113, 0.000858198)
+        quatf physics:principalAxes = (0.81485824, -0.57923574, -0.020107184, 0.0093648777)
         float physics:mass = 1.033
         matrix4d xformOp:transform = ( (1, 0, -0, 0), (-0, 0.9063091237616301, -0.42261540197233494, 0), (0, 0.42261540197233494, 0.9063091237616301, 0), (0.005499999970197678, -0.155349999666214, 1.5299899578094482, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -908,6 +923,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.000679, -0.00115, -0.094076)
         float3 physics:diagonalInertia = (0.00170388, 0.00158256, 0.00100336)
+        quatf physics:principalAxes = (0.67638316, 0.076665638, 0.009171748, 0.73249169)
         float physics:mass = 0.793
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -0.21352961659431458, 1.538913607597351, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -926,6 +942,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.01365, -0.002767, -0.16266)
         float3 physics:diagonalInertia = (0.00408038, 0.00370367, 0.000622687)
+        quatf physics:principalAxes = (0.70879755, -0.047336184, -0.033122965, 0.7030421)
         float physics:mass = 0.839
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -0.21352961659431458, 1.4046136140823364, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -944,6 +961,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (0.15908, 0.000144, -0.015776)
         float3 physics:diagonalInertia = (0.00601829, 0.00600579, 0.000408305)
+        quatf physics:principalAxes = (0.085311892, -0.68410187, -0.07652296, 0.72032683)
         float physics:mass = 0.669
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.01850000023841858, -0.21352961659431458, 1.2066136598587036, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -963,6 +981,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (-0.0002, 0.00004, -0.04522)
         float3 physics:diagonalInertia = (0.0490211, 0.0445821, 0.00824619)
+        quatf physics:principalAxes = (0.50049576, -0.50174073, 0.49830325, 0.49945381)
         float physics:mass = 5.39
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 1.100000023841858, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
@@ -981,6 +1000,7 @@ def Xform "h1"
     {
         point3f physics:centerOfMass = (-0.00136, -0.00512, -0.1384)
         float3 physics:diagonalInertia = (0.0125237, 0.0123104, 0.0019428)
+        quatf physics:principalAxes = (0.62613201, -0.034227004, -0.041627719, 0.7778524)
         float physics:mass = 1.721
         matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.03946800157427788, 0.2028599977493286, 0.5257999897003174, 1) )
         uniform token[] xformOpOrder = ["xformOp:transform"]
