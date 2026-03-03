@@ -8,6 +8,7 @@ This package contains USD assets used for manipulation in Newton.
 |--------|--------|-------------|--------|
 | Cup | `cup/` | A simple cup mesh | Created by The Newton Developers |
 | Gripper Pad | `pad/` | A pad mesh for gripper fingers | Created by The Newton Developers |
+| Rubber Duck | `rubber_duck/` | A cute rubber duck mesh (1002 verts, 2000 faces) | Created by The Newton Developers |
 
 ## Gallery
 
