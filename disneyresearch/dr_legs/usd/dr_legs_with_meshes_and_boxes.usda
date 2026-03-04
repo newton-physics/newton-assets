@@ -1187,8 +1187,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (0.70441604, 0.70441604, 0.061628416, 0.061628416)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
@@ -1209,8 +1209,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (0.7629704, 0.068558566, -0.05752747, -0.6402082)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
@@ -1276,8 +1276,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (0.7629104, -0.069222845, 0.058084864, -0.6401578)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
@@ -1298,8 +1298,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (0.6595576, -0.38962528, 0.32693443, -0.55343455)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
@@ -1365,8 +1365,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (0.056022633, 0.6403416, 0.7631294, 0.066765174)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
@@ -1447,8 +1447,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (-0.32886937, 0.5522869, 0.65818995, -0.39193124)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
@@ -1499,8 +1499,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (0.70441604, 0.70441604, -0.061628416, -0.061628416)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
@@ -1521,8 +1521,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (0.068558566, 0.7629704, 0.6402082, 0.05752747)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
@@ -1588,8 +1588,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (0.7629104, 0.069222845, 0.058084864, 0.6401578)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
@@ -1610,8 +1610,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (-0.38962528, 0.6595576, 0.55343455, -0.32693443)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
@@ -1677,8 +1677,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (-0.6403416, -0.056022633, 0.066765174, 0.7631294)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
@@ -1759,8 +1759,8 @@ def Xform "DR_Legs"
             quatf physics:localRot1 = (-0.38575703, -0.5141667, 0.61276007, 0.45972732)
             float physics:lowerLimit = -180
             float physics:upperLimit = 180
-            float drive:angular:physics:stiffness = 50.0
-            float drive:angular:physics:damping = 1.0
+            float drive:angular:physics:stiffness = 0.872664626
+            float drive:angular:physics:damping = 0.017453293
             uniform token drive:angular:physics:type = "force"  # can be in {"force", "acceleration"}
         }
 
