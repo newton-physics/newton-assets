@@ -21,6 +21,18 @@
     upAxis = "Z"
 )
 
+def PhysicsScene "PhysicsScene" (
+    prepend apiSchemas = ["NewtonKaminoSceneAPI"]
+)
+{
+    uniform float newton:kamino:padmm:primalTolerance = 1e-4
+    uniform float newton:kamino:padmm:dualTolerance = 1e-4
+    uniform float newton:kamino:padmm:complementarityTolerance = 1e-4
+    uniform float newton:kamino:constraints:alpha = 0.1
+    uniform float newton:kamino:constraints:beta = 0.011
+    uniform float newton:kamino:constraints:gamma = 0.05
+}
+
 def Xform "DR_Legs"
 {
     def Scope "RigidBodies"
