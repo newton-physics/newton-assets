@@ -14,8 +14,14 @@ def Xform "root"
         double3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:rotateXYZ", "xformOp:scale", "xformOp:translate"]
 
-        def Mesh "Model" (
+        def Mesh "SurfaceMesh" (
             prepend references = @./mesh.usd@</Model>
+        )
+        {
+        }
+
+        def Mesh "TetMesh" (
+            prepend references = @./mesh.usd@</TetModel>
         )
         {
         }
