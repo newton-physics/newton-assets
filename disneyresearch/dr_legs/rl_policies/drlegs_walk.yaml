@@ -1,0 +1,39 @@
+# DR Legs walk policy configuration
+#
+# Task constants for the walk RL policy. The Newton example
+# (example_rl_drlegs.py) loads this file and uses the values below.
+# Hardcoded defaults in the example match these values, so removing
+# or commenting out a key simply falls back to the built-in default.
+
+# Policy
+action_scale: 0.4           # joint position scale [rad]
+policy_file: "drlegs_walk.pt"
+
+# Gait timing
+contact_duration: 0.3       # seconds per foot contact phase
+phase_embedding_k: 2        # periodic encoding order -> 2k-D embedding
+
+# Velocity commands
+vel_cmd_max: 0.3            # m/s max linear velocity command
+yaw_cmd_max: 0.8            # rad/s max yaw rate command
+
+# Implicit PD gains (actuated joints only)
+pd_kp: 15.0                 # proportional gain [N·m/rad]
+pd_kd: 0.6                  # derivative gain [N·m·s/rad]
+pd_armature: 0.01           # rotor inertia [kg·m²]
+
+# Observation scaling
+path_deviation_scale: 0.1
+linear_path_error_limit: 0.1  # max path-to-root deviation before clipping [m]
+height_error_scale: 0.05
+
+# Height command range
+standing_height: 0.265      # default pelvis Z [m]
+height_cmd_min: 0.16        # minimum pelvis height command [m]
+height_cmd_max: 0.27        # maximum pelvis height command [m]
+
+# Simulation
+sim_dt: 0.004               # physics substep duration [s]
+control_decimation: 5        # physics substeps per RL step
+body_pose_offset_z: 0.265   # initial pelvis Z offset [m]
+usd_model: "dr_legs/usd/dr_legs_with_meshes_and_boxes.usda"
