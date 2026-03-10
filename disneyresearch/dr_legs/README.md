@@ -9,6 +9,13 @@ and actuated joints with multiple closed kinematic loops, originally presented b
 
 ## Changelog
 
+### [03/10/2026]
+- Add RL walk policy.
+
+### [03/05/2025]
+- Add DR Legs PD gains.
+- Add KaminoSceneAPI to DR Legs
+
 ### [01/11/2025]
 - Initial release.
 
@@ -24,6 +31,8 @@ The following assets are provided for this model:
 | `usd/dr_legs_with_boxes.usda` | USD (text) | A simplified version of **DR Legs** with box primitive geometry for the pelvis and feet. |
 | `usd/dr_legs_with_meshes_and_boxes.usda` | USD (text) | A hybrid version of **DR Legs** with full mesh geometry as well as box primitive geometry for the pelvis and feet. |
 | `animation/dr_legs_animation_100fps.npy` | `numpy` (binary) | Array containing a walking animation parameterized in joint-space and time-discretized at `dt=0.01s`, i.e. `100Hz` |
+| `rl_policies/drlegs_walk.pt` | PyTorch (binary) | Trained RL walk policy checkpoint. |
+| `rl_policies/drlegs_walk.yaml` | YAML (text) | Configuration for the RL walk policy. |
 
 
 ## Relevant Literature
