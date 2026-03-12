@@ -130,7 +130,6 @@ def Xform "ur10" (
     )
     {
         vector3f physics:angularVelocity = (0, 0, 0)
-        point3f physics:centerOfMass = (0, 0, 0)
         float physics:mass = 200
         vector3f physics:velocity = (0, 0, 0)
         quatf xformOp:orient = (1, 0, 0, 0)
@@ -225,7 +224,6 @@ def Xform "ur10" (
     )
     {
         vector3f physics:angularVelocity = (0, 0, 0)
-        point3f physics:centerOfMass = (0, 0, 0)
         float physics:mass = 7.1
         vector3f physics:velocity = (0, 0, 0)
         quatf xformOp:orient = (1, 0, 0, 0)
@@ -379,7 +377,6 @@ def Xform "ur10" (
     )
     {
         vector3f physics:angularVelocity = (0, 0, 0)
-        point3f physics:centerOfMass = (0, 0, 0)
         bool physics:kinematicEnabled = 0
         float physics:mass = 12.7
         bool physics:rigidBodyEnabled = 1
@@ -572,7 +569,6 @@ def Xform "ur10" (
     )
     {
         vector3f physics:angularVelocity = (0, 0, 0)
-        point3f physics:centerOfMass = (0, 0, 0)
         bool physics:kinematicEnabled = 0
         float physics:mass = 4.27
         bool physics:rigidBodyEnabled = 1
@@ -765,7 +761,6 @@ def Xform "ur10" (
     )
     {
         vector3f physics:angularVelocity = (0, 0, 0)
-        point3f physics:centerOfMass = (0, 0, 0)
         bool physics:kinematicEnabled = 0
         float physics:mass = 1
         bool physics:rigidBodyEnabled = 1
@@ -942,7 +937,6 @@ def Xform "ur10" (
     )
     {
         vector3f physics:angularVelocity = (0, 0, 0)
-        point3f physics:centerOfMass = (0, 0, 0)
         bool physics:kinematicEnabled = 0
         float physics:mass = 1
         bool physics:rigidBodyEnabled = 1
@@ -1112,7 +1106,6 @@ def Xform "ur10" (
     )
     {
         vector3f physics:angularVelocity = (0, 0, 0)
-        point3f physics:centerOfMass = (0, 0, 0)
         bool physics:kinematicEnabled = 0
         float physics:mass = 0.365
         bool physics:rigidBodyEnabled = 1
@@ -1220,7 +1213,6 @@ def Xform "ur10" (
     )
     {
         vector3f physics:angularVelocity = (0, 0, 0)
-        point3f physics:centerOfMass = (0, 0, 0)
         bool physics:kinematicEnabled = 0
         float physics:mass = 0.01
         bool physics:rigidBodyEnabled = 1
