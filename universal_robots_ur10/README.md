@@ -16,7 +16,7 @@ For changes made to the model for simulation in Newton, please refer to the Git 
 
 ### Changelog
 
-- 2026-03-16: Removed `physics:centerOfMass` in `usd/ur10_instanceable.usda` to fix mass distribution isssue.
+- 2026-03-16: Removed `physics:centerOfMass` in `usd/ur10_instanceable.usda` to fix mass distribution issue.
 
 ## License
 
