@@ -13,17 +13,18 @@ arm uses the same motor body with mixed gear ratios
 
 ## Layout
 
-```
+```text
 therobotstudio_soarm101/
 ├── LICENSE
 ├── README.md
-├── joints_properties.xml          # shared MJCF joint limits / actuator defaults
-├── scene.xml                      # MuJoCo scene that includes the robot model
-├── so101_new_calib.urdf           # URDF – zero = mid-range of each joint
-├── so101_new_calib.xml            # MJCF – zero = mid-range of each joint
-├── assets/                        # visual + collision meshes (STL) and Onshape .part files
+├── meshes/                        # visual + collision meshes (STL) and Onshape .part sidecars
+├── urdf/
+│   └── so101_new_calib.urdf       # URDF – zero = mid-range of each joint
+├── mjcf/
+│   ├── scene.xml                  # MuJoCo scene that includes the robot model
+│   ├── so101_new_calib.xml        # MJCF – zero = mid-range of each joint
+│   └── joints_properties.xml      # upstream provenance only – not <include>d by scene.xml (see note below)
 └── usd/                           # Isaac Sim 4-layer structured USD (binary .usd crate)
-    ├── .collect.mapping.json      # source-URL + SHA-1 for each redistributed file
     ├── so101_new_calib.usd        # top-level composition (payload + sublayers)
     └── configuration/
         ├── so101_new_calib_base.usd     # geometry + materials (≈23 MB)
@@ -31,6 +32,13 @@ therobotstudio_soarm101/
         ├── so101_new_calib_robot.usd    # Isaac Sim robot schema layer
         └── so101_new_calib_sensor.usd   # sensor-hook layer (empty stub upstream)
 ```
+
+This layout follows the same convention as the other manipulators in this
+repo (e.g. `unitree_g1/`): meshes under `meshes/`, URDF under `urdf/`, MJCF
+under `mjcf/`, structured USD under `usd/`. The URDF uses relative
+`../meshes/…` paths (inherited from upstream, which replaced `package://`
+with relative paths) and the MJCF uses `<compiler meshdir="../meshes"/>`,
+so both load directly against the sibling `meshes/` folder.
 
 ## Calibration
 
@@ -77,12 +85,10 @@ as **RobotStudio / so101_new_calib** (Apache 2.0, 6 joints / 6 DOF,
 byte-identically in the Isaac Sim 5.0, 5.1 and 6.0 buckets; we pin to the
 6.0 tree so redistributions track the current GA release.
 
-The exact source URLs, together with the SHA-1 of each downloaded file, are
-recorded in [`usd/.collect.mapping.json`](usd/.collect.mapping.json) so the
-content can be re-verified against the upstream bucket. The files were copied
-byte-for-byte (no schema edits), so `source_hash` and `target_hash` are equal
-— unlike assets produced by Isaac Sim's *Collect Asset* tool, which transcodes
-crate → USDA and therefore has differing hashes.
+The USD files under `usd/` are copied byte-for-byte from the Isaac Sim 6.0
+bucket (no schema edits); the git blob hashes therefore match the hashes of
+the corresponding bucket objects and git itself serves as the provenance
+record.
 
 > SO-100 (the predecessor single-calibration arm) is published alongside
 > SO-101 at the same NVIDIA location under `RobotStudio/so100/` (also
@@ -94,9 +100,21 @@ crate → USDA and therefore has differing hashes.
 - In LeRobot the gripper is treated as a linear joint where `0` = fully closed
   and `100` = fully open; that mapping is **not** yet reflected in these
   URDF/MJCF files (inherited from upstream).
-- The `.part` files in `assets/` are Onshape export metadata that ship with the
+- The `.part` files in `meshes/` are Onshape export metadata that ship with the
   upstream repository; they are kept alongside the STLs for traceability but
   are not required by simulators.
+- `mjcf/joints_properties.xml` is kept verbatim from upstream (servo/backlash
+  defaults as originally shipped by `TheRobotStudio/SO-ARM100`) as
+  **historical provenance only**. It is not `<include>`d by `mjcf/scene.xml`
+  or `mjcf/so101_new_calib.xml`, and its `kp`/`kv`/`forcerange` values
+  intentionally differ from the inlined defaults in `so101_new_calib.xml`
+  (which use the RBE501-RL-arm-project derivation, servo `P=16 → kp≈998.22`).
+  Treat `so101_new_calib.xml` — not this file — as the source of truth.
+- The URDF's trailing `gripper_frame_link`/`gripper_frame_joint` pair had two
+  minor upstream-schema quirks (a stray `<origin>` directly under `<link>`
+  and an `<axis xyz="0 0 0"/>` on a `type="fixed"` joint); both were removed
+  here because they are no-ops that strict URDF validators reject. The
+  kinematics of the dummy gripper frame are unchanged.
 
 ## License
 
@@ -106,17 +124,21 @@ of whom licenses their own contribution under Apache 2.0:
 
 | Files                                                               | Upstream publisher                                                                              | License                                                                                           |
 | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `so101_new_calib.urdf`, `so101_new_calib.xml`, `joints_properties.xml`, `scene.xml`, `assets/**` | [The Robot Studio — SO-ARM100](https://github.com/TheRobotStudio/SO-ARM100) (and Onshape-to-robot contributors) | Apache 2.0 — matches the upstream repo's top-level [`LICENSE`](https://github.com/TheRobotStudio/SO-ARM100/blob/main/LICENSE) |
+| `urdf/**`, `mjcf/**`, `meshes/**` | [The Robot Studio — SO-ARM100](https://github.com/TheRobotStudio/SO-ARM100) (and Onshape-to-robot contributors) | Apache 2.0 — matches the upstream repo's top-level [`LICENSE`](https://github.com/TheRobotStudio/SO-ARM100/blob/main/LICENSE) |
 | `usd/**`                                                            | NVIDIA — Isaac Sim 6.0 asset bucket                                                             | Apache 2.0 — per the [Isaac Sim 6.0 Robot Assets catalog](https://docs.isaacsim.omniverse.nvidia.com/6.0.0/assets/usd_assets_robots.html) entry for `RobotStudio/so101_new_calib` |
 
 ### Redistribution checklist (Apache 2.0 §4)
 
 - **§4(a) — License text.** The full Apache 2.0 text is shipped in [`LICENSE`](LICENSE).
-- **§4(b) — Change notice.** USD files are byte-for-byte copies of the Isaac
-  Sim 6.0 bucket objects; the SHA-1s in [`usd/.collect.mapping.json`](usd/.collect.mapping.json)
-  can be re-verified against the `source_url` for each file. The URDF/MJCF
-  files are likewise unmodified from the pinned upstream commit
-  ([`aec17bb`](https://github.com/TheRobotStudio/SO-ARM100/tree/aec17bbc256d1a7342d53aaa4950595d4c30b40d/Simulation/SO101)).
+- **§4(b) — Change notice.** USD files under `usd/` are byte-for-byte copies
+  of the Isaac Sim 6.0 bucket objects. The URDF/MJCF/mesh files are copied
+  from the pinned upstream commit
+  ([`aec17bb`](https://github.com/TheRobotStudio/SO-ARM100/tree/aec17bbc256d1a7342d53aaa4950595d4c30b40d/Simulation/SO101))
+  with only two modifications applied: (1) mesh references rewritten from
+  `assets/…` to `../meshes/…` to match this repo's per-robot folder layout,
+  and (2) two no-op URDF schema quirks removed from the dummy gripper frame
+  (stray `<origin>` under `<link>`, zero-vector `<axis>` on a fixed joint).
+  No kinematic, inertial or actuator parameters were changed.
 - **§4(c) — Retained notices.** Neither upstream source embeds copyright
   strings in the redistributed files (`strings` on the USD crate files yields
   no copyright/author metadata, and the URDFs carry none either), so there
