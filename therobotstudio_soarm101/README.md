@@ -14,7 +14,7 @@ arm uses the same motor body with mixed gear ratios
 ## Layout
 
 ```
-the_robot_studio_so101/
+therobotstudio_soarm101/
 ├── LICENSE
 ├── README.md
 ├── joints_properties.xml          # shared MJCF joint limits / actuator defaults
