@@ -1,0 +1,35 @@
+{
+    "version": "1.0",
+    "file_records": [
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.0/Isaac/Robots/RobotStudio/so101_new_calib/so101_new_calib.usd",
+            "source_hash": "987cea20165d5665bc40182fa4341b3e2d2e0789",
+            "target_url": "./so101_new_calib.usd",
+            "target_hash": "987cea20165d5665bc40182fa4341b3e2d2e0789"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.0/Isaac/Robots/RobotStudio/so101_new_calib/configuration/so101_new_calib_base.usd",
+            "source_hash": "49320f3b6a357494daff04b0f09e209f88baea39",
+            "target_url": "./configuration/so101_new_calib_base.usd",
+            "target_hash": "49320f3b6a357494daff04b0f09e209f88baea39"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.0/Isaac/Robots/RobotStudio/so101_new_calib/configuration/so101_new_calib_physics.usd",
+            "source_hash": "53dc19c4b6cf9bf59c9de50270fffe0321accc7e",
+            "target_url": "./configuration/so101_new_calib_physics.usd",
+            "target_hash": "53dc19c4b6cf9bf59c9de50270fffe0321accc7e"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.0/Isaac/Robots/RobotStudio/so101_new_calib/configuration/so101_new_calib_robot.usd",
+            "source_hash": "e6a8cdc898b8500804443e533ca9c3aeac8ac6f1",
+            "target_url": "./configuration/so101_new_calib_robot.usd",
+            "target_hash": "e6a8cdc898b8500804443e533ca9c3aeac8ac6f1"
+        },
+        {
+            "source_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.0/Isaac/Robots/RobotStudio/so101_new_calib/configuration/so101_new_calib_sensor.usd",
+            "source_hash": "7cfc346adb38cc3fe0f439d60b8812e3c247ee7e",
+            "target_url": "./configuration/so101_new_calib_sensor.usd",
+            "target_hash": "7cfc346adb38cc3fe0f439d60b8812e3c247ee7e"
+        }
+    ]
+}
