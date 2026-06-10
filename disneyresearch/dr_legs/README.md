@@ -9,6 +9,9 @@ and actuated joints with multiple closed kinematic loops, originally presented b
 
 ## Changelog
 
+### [06/12/2026]
+- Add articulations to models.
+
 ### [03/10/2026]
 - Add RL walk policy.
 
