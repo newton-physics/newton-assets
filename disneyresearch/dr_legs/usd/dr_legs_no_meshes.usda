@@ -6,7 +6,7 @@
     A bipedal walking robot with a serial-parallel hybrid leg mechanism that exhibits both passive
     and actuated joints with multiple closed kinematic loops, originally presented by Gim et al. in [1].
 
-    This variant contains all mesh geometries as well as box primitives for the pelvis and feet.
+    This variant removes all mesh geometries.
 
     References:
     [1] K. G. Gim, J. Kim, and K. Yamane,
@@ -917,104 +917,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (-0.018934786147, 0.000224350734, -0.007344296774)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/pelvis/mesh_000.usd@</pelvis/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/pelvis/mesh_001.usd@</pelvis/mesh_001>
-        )
-        {
-        }
-
-        def Mesh "mesh_002" (
-            prepend references = @./meshes/pelvis/mesh_002.usd@</pelvis/mesh_002>
-        )
-        {
-        }
-
-        def Mesh "mesh_003" (
-            prepend references = @./meshes/pelvis/mesh_003.usd@</pelvis/mesh_003>
-        )
-        {
-        }
-
-        def Mesh "mesh_004" (
-            prepend references = @./meshes/pelvis/mesh_004.usd@</pelvis/mesh_004>
-        )
-        {
-        }
-
-        def Mesh "mesh_005" (
-            prepend references = @./meshes/pelvis/mesh_005.usd@</pelvis/mesh_005>
-        )
-        {
-        }
-
-        def Mesh "mesh_006" (
-            prepend references = @./meshes/pelvis/mesh_006.usd@</pelvis/mesh_006>
-        )
-        {
-        }
-
-        def Mesh "mesh_007" (
-            prepend references = @./meshes/pelvis/mesh_007.usd@</pelvis/mesh_007>
-        )
-        {
-        }
-
-        def Mesh "mesh_008" (
-            prepend references = @./meshes/pelvis/mesh_008.usd@</pelvis/mesh_008>
-        )
-        {
-        }
-
-        def Mesh "mesh_009" (
-            prepend references = @./meshes/pelvis/mesh_009.usd@</pelvis/mesh_009>
-        )
-        {
-        }
-
-        def Mesh "mesh_010" (
-            prepend references = @./meshes/pelvis/mesh_010.usd@</pelvis/mesh_010>
-        )
-        {
-        }
-
-        def Mesh "mesh_011" (
-            prepend references = @./meshes/pelvis/mesh_011.usd@</pelvis/mesh_011>
-        )
-        {
-        }
-
-        def Mesh "mesh_012" (
-            prepend references = @./meshes/pelvis/mesh_012.usd@</pelvis/mesh_012>
-        )
-        {
-        }
-
-        def Scope "Geometry"
-        {
-            def Scope "Primary"
-            {
-                def Cube "box_0" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
-                    customData = {
-                        string layer = "Primary"
-                    }
-                )
-                {
-                    float3[] extent = [(-1, -1, -1), (1, 1, 1)]
-                    color3f[] primvars:displayColor = [(0.2784314, 0.4117647, 1)]
-                    float3 xformOp:rotateXYZ = (0, 0, 0)
-                    float3 xformOp:scale = (0.0425, 0.12, 0.0275)
-                    double3 xformOp:translate = (0.0000075, 0, -0.0000075)
-                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
-                }
-            }
-        }
     }
 
     def Xform "hip_servos_l_i" (
@@ -1041,29 +943,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.03069554475, 0.04052644975, -0.001050567396)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/hip_servos_l_i/mesh_000.usd@</hip_servos_l_i/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/hip_servos_l_i/mesh_001.usd@</hip_servos_l_i/mesh_001>
-        )
-        {
-        }
-
-        def Mesh "mesh_002" (
-            prepend references = @./meshes/hip_servos_l_i/mesh_002.usd@</hip_servos_l_i/mesh_002>
-        )
-        {
-        }
-
-        def Mesh "mesh_003" (
-            prepend references = @./meshes/hip_servos_l_i/mesh_003.usd@</hip_servos_l_i/mesh_003>
-        )
-        {
-        }
     }
 
     def Xform "hip_servos_l_o" (
@@ -1090,29 +969,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.020666013246, 0.099320658711, -0.001311018997)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/hip_servos_l_o/mesh_000.usd@</hip_servos_l_o/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/hip_servos_l_o/mesh_001.usd@</hip_servos_l_o/mesh_001>
-        )
-        {
-        }
-
-        def Mesh "mesh_002" (
-            prepend references = @./meshes/hip_servos_l_o/mesh_002.usd@</hip_servos_l_o/mesh_002>
-        )
-        {
-        }
-
-        def Mesh "mesh_003" (
-            prepend references = @./meshes/hip_servos_l_o/mesh_003.usd@</hip_servos_l_o/mesh_003>
-        )
-        {
-        }
     }
 
     def Xform "hip_servos_r_i" (
@@ -1139,29 +995,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.030703075546, -0.040528429729, -0.001046405774)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/hip_servos_r_i/mesh_000.usd@</hip_servos_r_i/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/hip_servos_r_i/mesh_001.usd@</hip_servos_r_i/mesh_001>
-        )
-        {
-        }
-
-        def Mesh "mesh_002" (
-            prepend references = @./meshes/hip_servos_r_i/mesh_002.usd@</hip_servos_r_i/mesh_002>
-        )
-        {
-        }
-
-        def Mesh "mesh_003" (
-            prepend references = @./meshes/hip_servos_r_i/mesh_003.usd@</hip_servos_r_i/mesh_003>
-        )
-        {
-        }
     }
 
     def Xform "hip_servos_r_o" (
@@ -1188,29 +1021,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.020668470222, -0.099321287187, -0.001309092427)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/hip_servos_r_o/mesh_000.usd@</hip_servos_r_o/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/hip_servos_r_o/mesh_001.usd@</hip_servos_r_o/mesh_001>
-        )
-        {
-        }
-
-        def Mesh "mesh_002" (
-            prepend references = @./meshes/hip_servos_r_o/mesh_002.usd@</hip_servos_r_o/mesh_002>
-        )
-        {
-        }
-
-        def Mesh "mesh_003" (
-            prepend references = @./meshes/hip_servos_r_o/mesh_003.usd@</hip_servos_r_o/mesh_003>
-        )
-        {
-        }
     }
 
     def Xform "upperleg_link_l_i" (
@@ -1237,22 +1047,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.030391555126, 0.03761101352, -0.071121534148)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/upperleg_link_l_i/mesh_000.usd@</upperleg_link_l_i/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "collision" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/upperleg_link_l_i/mesh_000.usd@</upperleg_link_l_i/mesh_000>
-        )
-        {
-            uniform token physics:approximation = "convexHull"
-            bool physics:collisionEnabled = 1
-            custom int physxConvexHullCollision:hullVertexLimit = 32
-            token visibility = "invisible"
-        }
     }
 
     def Xform "upperleg_link_l_o" (
@@ -1279,22 +1073,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.019782401458, 0.101997257986, -0.071169284988)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/upperleg_link_l_o/mesh_000.usd@</upperleg_link_l_o/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "collision" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/upperleg_link_l_o/mesh_000.usd@</upperleg_link_l_o/mesh_000>
-        )
-        {
-            uniform token physics:approximation = "convexHull"
-            bool physics:collisionEnabled = 1
-            custom int physxConvexHullCollision:hullVertexLimit = 32
-            token visibility = "invisible"
-        }
     }
 
     def Xform "upperleg_link_r_i" (
@@ -1321,22 +1099,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.03039157857, -0.037611021618, -0.071121499303)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/upperleg_link_r_i/mesh_000.usd@</upperleg_link_r_i/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "collision" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/upperleg_link_r_i/mesh_000.usd@</upperleg_link_r_i/mesh_000>
-        )
-        {
-            uniform token physics:approximation = "convexHull"
-            bool physics:collisionEnabled = 1
-            custom int physxConvexHullCollision:hullVertexLimit = 32
-            token visibility = "invisible"
-        }
     }
 
     def Xform "upperleg_link_r_o" (
@@ -1363,22 +1125,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.019782349411, -0.101997345126, -0.071169426947)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/upperleg_link_r_o/mesh_000.usd@</upperleg_link_r_o/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "collision" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/upperleg_link_r_o/mesh_000.usd@</upperleg_link_r_o/mesh_000>
-        )
-        {
-            uniform token physics:approximation = "convexHull"
-            bool physics:collisionEnabled = 1
-            custom int physxConvexHullCollision:hullVertexLimit = 32
-            token visibility = "invisible"
-        }
     }
 
     def Xform "lowerleg_link_l_i" (
@@ -1405,34 +1151,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.041555361386, 0.040111063786, -0.143378916014)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/lowerleg_link_l_i/mesh_000.usd@</lowerleg_link_l_i/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/lowerleg_link_l_i/mesh_001.usd@</lowerleg_link_l_i/mesh_001>
-        )
-        {
-        }
-
-        def Mesh "mesh_002" (
-            prepend references = @./meshes/lowerleg_link_l_i/mesh_002.usd@</lowerleg_link_l_i/mesh_002>
-        )
-        {
-        }
-
-        def Mesh "merged_collision" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/lowerleg_link_l_i/merged_collision.usd@</lowerleg_link_l_i/merged_collision>
-        )
-        {
-            uniform token physics:approximation = "convexHull"
-            bool physics:collisionEnabled = 1
-            custom int physxConvexHullCollision:hullVertexLimit = 32
-            token visibility = "invisible"
-        }
     }
 
     def Xform "lowerleg_link_l_o" (
@@ -1459,34 +1177,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.030797464745, 0.10340872385, -0.143479179304)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/lowerleg_link_l_o/mesh_000.usd@</lowerleg_link_l_o/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/lowerleg_link_l_o/mesh_001.usd@</lowerleg_link_l_o/mesh_001>
-        )
-        {
-        }
-
-        def Mesh "mesh_002" (
-            prepend references = @./meshes/lowerleg_link_l_o/mesh_002.usd@</lowerleg_link_l_o/mesh_002>
-        )
-        {
-        }
-
-        def Mesh "merged_collision" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/lowerleg_link_l_o/merged_collision.usd@</lowerleg_link_l_o/merged_collision>
-        )
-        {
-            uniform token physics:approximation = "convexHull"
-            bool physics:collisionEnabled = 1
-            custom int physxConvexHullCollision:hullVertexLimit = 32
-            token visibility = "invisible"
-        }
     }
 
     def Xform "lowerleg_link_r_i" (
@@ -1513,34 +1203,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.041555564053, -0.040110296146, -0.143378868502)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/lowerleg_link_r_i/mesh_000.usd@</lowerleg_link_r_i/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/lowerleg_link_r_i/mesh_001.usd@</lowerleg_link_r_i/mesh_001>
-        )
-        {
-        }
-
-        def Mesh "mesh_002" (
-            prepend references = @./meshes/lowerleg_link_r_i/mesh_002.usd@</lowerleg_link_r_i/mesh_002>
-        )
-        {
-        }
-
-        def Mesh "merged_collision" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/lowerleg_link_r_i/merged_collision.usd@</lowerleg_link_r_i/merged_collision>
-        )
-        {
-            uniform token physics:approximation = "convexHull"
-            bool physics:collisionEnabled = 1
-            custom int physxConvexHullCollision:hullVertexLimit = 32
-            token visibility = "invisible"
-        }
     }
 
     def Xform "lowerleg_link_r_o" (
@@ -1567,34 +1229,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.030797540826, -0.103407935628, -0.143479237446)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/lowerleg_link_r_o/mesh_000.usd@</lowerleg_link_r_o/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/lowerleg_link_r_o/mesh_001.usd@</lowerleg_link_r_o/mesh_001>
-        )
-        {
-        }
-
-        def Mesh "mesh_002" (
-            prepend references = @./meshes/lowerleg_link_r_o/mesh_002.usd@</lowerleg_link_r_o/mesh_002>
-        )
-        {
-        }
-
-        def Mesh "merged_collision" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/lowerleg_link_r_o/merged_collision.usd@</lowerleg_link_r_o/merged_collision>
-        )
-        {
-            uniform token physics:approximation = "convexHull"
-            bool physics:collisionEnabled = 1
-            custom int physxConvexHullCollision:hullVertexLimit = 32
-            token visibility = "invisible"
-        }
     }
 
     def Xform "ankle_bracket_a_l_i" (
@@ -1621,17 +1255,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.025417598321, 0.034526847627, -0.20565553556)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/ankle_bracket_a_l_i/mesh_000.usd@</ankle_bracket_a_l_i/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/ankle_bracket_a_l_i/mesh_001.usd@</ankle_bracket_a_l_i/mesh_001>
-        )
-        {
-        }
     }
 
     def Xform "ankle_bracket_a_l_o" (
@@ -1658,17 +1281,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.01253837548, 0.102927029664, -0.20550617645)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/ankle_bracket_a_l_o/mesh_000.usd@</ankle_bracket_a_l_o/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/ankle_bracket_a_l_o/mesh_001.usd@</ankle_bracket_a_l_o/mesh_001>
-        )
-        {
-        }
     }
 
     def Xform "ankle_bracket_a_r_i" (
@@ -1695,17 +1307,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.024507869453, -0.034366441181, -0.205486496938)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/ankle_bracket_a_r_i/mesh_000.usd@</ankle_bracket_a_r_i/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/ankle_bracket_a_r_i/mesh_001.usd@</ankle_bracket_a_r_i/mesh_001>
-        )
-        {
-        }
     }
 
     def Xform "ankle_bracket_a_r_o" (
@@ -1732,17 +1333,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.013447346707, -0.103087308704, -0.205679365221)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/ankle_bracket_a_r_o/mesh_000.usd@</ankle_bracket_a_r_o/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/ankle_bracket_a_r_o/mesh_001.usd@</ankle_bracket_a_r_o/mesh_001>
-        )
-        {
-        }
     }
 
     def Xform "ankle_bracket_b_l_i" (
@@ -1769,11 +1359,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.018613396027, 0.042949086327, -0.231675085733)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/ankle_bracket_b_l_i/mesh_000.usd@</ankle_bracket_b_l_i/mesh_000>
-        )
-        {
-        }
     }
 
     def Xform "ankle_bracket_b_l_o" (
@@ -1800,11 +1385,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.009818835256, 0.092825501927, -0.231675099691)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/ankle_bracket_b_l_o/mesh_000.usd@</ankle_bracket_b_l_o/mesh_000>
-        )
-        {
-        }
     }
 
     def Xform "ankle_bracket_b_r_i" (
@@ -1831,11 +1411,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.018613393418, -0.042949085401, -0.231675087804)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/ankle_bracket_b_r_i/mesh_000.usd@</ankle_bracket_b_r_i/mesh_000>
-        )
-        {
-        }
     }
 
     def Xform "ankle_bracket_b_r_o" (
@@ -1862,11 +1437,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.009818837422, -0.092825502337, -0.23167508816)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/ankle_bracket_b_r_o/mesh_000.usd@</ankle_bracket_b_r_o/mesh_000>
-        )
-        {
-        }
     }
 
     def Xform "foot_l" (
@@ -1893,58 +1463,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.02234955821, 0.068980920174, -0.245744624235)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/foot_l/mesh_000.usd@</foot_l/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/foot_l/mesh_001.usd@</foot_l/mesh_001>
-        )
-        {
-        }
-
-        def Mesh "collision_mesh_000" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/foot_l/mesh_000.usd@</foot_l/mesh_000>
-        )
-        {
-            uniform token physics:approximation = "boundingCube"
-            bool physics:collisionEnabled = 1
-            token visibility = "invisible"
-        }
-
-        def Mesh "collision_mesh_001" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/foot_l/mesh_001.usd@</foot_l/mesh_001>
-        )
-        {
-            uniform token physics:approximation = "boundingCube"
-            bool physics:collisionEnabled = 1
-            token visibility = "invisible"
-        }
-
-        def Scope "Geometry"
-        {
-            def Scope "Primary"
-            {
-                def Cube "box_0" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
-                    customData = {
-                        string layer = "Primary"
-                    }
-                )
-                {
-                    float3[] extent = [(-1, -1, -1), (1, 1, 1)]
-                    color3f[] primvars:displayColor = [(0.1, 0.1, 0.1)]
-                    float3 xformOp:rotateXYZ = (0, 0, 10)
-                    float3 xformOp:scale = (0.0585, 0.035, 0.0015)
-                    double3 xformOp:translate = (-0.003703450760000001, -0.00031338953000001335, -0.016440363749999964)
-                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
-                }
-            }
-        }
     }
 
     def Xform "foot_r" (
@@ -1971,58 +1489,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.022349538129, -0.068981055334, -0.245744629356)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/foot_r/mesh_000.usd@</foot_r/mesh_000>
-        )
-        {
-        }
-
-        def Mesh "mesh_001" (
-            prepend references = @./meshes/foot_r/mesh_001.usd@</foot_r/mesh_001>
-        )
-        {
-        }
-
-        def Mesh "collision_mesh_000" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/foot_r/mesh_000.usd@</foot_r/mesh_000>
-        )
-        {
-            uniform token physics:approximation = "boundingCube"
-            bool physics:collisionEnabled = 1
-            token visibility = "invisible"
-        }
-
-        def Mesh "collision_mesh_001" (
-            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
-            prepend references = @./meshes/foot_r/mesh_001.usd@</foot_r/mesh_001>
-        )
-        {
-            uniform token physics:approximation = "boundingCube"
-            bool physics:collisionEnabled = 1
-            token visibility = "invisible"
-        }
-
-        def Scope "Geometry"
-        {
-            def Scope "Primary"
-            {
-                def Cube "box_0" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
-                    customData = {
-                        string layer = "Primary"
-                    }
-                )
-                {
-                    float3[] extent = [(-1, -1, -1), (1, 1, 1)]
-                    color3f[] primvars:displayColor = [(0.1, 0.1, 0.1)]
-                    float3 xformOp:rotateXYZ = (0, 0, -10)
-                    float3 xformOp:scale = (0.0585, 0.035, 0.0015)
-                    double3 xformOp:translate = (-0.003703450760000001, 0.00031338953000001335, -0.016440363749999964)
-                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
-                }
-            }
-        }
     }
 
     def Xform "servohorn_l_i" (
@@ -2049,11 +1515,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.071779953141, 0.026848192964, 0.024814353401)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/servohorn_l_i/mesh_000.usd@</servohorn_l_i/mesh_000>
-        )
-        {
-        }
     }
 
     def Xform "servohorn_l_o" (
@@ -2080,11 +1541,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.05532912162, 0.126325789643, 0.024638114436)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/servohorn_l_o/mesh_000.usd@</servohorn_l_o/mesh_000>
-        )
-        {
-        }
     }
 
     def Xform "servohorn_r_i" (
@@ -2111,11 +1567,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.071779805628, -0.02684815865, 0.024814719032)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/servohorn_r_i/mesh_000.usd@</servohorn_r_i/mesh_000>
-        )
-        {
-        }
     }
 
     def Xform "servohorn_r_o" (
@@ -2142,11 +1593,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.055329261497, -0.126325807761, 0.024637742992)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/servohorn_r_o/mesh_000.usd@</servohorn_r_o/mesh_000>
-        )
-        {
-        }
     }
 
     def Xform "upperleg_rod_l_i" (
@@ -2173,11 +1619,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.085163915888, 0.036480273515, -0.030824305324)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/upperleg_rod_l_i/mesh_000.usd@</upperleg_rod_l_i/mesh_000>
-        )
-        {
-        }
     }
 
     def Xform "upperleg_rod_l_o" (
@@ -2204,11 +1645,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.071002382251, 0.121817614975, -0.031114401944)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/upperleg_rod_l_o/mesh_000.usd@</upperleg_rod_l_o/mesh_000>
-        )
-        {
-        }
     }
 
     def Xform "upperleg_rod_r_i" (
@@ -2235,11 +1671,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.08516397375, -0.036479945359, -0.030824305324)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/upperleg_rod_r_i/mesh_000.usd@</upperleg_rod_r_i/mesh_000>
-        )
-        {
-        }
     }
 
     def Xform "upperleg_rod_r_o" (
@@ -2266,11 +1697,6 @@ def Xform "dr_legs"
         custom double3 xformOp:translate = (0.071002440114, -0.121817286819, -0.031114401944)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
 
-        def Mesh "mesh_000" (
-            prepend references = @./meshes/upperleg_rod_r_o/mesh_000.usd@</upperleg_rod_r_o/mesh_000>
-        )
-        {
-        }
     }
 }
 

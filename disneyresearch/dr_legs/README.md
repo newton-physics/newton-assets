@@ -9,6 +9,10 @@ and actuated joints with multiple closed kinematic loops, originally presented b
 
 ## Changelog
 
+### [06/26/2026]
+- Update models for latest design changes.
+- Add model variant without meshes.
+
 ### [06/12/2026]
 - Add articulations to models.
 
@@ -29,10 +33,11 @@ The following assets are provided for this model:
 
 | filename | type | description |
 |---|---|---|
-| `usd/Geometry/surfaces.usd` | USD (binary) | The set of rigid body surface geometry as a instanceable set of `UsdGeom` meshes. |
-| `usd/dr_legs.usda` | USD (text) | The default model of **DR Legs** as a `UsdPhysics` scene with full high-resolution mesh geometry. |
-| `usd/dr_legs_with_boxes.usda` | USD (text) | A simplified version of **DR Legs** with box primitive geometry for the pelvis and feet. |
+| `usd/dr_legs.usda` | USD (text) | The default model of **DR Legs** as a `UsdPhysics` scene with full mesh geometry referenced from `usd/meshes/`. |
+| `usd/dr_legs_no_meshes.usda` | USD (text) | A geometry-free version of **DR Legs** with the same rigid bodies, mass properties, and joints but no `UsdGeom.Mesh` prims. |
+| `usd/dr_legs_with_boxes.usda` | USD (text) | A simplified version of **DR Legs** with no mesh geometry and box primitive geometry for the pelvis and feet. |
 | `usd/dr_legs_with_meshes_and_boxes.usda` | USD (text) | A hybrid version of **DR Legs** with full mesh geometry as well as box primitive geometry for the pelvis and feet. |
+| `usd/meshes/` | USD (text) | Per-body mesh geometry referenced by `usd/dr_legs.usda` and `usd/dr_legs_with_meshes_and_boxes.usda`, one folder per rigid body. |
 | `animation/dr_legs_animation_100fps.npy` | `numpy` (binary) | Array containing a walking animation parameterized in joint-space and time-discretized at `dt=0.01s`, i.e. `100Hz` |
 | `rl_policies/drlegs_walk.pt` | PyTorch (binary) | Trained RL walk policy checkpoint. |
 | `rl_policies/drlegs_walk.yaml` | YAML (text) | Configuration for the RL walk policy. |
