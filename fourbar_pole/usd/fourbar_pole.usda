@@ -18,7 +18,7 @@ def Xform "fourbar_pole" (
     )
     {
         point3f physics:centerOfMass = (0, 0, 0)
-        float3 physics:diagonalInertia = (0.1354167, 0.0041667, 0.1354167)
+        float3 physics:diagonalInertia = (0.1340833, 0.0015, 0.1340833)
         float physics:mass = 10
         double3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -48,7 +48,7 @@ def Xform "fourbar_pole" (
     )
     {
         point3f physics:centerOfMass = (0, 0, 0.25)
-        float3 physics:diagonalInertia = (0.02104167, 0.02104167, 0.00041667)
+        float3 physics:diagonalInertia = (0.0209083, 0.0209083, 0.00015)
         float physics:mass = 1
         double3 xformOp:translate = (0, -0.2, 0)
         uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -73,7 +73,7 @@ def Xform "fourbar_pole" (
     )
     {
         point3f physics:centerOfMass = (0, 0.2, 0)
-        float3 physics:diagonalInertia = (0.01354167, 0.00041667, 0.01354167)
+        float3 physics:diagonalInertia = (0.0134083, 0.00015, 0.0134083)
         float physics:mass = 1
         double3 xformOp:translate = (0, -0.2, 0.5)
         uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -97,7 +97,7 @@ def Xform "fourbar_pole" (
         )
         {
             point3f physics:centerOfMass = (0, 0, 0.47)
-            float3 physics:diagonalInertia = (0.07384167, 0.07384167, 0.00041667)
+            float3 physics:diagonalInertia = (0.0836333, 0.0834667, 0.0004333)
             float physics:mass = 1
             double3 xformOp:translate = (0, 0.2, 0)
             uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -123,7 +123,7 @@ def Xform "fourbar_pole" (
     )
     {
         point3f physics:centerOfMass = (0, 0, 0.25)
-        float3 physics:diagonalInertia = (0.02104167, 0.02104167, 0.00041667)
+        float3 physics:diagonalInertia = (0.0209083, 0.0209083, 0.00015)
         float physics:mass = 1
         double3 xformOp:translate = (0, 0.2, 0)
         uniform token[] xformOpOrder = ["xformOp:translate"]
