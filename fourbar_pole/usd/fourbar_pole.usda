@@ -147,7 +147,7 @@ def Xform "fourbar_pole" (
         prepend apiSchemas = ["PhysicsDriveAPI:angular"]
     )
     {
-        float drive:angular:physics:damping = 0
+        float drive:angular:physics:damping = 10
         float drive:angular:physics:maxForce = 1000
         float drive:angular:physics:stiffness = 0
         uniform token drive:angular:physics:type = "force"
