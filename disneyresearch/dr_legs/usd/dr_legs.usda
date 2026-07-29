@@ -42,10 +42,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
@@ -73,10 +73,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
@@ -164,10 +164,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
@@ -195,10 +195,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
@@ -286,10 +286,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
@@ -397,10 +397,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
@@ -468,10 +468,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
@@ -499,10 +499,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
@@ -590,10 +590,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
@@ -621,10 +621,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
@@ -712,10 +712,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
@@ -823,10 +823,10 @@ def Xform "dr_legs"
             prepend apiSchemas = ["PhysicsDriveAPI:angular"]
         )
         {
-            custom float drive:angular:physics:damping = 0
+            custom float drive:angular:physics:damping = 0.0034906585
             custom float drive:angular:physics:maxForce = 1000
             custom float drive:angular:physics:maxVelocity = 269.86313
-            custom float drive:angular:physics:stiffness = 0
+            custom float drive:angular:physics:stiffness = 0.0872664626
             custom float drive:angular:physics:targetPosition = 0
             custom float drive:angular:physics:targetVelocity = 0
             custom token drive:angular:physics:type = "force"
