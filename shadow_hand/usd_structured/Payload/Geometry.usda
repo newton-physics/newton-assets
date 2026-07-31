@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a8"
+        string creator = "MuJoCo USD Converter v0.5.0"
     }
     defaultPrim = "left_shadow_hand"
     kilogramsPerUnit = 1
@@ -21,9 +21,11 @@ def Xform "left_shadow_hand"
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def Mesh "forearm_0" (
+                prepend apiSchemas = ["MjcImageableAPI"]
                 prepend references = @./GeometryLibrary.usdc@</Geometry/forearm_0>
             )
             {
+                uniform int mjc:group = 2
                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                     interpolation = "constant"
                 )
@@ -39,9 +41,11 @@ def Xform "left_shadow_hand"
             }
 
             def Mesh "forearm_1" (
+                prepend apiSchemas = ["MjcImageableAPI"]
                 prepend references = @./GeometryLibrary.usdc@</Geometry/forearm_1>
             )
             {
+                uniform int mjc:group = 2
                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                     interpolation = "constant"
                 )
@@ -102,9 +106,11 @@ def Xform "left_shadow_hand"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "wrist" (
+                    prepend apiSchemas = ["MjcImageableAPI"]
                     prepend references = @./GeometryLibrary.usdc@</Geometry/wrist>
                 )
                 {
+                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -234,9 +240,11 @@ def Xform "left_shadow_hand"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "palm" (
+                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/palm>
                     )
                     {
+                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -425,9 +433,11 @@ def Xform "left_shadow_hand"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "f_knuckle" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/f_knuckle>
                         )
                         {
+                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -471,9 +481,11 @@ def Xform "left_shadow_hand"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "f_proximal" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/f_proximal>
                             )
                             {
+                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -517,9 +529,11 @@ def Xform "left_shadow_hand"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "f_middle" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/f_middle>
                                 )
                                 {
+                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -563,9 +577,11 @@ def Xform "left_shadow_hand"
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                     def Mesh "f_distal_pst" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
                                         prepend references = @./GeometryLibrary.usdc@</Geometry/f_distal_pst>
                                     )
                                     {
+                                        uniform int mjc:group = 2
                                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                             interpolation = "constant"
                                         )
@@ -612,9 +628,11 @@ def Xform "left_shadow_hand"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "f_knuckle" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/f_knuckle>
                         )
                         {
+                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -658,9 +676,11 @@ def Xform "left_shadow_hand"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "f_proximal" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/f_proximal>
                             )
                             {
+                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -704,9 +724,11 @@ def Xform "left_shadow_hand"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "f_middle" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/f_middle>
                                 )
                                 {
+                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -750,9 +772,11 @@ def Xform "left_shadow_hand"
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                     def Mesh "f_distal_pst" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
                                         prepend references = @./GeometryLibrary.usdc@</Geometry/f_distal_pst>
                                     )
                                     {
+                                        uniform int mjc:group = 2
                                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                             interpolation = "constant"
                                         )
@@ -799,9 +823,11 @@ def Xform "left_shadow_hand"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "f_knuckle" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/f_knuckle>
                         )
                         {
+                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -845,9 +871,11 @@ def Xform "left_shadow_hand"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "f_proximal" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/f_proximal>
                             )
                             {
+                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -891,9 +919,11 @@ def Xform "left_shadow_hand"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "f_middle" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/f_middle>
                                 )
                                 {
+                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -937,9 +967,11 @@ def Xform "left_shadow_hand"
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                     def Mesh "f_distal_pst" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
                                         prepend references = @./GeometryLibrary.usdc@</Geometry/f_distal_pst>
                                     )
                                     {
+                                        uniform int mjc:group = 2
                                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                             interpolation = "constant"
                                         )
@@ -986,9 +1018,11 @@ def Xform "left_shadow_hand"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "lf_metacarpal" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/lf_metacarpal>
                         )
                         {
+                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -1030,9 +1064,11 @@ def Xform "left_shadow_hand"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "f_knuckle" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/f_knuckle>
                             )
                             {
+                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -1076,9 +1112,11 @@ def Xform "left_shadow_hand"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "f_proximal" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/f_proximal>
                                 )
                                 {
+                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -1122,9 +1160,11 @@ def Xform "left_shadow_hand"
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                     def Mesh "f_middle" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
                                         prepend references = @./GeometryLibrary.usdc@</Geometry/f_middle>
                                     )
                                     {
+                                        uniform int mjc:group = 2
                                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                             interpolation = "constant"
                                         )
@@ -1168,9 +1208,11 @@ def Xform "left_shadow_hand"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                         def Mesh "f_distal_pst" (
+                                            prepend apiSchemas = ["MjcImageableAPI"]
                                             prepend references = @./GeometryLibrary.usdc@</Geometry/f_distal_pst>
                                         )
                                         {
+                                            uniform int mjc:group = 2
                                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                                 interpolation = "constant"
                                             )
@@ -1244,9 +1286,11 @@ def Xform "left_shadow_hand"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "th_proximal" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/th_proximal>
                             )
                             {
+                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -1316,9 +1360,11 @@ def Xform "left_shadow_hand"
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                     def Mesh "th_middle" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
                                         prepend references = @./GeometryLibrary.usdc@</Geometry/th_middle>
                                     )
                                     {
+                                        uniform int mjc:group = 2
                                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                             interpolation = "constant"
                                         )
@@ -1381,9 +1427,11 @@ def Xform "left_shadow_hand"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                         def Mesh "th_distal_pst" (
+                                            prepend apiSchemas = ["MjcImageableAPI"]
                                             prepend references = @./GeometryLibrary.usdc@</Geometry/th_distal_pst>
                                         )
                                         {
+                                            uniform int mjc:group = 2
                                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                                 interpolation = "constant"
                                             )

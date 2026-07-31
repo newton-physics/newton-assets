@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a8"
+        string creator = "MuJoCo USD Converter v0.5.0"
     }
     defaultPrim = "apptronik_apollo"
     kilogramsPerUnit = 1
@@ -13,15 +13,6 @@ def Xform "apptronik_apollo"
 {
     def Scope "Physics"
     {
-        def Material "PhysicsMaterial" (
-            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI", "MjcMaterialAPI"]
-        )
-        {
-            float newton:rollingFriction = 0.0001
-            float newton:torsionalFriction = 0.005
-            float physics:dynamicFriction = 1
-        }
-
         def MjcActuator "torso_yaw"
         {
             uniform double[] mjc:biasPrm = [0, -500, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -411,41 +402,11 @@ def Xform "apptronik_apollo"
             prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
         )
         {
+            uniform bool newton:jointsAddMobility = 1
             point3f physics:centerOfMass = (-0.0466459, -0.0000250736, -0.0721416)
             float3 physics:diagonalInertia = (0.0633318, 0.0512326, 0.0281854)
             float physics:mass = 7.43582
             quatf physics:principalAxes = (0.66199106, 0.66208607, 0.24868204, -0.24812703)
-
-            over "pelvis_link" (
-                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-            )
-            {
-                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                uniform int mjc:condim = 1
-                uniform int mjc:group = 1
-                uniform double mjc:margin = 0.0005
-                uniform double[] mjc:solref = [0.005, 1]
-                float newton:contactGap = 0
-                float newton:contactMargin = 0.0005
-                uniform token physics:approximation = "convexHull"
-                bool physics:collisionEnabled = 0
-                float physics:density = 1000
-            }
-
-            over "collision_capsule_body_pelvis" (
-                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-            )
-            {
-                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                uniform int mjc:condim = 1
-                uniform int mjc:group = 3
-                uniform double mjc:margin = 0.0005
-                uniform double[] mjc:solref = [0.005, 1]
-                float newton:contactGap = 0
-                float newton:contactMargin = 0.0005
-                bool physics:collisionEnabled = 0
-                float physics:density = 1000
-            }
 
             def "torso_oak_d_pro_w_rear_frame_link" (
                 prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
@@ -496,24 +457,8 @@ def Xform "apptronik_apollo"
                 float physics:mass = 0.824114
                 quatf physics:principalAxes = (0.5297002, 0.51127523, -0.47042722, 0.4865322)
 
-                over "torso_roll_link" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                    uniform int mjc:condim = 1
-                    uniform int mjc:group = 1
-                    uniform double mjc:margin = 0.0005
-                    uniform double[] mjc:solref = [0.005, 1]
-                    float newton:contactGap = 0
-                    float newton:contactMargin = 0.0005
-                    uniform token physics:approximation = "convexHull"
-                    bool physics:collisionEnabled = 0
-                    float physics:density = 1000
-                }
-
                 def PhysicsRevoluteJoint "torso_yaw" (
-                    prepend apiSchemas = ["MjcJointAPI"]
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                 )
                 {
                     uniform double mjc:actuatorfrcrange:max = 120
@@ -521,6 +466,9 @@ def Xform "apptronik_apollo"
                     uniform double mjc:armature = 0.231424
                     uniform double mjc:damping = 200
                     uniform double mjc:frictionloss = 0.7
+                    float newton:armature = 0.231424
+                    float newton:damping = 3.4906585
+                    float newton:friction = 0.7
                     uniform token physics:axis = "Z"
                     rel physics:body0 = </apptronik_apollo/Geometry/base_link>
                     rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link>
@@ -541,24 +489,8 @@ def Xform "apptronik_apollo"
                     float physics:mass = 0.313137
                     quatf physics:principalAxes = (0.49026015, 0.48986813, -0.50995016, 0.5095342)
 
-                    over "torso_pitch_link" (
-                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                        uniform int mjc:condim = 1
-                        uniform int mjc:group = 1
-                        uniform double mjc:margin = 0.0005
-                        uniform double[] mjc:solref = [0.005, 1]
-                        float newton:contactGap = 0
-                        float newton:contactMargin = 0.0005
-                        uniform token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 0
-                        float physics:density = 1000
-                    }
-
                     def PhysicsRevoluteJoint "torso_roll" (
-                        prepend apiSchemas = ["MjcJointAPI"]
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                     )
                     {
                         uniform double mjc:actuatorfrcrange:max = 414
@@ -566,6 +498,9 @@ def Xform "apptronik_apollo"
                         uniform double mjc:armature = 1.56493
                         uniform double mjc:damping = 165
                         uniform double mjc:frictionloss = 4.53
+                        float newton:armature = 1.56493
+                        float newton:damping = 2.8797932
+                        float newton:friction = 4.53
                         uniform token physics:axis = "X"
                         rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link>
                         rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link>
@@ -586,77 +521,14 @@ def Xform "apptronik_apollo"
                         float physics:mass = 19.3408
                         quatf physics:principalAxes = (0.7027921, 0.015742604, -0.00006685691, 0.7112211)
 
-                        over "torso_link" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                            uniform int mjc:condim = 1
-                            uniform int mjc:group = 1
-                            uniform double mjc:margin = 0.0005
-                            uniform double[] mjc:solref = [0.005, 1]
-                            float newton:contactGap = 0
-                            float newton:contactMargin = 0.0005
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
-                        over "collision_cylinder_torso" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                            uniform int mjc:condim = 1
-                            uniform int mjc:group = 3
-                            uniform double mjc:margin = 0.0005
-                            uniform double[] mjc:solref = [0.005, 1]
-                            float newton:contactGap = 0
-                            float newton:contactMargin = 0.0005
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
-                        over "neck_mount_fix_link" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                            uniform int mjc:condim = 1
-                            uniform int mjc:group = 1
-                            uniform double mjc:margin = 0.0005
-                            uniform double[] mjc:solref = [0.005, 1]
-                            float newton:contactGap = 0
-                            float newton:contactMargin = 0.0005
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
-                        over "battery_mount_fix" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                            uniform int mjc:condim = 1
-                            uniform int mjc:group = 1
-                            uniform double mjc:margin = 0.0005
-                            uniform double[] mjc:solref = [0.005, 1]
-                            float newton:contactGap = 0
-                            float newton:contactMargin = 0.0005
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
                         over "imu" (
-                            prepend apiSchemas = ["MjcSiteAPI"]
+                            prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                         )
                         {
                         }
 
                         def PhysicsRevoluteJoint "torso_pitch" (
-                            prepend apiSchemas = ["MjcJointAPI"]
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                         )
                         {
                             uniform double mjc:actuatorfrcrange:max = 315
@@ -664,6 +536,9 @@ def Xform "apptronik_apollo"
                             uniform double mjc:armature = 0.970692
                             uniform double mjc:damping = 142
                             uniform double mjc:frictionloss = 13.15
+                            float newton:armature = 0.970692
+                            float newton:damping = 2.4783676
+                            float newton:friction = 13.15
                             uniform token physics:axis = "Y"
                             rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link>
                             rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link>
@@ -684,30 +559,16 @@ def Xform "apptronik_apollo"
                             float physics:mass = 0.707753
                             quatf physics:principalAxes = (0.715974, -0.0707674, -0.0795701, 0.689958)
 
-                            over "neck_yaw_link" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                uniform int mjc:condim = 1
-                                uniform int mjc:group = 1
-                                uniform double mjc:margin = 0.0005
-                                uniform double[] mjc:solref = [0.005, 1]
-                                float newton:contactGap = 0
-                                float newton:contactMargin = 0.0005
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 1000
-                            }
-
                             def PhysicsRevoluteJoint "neck_yaw" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:actuatorfrcrange:max = 10.6
                                 uniform double mjc:actuatorfrcrange:min = -10.6
                                 uniform double mjc:armature = 0.0368
                                 uniform double mjc:damping = 15
+                                float newton:armature = 0.0368
+                                float newton:damping = 0.2617994
                                 uniform token physics:axis = "Z"
                                 rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link>
                                 rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/neck_yaw_link>
@@ -729,13 +590,15 @@ def Xform "apptronik_apollo"
                                 quatf physics:principalAxes = (0.0004263551, 0.70365226, 0.0017842306, 0.71054226)
 
                                 def PhysicsRevoluteJoint "neck_roll" (
-                                    prepend apiSchemas = ["MjcJointAPI"]
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                 )
                                 {
                                     uniform double mjc:actuatorfrcrange:max = 34.2
                                     uniform double mjc:actuatorfrcrange:min = -34.2
                                     uniform double mjc:armature = 0.00305531
                                     uniform double mjc:damping = 3
+                                    float newton:armature = 0.00305531
+                                    float newton:damping = 0.05235988
                                     uniform token physics:axis = "X"
                                     rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/neck_yaw_link>
                                     rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/neck_yaw_link/neck_roll_link>
@@ -756,30 +619,16 @@ def Xform "apptronik_apollo"
                                     float physics:mass = 1.78084
                                     quatf physics:principalAxes = (0.35033697, 0.61331797, 0.61731094, 0.34645697)
 
-                                    over "afh_2_1_link" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 1
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        uniform token physics:approximation = "convexHull"
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
                                     def PhysicsRevoluteJoint "neck_pitch" (
-                                        prepend apiSchemas = ["MjcJointAPI"]
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                     )
                                     {
                                         uniform double mjc:actuatorfrcrange:max = 34.2
                                         uniform double mjc:actuatorfrcrange:min = -34.2
                                         uniform double mjc:armature = 0.00256298
                                         uniform double mjc:damping = 3
+                                        float newton:armature = 0.00256298
+                                        float newton:damping = 0.05235988
                                         uniform token physics:axis = "Y"
                                         rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/neck_yaw_link/neck_roll_link>
                                         rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/neck_yaw_link/neck_roll_link/neck_pitch_link>
@@ -803,24 +652,8 @@ def Xform "apptronik_apollo"
                             float physics:mass = 0.0980048
                             quatf physics:principalAxes = (0.7101654, -0.014475906, 0.023056012, 0.7035084)
 
-                            over "l_shoulder_aa_link" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                uniform int mjc:condim = 1
-                                uniform int mjc:group = 1
-                                uniform double mjc:margin = 0.0005
-                                uniform double[] mjc:solref = [0.005, 1]
-                                float newton:contactGap = 0
-                                float newton:contactMargin = 0.0005
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 1000
-                            }
-
                             def PhysicsRevoluteJoint "l_shoulder_aa" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:actuatorfrcrange:max = 78
@@ -828,6 +661,9 @@ def Xform "apptronik_apollo"
                                 uniform double mjc:armature = 0.0982771
                                 uniform double mjc:damping = 26
                                 uniform double mjc:frictionloss = 2
+                                float newton:armature = 0.0982771
+                                float newton:damping = 0.4537856
+                                float newton:friction = 2
                                 uniform token physics:axis = "X"
                                 rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link>
                                 rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link>
@@ -848,24 +684,8 @@ def Xform "apptronik_apollo"
                                 float physics:mass = 0.451281
                                 quatf physics:principalAxes = (0.09148381, 0.58601606, -0.67138404, 0.44436407)
 
-                                over "l_shoulder_ie_link" (
-                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                )
-                                {
-                                    rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                    uniform int mjc:condim = 1
-                                    uniform int mjc:group = 1
-                                    uniform double mjc:margin = 0.0005
-                                    uniform double[] mjc:solref = [0.005, 1]
-                                    float newton:contactGap = 0
-                                    float newton:contactMargin = 0.0005
-                                    uniform token physics:approximation = "convexHull"
-                                    bool physics:collisionEnabled = 0
-                                    float physics:density = 1000
-                                }
-
                                 def PhysicsRevoluteJoint "l_shoulder_ie" (
-                                    prepend apiSchemas = ["MjcJointAPI"]
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                 )
                                 {
                                     uniform double mjc:actuatorfrcrange:max = 67
@@ -873,6 +693,9 @@ def Xform "apptronik_apollo"
                                     uniform double mjc:armature = 0.0823104
                                     uniform double mjc:damping = 35
                                     uniform double mjc:frictionloss = 1.48
+                                    float newton:armature = 0.0823104
+                                    float newton:damping = 0.61086524
+                                    float newton:friction = 1.48
                                     uniform token physics:axis = "Z"
                                     rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link>
                                     rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link/l_shoulder_ie_link>
@@ -893,69 +716,8 @@ def Xform "apptronik_apollo"
                                     float physics:mass = 3.51271
                                     quatf physics:principalAxes = (0.70709497, 0.014089098, -0.0027408698, 0.70697296)
 
-                                    over "l_shoulder_fe_link" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 1
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        uniform token physics:approximation = "convexHull"
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
-                                    over "collision_capsule_body_l_arm_1" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 3
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
-                                    over "collision_capsule_body_l_arm_2" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 3
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
-                                    over "collision_capsule_body_l_arm_3" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 3
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
                                     def PhysicsRevoluteJoint "l_shoulder_fe" (
-                                        prepend apiSchemas = ["MjcJointAPI"]
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                     )
                                     {
                                         uniform double mjc:actuatorfrcrange:max = 114
@@ -963,6 +725,9 @@ def Xform "apptronik_apollo"
                                         uniform double mjc:armature = 0.112768
                                         uniform double mjc:damping = 18
                                         uniform double mjc:frictionloss = 1.94
+                                        float newton:armature = 0.112768
+                                        float newton:damping = 0.31415927
+                                        float newton:friction = 1.94
                                         uniform token physics:axis = "Y"
                                         rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link/l_shoulder_ie_link>
                                         rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link/l_shoulder_ie_link/l_shoulder_fe_link>
@@ -983,24 +748,8 @@ def Xform "apptronik_apollo"
                                         float physics:mass = 0.947642
                                         quatf physics:principalAxes = (0.44650087, 0.5574069, 0.5395019, 0.4459509)
 
-                                        over "l_elbow_fe_link" (
-                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                        )
-                                        {
-                                            rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                            uniform int mjc:condim = 1
-                                            uniform int mjc:group = 1
-                                            uniform double mjc:margin = 0.0005
-                                            uniform double[] mjc:solref = [0.005, 1]
-                                            float newton:contactGap = 0
-                                            float newton:contactMargin = 0.0005
-                                            uniform token physics:approximation = "convexHull"
-                                            bool physics:collisionEnabled = 0
-                                            float physics:density = 1000
-                                        }
-
                                         def PhysicsRevoluteJoint "l_elbow_fe" (
-                                            prepend apiSchemas = ["MjcJointAPI"]
+                                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                         )
                                         {
                                             uniform double mjc:actuatorfrcrange:max = 114
@@ -1008,6 +757,9 @@ def Xform "apptronik_apollo"
                                             uniform double mjc:armature = 0.102645
                                             uniform double mjc:damping = 17
                                             uniform double mjc:frictionloss = 2.55
+                                            float newton:armature = 0.102645
+                                            float newton:damping = 0.29670596
+                                            float newton:friction = 2.55
                                             uniform token physics:axis = "Y"
                                             rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link/l_shoulder_ie_link/l_shoulder_fe_link>
                                             rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link/l_shoulder_ie_link/l_shoulder_fe_link/l_elbow_fe_link>
@@ -1028,45 +780,16 @@ def Xform "apptronik_apollo"
                                             float physics:mass = 0.694478
                                             quatf physics:principalAxes = (0.70178175, -0.05034818, -0.043503486, 0.70927775)
 
-                                            over "l_wrist_roll_link" (
-                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                            )
-                                            {
-                                                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                uniform int mjc:condim = 1
-                                                uniform int mjc:group = 1
-                                                uniform double mjc:margin = 0.0005
-                                                uniform double[] mjc:solref = [0.005, 1]
-                                                float newton:contactGap = 0
-                                                float newton:contactMargin = 0.0005
-                                                uniform token physics:approximation = "convexHull"
-                                                bool physics:collisionEnabled = 0
-                                                float physics:density = 1000
-                                            }
-
-                                            over "collision_cylinder_l_arm" (
-                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                            )
-                                            {
-                                                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                uniform int mjc:condim = 1
-                                                uniform int mjc:group = 3
-                                                uniform double mjc:margin = 0.0005
-                                                uniform double[] mjc:solref = [0.005, 1]
-                                                float newton:contactGap = 0
-                                                float newton:contactMargin = 0.0005
-                                                bool physics:collisionEnabled = 0
-                                                float physics:density = 1000
-                                            }
-
                                             def PhysicsRevoluteJoint "l_wrist_roll" (
-                                                prepend apiSchemas = ["MjcJointAPI"]
+                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                             )
                                             {
                                                 uniform double mjc:actuatorfrcrange:max = 10.6
                                                 uniform double mjc:actuatorfrcrange:min = -10.6
                                                 uniform double mjc:armature = 0.0368
                                                 uniform double mjc:damping = 15
+                                                float newton:armature = 0.0368
+                                                float newton:damping = 0.2617994
                                                 uniform token physics:axis = "Z"
                                                 rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link/l_shoulder_ie_link/l_shoulder_fe_link/l_elbow_fe_link>
                                                 rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link/l_shoulder_ie_link/l_shoulder_fe_link/l_elbow_fe_link/l_wrist_roll_link>
@@ -1087,30 +810,16 @@ def Xform "apptronik_apollo"
                                                 float physics:mass = 0.0189001
                                                 quatf physics:principalAxes = (-0.0017842306, 0.71054226, -0.0004263551, 0.70365226)
 
-                                                over "l_wrist_yaw_link" (
-                                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                )
-                                                {
-                                                    rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                    uniform int mjc:condim = 1
-                                                    uniform int mjc:group = 1
-                                                    uniform double mjc:margin = 0.0005
-                                                    uniform double[] mjc:solref = [0.005, 1]
-                                                    float newton:contactGap = 0
-                                                    float newton:contactMargin = 0.0005
-                                                    uniform token physics:approximation = "convexHull"
-                                                    bool physics:collisionEnabled = 0
-                                                    float physics:density = 1000
-                                                }
-
                                                 def PhysicsRevoluteJoint "l_wrist_yaw" (
-                                                    prepend apiSchemas = ["MjcJointAPI"]
+                                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                 )
                                                 {
                                                     uniform double mjc:actuatorfrcrange:max = 34.2
                                                     uniform double mjc:actuatorfrcrange:min = -34.2
                                                     uniform double mjc:armature = 0.00329371
                                                     uniform double mjc:damping = 3
+                                                    float newton:armature = 0.00329371
+                                                    float newton:damping = 0.05235988
                                                     uniform token physics:axis = "X"
                                                     rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link/l_shoulder_ie_link/l_shoulder_fe_link/l_elbow_fe_link/l_wrist_roll_link>
                                                     rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link/l_shoulder_ie_link/l_shoulder_fe_link/l_elbow_fe_link/l_wrist_roll_link/l_wrist_yaw_link>
@@ -1131,253 +840,16 @@ def Xform "apptronik_apollo"
                                                     float physics:mass = 0.806883
                                                     quatf physics:principalAxes = (0.61486125, 0.008922334, 0.032341614, 0.78792137)
 
-                                                    over "l_wrist_pitch_link" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "wrist_adapter_mesh" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "wrist_mesh" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "palm_mesh" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "index_mesh_1" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "index_mesh_2" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "middle_mesh_1" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "middle_mesh_2" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "ring_mesh_1" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "ring_mesh_2" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "pinky_mesh_1" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "pinky_mesh_2" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "thumb_mesh_1" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "thumb_mesh_2" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "collision_l_hand_plate" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 3
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
                                                     def PhysicsRevoluteJoint "l_wrist_pitch" (
-                                                        prepend apiSchemas = ["MjcJointAPI"]
+                                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                     )
                                                     {
                                                         uniform double mjc:actuatorfrcrange:max = 34.2
                                                         uniform double mjc:actuatorfrcrange:min = -34.2
                                                         uniform double mjc:armature = 0.00288074
                                                         uniform double mjc:damping = 3
+                                                        float newton:armature = 0.00288074
+                                                        float newton:damping = 0.05235988
                                                         uniform token physics:axis = "X"
                                                         rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link/l_shoulder_ie_link/l_shoulder_fe_link/l_elbow_fe_link/l_wrist_roll_link/l_wrist_yaw_link>
                                                         rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/l_shoulder_aa_link/l_shoulder_ie_link/l_shoulder_fe_link/l_elbow_fe_link/l_wrist_roll_link/l_wrist_yaw_link/l_wrist_pitch_link>
@@ -1405,24 +877,8 @@ def Xform "apptronik_apollo"
                             float physics:mass = 0.0980048
                             quatf physics:principalAxes = (0.7101654, -0.014475906, 0.023056012, 0.7035084)
 
-                            over "r_shoulder_aa_link" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                uniform int mjc:condim = 1
-                                uniform int mjc:group = 1
-                                uniform double mjc:margin = 0.0005
-                                uniform double[] mjc:solref = [0.005, 1]
-                                float newton:contactGap = 0
-                                float newton:contactMargin = 0.0005
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 1000
-                            }
-
                             def PhysicsRevoluteJoint "r_shoulder_aa" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:actuatorfrcrange:max = 78
@@ -1430,6 +886,9 @@ def Xform "apptronik_apollo"
                                 uniform double mjc:armature = 0.098338
                                 uniform double mjc:damping = 26
                                 uniform double mjc:frictionloss = 2
+                                float newton:armature = 0.098338
+                                float newton:damping = 0.4537856
+                                float newton:friction = 2
                                 uniform token physics:axis = "X"
                                 rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link>
                                 rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link>
@@ -1450,24 +909,8 @@ def Xform "apptronik_apollo"
                                 float physics:mass = 0.451079
                                 quatf physics:principalAxes = (0.58385664, 0.088588946, -0.44550374, 0.67289656)
 
-                                over "r_shoulder_ie_link" (
-                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                )
-                                {
-                                    rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                    uniform int mjc:condim = 1
-                                    uniform int mjc:group = 1
-                                    uniform double mjc:margin = 0.0005
-                                    uniform double[] mjc:solref = [0.005, 1]
-                                    float newton:contactGap = 0
-                                    float newton:contactMargin = 0.0005
-                                    uniform token physics:approximation = "convexHull"
-                                    bool physics:collisionEnabled = 0
-                                    float physics:density = 1000
-                                }
-
                                 def PhysicsRevoluteJoint "r_shoulder_ie" (
-                                    prepend apiSchemas = ["MjcJointAPI"]
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                 )
                                 {
                                     uniform double mjc:actuatorfrcrange:max = 67
@@ -1475,6 +918,9 @@ def Xform "apptronik_apollo"
                                     uniform double mjc:armature = 0.0823191
                                     uniform double mjc:damping = 35
                                     uniform double mjc:frictionloss = 1.48
+                                    float newton:armature = 0.0823191
+                                    float newton:damping = 0.61086524
+                                    float newton:friction = 1.48
                                     uniform token physics:axis = "Z"
                                     rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link>
                                     rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link>
@@ -1495,69 +941,8 @@ def Xform "apptronik_apollo"
                                     float physics:mass = 3.50359
                                     quatf physics:principalAxes = (0.7031996, -0.0022552689, 0.011753994, 0.71089166)
 
-                                    over "r_shoulder_fe_link" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 1
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        uniform token physics:approximation = "convexHull"
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
-                                    over "collision_capsule_body_r_arm_1" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 3
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
-                                    over "collision_capsule_body_r_arm_2" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 3
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
-                                    over "collision_capsule_body_r_arm_3" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 3
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
                                     def PhysicsRevoluteJoint "r_shoulder_fe" (
-                                        prepend apiSchemas = ["MjcJointAPI"]
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                     )
                                     {
                                         uniform double mjc:actuatorfrcrange:max = 114
@@ -1565,6 +950,9 @@ def Xform "apptronik_apollo"
                                         uniform double mjc:armature = 0.112768
                                         uniform double mjc:damping = 18
                                         uniform double mjc:frictionloss = 1.94
+                                        float newton:armature = 0.112768
+                                        float newton:damping = 0.31415927
+                                        float newton:friction = 1.94
                                         uniform token physics:axis = "Y"
                                         rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link>
                                         rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link/r_shoulder_fe_link>
@@ -1585,24 +973,8 @@ def Xform "apptronik_apollo"
                                         float physics:mass = 0.947653
                                         quatf physics:principalAxes = (0.45853305, 0.52721506, 0.5687851, 0.43390706)
 
-                                        over "r_elbow_fe_link" (
-                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                        )
-                                        {
-                                            rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                            uniform int mjc:condim = 1
-                                            uniform int mjc:group = 1
-                                            uniform double mjc:margin = 0.0005
-                                            uniform double[] mjc:solref = [0.005, 1]
-                                            float newton:contactGap = 0
-                                            float newton:contactMargin = 0.0005
-                                            uniform token physics:approximation = "convexHull"
-                                            bool physics:collisionEnabled = 0
-                                            float physics:density = 1000
-                                        }
-
                                         def PhysicsRevoluteJoint "r_elbow_fe" (
-                                            prepend apiSchemas = ["MjcJointAPI"]
+                                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                         )
                                         {
                                             uniform double mjc:actuatorfrcrange:max = 114
@@ -1610,6 +982,9 @@ def Xform "apptronik_apollo"
                                             uniform double mjc:armature = 0.102645
                                             uniform double mjc:damping = 17
                                             uniform double mjc:frictionloss = 2.55
+                                            float newton:armature = 0.102645
+                                            float newton:damping = 0.29670596
+                                            float newton:friction = 2.55
                                             uniform token physics:axis = "Y"
                                             rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link/r_shoulder_fe_link>
                                             rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link/r_shoulder_fe_link/r_elbow_fe_link>
@@ -1630,45 +1005,16 @@ def Xform "apptronik_apollo"
                                             float physics:mass = 0.695137
                                             quatf physics:principalAxes = (0.69870657, -0.044953775, -0.04864477, 0.7123356)
 
-                                            over "r_wrist_roll_link" (
-                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                            )
-                                            {
-                                                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                uniform int mjc:condim = 1
-                                                uniform int mjc:group = 1
-                                                uniform double mjc:margin = 0.0005
-                                                uniform double[] mjc:solref = [0.005, 1]
-                                                float newton:contactGap = 0
-                                                float newton:contactMargin = 0.0005
-                                                uniform token physics:approximation = "convexHull"
-                                                bool physics:collisionEnabled = 0
-                                                float physics:density = 1000
-                                            }
-
-                                            over "collision_cylinder_r_arm" (
-                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                            )
-                                            {
-                                                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                uniform int mjc:condim = 1
-                                                uniform int mjc:group = 3
-                                                uniform double mjc:margin = 0.0005
-                                                uniform double[] mjc:solref = [0.005, 1]
-                                                float newton:contactGap = 0
-                                                float newton:contactMargin = 0.0005
-                                                bool physics:collisionEnabled = 0
-                                                float physics:density = 1000
-                                            }
-
                                             def PhysicsRevoluteJoint "r_wrist_roll" (
-                                                prepend apiSchemas = ["MjcJointAPI"]
+                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                             )
                                             {
                                                 uniform double mjc:actuatorfrcrange:max = 10.6
                                                 uniform double mjc:actuatorfrcrange:min = -10.6
                                                 uniform double mjc:armature = 0.0368
                                                 uniform double mjc:damping = 15
+                                                float newton:armature = 0.0368
+                                                float newton:damping = 0.2617994
                                                 uniform token physics:axis = "Z"
                                                 rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link/r_shoulder_fe_link/r_elbow_fe_link>
                                                 rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link/r_shoulder_fe_link/r_elbow_fe_link/r_wrist_roll_link>
@@ -1689,30 +1035,16 @@ def Xform "apptronik_apollo"
                                                 float physics:mass = 0.0189001
                                                 quatf physics:principalAxes = (-0.00044002014, 0.70365226, -0.0017971606, 0.71054226)
 
-                                                over "r_wrist_yaw_link" (
-                                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                )
-                                                {
-                                                    rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                    uniform int mjc:condim = 1
-                                                    uniform int mjc:group = 1
-                                                    uniform double mjc:margin = 0.0005
-                                                    uniform double[] mjc:solref = [0.005, 1]
-                                                    float newton:contactGap = 0
-                                                    float newton:contactMargin = 0.0005
-                                                    uniform token physics:approximation = "convexHull"
-                                                    bool physics:collisionEnabled = 0
-                                                    float physics:density = 1000
-                                                }
-
                                                 def PhysicsRevoluteJoint "r_wrist_yaw" (
-                                                    prepend apiSchemas = ["MjcJointAPI"]
+                                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                 )
                                                 {
                                                     uniform double mjc:actuatorfrcrange:max = 34.2
                                                     uniform double mjc:actuatorfrcrange:min = -34.2
                                                     uniform double mjc:armature = 0.0032937
                                                     uniform double mjc:damping = 3
+                                                    float newton:armature = 0.0032937
+                                                    float newton:damping = 0.05235988
                                                     uniform token physics:axis = "X"
                                                     rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link/r_shoulder_fe_link/r_elbow_fe_link/r_wrist_roll_link>
                                                     rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link/r_shoulder_fe_link/r_elbow_fe_link/r_wrist_roll_link/r_wrist_yaw_link>
@@ -1733,253 +1065,16 @@ def Xform "apptronik_apollo"
                                                     float physics:mass = 0.806683
                                                     quatf physics:principalAxes = (0.630263, -0.0221958, -0.0501406, 0.774443)
 
-                                                    over "r_wrist_pitch_link" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "wrist_adapter" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "wristmesh" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "FB_palm_ref_MIR" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "tn__idxF1_u7" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "tn__idxF2_u7" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "tn__idxF1_1_rA" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "tn__idxF2_1_rA" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "tn__idxF1_2_rA" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "tn__idxF2_2_rA" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "tn__idxF1_3_rA" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "tn__idxF2_3_rA" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "tn__thumbF1MIR_ZF8" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "tn__thumbF2right_WI8" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 1
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        uniform token physics:approximation = "convexHull"
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
-                                                    over "collision_r_hand_plate" (
-                                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                                    )
-                                                    {
-                                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                                        uniform int mjc:condim = 1
-                                                        uniform int mjc:group = 3
-                                                        uniform double mjc:margin = 0.0005
-                                                        uniform double[] mjc:solref = [0.005, 1]
-                                                        float newton:contactGap = 0
-                                                        float newton:contactMargin = 0.0005
-                                                        bool physics:collisionEnabled = 0
-                                                        float physics:density = 1000
-                                                    }
-
                                                     def PhysicsRevoluteJoint "r_wrist_pitch" (
-                                                        prepend apiSchemas = ["MjcJointAPI"]
+                                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                     )
                                                     {
                                                         uniform double mjc:actuatorfrcrange:max = 34.2
                                                         uniform double mjc:actuatorfrcrange:min = -34.2
                                                         uniform double mjc:armature = 0.00288075
                                                         uniform double mjc:damping = 3
+                                                        float newton:armature = 0.00288075
+                                                        float newton:damping = 0.05235988
                                                         uniform token physics:axis = "X"
                                                         rel physics:body0 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link/r_shoulder_fe_link/r_elbow_fe_link/r_wrist_roll_link/r_wrist_yaw_link>
                                                         rel physics:body1 = </apptronik_apollo/Geometry/base_link/torso_roll_link/torso_pitch_link/torso_link/r_shoulder_aa_link/r_shoulder_ie_link/r_shoulder_fe_link/r_elbow_fe_link/r_wrist_roll_link/r_wrist_yaw_link/r_wrist_pitch_link>
@@ -2010,24 +1105,8 @@ def Xform "apptronik_apollo"
                 float physics:mass = 1.49972
                 quatf physics:principalAxes = (-0.018288504, 0.43376008, -0.029543007, 0.90035826)
 
-                over "l_hip_ie_link" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                    uniform int mjc:condim = 1
-                    uniform int mjc:group = 1
-                    uniform double mjc:margin = 0.0005
-                    uniform double[] mjc:solref = [0.005, 1]
-                    float newton:contactGap = 0
-                    float newton:contactMargin = 0.0005
-                    uniform token physics:approximation = "convexHull"
-                    bool physics:collisionEnabled = 0
-                    float physics:density = 1000
-                }
-
                 def PhysicsRevoluteJoint "l_hip_ie" (
-                    prepend apiSchemas = ["MjcJointAPI"]
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                 )
                 {
                     uniform double mjc:actuatorfrcrange:max = 120
@@ -2035,6 +1114,9 @@ def Xform "apptronik_apollo"
                     uniform double mjc:armature = 0.231424
                     uniform double mjc:damping = 171
                     uniform double mjc:frictionloss = 7.95
+                    float newton:armature = 0.231424
+                    float newton:damping = 2.984513
+                    float newton:friction = 7.95
                     uniform token physics:axis = "Z"
                     rel physics:body0 = </apptronik_apollo/Geometry/base_link>
                     rel physics:body1 = </apptronik_apollo/Geometry/base_link/l_hip_ie_link>
@@ -2055,24 +1137,8 @@ def Xform "apptronik_apollo"
                     float physics:mass = 0.429858
                     quatf physics:principalAxes = (0.4888221, 0.40058705, -0.4846451, 0.6047331)
 
-                    over "l_hip_aa_link" (
-                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                        uniform int mjc:condim = 1
-                        uniform int mjc:group = 1
-                        uniform double mjc:margin = 0.0005
-                        uniform double[] mjc:solref = [0.005, 1]
-                        float newton:contactGap = 0
-                        float newton:contactMargin = 0.0005
-                        uniform token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 0
-                        float physics:density = 1000
-                    }
-
                     def PhysicsRevoluteJoint "l_hip_aa" (
-                        prepend apiSchemas = ["MjcJointAPI"]
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                     )
                     {
                         uniform double mjc:actuatorfrcrange:max = 494
@@ -2080,6 +1146,9 @@ def Xform "apptronik_apollo"
                         uniform double mjc:armature = 0.399395
                         uniform double mjc:damping = 153
                         uniform double mjc:frictionloss = 7
+                        float newton:armature = 0.399395
+                        float newton:damping = 2.6703537
+                        float newton:friction = 7
                         uniform token physics:axis = "X"
                         rel physics:body0 = </apptronik_apollo/Geometry/base_link/l_hip_ie_link>
                         rel physics:body1 = </apptronik_apollo/Geometry/base_link/l_hip_ie_link/l_hip_aa_link>
@@ -2100,39 +1169,8 @@ def Xform "apptronik_apollo"
                         float physics:mass = 10.7833
                         quatf physics:principalAxes = (0.8643337, 0.008041757, 0.048955683, 0.5004658)
 
-                        over "l_hip_fe_link" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                            uniform int mjc:condim = 1
-                            uniform int mjc:group = 1
-                            uniform double mjc:margin = 0.0005
-                            uniform double[] mjc:solref = [0.005, 1]
-                            float newton:contactGap = 0
-                            float newton:contactMargin = 0.0005
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
-                        over "collision_capsule_body_l_thigh" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                            uniform int mjc:condim = 1
-                            uniform int mjc:group = 3
-                            uniform double mjc:margin = 0.0005
-                            uniform double[] mjc:solref = [0.005, 1]
-                            float newton:contactGap = 0
-                            float newton:contactMargin = 0.0005
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
                         def PhysicsRevoluteJoint "l_hip_fe" (
-                            prepend apiSchemas = ["MjcJointAPI"]
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                         )
                         {
                             uniform double mjc:actuatorfrcrange:max = 342
@@ -2140,6 +1178,9 @@ def Xform "apptronik_apollo"
                             uniform double mjc:armature = 0.187096
                             uniform double mjc:damping = 92
                             uniform double mjc:frictionloss = 21.06
+                            float newton:armature = 0.187096
+                            float newton:damping = 1.6057029
+                            float newton:friction = 21.06
                             uniform token physics:axis = "Y"
                             rel physics:body0 = </apptronik_apollo/Geometry/base_link/l_hip_ie_link/l_hip_aa_link>
                             rel physics:body1 = </apptronik_apollo/Geometry/base_link/l_hip_ie_link/l_hip_aa_link/l_hip_fe_link>
@@ -2160,39 +1201,8 @@ def Xform "apptronik_apollo"
                             float physics:mass = 4.57515
                             quatf physics:principalAxes = (0.91705734, 0.009545053, 0.011360805, 0.3984792)
 
-                            over "l_knee_fe_link" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                uniform int mjc:condim = 1
-                                uniform int mjc:group = 1
-                                uniform double mjc:margin = 0.0005
-                                uniform double[] mjc:solref = [0.005, 1]
-                                float newton:contactGap = 0
-                                float newton:contactMargin = 0.0005
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 1000
-                            }
-
-                            over "collision_capsule_body_l_shin" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                uniform int mjc:condim = 1
-                                uniform int mjc:group = 3
-                                uniform double mjc:margin = 0.0005
-                                uniform double[] mjc:solref = [0.005, 1]
-                                float newton:contactGap = 0
-                                float newton:contactMargin = 0.0005
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 1000
-                            }
-
                             def PhysicsRevoluteJoint "l_knee_fe" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:actuatorfrcrange:max = 336
@@ -2200,6 +1210,9 @@ def Xform "apptronik_apollo"
                                 uniform double mjc:armature = 0.292264
                                 uniform double mjc:damping = 46
                                 uniform double mjc:frictionloss = 7.7
+                                float newton:armature = 0.292264
+                                float newton:damping = 0.80285144
+                                float newton:friction = 7.7
                                 uniform token physics:axis = "Y"
                                 rel physics:body0 = </apptronik_apollo/Geometry/base_link/l_hip_ie_link/l_hip_aa_link/l_hip_fe_link>
                                 rel physics:body1 = </apptronik_apollo/Geometry/base_link/l_hip_ie_link/l_hip_aa_link/l_hip_fe_link/l_knee_fe_link>
@@ -2220,24 +1233,8 @@ def Xform "apptronik_apollo"
                                 float physics:mass = 0.12478
                                 quatf physics:principalAxes = (0.692933, 0.691803, 0.145013, -0.14221)
 
-                                over "l_ankle_ie_link" (
-                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                )
-                                {
-                                    rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                    uniform int mjc:condim = 1
-                                    uniform int mjc:group = 1
-                                    uniform double mjc:margin = 0.0005
-                                    uniform double[] mjc:solref = [0.005, 1]
-                                    float newton:contactGap = 0
-                                    float newton:contactMargin = 0.0005
-                                    uniform token physics:approximation = "convexHull"
-                                    bool physics:collisionEnabled = 0
-                                    float physics:density = 1000
-                                }
-
                                 def PhysicsRevoluteJoint "l_ankle_ie" (
-                                    prepend apiSchemas = ["MjcJointAPI"]
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                 )
                                 {
                                     uniform double mjc:actuatorfrcrange:max = 120
@@ -2245,6 +1242,9 @@ def Xform "apptronik_apollo"
                                     uniform double mjc:armature = 0.121874
                                     uniform double mjc:damping = 11
                                     uniform double mjc:frictionloss = 0.89
+                                    float newton:armature = 0.121874
+                                    float newton:damping = 0.19198622
+                                    float newton:friction = 0.89
                                     uniform token physics:axis = "X"
                                     rel physics:body0 = </apptronik_apollo/Geometry/base_link/l_hip_ie_link/l_hip_aa_link/l_hip_fe_link/l_knee_fe_link>
                                     rel physics:body1 = </apptronik_apollo/Geometry/base_link/l_hip_ie_link/l_hip_aa_link/l_hip_fe_link/l_knee_fe_link/l_ankle_ie_link>
@@ -2265,63 +1265,32 @@ def Xform "apptronik_apollo"
                                     float physics:mass = 1.1808
                                     quatf physics:principalAxes = (0.4328928, 0.5875157, 0.51047474, 0.4548018)
 
-                                    over "l_foot_link" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 1
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        uniform token physics:approximation = "convexHull"
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
-                                    over "collision_l_sole" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 3
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
                                     over "l_foot_fr" (
-                                        prepend apiSchemas = ["MjcSiteAPI"]
+                                        prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                                     )
                                     {
                                     }
 
                                     over "l_foot_br" (
-                                        prepend apiSchemas = ["MjcSiteAPI"]
+                                        prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                                     )
                                     {
                                     }
 
                                     over "l_foot_fl" (
-                                        prepend apiSchemas = ["MjcSiteAPI"]
+                                        prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                                     )
                                     {
                                     }
 
                                     over "l_foot_bl" (
-                                        prepend apiSchemas = ["MjcSiteAPI"]
+                                        prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                                     )
                                     {
                                     }
 
                                     def PhysicsRevoluteJoint "l_ankle_pd" (
-                                        prepend apiSchemas = ["MjcJointAPI"]
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                     )
                                     {
                                         uniform double mjc:actuatorfrcrange:max = 150
@@ -2329,6 +1298,9 @@ def Xform "apptronik_apollo"
                                         uniform double mjc:armature = 0.205456
                                         uniform double mjc:damping = 21
                                         uniform double mjc:frictionloss = 1.87
+                                        float newton:armature = 0.205456
+                                        float newton:damping = 0.36651915
+                                        float newton:friction = 1.87
                                         uniform token physics:axis = "Y"
                                         rel physics:body0 = </apptronik_apollo/Geometry/base_link/l_hip_ie_link/l_hip_aa_link/l_hip_fe_link/l_knee_fe_link/l_ankle_ie_link>
                                         rel physics:body1 = </apptronik_apollo/Geometry/base_link/l_hip_ie_link/l_hip_aa_link/l_hip_fe_link/l_knee_fe_link/l_ankle_ie_link/l_foot_link>
@@ -2355,24 +1327,8 @@ def Xform "apptronik_apollo"
                 float physics:mass = 1.49972
                 quatf physics:principalAxes = (0.034771398, 0.43395594, 0.046985593, 0.8990359)
 
-                over "r_hip_ie_link" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                    uniform int mjc:condim = 1
-                    uniform int mjc:group = 1
-                    uniform double mjc:margin = 0.0005
-                    uniform double[] mjc:solref = [0.005, 1]
-                    float newton:contactGap = 0
-                    float newton:contactMargin = 0.0005
-                    uniform token physics:approximation = "convexHull"
-                    bool physics:collisionEnabled = 0
-                    float physics:density = 1000
-                }
-
                 def PhysicsRevoluteJoint "r_hip_ie" (
-                    prepend apiSchemas = ["MjcJointAPI"]
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                 )
                 {
                     uniform double mjc:actuatorfrcrange:max = 120
@@ -2380,6 +1336,9 @@ def Xform "apptronik_apollo"
                     uniform double mjc:armature = 0.231424
                     uniform double mjc:damping = 171
                     uniform double mjc:frictionloss = 7.95
+                    float newton:armature = 0.231424
+                    float newton:damping = 2.984513
+                    float newton:friction = 7.95
                     uniform token physics:axis = "Z"
                     rel physics:body0 = </apptronik_apollo/Geometry/base_link>
                     rel physics:body1 = </apptronik_apollo/Geometry/base_link/r_hip_ie_link>
@@ -2400,24 +1359,8 @@ def Xform "apptronik_apollo"
                     float physics:mass = 0.429858
                     quatf physics:principalAxes = (0.46975306, 0.58384305, -0.5134581, 0.41811505)
 
-                    over "r_hip_aa_link" (
-                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                        uniform int mjc:condim = 1
-                        uniform int mjc:group = 1
-                        uniform double mjc:margin = 0.0005
-                        uniform double[] mjc:solref = [0.005, 1]
-                        float newton:contactGap = 0
-                        float newton:contactMargin = 0.0005
-                        uniform token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 0
-                        float physics:density = 1000
-                    }
-
                     def PhysicsRevoluteJoint "r_hip_aa" (
-                        prepend apiSchemas = ["MjcJointAPI"]
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                     )
                     {
                         uniform double mjc:actuatorfrcrange:max = 494
@@ -2425,6 +1368,9 @@ def Xform "apptronik_apollo"
                         uniform double mjc:armature = 0.399396
                         uniform double mjc:damping = 153
                         uniform double mjc:frictionloss = 7
+                        float newton:armature = 0.399396
+                        float newton:damping = 2.6703537
+                        float newton:friction = 7
                         uniform token physics:axis = "X"
                         rel physics:body0 = </apptronik_apollo/Geometry/base_link/r_hip_ie_link>
                         rel physics:body1 = </apptronik_apollo/Geometry/base_link/r_hip_ie_link/r_hip_aa_link>
@@ -2445,39 +1391,8 @@ def Xform "apptronik_apollo"
                         float physics:mass = 10.7924
                         quatf physics:principalAxes = (0.49300224, 0.049361024, 0.007826214, 0.8685914)
 
-                        over "r_hip_fe_link" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                            uniform int mjc:condim = 1
-                            uniform int mjc:group = 1
-                            uniform double mjc:margin = 0.0005
-                            uniform double[] mjc:solref = [0.005, 1]
-                            float newton:contactGap = 0
-                            float newton:contactMargin = 0.0005
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
-                        over "collision_capsule_body_r_thigh" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                            uniform int mjc:condim = 1
-                            uniform int mjc:group = 3
-                            uniform double mjc:margin = 0.0005
-                            uniform double[] mjc:solref = [0.005, 1]
-                            float newton:contactGap = 0
-                            float newton:contactMargin = 0.0005
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
                         def PhysicsRevoluteJoint "r_hip_fe" (
-                            prepend apiSchemas = ["MjcJointAPI"]
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                         )
                         {
                             uniform double mjc:actuatorfrcrange:max = 342
@@ -2485,6 +1400,9 @@ def Xform "apptronik_apollo"
                             uniform double mjc:armature = 0.187096
                             uniform double mjc:damping = 92
                             uniform double mjc:frictionloss = 21.06
+                            float newton:armature = 0.187096
+                            float newton:damping = 1.6057029
+                            float newton:friction = 21.06
                             uniform token physics:axis = "Y"
                             rel physics:body0 = </apptronik_apollo/Geometry/base_link/r_hip_ie_link/r_hip_aa_link>
                             rel physics:body1 = </apptronik_apollo/Geometry/base_link/r_hip_ie_link/r_hip_aa_link/r_hip_fe_link>
@@ -2505,39 +1423,8 @@ def Xform "apptronik_apollo"
                             float physics:mass = 4.57434
                             quatf physics:principalAxes = (0.39984795, 0.011199399, 0.008996919, 0.91646886)
 
-                            over "r_knee_fe_link" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                uniform int mjc:condim = 1
-                                uniform int mjc:group = 1
-                                uniform double mjc:margin = 0.0005
-                                uniform double[] mjc:solref = [0.005, 1]
-                                float newton:contactGap = 0
-                                float newton:contactMargin = 0.0005
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 1000
-                            }
-
-                            over "collision_capsule_body_r_shin" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                uniform int mjc:condim = 1
-                                uniform int mjc:group = 3
-                                uniform double mjc:margin = 0.0005
-                                uniform double[] mjc:solref = [0.005, 1]
-                                float newton:contactGap = 0
-                                float newton:contactMargin = 0.0005
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 1000
-                            }
-
                             def PhysicsRevoluteJoint "r_knee_fe" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:actuatorfrcrange:max = 336
@@ -2545,6 +1432,9 @@ def Xform "apptronik_apollo"
                                 uniform double mjc:armature = 0.292264
                                 uniform double mjc:damping = 46
                                 uniform double mjc:frictionloss = 7.7
+                                float newton:armature = 0.292264
+                                float newton:damping = 0.80285144
+                                float newton:friction = 7.7
                                 uniform token physics:axis = "Y"
                                 rel physics:body0 = </apptronik_apollo/Geometry/base_link/r_hip_ie_link/r_hip_aa_link/r_hip_fe_link>
                                 rel physics:body1 = </apptronik_apollo/Geometry/base_link/r_hip_ie_link/r_hip_aa_link/r_hip_fe_link/r_knee_fe_link>
@@ -2565,24 +1455,8 @@ def Xform "apptronik_apollo"
                                 float physics:mass = 0.12478
                                 quatf physics:principalAxes = (0.6918101, 0.6929281, 0.14220701, -0.14500602)
 
-                                over "r_ankle_ie_link" (
-                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                )
-                                {
-                                    rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                    uniform int mjc:condim = 1
-                                    uniform int mjc:group = 1
-                                    uniform double mjc:margin = 0.0005
-                                    uniform double[] mjc:solref = [0.005, 1]
-                                    float newton:contactGap = 0
-                                    float newton:contactMargin = 0.0005
-                                    uniform token physics:approximation = "convexHull"
-                                    bool physics:collisionEnabled = 0
-                                    float physics:density = 1000
-                                }
-
                                 def PhysicsRevoluteJoint "r_ankle_ie" (
-                                    prepend apiSchemas = ["MjcJointAPI"]
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                 )
                                 {
                                     uniform double mjc:actuatorfrcrange:max = 120
@@ -2590,6 +1464,9 @@ def Xform "apptronik_apollo"
                                     uniform double mjc:armature = 0.121874
                                     uniform double mjc:damping = 11
                                     uniform double mjc:frictionloss = 0.89
+                                    float newton:armature = 0.121874
+                                    float newton:damping = 0.19198622
+                                    float newton:friction = 0.89
                                     uniform token physics:axis = "X"
                                     rel physics:body0 = </apptronik_apollo/Geometry/base_link/r_hip_ie_link/r_hip_aa_link/r_hip_fe_link/r_knee_fe_link>
                                     rel physics:body1 = </apptronik_apollo/Geometry/base_link/r_hip_ie_link/r_hip_aa_link/r_hip_fe_link/r_knee_fe_link/r_ankle_ie_link>
@@ -2610,63 +1487,32 @@ def Xform "apptronik_apollo"
                                     float physics:mass = 1.1808
                                     quatf physics:principalAxes = (0.414902, 0.606299, 0.487904, 0.471389)
 
-                                    over "r_foot_link" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 1
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        uniform token physics:approximation = "convexHull"
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
-                                    over "collision_r_sole" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </apptronik_apollo/Physics/PhysicsMaterial>
-                                        uniform int mjc:condim = 1
-                                        uniform int mjc:group = 3
-                                        uniform double mjc:margin = 0.0005
-                                        uniform double[] mjc:solref = [0.005, 1]
-                                        float newton:contactGap = 0
-                                        float newton:contactMargin = 0.0005
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
                                     over "r_foot_fr" (
-                                        prepend apiSchemas = ["MjcSiteAPI"]
+                                        prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                                     )
                                     {
                                     }
 
                                     over "r_foot_br" (
-                                        prepend apiSchemas = ["MjcSiteAPI"]
+                                        prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                                     )
                                     {
                                     }
 
                                     over "r_foot_fl" (
-                                        prepend apiSchemas = ["MjcSiteAPI"]
+                                        prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                                     )
                                     {
                                     }
 
                                     over "r_foot_bl" (
-                                        prepend apiSchemas = ["MjcSiteAPI"]
+                                        prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                                     )
                                     {
                                     }
 
                                     def PhysicsRevoluteJoint "r_ankle_pd" (
-                                        prepend apiSchemas = ["MjcJointAPI"]
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                     )
                                     {
                                         uniform double mjc:actuatorfrcrange:max = 150
@@ -2674,6 +1520,9 @@ def Xform "apptronik_apollo"
                                         uniform double mjc:armature = 0.205456
                                         uniform double mjc:damping = 21
                                         uniform double mjc:frictionloss = 1.87
+                                        float newton:armature = 0.205456
+                                        float newton:damping = 0.36651915
+                                        float newton:friction = 1.87
                                         uniform token physics:axis = "Y"
                                         rel physics:body0 = </apptronik_apollo/Geometry/base_link/r_hip_ie_link/r_hip_aa_link/r_hip_fe_link/r_knee_fe_link/r_ankle_ie_link>
                                         rel physics:body1 = </apptronik_apollo/Geometry/base_link/r_hip_ie_link/r_hip_aa_link/r_hip_fe_link/r_knee_fe_link/r_ankle_ie_link/r_foot_link>
@@ -2715,7 +1564,6 @@ def PhysicsScene "PhysicsScene" (
 {
     uniform token mjc:compiler:angle = "radian"
     uniform token mjc:option:integrator = "implicitfast"
-    uniform double mjc:option:timestep = 0.005
     uniform int newton:maxSolverIterations = 100
     uniform int newton:timeStepsPerSecond = 200
     vector3f physics:gravityDirection = (0, 0, -1)
