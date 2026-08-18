@@ -1,0 +1,395 @@
+<mujoco model="asRoBallet">
+  <compiler angle="radian" meshdir="../meshes/" />
+  <option timestep="0.002" integrator="implicitfast" impratio="10" cone="elliptic" noslip_iterations="1" />
+  <default>
+    <default class="torso_joint">
+      <joint damping="0.01" frictionloss="0.1" armature="0.0" />
+      <position kp="100" dampratio="1" />
+    </default>
+    <default class="wheel_joint">
+      <joint damping="0.007" frictionloss="0.1" armature="0.0" />
+    </default>
+    <default class="visual">
+      <geom group="2" type="mesh" contype="0" conaffinity="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" type="mesh" rgba=".2 .6 .2 .3" contype="1" conaffinity="9" friction="1 0.005 0.0001"/>
+    </default>
+    <default class="rubber">
+      <geom condim="3" friction="1 0.005 0.0001" priority="1" solimp="0.85 0.99 0.003" />
+    </default>
+  </default>
+  <asset>
+    <material name="dark" rgba="0.2 0.2 0.2 1" />
+    <material name="white" rgba="0.7 0.7 0.7 1" />
+    <material name="orange" rgba="0.7 0.2 0 1" />
+    <mesh name="base_link" file="base_link.stl" />
+    <mesh name="base_link_collision" file="base_link_collision.stl" />
+    <mesh name="torso_link" file="torso_link.stl" />
+    <mesh name="neck_link" file="neck_link.stl" />
+    <mesh name="head_link" file="head_link.stl" />
+    <mesh name="right_shoulder_pitch_link" file="right_shoulder_pitch_link.stl" />
+    <mesh name="right_shoulder_roll_link" file="right_shoulder_roll_link.stl" />
+    <mesh name="right_shoulder_yaw_link" file="right_shoulder_yaw_link.stl" />
+    <mesh name="right_elbow_link" file="right_elbow_link.stl" />
+    <mesh name="left_shoulder_pitch_link" file="left_shoulder_pitch_link.stl" />
+    <mesh name="left_shoulder_roll_link" file="left_shoulder_roll_link.stl" />
+    <mesh name="left_shoulder_yaw_link" file="left_shoulder_yaw_link.stl" />
+    <mesh name="left_elbow_link" file="left_elbow_link.stl" />
+    <mesh name="hand_link" file="hand_link.stl" />
+    <mesh name="axle_link" file="axle_link.stl" />
+    <mesh name="wheel_fat_roller_link" file="wheel_fat_roller_link.stl" />
+    <mesh name="wheel_thin_roller_link" file="wheel_thin_roller_link.stl" />
+    <mesh name="ball_link" file="ball_link.stl" />
+  </asset>
+  <worldbody>
+    <body name="base_link" pos="0.0 0.0 0.1111" quat="1 0 0 0">
+      <joint name="floating_base_joint" type="free" limited="false" actuatorfrclimited="false"/>
+      <geom class="visual" name="base_link_geom" type="mesh" mesh="base_link" pos="0 0 0" quat="1 0 0 0" />
+      <geom class="collision" name="base_link_collision_geom" type="mesh" mesh="base_link_collision" pos="0 0 0" quat="1 0 0 0" contype="1" conaffinity="9" />
+      <inertial mass="4.8833491952093615" pos="0.002877142611364894 0.0004304927756562858 0.26369851292018004" fullinertia="0.06026042259145148 0.059947763068358306 0.023961590336546337 -1.4986061024625154e-05 -0.0009871679684399044 -6.292837602434899e-05" />
+      <body name="torso_link" pos="-3.583106902738109e-08 -1.526772356719164e-07 0.4400003721030327" quat="1 0 0 0">
+        <geom class="visual" name="torso_link_geom" type="mesh" mesh="torso_link" pos="0 0 0" quat="1 0 0 0" />
+        <geom class="collision" name="torso_link_collision_core" type="capsule" size="0.065" fromto="0 0 0.08 0 0 0.40" />
+        <geom class="collision" name="torso_link_collision_shoulder" type="capsule" size="0.05" fromto="0 -0.11 0.39 0 0.11 0.39" />
+        <inertial mass="3.2042605310287064" pos="-1.6013326371601945e-05 -1.0744270105157319e-05 0.34937362535593" fullinertia="0.06334146895523768 0.04663263530859074 0.02111375962377963 -1.1009513608811435e-05 0.00037934627063380277 5.775288224710326e-07" />
+        <body name="neck_link" pos="3.5786065771099459e-08 1.5267673482892651e-07 0.47399962789696776" quat="1 0 0 0">
+          <joint class="torso_joint" name="neck_joint" type="hinge" axis="0 0 1" pos="0 0 0" limited="true" range="-3.14 3.14" />
+          <geom class="visual" name="neck_link_geom" type="mesh" mesh="neck_link" pos="-3.5786067809667331e-08 -1.5267673565049155e-07 3.7210303283058933e-07" quat="1 0 0 0" />
+          <inertial mass="0.6024876453871971" pos="-0.00060480919553463285 0.0053730549267241778 0.040723327282059421" fullinertia="0.0005387498816373792 0.0006647047803757507 0.0003746653098801926 -1.2150198739273867e-06 1.964598514418685e-06 -6.496444910251773e-05" />
+          <body name="head_link" pos="0 0 0.051999999999980936" quat="1 0 0 0">
+            <joint class="torso_joint" name="head_joint" type="hinge" axis="0 1 0" pos="0 0 0" limited="true" range="-1.5 1.5" />
+            <geom class="visual" name="head_link_geom" type="mesh" mesh="head_link" material="dark" pos="-3.5786069164782536e-08 -1.5267673767263568e-07 3.7210305106963326e-07" quat="0.70710678118654757 0.70710678118654746 0 0" />
+            <geom class="collision" name="head_link_collision_geom" type="sphere" size="0.075" pos="0.048 0 0.096" />
+            <inertial mass="0.41566857186457795" pos="0.051514790795471978 -0.0011640226491266836 0.097211574799783734" fullinertia="0.0016807421181515014 0.0011870976231925469 0.00093857075057791808 -9.9204030959273882e-06 -0.00042160476073791619 -1.0995743528604207e-05" />
+          </body>
+        </body>
+        <body name="right_shoulder_pitch_link" pos="3.5794041181005878e-08 -0.1589998473231766 0.38999962789679948" quat="1 0 0 0">
+          <joint class="torso_joint" name="right_shoulder_pitch_joint" type="hinge" axis="0 1 0" pos="0 0 0" limited="true" range="-3.0892 2.6704" />
+          <geom class="visual" name="right_shoulder_pitch_link_geom" type="mesh" mesh="right_shoulder_pitch_link" pos="-3.5715236021772017e-08 -1.5267682362857707e-07 3.7210246605834405e-07" quat="3.3567501373576225e-11 3.3567540625905464e-11 -0.70710678118654746 0.70710678118654757" />
+          <inertial mass="0.4285978598682473" pos="-0.0035057208004766771 -0.049736597388410762 0.00096531846039728947" fullinertia="0.00038191367091916961 0.00027008837993292088 0.00028870719594374465 -7.1528100932659078e-06 2.5690410752563979e-07 -7.0382489936693843e-07" />
+          <body name="right_shoulder_roll_link" pos="0 -0.052000000108387907 -4.2800429866929335e-11" quat="1 0 0 0">
+            <joint class="torso_joint" name="right_shoulder_roll_joint" type="hinge" axis="1 0 0" pos="0 0 0" limited="true" range="-2.2515 1.5882" />
+            <geom class="visual" name="right_shoulder_roll_link_geom" type="mesh" mesh="right_shoulder_roll_link" pos="0.017999964284785789 -1.5256840146832766e-07 3.7214356220361883e-07" quat="-0.50003640746222144 -0.49996358988655937 -0.50003640750970924 -0.49996358983910388" />
+            <inertial mass="0.45915238056305535" pos="-0.00093467597444268219 -1.8557792167278597e-06 -0.10266809848019756" fullinertia="0.00059089798158056071 0.00061572256647120206 0.00036958677226403444 -3.6403824235693168e-08 -1.6969692848193159e-06 -1.1767438479895389e-07" />
+            <body name="right_shoulder_yaw_link" pos="0 0 -0.13399999985166935" quat="1 0 0 0">
+              <joint class="torso_joint" name="right_shoulder_yaw_joint" type="hinge" axis="0 0 1" pos="0 0 0" limited="true" range="-2.618 2.618" />
+              <geom class="visual" name="right_shoulder_yaw_link_geom" type="mesh" mesh="right_shoulder_yaw_link" pos="-3.5727932942120739e-08 -1.9667691349028193e-05 3.7341798661816869e-07" quat="-0.7120566338975578 5.185023842369527e-05 -5.1126891302655242e-05 -0.70212202986380734" />
+              <geom class="collision" name="right_shoulder_yaw_collision_geom" type="capsule" size="0.046" fromto="0 0 0.125 0 0 -0.125" />
+              <inertial mass="0.4627321597115143" pos="-0.00094249854053423711 -0.0032554699830349689 -0.11620297190645895" fullinertia="0.00055499218115315154 0.00064725882362421934 0.00027990205911210064 8.6746861908852219e-07 -2.302023423027624e-06 -1.6614430110767197e-05" />
+              <body name="right_elbow_link" pos="0 0 -0.1250022425180706" quat="1 0 0 0">
+                <joint class="torso_joint" name="right_elbow_joint" type="hinge" axis="0 1 0" pos="0 0 0" limited="true" range="-1.0472 2.0944" />
+                <geom class="visual" name="right_elbow_link_geom" type="mesh" mesh="right_elbow_link" pos="-0.000006476214810251235 -0.026535256362601938 -0.00037234232579722053" quat="-0.49651140070870287 -0.5034634107626345 0.5035367380730256 -0.4964390963656208" />
+              <geom class="collision" name="right_elbow_collision_geom" type="capsule" size="0.03" fromto="0.01 -0.002539 0 0.20 -0.002564 0" />
+                <inertial mass="0.08452681925222644" pos="0.0817247211274807484 -0.000636168567746512453 6.10782539137696761e-05" fullinertia="3.40896682719497591e-05 0.000414732705070502592 0.000427982108972241424 -1.01546075000519717e-06 -9.90927544715774212e-08 -1.8962270739502292e-07" />
+                <body name="right_hand_link" pos="0.23799738020861633 0 0" quat="1 0 0 0">
+                  <geom class="visual" name="right_hand_link_geom" type="mesh" mesh="hand_link" material="orange" pos="0 -0.00007253328560589621 -0.00000003575144416384687" quat="0.4964390963536736 0.5035367380612417 0.5034634107744209 -0.4965114007206475" />
+                  <geom class="collision" name="right_hand_link_collision_geom" type="sphere" size="0.038" pos="0.045 0 0" />
+                  <inertial mass="0.32306793312334026" pos="0.0316743514334948614 -6.94904849407248381e-05 0.000125194224437857562" fullinertia="0.000144476814680651868 0.000356172429346065514 0.00035730742394892562 1.08562371657191581e-08 1.43857784336359002e-06 -1.89394094532963684e-08" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+        <body name="left_shoulder_pitch_link" pos="3.5794040894925615e-08 0.15900015267682377 0.38999962789713566" quat="1 0 0 0">
+          <joint class="torso_joint" name="left_shoulder_pitch_joint" type="hinge" axis="0 1 0" pos="0 0 0" limited="true" range="-3.0892 2.6704" />
+          <geom class="visual" name="left_shoulder_pitch_link_geom" type="mesh" mesh="left_shoulder_pitch_link" pos="-3.5715239929756209e-08 -1.526768238783764e-07 3.7210213154814462e-07" quat="3.3567501373576225e-11 3.3567540625905464e-11 -0.70710678118654746 0.70710678118654757" />
+          <inertial mass="0.4197959811631081" pos="-0.0035384563343647743 0.049690159959561352 0.00097270250547555615" fullinertia="0.00037901241639056219 0.00026635451545675172 0.00028510209686776389 7.1885928166058237e-06 1.6519497314183736e-07 6.6335484628531857e-07" />
+          <body name="left_shoulder_roll_link" pos="0 0.052000000000000469 1.7637211136012354e-12" quat="1 0 0 0">
+            <joint class="torso_joint" name="left_shoulder_roll_joint" type="hinge" axis="1 0 0" pos="0 0 0" limited="true" range="-1.5882 2.2515" />
+            <geom class="visual" name="left_shoulder_roll_link_geom" type="mesh" mesh="left_shoulder_roll_link" pos="0.017999964284779502 -1.5267679057171533e-07 3.7209864789032561e-07" quat="-0.5000000000237198 -0.49999999997626821 0.49999999997626016 0.50000000002375178" />
+            <inertial mass="0.4591563607035851" pos="-0.0009345073695043761 -1.3401234253446193e-05 -0.10266776299162134" fullinertia="0.00059090382108144073 0.00061573004982978081 0.00036958820941117288 3.6157425439448148e-08 -1.6999368537404614e-06 8.1821806279338986e-08" />
+            <body name="left_shoulder_yaw_link" pos="1.272583080580425e-11 1.5251688800788088e-13 -0.13400000000171003" quat="1 0 0 0">
+              <joint class="torso_joint" name="left_shoulder_yaw_joint" type="hinge" axis="0 0 1" pos="0 0 0" limited="true" range="-2.618 2.618" />
+              <geom class="visual" name="left_shoulder_yaw_link_geom" type="mesh" mesh="left_shoulder_yaw_link" pos="-3.5740664565499949e-08 -1.5267693923057833e-07 3.7210206671110484e-07" quat="-3.3552827183314093e-11 -0.70710678118653902 0.7071067811865559 3.3581193381593266e-11" />
+              <geom class="collision" name="left_shoulder_yaw_collision_geom" type="capsule" size="0.046" fromto="0 0 -0.125 0 0 0.125" />
+              <inertial mass="0.4627321597109813" pos="-0.00089718252300088289 0.0032316495334986164 -0.11620344323692403" fullinertia="0.00055498601229489225 0.00064726982398362006 0.00027989722761020508 4.287608615018633e-07 -2.0690003266194188e-06 1.6591634864177614e-05" />
+              <body name="left_elbow_link" pos="0 0 -0.1250000000000209" quat="1 0 0 0">
+                <joint class="torso_joint" name="left_elbow_joint" type="hinge" axis="0 1 0" pos="0 0 0" limited="true" range="-1.0472 2.0944" />
+                <geom class="visual" name="left_elbow_link_geom" type="mesh" mesh="left_elbow_link" pos="-0.00000037210209103549785 0.026499847323063392 -0.00000003575253178799553" quat="-0.5000000000237195 -0.5000000000237516 0.49999999997626077 -0.4999999999762684" />
+                <geom class="collision" name="left_elbow_collision_geom" type="capsule" size="0.03" fromto="0.01 0.0025 0 0.20 0.0025 0" />
+                <inertial mass="0.08453041843930957" pos="0.0817265023945020902 0.000584473202392184893 6.9307682960720901e-05" fullinertia="3.40913067465003345e-05 0.000414730294413144887 0.000427986785538598462 1.07125377928372783e-06 -8.40132449772244235e-08 3.42645699451018885e-09" />
+                <body name="left_hand_link" pos="0.23799962789790821 0 0" quat="1 0 0 0">
+                  <geom class="visual" name="left_hand_link_geom" type="mesh" mesh="hand_link" material="orange" pos="0 -0.00000015267693125736728 -0.00000003577513125945958" quat="-0.5000000000237533 0.5000000000237137 0.49999999997627426 0.4999999999762591" />
+                  <geom class="collision" name="left_hand_link_collision_geom" type="sphere" size="0.038" pos="0.045 0 0" />
+                  <inertial mass="0.32306793312334026" pos="0.0316743506544253164 -9.56701813734795869e-06 -0.000125145841486184046" fullinertia="0.000144476816007852208 0.000356172125814793348 0.00035730772615298861 -2.38922708301456332e-10 -1.43871917548607312e-06 -2.77817732354379815e-09" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="wheel_1_axle_link" pos="0.101823 0 0.13137992257516262" quat="0.92387953251129107 1.2487787871004407e-14 -0.38268343236507929 -5.1257458961548325e-15">
+        <joint class="wheel_joint" name="wheel_1_axle_joint" type="hinge" axis="0 0 -1" pos="0 0 0" />
+        <geom class="visual" name="wheel_1_axle_link_geom" type="mesh" mesh="axle_link" pos="3.2350494513777583e-07 -1.753955935299742e-15 -0.019700208933546823" quat="1 0 0 0" contype="0" conaffinity="0" />
+        <inertial mass="0.10506991791855605" pos="-2.1259988360635557e-05 4.0774081433051891e-06 -0.016610169335051102" fullinertia="3.2105747640241144e-05 3.2105951482527904e-05 5.521081409391253e-05 2.295455390607457e-11 9.296983099549901e-10 -1.7563234047730653e-10" />
+        <body name="wheel_1_fat_roller_1_link" pos="0.037168239984151863 -0.00990754657809877 -0.021200208933546898" quat="0.6067369905696729 -1.3378781709523291e-15 -9.2936898893907925e-16 -0.79490265081609623">
+          <joint name="wheel_1_fat_roller_1_joint" type="hinge" axis="1 0 0" pos="-0.0038395070036022863 6.684001964667868e-08 -2.6657998715049706e-07" />
+          <geom class="visual" name="wheel_1_fat_roller_1_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_1_fat_roller_1_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282144226933752e-10 -3.653309616485502e-13 3.5044306668461707e-13" fullinertia="1.3434103183280375e-06 1.1614274925231364e-06 1.1614274633226901e-06 -6.371912071871828e-15 2.399784629403322e-17 -3.8963515573697816e-20" />
+        </body>
+        <body name="wheel_1_fat_roller_2_link" pos="0.010004094718738935 -0.037142133165781605 -0.02120020893354679" quat="0.1279983218410076 0 1.7666135611217567e-15 -0.99177438442716692">
+          <joint name="wheel_1_fat_roller_2_joint" type="hinge" axis="1 0 0" pos="-0.003839664438273287 -2.866457979861089e-07 -2.665799872692172e-07" />
+          <geom class="visual" name="wheel_1_fat_roller_2_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_1_fat_roller_2_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.228214454851237e-10 -3.653307060101461e-13 3.504383564104366e-13" fullinertia="1.343410318328083e-06 1.161427492523178e-06 1.161427463322756e-06 -6.371904342696185e-15 2.3975373451151378e-17 6.723324018831009e-21" />
+        </body>
+        <body name="wheel_1_fat_roller_3_link" pos="-0.027163821760467815 -0.027234586587684569 -0.021200208933546773" quat="0.38503739385749386 0 0 0.92290097265710425">
+          <joint name="wheel_1_fat_roller_3_joint" type="hinge" axis="1 0 0" pos="-0.0038402601569902496 1.8462020800113707e-07 4.4052679291678616e-07" />
+          <geom class="visual" name="wheel_1_fat_roller_3_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_1_fat_roller_3_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.228214437831105e-10 -3.6533172187898313e-13 3.504383564120005e-13" fullinertia="1.3434103183280475e-06 1.1614274925231585e-06 1.1614274633227028e-06 -6.3719133953608084e-15 2.3985590786077633e-17 -3.456953215981613e-20" />
+        </body>
+        <body name="wheel_1_fat_roller_4_link" pos="-0.037167592974261594 0.0099075465780952866 -0.021200208933546863" quat="0.79490265081609635 5.9938591053252293e-16 -6.6700376039229501e-16 0.6067369905696729">
+          <joint name="wheel_1_fat_roller_4_joint" type="hinge" axis="1 0 0" pos="-0.00383949115361849 8.870937972962987e-09 4.4052679200497213e-07" />
+          <geom class="visual" name="wheel_1_fat_roller_4_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_1_fat_roller_4_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282144375434876e-10 -3.653297399580547e-13 3.504446367799806e-13" fullinertia="1.343410318328097e-06 1.161427492523153e-06 1.1614274633227198e-06 -6.371905454426928e-15 2.398617312122887e-17 5.082197683525802e-21" />
+        </body>
+        <body name="wheel_1_fat_roller_5_link" pos="-0.01000344770884857 0.037142133165778052 -0.021200208933546773" quat="0.99177438442716703 -7.6588234775245571e-16 0 0.12799832184100701">
+          <joint name="wheel_1_fat_roller_5_joint" type="hinge" axis="1 0 0" pos="-0.0038402902474978396 -1.2237586334101725e-07 -2.6657998929017004e-07" />
+          <geom class="visual" name="wheel_1_fat_roller_5_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+            <geom class="collision" name="wheel_1_fat_roller_5_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282143941054357e-10 -3.6533230053912277e-13 3.504320760364013e-13" fullinertia="1.3434103183280703e-06 1.1614274925232055e-06 1.1614274633227193e-06 -6.371901378080869e-15 2.3992208230978057e-17 -2.2843419796264412e-20" />
+        </body>
+        <body name="wheel_1_fat_roller_6_link" pos="0.027164468770358153 0.027234586587681013 -0.021200208933546971" quat="0.92290097265710436 -2.3440497598046074e-15 -1.1283168178570005e-15 -0.38503739385749369">
+          <joint name="wheel_1_fat_roller_6_joint" type="hinge" axis="1 0 0" pos="-0.003840217879284896 2.2733123745391146e-07 -2.665799881118591e-07" />
+          <geom class="visual" name="wheel_1_fat_roller_6_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_1_fat_roller_6_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282143715582172e-10 -3.653250266645067e-13 3.504352162203041e-13" fullinertia="1.3434103183279975e-06 1.1614274925231206e-06 1.1614274633226846e-06 -6.37190397211927e-15 2.3979026280736412e-17 -3.801060350803673e-20" />
+        </body>
+        <body name="wheel_1_thin_roller_1_link" pos="0.041449600738224311 0.011119964088224053 -0.021200208933546953" quat="0.79335334029123461 0 5.189138022593275e-16 -0.60876142900872132">
+          <joint name="wheel_1_thin_roller_1_joint" type="hinge" axis="-1 0 0" pos="-0.012878981367297837 -4.0494389607226983e-07 -2.6657998772154634e-07" />
+          <geom class="visual" name="wheel_1_thin_roller_1_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_1_thin_roller_1_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.7973938659258895e-12 -3.516729729968076e-13 4.600198193773652e-13" fullinertia="2.1390493200749915e-07 4.282311567841888e-07 4.282311556105352e-07 1.985615958442511e-17 -4.8889474474819784e-17 1.7155858253247802e-18" />
+        </body>
+        <body name="wheel_1_thin_roller_2_link" pos="0.030355133511158861 -0.030336145008412602 -0.021200208933546738" quat="0.38268343236509045 0 0 -0.92387953251128652">
+          <joint name="wheel_1_thin_roller_2_joint" type="hinge" axis="-1 0 0" pos="-0.012879403243135183 -4.4742260816871965e-08 -2.6657998705281044e-07" />
+          <geom class="visual" name="wheel_1_thin_roller_2_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_1_thin_roller_2_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.7973918472757214e-12 -3.5167138512363273e-13 4.600182492848256e-13" fullinertia="2.1390493200747372e-07 4.2823115678418043e-07 4.282311556105235e-07 1.9850825923835367e-17 -4.889225049295551e-17 1.6984334081428807e-18" />
+        </body>
+        <body name="wheel_1_thin_roller_3_link" pos="-0.011094143722120246 -0.041456109096638327 -0.02120020893354679" quat="0.13052619222005171 0 0 0.99144486137381038">
+          <joint name="wheel_1_thin_roller_3_joint" type="hinge" axis="-1 0 0" pos="-0.012879191767201734 -5.06469031110986e-07 -2.665799873936836e-07" />
+          <geom class="visual" name="wheel_1_thin_roller_3_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_1_thin_roller_3_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.7973960312408696e-12 -3.5167270815307193e-13 4.600182492847629e-13" fullinertia="2.1390493200749823e-07 4.28231156784171e-07 4.2823115561054497e-07 1.986367700183199e-17 -4.889701505328382e-17 1.6987775152777027e-18" />
+        </body>
+        <body name="wheel_1_thin_roller_4_link" pos="-0.04144895372833398 -0.011119964088227526 -0.021200208933546915" quat="0.60876142900872088 0 0 0.79335334029123494">
+          <joint name="wheel_1_thin_roller_4_joint" type="hinge" axis="-1 0 0" pos="-0.012878813908813598 2.2001966523167715e-07 -2.665799885589841e-07" />
+          <geom class="visual" name="wheel_1_thin_roller_4_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_1_thin_roller_4_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.797395085035419e-12 -3.516684232182252e-13 4.600245296546128e-13" fullinertia="2.139049320074888e-07 4.2823115678419467e-07 4.282311556105258e-07 1.986067599056965e-17 -4.8895102611707595e-17 1.6993863202085418e-18" />
+        </body>
+        <body name="wheel_1_thin_roller_5_link" pos="-0.030354486501268541 0.030336145008409084 -0.02120020893354679" quat="0.92387953251128696 0 0 0.38268343236508934">
+          <joint name="wheel_1_thin_roller_5_joint" type="hinge" axis="-1 0 0" pos="-0.012879360748213529 -8.723717866100308e-08 4.4052679160078156e-07" />
+          <geom class="visual" name="wheel_1_thin_roller_5_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_1_thin_roller_5_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.79739628816782e-12 -3.5167582601570104e-13 4.600119689150253e-13" fullinertia="2.1390493200748076e-07 4.282311567841777e-07 4.2823115561052856e-07 1.9847953952748583e-17 -4.8890715245738614e-17 1.7038597129612285e-18" />
+        </body>
+        <body name="wheel_1_thin_roller_6_link" pos="0.011094790732010539 0.04145610909663474 -0.02120020893354704" quat="0.99144486137381049 0 0 -0.13052619222005082">
+          <joint name="wheel_1_thin_roller_6_joint" type="hinge" axis="-1 0 0" pos="-0.012879133718062565 -4.909148082277767e-07 4.4052679225824176e-07" />
+          <geom class="visual" name="wheel_1_thin_roller_6_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_1_thin_roller_6_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.797389964869435e-12 -3.516743336323934e-13 4.600245296547558e-13" fullinertia="2.1390493200747684e-07 4.2823115678417614e-07 4.282311556105218e-07 1.9859699917446836e-17 -4.8899450273007174e-17 1.7036545721693154e-18" />
+        </body>
+      </body>
+      <body name="wheel_2_axle_link" pos="-0.050911999999999999 0.08818200000000001 0.13137992257546052" quat="0.92174428041329848 0.3436490286209361 0.1683803864308604 0.062776365924221075">
+        <joint class="wheel_joint" name="wheel_2_axle_joint" type="hinge" axis="0 0 -1" pos="0 0 0" />
+        <geom name="wheel_2_axle_link_geom" type="mesh" mesh="axle_link" pos="1.8450144871227578e-07 -2.2609976416121391e-07 -0.019699606366323983" quat="1 0 0 0" contype="0" conaffinity="0" />
+        <inertial mass="0.10506991791855605" pos="-2.1398991857047721e-05 3.851308380900054e-06 -0.016609566767828276" fullinertia="3.21057476402407e-05 3.210595148252788e-05 5.5210814093912394e-05 2.2954553904534867e-11 9.296983097322205e-10 -1.7563234043622923e-10" />
+        <body name="wheel_2_fat_roller_1_link" pos="-0.010003586712344996 0.037141907066015521 -0.021199606366324092" quat="0.99177438442716703 -1.1925542313376464e-15 0 0.12799832184100657">
+          <joint name="wheel_2_fat_roller_1_joint" type="hinge" axis="1 0 0" pos="-0.0038399063775775726 4.545179803418795e-07 1.779494115440334e-08" />
+          <geom class="visual" name="wheel_2_fat_roller_1_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_2_fat_roller_1_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282144610195403e-10 -3.653330035704364e-13 3.504435129243399e-13" fullinertia="1.3434103183281072e-06 1.1614274925231777e-06 1.16142746332273e-06 -6.371932625655689e-15 2.4009320943490554e-17 8.787966827763366e-21" />
+        </body>
+        <body name="wheel_2_fat_roller_2_link" pos="0.027164329766861714 0.027234360487918514 -0.021199606366324234" quat="0.92290097265710436 -2.3747083948202539e-15 -1.1561448400331235e-15 -0.38503739385749364">
+          <joint name="wheel_2_fat_roller_2_joint" type="hinge" axis="1 0 0" pos="-0.0038395087849223924 -1.8848005305701753e-07 8.330874225193075e-08" />
+          <geom class="visual" name="wheel_2_fat_roller_2_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_2_fat_roller_2_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282144306246528e-10 -3.653322839320632e-13 3.504429002484623e-13" fullinertia="1.3434103183280773e-06 1.1614274925231646e-06 1.1614274633227464e-06 -6.371918980484304e-15 2.3982149714729412e-17 -2.6469779601696886e-22" />
+        </body>
+        <body name="wheel_2_fat_roller_3_link" pos="0.037168100980655427 -0.0099077726778612762 -0.021199606366324057" quat="0.60673699056967256 -6.6668527176031575e-16 -1.3766446327427735e-15 -0.79490265081609657">
+          <joint name="wheel_2_fat_roller_3_joint" type="hinge" axis="1 0 0" pos="-0.0038403309948799556 2.7030504030065884e-07 -1.7276499643219256e-07" />
+          <geom class="visual" name="wheel_2_fat_roller_3_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_2_fat_roller_3_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282144223187583e-10 -3.65327120976856e-13 3.504387222530862e-13" fullinertia="1.3434103183280411e-06 1.1614274925232004e-06 1.1614274633227276e-06 -6.371927636102234e-15 2.3987655428886565e-17 -2.0117032497289633e-21" />
+        </body>
+        <body name="wheel_2_fat_roller_4_link" pos="0.01000395571524249 -0.037142359265544024 -0.021199606366323967" quat="0.1279983218410076 0 1.7413232761996222e-15 -0.99177438442716692">
+          <joint name="wheel_2_fat_roller_4_joint" type="hinge" axis="1 0 0" pos="-0.0038399887457600266 2.4904530464281297e-07 2.3285554219684094e-08" />
+          <geom class="visual" name="wheel_2_fat_roller_4_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_2_fat_roller_4_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282144752009194e-10 -3.6532963269833146e-13 3.5043986721126594e-13" fullinertia="1.3434103183280265e-06 1.1614274925231394e-06 1.1614274633227342e-06 -6.371917008485724e-15 2.400910918525374e-17 -2.1705219273391446e-20" />
+        </body>
+        <body name="wheel_2_fat_roller_5_link" pos="-0.027163960763964264 -0.027234812687447048 -0.021199606366324075" quat="0.38503739385749386 0 0 0.92290097265710425">
+          <joint name="wheel_2_fat_roller_5_joint" type="hinge" axis="1 0 0" pos="-0.003839746438399527 3.337366745647047e-07 5.701441890995466e-07" />
+          <geom class="visual" name="wheel_2_fat_roller_5_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_2_fat_roller_5_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282144814136907e-10 -3.6533122578593136e-13 3.504389097952293e-13" fullinertia="1.3434103183280248e-06 1.1614274925231697e-06 1.1614274633227308e-06 -6.371929594865925e-15 2.4011689988764906e-17 -5.108667463127499e-21" />
+        </body>
+        <body name="wheel_2_fat_roller_6_link" pos="-0.037167731977757926 0.0099073204783327578 -0.021199606366324113" quat="0.79490265081609623 1.0773554668948451e-15 0 0.6067369905696729">
+          <joint name="wheel_2_fat_roller_6_joint" type="hinge" axis="1 0 0" pos="-0.003840111866231747 3.017084397062813e-07 2.1384549193470374e-07" />
+          <geom class="visual" name="wheel_2_fat_roller_6_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_2_fat_roller_6_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282144568770917e-10 -3.6533099036334646e-13 3.50443087790754e-13" fullinertia="1.3434103183280803e-06 1.1614274925231767e-06 1.1614274633227215e-06 -6.371937006404213e-15 2.4000255043976973e-17 1.572304908340795e-20" />
+        </body>
+        <body name="wheel_2_thin_roller_1_link" pos="-0.030354625504765025 0.030335918908646609 -0.021199606366324023" quat="0.92387953251128596 0 0 0.38268343236509184">
+          <joint name="wheel_2_thin_roller_1_joint" type="hinge" axis="-1 0 0" pos="-0.01287908325047987 3.7202429747050514e-08 2.3292559242276897e-07" />
+          <geom class="visual" name="wheel_2_thin_roller_1_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_2_thin_roller_1_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.7973858014644244e-12 -3.51669410775582e-13 4.600202872285159e-13" fullinertia="2.139049320074649e-07 4.2823115678418737e-07 4.2823115561051623e-07 1.9855259611918652e-17 -4.889113214476734e-17 1.6956540812847025e-18" />
+        </body>
+        <body name="wheel_2_thin_roller_2_link" pos="0.011094651728514157 0.041455882996872258 -0.02119960636632429" quat="0.99144486137381049 0 0 -0.13052619222005096">
+          <joint name="wheel_2_thin_roller_2_joint" type="hinge" axis="-1 0 0" pos="-0.012879338150266104 8.083254353320399e-08 2.410194294062175e-07" />
+            <geom class="visual" name="wheel_2_thin_roller_2_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+            <geom class="collision" name="wheel_2_thin_roller_2_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.7973973236997297e-12 -3.516705142124468e-13 4.600168238766288e-13" fullinertia="2.1390493200744441e-07 4.2823115678417127e-07 4.282311556105109e-07 1.985880656238528e-17 -4.890424130311508e-17 1.6878984358614053e-18" />
+        </body>
+        <body name="wheel_2_thin_roller_3_link" pos="0.041449461734727869 0.011119737988461494 -0.021199606366324234" quat="0.79335334029123505 0 0 -0.60876142900872077">
+          <joint name="wheel_2_thin_roller_3_joint" type="hinge" axis="-1 0 0" pos="-0.012879000250591875 -7.566599799003516e-08 -3.249193059658845e-07" />
+          <geom class="visual" name="wheel_2_thin_roller_3_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_2_thin_roller_3_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.797393911859973e-12 -3.5167256806906165e-13 4.600208700866683e-13" fullinertia="2.1390493200751345e-07 4.2823115678419266e-07 4.282311556105454e-07 1.9862502405362166e-17 -4.891202341831798e-17 1.7101363594492809e-18" />
+        </body>
+        <body name="wheel_2_thin_roller_4_link" pos="0.030354994507662436 -0.030336371108175067 -0.021199606366323988" quat="0.38268343236508945 0 0 -0.92387953251128696">
+          <joint name="wheel_2_thin_roller_4_joint" type="hinge" axis="-1 0 0" pos="-0.012879258014766332 -9.866876713414408e-08 -1.9184509710131956e-07" />
+          <geom class="visual" name="wheel_2_thin_roller_4_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_2_thin_roller_4_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.7973902100519208e-12 -3.516715666774317e-13 4.600159316364936e-13" fullinertia="2.1390493200748454e-07 4.28231156784183e-07 4.282311556105274e-07 1.9864213014868926e-17 -4.889722681152063e-17 1.6992539713105333e-18" />
+        </body>
+        <body name="wheel_2_thin_roller_5_link" pos="-0.01109428272561672 -0.041456335196400733 -0.021199606366324023" quat="0.13052619222005085 0 0 0.99144486137381049">
+          <joint name="wheel_2_thin_roller_5_joint" type="hinge" axis="-1 0 0" pos="-0.012879307864501132 -1.3845336660446225e-07 -1.9993893379940605e-07" />
+          <geom class="visual" name="wheel_2_thin_roller_5_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_2_thin_roller_5_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.797393370004168e-12 -3.5166992452164445e-13 4.600225351732983e-13" fullinertia="2.1390493200750135e-07 4.2823115678418345e-07 4.282311556105358e-07 1.9861526332239353e-17 -4.88858051016225e-17 1.7074596029870593e-18" />
+        </body>
+          <body name="wheel_2_thin_roller_6_link" pos="-0.041449092731830416 -0.011120190187989959 -0.021199606366324113" quat="0.60876142900872066 0 0 0.79335334029123517">
+          <joint name="wheel_2_thin_roller_6_joint" type="hinge" axis="-1 0 0" pos="-0.012878795200540551 -1.5908071113873712e-07 3.6599980162560497e-07" />
+          <geom class="visual" name="wheel_2_thin_roller_6_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_2_thin_roller_6_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.797392926965726e-12 -3.5168132203004217e-13 4.600239842868651e-13" fullinertia="2.139049320074826e-07 4.2823115678418625e-07 4.2823115561052655e-07 1.985919202855073e-17 -4.892065256646813e-17 1.7043295515491586e-18" />
+        </body>
+      </body>
+      <body name="wheel_3_axle_link" pos="-0.050911999999999992 -0.088181999999999996 0.13122992257828825" quat="0.9217442804132997 -0.34364902862093921 0.16838038643084952 -0.062776365924217536">
+        <joint class="wheel_joint" name="wheel_3_axle_joint" type="hinge" axis="0 0 -1" pos="0 0 0" />
+        <geom name="wheel_3_axle_link_geom" type="mesh" mesh="axle_link" pos="1.8450174799587715e-07 2.2609999724559904e-07 -0.019699606369993957" quat="1 0 0 0" contype="0" conaffinity="0" />
+        <inertial mass="0.10506991791855605" pos="-2.1398991557775178e-05 4.3035081423049154e-06 -0.016609566771498253" fullinertia="3.21057476402409e-05 3.210595148252759e-05 5.521081409391253e-05 2.2954553946886514e-11 9.296983099888714e-10 -1.7563234050060373e-10" />
+        <body name="wheel_3_fat_roller_1_link" pos="0.010003955715541744 -0.037141907065782603 -0.021199606369993889" quat="0.12799832184100782 0 1.8967229563053424e-15 -0.99177438442716692">
+          <joint name="wheel_3_fat_roller_1_joint" type="hinge" axis="1 0 0" pos="-0.003840110835318598 6.71760025510457e-08 -1.6697831295669867e-07" />
+          <geom class="visual" name="wheel_3_fat_roller_1_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_fat_roller_1_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282144735328412e-10 -3.6533269664462743e-13 3.5044235223077284e-13" fullinertia="1.3434103183279765e-06 1.1614274925231557e-06 1.1614274633226914e-06 -6.3719113307179995e-15 2.4021324988539924e-17 -3.1234339930002325e-20" />
+        </body>
+        <body name="wheel_3_fat_roller_2_link" pos="-0.027163960763665 -0.027234360487685589 -0.021199606369993979" quat="0.38503739385749386 0 0 0.92290097265710425">
+          <joint name="wheel_3_fat_roller_2_joint" type="hinge" axis="1 0 0" pos="-0.0038395984882897533 -1.1987765659315659e-07 -7.428864947354487e-09" />
+          <geom class="visual" name="wheel_3_fat_roller_2_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_fat_roller_2_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282144848323775e-10 -3.653306971328147e-13 3.5043926753389026e-13" fullinertia="1.3434103183280578e-06 1.1614274925231583e-06 1.1614274633226958e-06 -6.371903230965441e-15 2.3997978642931227e-17 -4.5104504441291493e-20" />
+        </body>
+        <body name="wheel_3_fat_roller_3_link" pos="-0.037167731977458734 0.0099077726780942756 -0.021199606369993997" quat="0.79490265081609635 8.1952780437527524e-16 -5.7315756819231988e-16 0.60673699056967278">
+          <joint name="wheel_3_fat_roller_3_joint" type="hinge" axis="1 0 0" pos="-0.003839443998737627 3.32555478827428e-07 -1.7346002499293856e-07" />
+          <geom class="visual" name="wheel_3_fat_roller_3_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_fat_roller_3_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282144561930586e-10 -3.6533365087603486e-13 3.5043625023248513e-13" fullinertia="1.3434103183280612e-06 1.1614274925231597e-06 1.161427463322704e-06 -6.371901933946241e-15 2.4006184274607753e-17 1.0574676950877906e-20" />
+        </body>
+        <body name="wheel_3_fat_roller_4_link" pos="-0.010003586712045733 0.037142359265777074 -0.021199606369993889" quat="0.99177438442716703 -9.1195254148072988e-16 0 0.1279983218410071">
+          <joint name="wheel_3_fat_roller_4_joint" type="hinge" axis="1 0 0" pos="-0.003840140003360127 -1.5226176755046058e-07 2.0806614806924938e-07" />
+          <geom class="visual" name="wheel_3_fat_roller_4_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_fat_roller_4_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.228214435193374e-10 -3.6532920153547296e-13 3.5043945781240176e-13" fullinertia="1.343410318328027e-06 1.1614274925231426e-06 1.1614274633226749e-06 -6.3719167834925974e-15 2.3992472928774074e-17 -8.629148150153185e-21" />
+        </body>
+        <body name="wheel_3_fat_roller_5_link" pos="0.027164329767160982 0.027234812687680018 -0.021199606369994087" quat="0.92290097265710447 -2.4174561328204826e-15 -1.053682249103837e-15 -0.38503739385749353">
+          <joint name="wheel_3_fat_roller_5_joint" type="hinge" axis="1 0 0" pos="-0.003839423033627052 -2.5485680654421285e-07 4.851670036250602e-08" />
+          <geom class="visual" name="wheel_3_fat_roller_5_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_fat_roller_5_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.2282145020873183e-10 -3.653241849110429e-13 3.5044097241739433e-13" fullinertia="1.3434103183280566e-06 1.1614274925231536e-06 1.1614274633226999e-06 -6.371902278053376e-15 2.3995014027615837e-17 -6.1409888675936775e-21" />
+        </body>
+        <body name="wheel_3_fat_roller_6_link" pos="0.037168100980954757 -0.0099073204780997636 -0.021199606369994031" quat="0.60673699056967278 -1.0760228092352851e-15 -1.2038713717513222e-15 -0.79490265081609646">
+          <joint name="wheel_3_fat_roller_6_joint" type="hinge" axis="1 0 0" pos="-0.003840609458664355 7.952485764573186e-08 1.1981351487897265e-07" />
+          <geom class="visual" name="wheel_3_fat_roller_6_link_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_fat_roller_6_link_collision_geom" type="mesh" mesh="wheel_fat_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.01599999681958244" pos="-1.228214386949332e-10 -3.6532457073457786e-13 3.504346818918011e-13" fullinertia="1.343410318328091e-06 1.1614274925232012e-06 1.1614274633227346e-06 -6.3719283375513936e-15 2.401550163702755e-17 -3.494010907423989e-21" />
+        </body>
+        <body name="wheel_3_thin_roller_1_link" pos="-0.011094282725317364 -0.04145588299663925 -0.021199606369994014" quat="0.13052619222005107 0 0 0.99144486137381049">
+          <joint name="wheel_3_thin_roller_1_joint" type="hinge" axis="-1 0 0" pos="-0.012879236220750847 -3.13119038606929e-07 -1.3644928001843495e-07" />
+          <geom class="visual" name="wheel_3_thin_roller_1_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_thin_roller_1_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.7973928067822175e-12 -3.516721908309314e-13 4.600195439011525e-13" fullinertia="2.139049320074999e-07 4.282311567841598e-07 4.282311556105002e-07 1.9845613031615058e-17 -4.888867045526438e-17 1.697533435636423e-18" />
+        </body>
+        <body name="wheel_3_thin_roller_2_link" pos="-0.041449092731531079 -0.011119737988228526 -0.021199606369994087" quat="0.60876142900872099 0 0 0.79335334029123494">
+          <joint name="wheel_3_thin_roller_2_joint" type="hinge" axis="-1 0 0" pos="-0.012879357647488912 -2.3660935539364727e-07 -2.1727674929042373e-07" />
+          <geom class="visual" name="wheel_3_thin_roller_2_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_thin_roller_2_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.797386351606566e-12 -3.516817277381605e-13 4.600184448452734e-13" fullinertia="2.1390493200750754e-07 4.282311567841863e-07 4.282311556105541e-07 1.9844062895147134e-17 -4.8904281007784484e-17 1.7193710038078229e-18" />
+        </body>
+        <body name="wheel_3_thin_roller_3_link" pos="-0.030354625504465653 0.03033637110840812 -0.021199606369993906" quat="0.92387953251128696 0 0 0.38268343236508917">
+          <joint name="wheel_3_thin_roller_3_joint" type="hinge" axis="-1 0 0" pos="-0.012878734324215126 3.677448753109866e-07 1.9853549332402715e-07" />
+          <geom class="visual" name="wheel_3_thin_roller_3_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_thin_roller_3_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.7973883472322318e-12 -3.5166654856219377e-13 4.600208792439889e-13" fullinertia="2.1390493200749198e-07 4.2823115678418583e-07 4.282311556105433e-07 1.987051943985903e-17 -4.890466481958871e-17 1.7126212100093902e-18" />
+        </body>
+        <body name="wheel_3_thin_roller_4_link" pos="0.011094651728813396 0.041456335196633755 -0.021199606369994121" quat="0.9914448613738106 0 0 -0.13052619222005069">
+          <joint name="wheel_3_thin_roller_4_joint" type="hinge" axis="-1 0 0" pos="-0.012879064088798192 1.833494921293097e-07 -5.295696656911191e-07" />
+          <geom class="visual" name="wheel_3_thin_roller_4_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_thin_roller_4_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.7973947539804597e-12 -3.516790494089829e-13 4.600292357035275e-13" fullinertia="2.1390493200749783e-07 4.282311567841932e-07 4.282311556105025e-07 1.985673364777022e-17 -4.8888531488921474e-17 1.7118271166213393e-18" />
+        </body>
+        <body name="wheel_3_thin_roller_5_link" pos="0.041449461735027102 0.011120190188222964 -0.021199606369994087" quat="0.79335334029123505 0 0 -0.60876142900872077">
+          <joint name="wheel_3_thin_roller_5_joint" type="hinge" axis="-1 0 0" pos="-0.01287913836128406 -2.668958200865816e-07 2.5836458480369556e-07" />
+          <geom class="visual" name="wheel_3_thin_roller_5_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_thin_roller_5_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.797389875643623e-12 -3.5167365413842857e-13 4.600264095282617e-13" fullinertia="2.139049320074855e-07 4.282311567841954e-07 4.282311556105261e-07 1.9860593272508394e-17 -4.888882265649709e-17 1.707750770562678e-18" />
+        </body>
+        <body name="wheel_3_thin_roller_6_link" pos="0.030354994507961836 -0.03033591890841357 -0.021199606369993906" quat="0.38268343236508978 0 0 -0.92387953251128674">
+          <joint name="wheel_3_thin_roller_6_joint" type="hinge" axis="-1 0 0" pos="-0.012878969311330826 -1.556768344226564e-07 4.5492477751193916e-07" />
+          <geom class="visual" name="wheel_3_thin_roller_6_link_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" />
+          <geom class="collision" name="wheel_3_thin_roller_6_link_collision_geom" type="mesh" mesh="wheel_thin_roller_link" pos="0 0 0" quat="1 0 0 0" contype="2" conaffinity="12" />
+          <inertial mass="0.008641045759381547" pos="2.797393398117369e-12 -3.5166974066579903e-13 4.600184798059384e-13" fullinertia="2.1390493200750823e-07 4.2823115678419875e-07 4.282311556105258e-07 1.9865873993538932e-17 -4.887943911962829e-17 1.7138388198710683e-18" />
+        </body>
+      </body>
+      <site name="imu_site" pos="0.005 -0.017 0.272" size="0.01"/>
+      <site name="slam_site" pos="0.035 0 0.47" size="0.01"/>
+      <site name="ball_site" pos="0 0 0" size="0.01"/>
+    </body>
+    <body name="ball_link" pos="-0.000184 0.0 0.1138" euler="-8.758115402030124e-47 1.4886381841035652e-16 -2.7200464103316422e-15">
+      <freejoint name="ball_free_joint"/>
+      <geom class="rubber" name="ball_link_geom" type="mesh" mesh="ball_link" material="dark" pos="0 0 0" euler="0 0 0" contype="4" conaffinity="10"/>
+      <inertial mass="3.021143163744471" pos="2.885352467797298e-17 2.885352467797308e-17 2.886579864025402e-17" fullinertia="0.024537068316026582 0.024537068316026783 0.024537068316026575 1.2502313135099962e-16 2.33620219102254e-17 -1.3441326783345871e-17"/>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="wheel_1_axle_joint" joint="wheel_1_axle_joint" gear="2" forcerange="-2 2" />
+    <motor name="wheel_2_axle_joint" joint="wheel_2_axle_joint" gear="2" forcerange="-2 2" />
+    <motor name="wheel_3_axle_joint" joint="wheel_3_axle_joint" gear="2" forcerange="-2 2" />
+    <position class="torso_joint" name="neck_joint" joint="neck_joint" ctrlrange="-3.14 3.14" forcerange="-17 17" />
+    <position class="torso_joint" name="head_joint" joint="head_joint" ctrlrange="-1.5 1.5" forcerange="-17 17" />
+    <position class="torso_joint" name="right_shoulder_pitch_joint" joint="right_shoulder_pitch_joint" ctrlrange="-3.0892 2.6704" forcerange="-17 17" />
+    <position class="torso_joint" name="right_shoulder_roll_joint" joint="right_shoulder_roll_joint" ctrlrange="-2.2515 1.5882" forcerange="-17 17" />
+    <position class="torso_joint" name="right_shoulder_yaw_joint" joint="right_shoulder_yaw_joint" ctrlrange="-2.618 2.618" forcerange="-17 17" />
+    <position class="torso_joint" name="right_elbow_joint" joint="right_elbow_joint" ctrlrange="-1.0472 2.0944" forcerange="-17 17" />
+    <position class="torso_joint" name="left_shoulder_pitch_joint" joint="left_shoulder_pitch_joint" ctrlrange="-3.0892 2.6704" forcerange="-17 17" />
+    <position class="torso_joint" name="left_shoulder_roll_joint" joint="left_shoulder_roll_joint" ctrlrange="-1.5882 2.2515" forcerange="-17 17" />
+    <position class="torso_joint" name="left_shoulder_yaw_joint" joint="left_shoulder_yaw_joint" ctrlrange="-2.618 2.618" forcerange="-17 17" />
+    <position class="torso_joint" name="left_elbow_joint" joint="left_elbow_joint" ctrlrange="-1.0472 2.0944" forcerange="-17 17" />
+  </actuator>
+  <sensor>
+    <jointpos name="whl_1_pos" joint="wheel_1_axle_joint"/>
+    <jointpos name="whl_2_pos" joint="wheel_2_axle_joint"/>
+    <jointpos name="whl_3_pos" joint="wheel_3_axle_joint"/>
+    <jointvel name="whl_1_vel" joint="wheel_1_axle_joint"/>
+    <jointvel name="whl_2_vel" joint="wheel_2_axle_joint"/>
+    <jointvel name="whl_3_vel" joint="wheel_3_axle_joint"/>
+    <jointactuatorfrc name="whl_1_tor" joint="wheel_1_axle_joint"/>
+    <jointactuatorfrc name="whl_2_tor" joint="wheel_2_axle_joint"/>
+    <jointactuatorfrc name="whl_3_tor" joint="wheel_3_axle_joint"/>
+    <gyro name="imu_gyro" site="imu_site"/>
+    <velocimeter name="ball_vel" site="ball_site"/>
+    <framequat name="imu_quat" objtype="site" objname="imu_site"/>
+    <framepos name="ball_pos" objtype="site" objname="slam_site"/>
+    <subtreecom name="base_subtree_com" body="base_link"/>
+    <subtreecom name="ball_subtree_com" body="ball_link"/>
+  </sensor>
+</mujoco>
