@@ -22,9 +22,9 @@ several layers and are best made with a USD-aware application rather than by
 manually editing the generated files.
 
 The body hierarchy is nested, with child bodies specified relative to their
-parent bodies, as in the source MJCF. Full support for nested rigid bodies
-requires OpenUSD 25.11 or newer, though older runtimes can still parse the
-layers.
+parent bodies, as in the source MJCF. Support for nested rigid bodies varies by
+application; consumers should verify payload loading and simulation in their
+target runtime.
 
 ## Warnings
 
