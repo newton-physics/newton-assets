@@ -1309,6 +1309,7 @@ def Xform "asRoBallet"
                     prepend references = @./GeometryLibrary.usdc@</Geometry/axle_link>
                 )
                 {
+                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -1925,6 +1926,7 @@ def Xform "asRoBallet"
                     prepend references = @./GeometryLibrary.usdc@</Geometry/axle_link>
                 )
                 {
+                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )

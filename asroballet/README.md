@@ -34,6 +34,29 @@ For conversion details and the main asset entrypoint, see the
 For the model design and system details, see the
 [asRoBallet paper](https://arxiv.org/abs/2604.24916).
 
+## MJCF Topologies
+
+Two MJCF topologies are provided:
+
+- **Ball joint**: `mjcf/asRoBallet.xml` connects `ball_link` below `base_link`
+  through `torso_ball_joint`. The spherical joint fixes the relative
+  translation at the joint anchor while allowing three rotational degrees of
+  freedom. `mjcf/scene.xml` loads this model. The structured USD asset also
+  represents this topology.
+- **Free joint**: `mjcf/asRoBallet_floating_ball.xml` makes `ball_link` an
+  independent top-level body with `ball_free_joint`, so the robot base and ball
+  have separate translational and rotational state. Contact couples the two
+  bodies. `mjcf/scene_floating_ball.xml` loads this model.
+
+The free-joint model and scene are generated from their ball-joint counterparts
+to keep shared model data in one canonical source. After editing the canonical
+files, regenerate and verify the variants with:
+
+```bash
+python asroballet/mjcf/generate_variants.py
+python asroballet/mjcf/generate_variants.py --check
+```
+
 ## License
 
 The robot model and mesh assets are released under the [MIT License](LICENSE).
@@ -42,6 +65,8 @@ The pre-trained policies are released under the
 
 ## Changelog
 
+- 2026-08-19: Generate the free-joint MJCF variant from the canonical model and
+  synchronize wheel axle visual-group metadata in the structured USD.
 - 2026-08-14: Update the MJCF and structured USD to use high-resolution
   contacts, and update the ELU control policies.
 - 2026-08-12: Add the structured USD model.

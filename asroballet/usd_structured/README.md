@@ -1,10 +1,14 @@
 # About Structured USD Robots
 
-This asset was created with the
+This asset was created from the packaged
+[`asRoBallet.xml`](../mjcf/asRoBallet.xml) with
 [mujoco-usd-converter](https://github.com/newton-physics/mujoco-usd-converter)
-0.5.0 from the asRoBallet MJCF source at
-[this commit](https://github.com/asRoBallet/asRoBallet_mujoco/blob/0747bf245081f892fc12b723a0fe78581f121c61/robots/mjcf/asRoBallet.xml).
-The conversion results are unchanged here.
+0.5.0 and its locked dependencies. The packaged MJCF is based on the asRoBallet
+source at
+[this commit](https://github.com/asRoBallet/asRoBallet_mujoco/blob/0747bf245081f892fc12b723a0fe78581f121c61/robots/mjcf/asRoBallet.xml),
+with consistent visual-group classification for all three wheel axle meshes.
+The USD represents the ball-joint topology; see the
+[asset README](../README.md#mjcf-topologies) for the topology variants.
 
 [This layer](./asRoBallet.usda) is the main entrypoint for the asset, called the
 Asset Interface. Consuming users, code, and applications should load this file
