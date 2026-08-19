@@ -95,9 +95,9 @@ def Xform "Dual_wrist_camera"
                 )
                 int[] primvars:displayOpacity:indices = None
                 uniform token purpose = "guide"
-                quatf xformOp:orient = (1, 0, 0, 0)
+                quatf xformOp:orient = (6.123234e-17, 0, 0, 1)
                 float3 xformOp:scale = (1, 1, 1)
-                double3 xformOp:translate = (0, 0, 0)
+                double3 xformOp:translate = (0, 0, 0.0108)
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
