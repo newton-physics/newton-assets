@@ -113,7 +113,7 @@ def Xform "Dual_wrist_camera"
         )
         {
             uniform bool newton:jointsAddMobility = 1
-            point3f physics:centerOfMass = (0, -0.0000270394, 0.0354675)
+            point3f physics:centerOfMass = (0.0000777116, 0.0000842713, 0.0311656)
             float3 physics:diagonalInertia = (0.000260285, 0.000225381, 0.000152708)
             prepend rel physics:filteredPairs = [
                 </Dual_wrist_camera/Geometry/base/left_driver>,
@@ -122,7 +122,7 @@ def Xform "Dual_wrist_camera"
                 </Dual_wrist_camera/Geometry/base/right_spring_link>,
             ]
             float physics:mass = 0.777441
-            quatf physics:principalAxes = (0.9999988, -0.0015284881, 0, 0)
+            quatf physics:principalAxes = (0.704758, -0.00373684, -0.00570287, 0.709415)
 
             over "base_1" (
                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -150,10 +150,10 @@ def Xform "Dual_wrist_camera"
                 prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
             )
             {
-                point3f physics:centerOfMass = (0, 0.0177547, 0.00107314)
+                point3f physics:centerOfMass = (-0.0175297, 0.00165308, -0.00469625)
                 float3 physics:diagonalInertia = (0.00000172352, 0.00000160906, 3.22006e-7)
                 float physics:mass = 0.00899563
-                quatf physics:principalAxes = (0.6813012, 0.7320032, 0, 0)
+                quatf physics:principalAxes = (-0.46964222, 0.46964222, -0.52861726, 0.52861726)
 
                 over "driver_1" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -192,11 +192,11 @@ def Xform "Dual_wrist_camera"
                     prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
                 )
                 {
-                    point3f physics:centerOfMass = (0, 0.00301209, 0.0232175)
+                    point3f physics:centerOfMass = (0.00367747, 0.01986, 0.0055)
                     float3 physics:diagonalInertia = (0.00000416206, 0.00000352216, 8.88131e-7)
                     prepend rel physics:filteredPairs = </Dual_wrist_camera/Geometry/base/left_spring_link/left_follower>
                     float physics:mass = 0.0140974
-                    quatf physics:principalAxes = (0.70563555, -0.045590367, 0.045590367, 0.70563555)
+                    quatf physics:principalAxes = (0.70144683, -0.70144683, 0.089288376, -0.089288376)
 
                     over "coupler_1" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -226,10 +226,10 @@ def Xform "Dual_wrist_camera"
                 prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
             )
             {
-                point3f physics:centerOfMass = (-8.65005e-9, 0.0181624, 0.0212658)
+                point3f physics:centerOfMass = (-0.0183, -0.0205732, 0.01205)
                 float3 physics:diagonalInertia = (0.00000896853, 0.00000671733, 0.00000263931)
                 float physics:mass = 0.0221642
-                quatf physics:principalAxes = (0.66340315, -0.24473707, 0.24473707, 0.66340315)
+                quatf physics:principalAxes = (0.66094154, 0.66094154, -0.25130922, -0.25130922)
 
                 over "spring_link_1" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -268,10 +268,10 @@ def Xform "Dual_wrist_camera"
                     prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                 )
                 {
-                    point3f physics:centerOfMass = (0, -0.011046, 0.0124786)
+                    point3f physics:centerOfMass = (-0.00852976, -0.0014822, -0.00910001)
                     float3 physics:diagonalInertia = (0.00000267415, 0.0000024559, 6.02031e-7)
                     float physics:mass = 0.0125222
-                    quatf physics:principalAxes = (0.98643655, 0.16414304, 0, 0)
+                    quatf physics:principalAxes = (0.35943872, 0.35943872, 0.6089366, 0.6089366)
 
                     over "follower_1" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -330,7 +330,7 @@ def Xform "Dual_wrist_camera"
                             uniform double[] mjc:solimp = [0.95, 0.99, 0.001, 0.5, 2]
                             uniform double[] mjc:solref = [0.004, 1]
                             float newton:contactGap = 0
-                            float physics:mass = 0.000001
+                            float physics:mass = 0.00175
                         }
 
                         over "left_pad2" (
@@ -343,7 +343,7 @@ def Xform "Dual_wrist_camera"
                             uniform double[] mjc:solimp = [0.95, 0.99, 0.001, 0.5, 2]
                             uniform double[] mjc:solref = [0.004, 1]
                             float newton:contactGap = 0
-                            float physics:mass = 0.000001
+                            float physics:mass = 0.00175
                         }
 
                         def PhysicsFixedJoint "PhysicsFixedJoint"
@@ -363,10 +363,10 @@ def Xform "Dual_wrist_camera"
                 prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
             )
             {
-                point3f physics:centerOfMass = (2.96931e-12, 0.0177547, 0.00107314)
+                point3f physics:centerOfMass = (-0.0175297, 0.00165308, -0.00469625)
                 float3 physics:diagonalInertia = (0.00000172352, 0.00000160906, 3.22006e-7)
                 float physics:mass = 0.00899563
-                quatf physics:principalAxes = (0.6813012, 0.7320032, 0, 0)
+                quatf physics:principalAxes = (-0.46964222, 0.46964222, -0.52861726, 0.52861726)
 
                 over "driver_1" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -408,11 +408,11 @@ def Xform "Dual_wrist_camera"
                     prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsFilteredPairsAPI"]
                 )
                 {
-                    point3f physics:centerOfMass = (0, 0.00301209, 0.0232175)
+                    point3f physics:centerOfMass = (0.00367747, 0.01986, 0.0055)
                     float3 physics:diagonalInertia = (0.00000416206, 0.00000352216, 8.88131e-7)
                     prepend rel physics:filteredPairs = </Dual_wrist_camera/Geometry/base/right_spring_link/right_follower>
                     float physics:mass = 0.0140974
-                    quatf physics:principalAxes = (0.70563555, -0.045590367, 0.045590367, 0.70563555)
+                    quatf physics:principalAxes = (0.70144683, -0.70144683, 0.089288376, -0.089288376)
 
                     over "coupler_1" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -442,10 +442,10 @@ def Xform "Dual_wrist_camera"
                 prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
             )
             {
-                point3f physics:centerOfMass = (-8.65005e-9, 0.0181624, 0.0212658)
+                point3f physics:centerOfMass = (-0.0183, -0.0205732, 0.01205)
                 float3 physics:diagonalInertia = (0.00000896853, 0.00000671733, 0.00000263931)
                 float physics:mass = 0.0221642
-                quatf physics:principalAxes = (0.66340315, -0.24473707, 0.24473707, 0.66340315)
+                quatf physics:principalAxes = (0.66094154, 0.66094154, -0.25130922, -0.25130922)
 
                 over "spring_link_1" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -484,10 +484,10 @@ def Xform "Dual_wrist_camera"
                     prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                 )
                 {
-                    point3f physics:centerOfMass = (0, -0.011046, 0.0124786)
+                    point3f physics:centerOfMass = (-0.00852976, -0.0014822, -0.00910001)
                     float3 physics:diagonalInertia = (0.00000267415, 0.0000024559, 6.02031e-7)
                     float physics:mass = 0.0125222
-                    quatf physics:principalAxes = (0.98643655, 0.16414304, 0, 0)
+                    quatf physics:principalAxes = (0.35943872, 0.35943872, 0.6089366, 0.6089366)
 
                     over "tongue_1" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -546,7 +546,7 @@ def Xform "Dual_wrist_camera"
                             uniform double[] mjc:solimp = [0.95, 0.99, 0.001, 0.5, 2]
                             uniform double[] mjc:solref = [0.004, 1]
                             float newton:contactGap = 0
-                            float physics:mass = 0.000001
+                            float physics:mass = 0.00175
                         }
 
                         over "right_pad2" (
@@ -559,7 +559,7 @@ def Xform "Dual_wrist_camera"
                             uniform double[] mjc:solimp = [0.95, 0.99, 0.001, 0.5, 2]
                             uniform double[] mjc:solref = [0.004, 1]
                             float newton:contactGap = 0
-                            float physics:mass = 0.000001
+                            float physics:mass = 0.00175
                         }
 
                         def PhysicsFixedJoint "PhysicsFixedJoint"

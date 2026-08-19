@@ -1,6 +1,6 @@
 # About Structured USD Robots
 
-This asset was created with the [mujoco-usd-converter](https://github.com/newton-physics/mujoco-usd-converter), having converted the source MJCF from the MuJoCo Menagerie as of [this commit](https://github.com/google-deepmind/mujoco_menagerie/blob/a03e87bf13502b0b48ebbf2808928fd96ebf9cf3/universal_robots_ur5e/ur5e.xml). The conversion results are unchanged here.
+This asset was created with the [mujoco-usd-converter](https://github.com/newton-physics/mujoco-usd-converter), having converted the source MJCF from the MuJoCo Menagerie as of [this commit](https://github.com/google-deepmind/mujoco_menagerie/blob/da76818e269b82289eba39808e2fb91d679d6994/universal_robots_ur5e/ur5e.xml). The conversion results are unchanged here.
 
 [This layer](./ur5e.usda) is the main entrypoint for the asset, called the Asset Interface. Consuming users/code/applications should load this file to access the fully composed USD Robot. The interface is a lightweight plain text layer & the bulk of the robot is behind a Payload, enabling delayed-load access to the asset.
 
