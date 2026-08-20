@@ -1,6 +1,5 @@
 #usda 1.0
 (
-    "Exported from asRoBallet MJCF."
     customLayerData = {
         string creator = "MuJoCo USD Converter v0.5.0"
     }
@@ -10,7 +9,7 @@
     upAxis = "Z"
 )
 
-def Xform "asRoBallet"
+over "asRoBallet"
 {
     def Scope "Materials"
     {
@@ -24,82 +23,6 @@ def Xform "asRoBallet"
             prepend references = @./MaterialsLibrary.usdc@</Materials/orange>
         )
         {
-        }
-    }
-
-    over "Geometry"
-    {
-        over "base_link"
-        {
-            over "torso_link"
-            {
-                over "neck_link"
-                {
-                    over "head_link"
-                    {
-                        over "head_link_geom" (
-                            prepend apiSchemas = ["MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding = </asRoBallet/Materials/dark>
-                        }
-                    }
-                }
-
-                over "right_shoulder_pitch_link"
-                {
-                    over "right_shoulder_roll_link"
-                    {
-                        over "right_shoulder_yaw_link"
-                        {
-                            over "right_elbow_link"
-                            {
-                                over "right_hand_link"
-                                {
-                                    over "right_hand_link_geom" (
-                                        prepend apiSchemas = ["MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding = </asRoBallet/Materials/orange>
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                over "left_shoulder_pitch_link"
-                {
-                    over "left_shoulder_roll_link"
-                    {
-                        over "left_shoulder_yaw_link"
-                        {
-                            over "left_elbow_link"
-                            {
-                                over "left_hand_link"
-                                {
-                                    over "left_hand_link_geom" (
-                                        prepend apiSchemas = ["MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding = </asRoBallet/Materials/orange>
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            over "ball_link"
-            {
-                over "ball_link_geom" (
-                    prepend apiSchemas = ["MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding = </asRoBallet/Materials/dark>
-                }
-            }
         }
     }
 }

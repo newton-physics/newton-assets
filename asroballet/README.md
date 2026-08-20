@@ -13,7 +13,7 @@ The subfolders contain:
   simulation scenes with ground contact.
 - **rl_policies**: Pre-trained velocity-tracking and station-keeping ONNX
   policies.
-- **usd_structured**: Structured USD layers converted from the MJCF model.
+- **usd_structured**: Component-based USD layers for both robot topologies.
 
 ## Sources
 
@@ -48,14 +48,14 @@ Two MJCF topologies are provided:
   have separate translational and rotational state. Contact couples the two
   bodies. `mjcf/scene_floating_ball.xml` loads this model.
 
-The free-joint model and scene are generated from their ball-joint counterparts
-to keep shared model data in one canonical source. After editing the canonical
-files, regenerate and verify the variants with:
+Both entry points compose the same files under `common`. The common model, base,
+ball, and scene fragments are included directly by MuJoCo, while each entry
+point authors only its topology-specific body placement and joint.
 
-```bash
-python asroballet/mjcf/generate_variants.py
-python asroballet/mjcf/generate_variants.py --check
-```
+The structured USD follows the same component boundary. `Components/Torso.usda`
+and `Components/Ball.usda` are shared by the ball-joint and floating-ball layers
+under `Topology`, with `asRoBallet.usda` and
+`asRoBallet_floating_ball.usda` as their respective public entry points.
 
 ## License
 
@@ -65,6 +65,8 @@ The pre-trained policies are released under the
 
 ## Changelog
 
+- 2026-08-20: Compose the MJCF and USD topology variants from shared torso,
+  ball, material, and scene components.
 - 2026-08-19: Generate the free-joint MJCF variant from the canonical model and
   synchronize wheel axle visual-group metadata in the structured USD.
 - 2026-08-14: Update the MJCF and structured USD to use high-resolution

@@ -16,14 +16,14 @@ def Xform "asRoBallet" (
         string name = "asRoBallet"
     }
     kind = "component"
-    prepend payload = @./Payload/Contents.usda@
+    prepend payload = @./Topology/BallJoint.usda@
 )
 {
     float3[] extentsHint = [(-0.115184, -0.2510197, -0.001200002), (0.31997454, 0.25099984, 1.2479991), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-0.1107607, -0.257, 0.1011), (0.32099962, 0.257, 1.2481)]
 }
 
 def PhysicsScene "PhysicsScene" (
-    prepend payload = @./Payload/Contents.usda@</PhysicsScene>
+    prepend payload = @./Topology/BallJoint.usda@</PhysicsScene>
 )
 {
 }

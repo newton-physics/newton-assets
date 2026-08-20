@@ -1,15 +1,4 @@
 <mujoco model="asRoBallet_scene">
-    <include file="asRoBallet.xml"/>
-    <asset>
-        <texture name="floor_grid" type="2d" builtin="checker" mark="edge" width="512" height="512" rgb1="0.75 0.75 0.75" rgb2="0.75 0.75 0.75" markrgb="0.2 0.2 0.2"/>
-        <material name="floor" texture="floor_grid" texrepeat="10 10" texuniform="true" shininess="0.2" specular="0.1" rgba="1 1 1 1"/>
-    </asset>
-    <contact>
-        <pair name="ball_link_floor" geom1="ball_link_geom" geom2="floor" condim="6" friction="1.0 1.0 0.01" solimp="0.85 0.99 0.003"/>
-    </contact>
-    <worldbody>
-        <light name="sun" directional="true" pos="-0.5 0.5 3" dir="0 0 -1" ambient="0.3 0.3 0.3" diffuse="0.7 0.7 0.7" castshadow="false"/>
-        <geom name="floor" type="plane" pos="0 0 0" size="0 0 0.1" material="floor" contype="8" conaffinity="15"/>
-        <camera name="robot_cam" pos="2.8 0 0.8" euler="0 1.57 1.57"/>
-    </worldbody>
+  <include file="asRoBallet.xml" />
+  <include file="../common/scene.xml" />
 </mujoco>

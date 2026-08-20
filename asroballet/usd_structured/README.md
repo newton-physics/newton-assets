@@ -7,23 +7,24 @@ This asset was created from the packaged
 source at
 [this commit](https://github.com/asRoBallet/asRoBallet_mujoco/blob/0747bf245081f892fc12b723a0fe78581f121c61/robots/mjcf/asRoBallet.xml),
 with consistent visual-group classification for all three wheel axle meshes.
-The USD represents the ball-joint topology; see the
-[asset README](../README.md#mjcf-topologies) for the topology variants.
+The USD package represents both supported topologies; see the
+[asset README](../README.md#mjcf-topologies) for their physical differences.
 
-[This layer](./asRoBallet.usda) is the main entrypoint for the asset, called the
-Asset Interface. Consuming users, code, and applications should load this file
-to access the fully composed USD robot. The interface is a lightweight plain
-text layer, while the bulk of the robot is behind a payload for delayed loading.
+[This layer](./asRoBallet.usda) is the public ball-joint entry point.
+[The floating-ball layer](./asRoBallet_floating_ball.usda) is the public entry
+point with independent torso and ball state. Both interfaces are lightweight
+plain-text layers with the robot data behind payloads for delayed loading.
 
-The pertinent simulation data is contained in the
-[Physics Layer](./Payload/Physics.usda) within the payload. This plain text layer
-includes the `UsdPhysics`, `NewtonPhysics`, and `MjcPhysics` schemas and
-attributes, so simulation values can be tuned without editing the geometry
-layers.
+The two topology layers reference the same
+[torso](./Components/Torso.usda) and [ball](./Components/Ball.usda) components.
+They differ only in ball placement and whether `torso_ball_joint` connects the
+two components. Materials, actuators, and scene settings are shared through the
+files under `Payload`.
 
-Larger structural changes, such as adding bodies or colliders, require editing
-several layers and are best made with a USD-aware application rather than by
-manually editing the generated files.
+Both public entries have been validated for layer parsing and payload loading
+with OpenUSD 26.03 and for model import with Newton. The ball-joint entry
+preserves the complete prim, schema, attribute, and relationship composition of
+the converter output.
 
 The body hierarchy is nested, with child bodies specified relative to their
 parent bodies, as in the source MJCF. Support for nested rigid bodies varies by

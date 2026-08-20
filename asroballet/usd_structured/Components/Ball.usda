@@ -1,0 +1,52 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.5.0"
+    }
+    defaultPrim = "Ball"
+    doc = "Componentized from the asRoBallet structured USD export."
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Ball" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+)
+{
+    double[] newton:inertia = [0.024537068316026582, 0.024537068316026783, 0.024537068316026575, 1.2502313135099962e-16, 2.33620219102254e-17, -1.3441326783345871e-17]
+    point3f physics:centerOfMass = (2.8853526e-17, 2.8853526e-17, 2.8865798e-17)
+    float3 physics:diagonalInertia = (0.024537068, 0.024537068, 0.024537068)
+    float physics:mass = 3.0211432
+    quatf physics:principalAxes = (1, 0, 0, 0)
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (-0.000184, 0, 0.0027)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def Mesh "ball_link_geom" (
+        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+        displayName = ""
+        prepend references = @../Payload/GeometryLibrary.usdc@</Geometry/ball_link>
+    )
+    {
+        uniform int mjc:priority = 1
+        uniform double[] mjc:solimp = [0.85, 0.99, 0.003, 0.5, 2]
+        uniform double[] mjc:solref = [0.02, 1]
+        float newton:contactGap = 0
+        uniform token physics:approximation = "convexHull"
+        float physics:density = 1000
+        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
+            interpolation = "constant"
+        )
+        int[] primvars:displayColor:indices = None
+        float[] primvars:displayOpacity = [1] (
+            interpolation = "constant"
+        )
+        int[] primvars:displayOpacity:indices = None
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
