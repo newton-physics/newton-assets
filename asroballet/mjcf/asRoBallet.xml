@@ -1,0 +1,13 @@
+<mujoco model="asRoBallet">
+  <include file="../common/model.xml" />
+  <worldbody>
+    <body name="base_link" pos="0.0 0.0 0.1111" quat="1 0 0 0">
+      <joint name="floating_base_joint" type="free" limited="false" actuatorfrclimited="false" />
+      <include file="../common/base_contents.xml" />
+      <body name="ball_link" pos="-0.000184 0.0 0.0027" euler="-8.758115402030124e-47 1.4886381841035652e-16 -2.7200464103316422e-15">
+        <joint name="torso_ball_joint" type="ball" pos="0.0 0.0 0" damping="0.01" />
+        <include file="../common/ball_contents.xml" />
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

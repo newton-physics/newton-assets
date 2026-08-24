@@ -1,0 +1,20 @@
+#usda 1.0
+(
+    defaultPrim = "asRoBallet"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "asRoBallet" (
+    kind = "component"
+    prepend payload = @./Topology/FloatingBall.usda@
+)
+{
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend payload = @./Topology/FloatingBall.usda@</PhysicsScene>
+)
+{
+}

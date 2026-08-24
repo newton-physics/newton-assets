@@ -1,0 +1,4 @@
+<mujoco model="asRoBallet_scene">
+  <include file="asRoBallet.xml" />
+  <include file="../common/scene.xml" />
+</mujoco>

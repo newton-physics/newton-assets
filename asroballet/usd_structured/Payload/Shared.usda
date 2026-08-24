@@ -1,0 +1,598 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.5.0"
+    }
+    defaultPrim = "asRoBallet"
+    doc = "Componentized from the asRoBallet structured USD export."
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./Materials.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "asRoBallet"
+{
+    def Scope "Physics"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI"]
+        )
+        {
+            float newton:contactDamping = 100
+            float newton:contactStiffness = 2500
+            float newton:rollingFriction = 0.0001
+            float newton:torsionalFriction = 0.005
+            float physics:dynamicFriction = 1
+            float physics:staticFriction = 1
+        }
+
+        def MjcActuator "wheel_1_axle_joint"
+        {
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            uniform double[] mjc:gear = [2, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/wheel_1_axle_link/wheel_1_axle_joint>
+        }
+
+        def MjcActuator "wheel_2_axle_joint"
+        {
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            uniform double[] mjc:gear = [2, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/wheel_2_axle_link/wheel_2_axle_joint>
+        }
+
+        def MjcActuator "wheel_3_axle_joint"
+        {
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            uniform double[] mjc:gear = [2, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/wheel_3_axle_link/wheel_3_axle_joint>
+        }
+
+        def MjcActuator "neck_joint"
+        {
+            uniform double[] mjc:biasPrm = [0, -100, 1, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 3.14
+            uniform double mjc:ctrlRange:min = -3.14
+            uniform double mjc:forceRange:max = 17
+            uniform double mjc:forceRange:min = -17
+            uniform double[] mjc:gainPrm = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/torso_link/neck_link/neck_joint>
+        }
+
+        def MjcActuator "head_joint"
+        {
+            uniform double[] mjc:biasPrm = [0, -100, 1, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.5
+            uniform double mjc:ctrlRange:min = -1.5
+            uniform double mjc:forceRange:max = 17
+            uniform double mjc:forceRange:min = -17
+            uniform double[] mjc:gainPrm = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/torso_link/neck_link/head_link/head_joint>
+        }
+
+        def MjcActuator "right_shoulder_pitch_joint"
+        {
+            uniform double[] mjc:biasPrm = [0, -100, 1, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 2.6704
+            uniform double mjc:ctrlRange:min = -3.0892
+            uniform double mjc:forceRange:max = 17
+            uniform double mjc:forceRange:min = -17
+            uniform double[] mjc:gainPrm = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/torso_link/right_shoulder_pitch_link/right_shoulder_pitch_joint>
+        }
+
+        def MjcActuator "right_shoulder_roll_joint"
+        {
+            uniform double[] mjc:biasPrm = [0, -100, 1, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.5882
+            uniform double mjc:ctrlRange:min = -2.2515
+            uniform double mjc:forceRange:max = 17
+            uniform double mjc:forceRange:min = -17
+            uniform double[] mjc:gainPrm = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_roll_joint>
+        }
+
+        def MjcActuator "right_shoulder_yaw_joint"
+        {
+            uniform double[] mjc:biasPrm = [0, -100, 1, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 2.618
+            uniform double mjc:ctrlRange:min = -2.618
+            uniform double mjc:forceRange:max = 17
+            uniform double mjc:forceRange:min = -17
+            uniform double[] mjc:gainPrm = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_shoulder_yaw_joint>
+        }
+
+        def MjcActuator "right_elbow_joint"
+        {
+            uniform double[] mjc:biasPrm = [0, -100, 1, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 2.0944
+            uniform double mjc:ctrlRange:min = -1.0472
+            uniform double mjc:forceRange:max = 17
+            uniform double mjc:forceRange:min = -17
+            uniform double[] mjc:gainPrm = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_elbow_joint>
+        }
+
+        def MjcActuator "left_shoulder_pitch_joint"
+        {
+            uniform double[] mjc:biasPrm = [0, -100, 1, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 2.6704
+            uniform double mjc:ctrlRange:min = -3.0892
+            uniform double mjc:forceRange:max = 17
+            uniform double mjc:forceRange:min = -17
+            uniform double[] mjc:gainPrm = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/torso_link/left_shoulder_pitch_link/left_shoulder_pitch_joint>
+        }
+
+        def MjcActuator "left_shoulder_roll_joint"
+        {
+            uniform double[] mjc:biasPrm = [0, -100, 1, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 2.2515
+            uniform double mjc:ctrlRange:min = -1.5882
+            uniform double mjc:forceRange:max = 17
+            uniform double mjc:forceRange:min = -17
+            uniform double[] mjc:gainPrm = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_roll_joint>
+        }
+
+        def MjcActuator "left_shoulder_yaw_joint"
+        {
+            uniform double[] mjc:biasPrm = [0, -100, 1, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 2.618
+            uniform double mjc:ctrlRange:min = -2.618
+            uniform double mjc:forceRange:max = 17
+            uniform double mjc:forceRange:min = -17
+            uniform double[] mjc:gainPrm = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_shoulder_yaw_joint>
+        }
+
+        def MjcActuator "left_elbow_joint"
+        {
+            uniform double[] mjc:biasPrm = [0, -100, 1, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 2.0944
+            uniform double mjc:ctrlRange:min = -1.0472
+            uniform double mjc:forceRange:max = 17
+            uniform double mjc:forceRange:min = -17
+            uniform double[] mjc:gainPrm = [100, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </asRoBallet/Geometry/base_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_elbow_joint>
+        }
+    }
+
+    over "Geometry"
+    {
+        over "base_link"
+        {
+            over "base_link_collision_geom"
+            {
+                rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+            }
+
+            over "torso_link"
+            {
+                over "torso_link_collision_core"
+                {
+                    rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                }
+
+                over "torso_link_collision_shoulder"
+                {
+                    rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                }
+
+                over "neck_link"
+                {
+                    over "head_link"
+                    {
+                        over "head_link_geom"
+                        {
+                            rel material:binding = </asRoBallet/Materials/dark>
+                        }
+
+                        over "head_link_collision_geom"
+                        {
+                            rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                        }
+                    }
+                }
+
+                over "right_shoulder_pitch_link"
+                {
+                    over "right_shoulder_roll_link"
+                    {
+                        over "right_shoulder_yaw_link"
+                        {
+                            over "right_shoulder_yaw_collision_geom"
+                            {
+                                rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                            }
+
+                            over "right_elbow_link"
+                            {
+                                over "right_elbow_collision_geom"
+                                {
+                                    rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                                }
+
+                                over "right_hand_link"
+                                {
+                                    over "right_hand_link_geom"
+                                    {
+                                        rel material:binding = </asRoBallet/Materials/orange>
+                                    }
+
+                                    over "right_hand_link_collision_geom"
+                                    {
+                                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                over "left_shoulder_pitch_link"
+                {
+                    over "left_shoulder_roll_link"
+                    {
+                        over "left_shoulder_yaw_link"
+                        {
+                            over "left_shoulder_yaw_collision_geom"
+                            {
+                                rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                            }
+
+                            over "left_elbow_link"
+                            {
+                                over "left_elbow_collision_geom"
+                                {
+                                    rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                                }
+
+                                over "left_hand_link"
+                                {
+                                    over "left_hand_link_geom"
+                                    {
+                                        rel material:binding = </asRoBallet/Materials/orange>
+                                    }
+
+                                    over "left_hand_link_collision_geom"
+                                    {
+                                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "wheel_1_axle_link"
+            {
+                over "wheel_1_fat_roller_1_link"
+                {
+                    over "wheel_1_fat_roller_1_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_1_fat_roller_2_link"
+                {
+                    over "wheel_1_fat_roller_2_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_1_fat_roller_3_link"
+                {
+                    over "wheel_1_fat_roller_3_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_1_fat_roller_4_link"
+                {
+                    over "wheel_1_fat_roller_4_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_1_fat_roller_5_link"
+                {
+                    over "wheel_1_fat_roller_5_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_1_fat_roller_6_link"
+                {
+                    over "wheel_1_fat_roller_6_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_1_thin_roller_1_link"
+                {
+                    over "wheel_1_thin_roller_1_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_1_thin_roller_2_link"
+                {
+                    over "wheel_1_thin_roller_2_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_1_thin_roller_3_link"
+                {
+                    over "wheel_1_thin_roller_3_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_1_thin_roller_4_link"
+                {
+                    over "wheel_1_thin_roller_4_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_1_thin_roller_5_link"
+                {
+                    over "wheel_1_thin_roller_5_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_1_thin_roller_6_link"
+                {
+                    over "wheel_1_thin_roller_6_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+            }
+
+            over "wheel_2_axle_link"
+            {
+                over "wheel_2_fat_roller_1_link"
+                {
+                    over "wheel_2_fat_roller_1_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_2_fat_roller_2_link"
+                {
+                    over "wheel_2_fat_roller_2_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_2_fat_roller_3_link"
+                {
+                    over "wheel_2_fat_roller_3_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_2_fat_roller_4_link"
+                {
+                    over "wheel_2_fat_roller_4_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_2_fat_roller_5_link"
+                {
+                    over "wheel_2_fat_roller_5_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_2_fat_roller_6_link"
+                {
+                    over "wheel_2_fat_roller_6_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_2_thin_roller_1_link"
+                {
+                    over "wheel_2_thin_roller_1_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_2_thin_roller_2_link"
+                {
+                    over "wheel_2_thin_roller_2_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_2_thin_roller_3_link"
+                {
+                    over "wheel_2_thin_roller_3_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_2_thin_roller_4_link"
+                {
+                    over "wheel_2_thin_roller_4_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_2_thin_roller_5_link"
+                {
+                    over "wheel_2_thin_roller_5_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_2_thin_roller_6_link"
+                {
+                    over "wheel_2_thin_roller_6_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+            }
+
+            over "wheel_3_axle_link"
+            {
+                over "wheel_3_fat_roller_1_link"
+                {
+                    over "wheel_3_fat_roller_1_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_3_fat_roller_2_link"
+                {
+                    over "wheel_3_fat_roller_2_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_3_fat_roller_3_link"
+                {
+                    over "wheel_3_fat_roller_3_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_3_fat_roller_4_link"
+                {
+                    over "wheel_3_fat_roller_4_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_3_fat_roller_5_link"
+                {
+                    over "wheel_3_fat_roller_5_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_3_fat_roller_6_link"
+                {
+                    over "wheel_3_fat_roller_6_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_3_thin_roller_1_link"
+                {
+                    over "wheel_3_thin_roller_1_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_3_thin_roller_2_link"
+                {
+                    over "wheel_3_thin_roller_2_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_3_thin_roller_3_link"
+                {
+                    over "wheel_3_thin_roller_3_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_3_thin_roller_4_link"
+                {
+                    over "wheel_3_thin_roller_4_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_3_thin_roller_5_link"
+                {
+                    over "wheel_3_thin_roller_5_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+
+                over "wheel_3_thin_roller_6_link"
+                {
+                    over "wheel_3_thin_roller_6_link_collision_geom"
+                    {
+                        rel material:binding:physics = </asRoBallet/Physics/PhysicsMaterial>
+                    }
+                }
+            }
+        }
+    }
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend apiSchemas = ["NewtonSceneAPI", "MjcSceneAPI"]
+)
+{
+    uniform token mjc:compiler:angle = "radian"
+    uniform token mjc:option:cone = "elliptic"
+    uniform double mjc:option:impratio = 10
+    uniform token mjc:option:integrator = "implicitfast"
+    uniform int mjc:option:noslip_iterations = 1
+    uniform int newton:maxSolverIterations = 100
+    uniform int newton:timeStepsPerSecond = 500
+    vector3f physics:gravityDirection = (0, 0, -1)
+    float physics:gravityMagnitude = 9.81
+}

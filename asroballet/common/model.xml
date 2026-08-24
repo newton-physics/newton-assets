@@ -1,0 +1,77 @@
+<mujocoinclude>
+  <compiler angle="radian" meshdir="../meshes/" />
+  <option timestep="0.002" integrator="implicitfast" impratio="10" cone="elliptic" noslip_iterations="1" />
+  <default>
+    <default class="torso_joint">
+      <joint damping="0.01" frictionloss="0.1" armature="0.0" />
+      <position kp="100" dampratio="1" />
+    </default>
+    <default class="wheel_joint">
+      <joint damping="0.007" frictionloss="0.1" armature="0.0" />
+    </default>
+    <default class="visual">
+      <geom group="2" type="mesh" contype="0" conaffinity="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" type="mesh" rgba=".2 .6 .2 .3" contype="1" conaffinity="9" friction="1 0.005 0.0001"/>
+    </default>
+    <default class="rubber">
+      <geom condim="3" friction="1 0.005 0.0001" priority="1" solimp="0.85 0.99 0.003" />
+    </default>
+  </default>
+  <asset>
+    <material name="dark" rgba="0.2 0.2 0.2 1" />
+    <material name="white" rgba="0.7 0.7 0.7 1" />
+    <material name="orange" rgba="0.7 0.2 0 1" />
+    <mesh name="base_link" file="base_link.stl" />
+    <mesh name="base_link_collision" file="base_link_collision.stl" />
+    <mesh name="torso_link" file="torso_link.stl" />
+    <mesh name="neck_link" file="neck_link.stl" />
+    <mesh name="head_link" file="head_link.stl" />
+    <mesh name="right_shoulder_pitch_link" file="right_shoulder_pitch_link.stl" />
+    <mesh name="right_shoulder_roll_link" file="right_shoulder_roll_link.stl" />
+    <mesh name="right_shoulder_yaw_link" file="right_shoulder_yaw_link.stl" />
+    <mesh name="right_elbow_link" file="right_elbow_link.stl" />
+    <mesh name="left_shoulder_pitch_link" file="left_shoulder_pitch_link.stl" />
+    <mesh name="left_shoulder_roll_link" file="left_shoulder_roll_link.stl" />
+    <mesh name="left_shoulder_yaw_link" file="left_shoulder_yaw_link.stl" />
+    <mesh name="left_elbow_link" file="left_elbow_link.stl" />
+    <mesh name="hand_link" file="hand_link.stl" />
+    <mesh name="axle_link" file="axle_link.stl" />
+    <mesh name="wheel_fat_roller_link" file="wheel_fat_roller_link.stl" />
+    <mesh name="wheel_thin_roller_link" file="wheel_thin_roller_link.stl" />
+    <mesh name="ball_link" file="ball_link.stl" />
+  </asset>
+  <actuator>
+    <motor name="wheel_1_axle_joint" joint="wheel_1_axle_joint" gear="2" forcerange="-2 2" />
+    <motor name="wheel_2_axle_joint" joint="wheel_2_axle_joint" gear="2" forcerange="-2 2" />
+    <motor name="wheel_3_axle_joint" joint="wheel_3_axle_joint" gear="2" forcerange="-2 2" />
+    <position class="torso_joint" name="neck_joint" joint="neck_joint" ctrlrange="-3.14 3.14" forcerange="-17 17" />
+    <position class="torso_joint" name="head_joint" joint="head_joint" ctrlrange="-1.5 1.5" forcerange="-17 17" />
+    <position class="torso_joint" name="right_shoulder_pitch_joint" joint="right_shoulder_pitch_joint" ctrlrange="-3.0892 2.6704" forcerange="-17 17" />
+    <position class="torso_joint" name="right_shoulder_roll_joint" joint="right_shoulder_roll_joint" ctrlrange="-2.2515 1.5882" forcerange="-17 17" />
+    <position class="torso_joint" name="right_shoulder_yaw_joint" joint="right_shoulder_yaw_joint" ctrlrange="-2.618 2.618" forcerange="-17 17" />
+    <position class="torso_joint" name="right_elbow_joint" joint="right_elbow_joint" ctrlrange="-1.0472 2.0944" forcerange="-17 17" />
+    <position class="torso_joint" name="left_shoulder_pitch_joint" joint="left_shoulder_pitch_joint" ctrlrange="-3.0892 2.6704" forcerange="-17 17" />
+    <position class="torso_joint" name="left_shoulder_roll_joint" joint="left_shoulder_roll_joint" ctrlrange="-1.5882 2.2515" forcerange="-17 17" />
+    <position class="torso_joint" name="left_shoulder_yaw_joint" joint="left_shoulder_yaw_joint" ctrlrange="-2.618 2.618" forcerange="-17 17" />
+    <position class="torso_joint" name="left_elbow_joint" joint="left_elbow_joint" ctrlrange="-1.0472 2.0944" forcerange="-17 17" />
+  </actuator>
+  <sensor>
+    <jointpos name="whl_1_pos" joint="wheel_1_axle_joint"/>
+    <jointpos name="whl_2_pos" joint="wheel_2_axle_joint"/>
+    <jointpos name="whl_3_pos" joint="wheel_3_axle_joint"/>
+    <jointvel name="whl_1_vel" joint="wheel_1_axle_joint"/>
+    <jointvel name="whl_2_vel" joint="wheel_2_axle_joint"/>
+    <jointvel name="whl_3_vel" joint="wheel_3_axle_joint"/>
+    <jointactuatorfrc name="whl_1_tor" joint="wheel_1_axle_joint"/>
+    <jointactuatorfrc name="whl_2_tor" joint="wheel_2_axle_joint"/>
+    <jointactuatorfrc name="whl_3_tor" joint="wheel_3_axle_joint"/>
+    <gyro name="imu_gyro" site="imu_site"/>
+    <velocimeter name="ball_vel" site="ball_site"/>
+    <framequat name="imu_quat" objtype="site" objname="imu_site"/>
+    <framepos name="ball_pos" objtype="site" objname="slam_site"/>
+    <subtreecom name="base_subtree_com" body="base_link"/>
+    <subtreecom name="ball_subtree_com" body="ball_link"/>
+  </sensor>
+</mujocoinclude>
