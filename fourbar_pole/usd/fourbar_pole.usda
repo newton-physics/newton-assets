@@ -1,0 +1,227 @@
+#usda 1.0
+(
+    defaultPrim = "fourbar_pole"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "fourbar_pole" (
+    prepend apiSchemas = ["PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+)
+{
+    bool physxArticulation:enabledSelfCollisions = 0
+    int physxArticulation:solverPositionIterationCount = 32
+    int physxArticulation:solverVelocityIterationCount = 16
+
+    def Xform "ground_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0, 0, 0)
+        float3 physics:diagonalInertia = (0.1340833, 0.0015, 0.1340833)
+        float physics:mass = 10
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usda@</fourbar_pole/ground_link/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usda@</fourbar_pole/ground_link/collisions>
+        )
+        {
+        }
+    }
+
+    def PhysicsFixedJoint "root_joint"
+    {
+        rel physics:body1 = </fourbar_pole/ground_link>
+    }
+
+    def Xform "crank" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0, 0, 0.25)
+        float3 physics:diagonalInertia = (0.0209083, 0.0209083, 0.00015)
+        float physics:mass = 1
+        double3 xformOp:translate = (0, -0.2, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usda@</fourbar_pole/crank/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usda@</fourbar_pole/crank/collisions>
+        )
+        {
+        }
+    }
+
+    def Xform "coupler" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0, 0.2, 0)
+        float3 physics:diagonalInertia = (0.0134083, 0.00015, 0.0134083)
+        float physics:mass = 1
+        double3 xformOp:translate = (0, -0.2, 0.5)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usda@</fourbar_pole/coupler/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usda@</fourbar_pole/coupler/collisions>
+        )
+        {
+        }
+
+        def Xform "pole" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        )
+        {
+            point3f physics:centerOfMass = (0, 0, 0.47)
+            float3 physics:diagonalInertia = (0.0836333, 0.0834667, 0.0004333)
+            float physics:mass = 1
+            double3 xformOp:translate = (0, 0.2, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def "visuals" (
+                instanceable = true
+                prepend references = @./Props/instanceable_meshes.usda@</fourbar_pole/pole/visuals>
+            )
+            {
+            }
+
+            def "collisions" (
+                instanceable = true
+                prepend references = @./Props/instanceable_meshes.usda@</fourbar_pole/pole/collisions>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "rocker" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0, 0, 0.25)
+        float3 physics:diagonalInertia = (0.0209083, 0.0209083, 0.00015)
+        float physics:mass = 1
+        double3 xformOp:translate = (0, 0.2, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+
+        def "visuals" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usda@</fourbar_pole/rocker/visuals>
+        )
+        {
+        }
+
+        def "collisions" (
+            instanceable = true
+            prepend references = @./Props/instanceable_meshes.usda@</fourbar_pole/rocker/collisions>
+        )
+        {
+        }
+    }
+
+    def PhysicsRevoluteJoint "ground_to_crank" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+    )
+    {
+        float drive:angular:physics:damping = 10
+        float drive:angular:physics:maxForce = 1000
+        float drive:angular:physics:stiffness = 0
+        uniform token drive:angular:physics:type = "force"
+        uniform token physics:axis = "X"
+        rel physics:body0 = </fourbar_pole/ground_link>
+        rel physics:body1 = </fourbar_pole/crank>
+        float physics:breakForce = inf
+        float physics:breakTorque = inf
+        point3f physics:localPos0 = (0, -0.2, 0)
+        point3f physics:localPos1 = (0, 0, 0)
+        quatf physics:localRot0 = (1, 0, 0, 0)
+        quatf physics:localRot1 = (1, 0, 0, 0)
+        float physics:lowerLimit = -60
+        float physics:upperLimit = 60
+    }
+
+    def PhysicsRevoluteJoint "crank_to_coupler"
+    {
+        uniform token physics:axis = "X"
+        rel physics:body0 = </fourbar_pole/crank>
+        rel physics:body1 = </fourbar_pole/coupler>
+        float physics:breakForce = inf
+        float physics:breakTorque = inf
+        point3f physics:localPos0 = (0, 0, 0.5)
+        point3f physics:localPos1 = (0, 0, 0)
+        quatf physics:localRot0 = (1, 0, 0, 0)
+        quatf physics:localRot1 = (1, 0, 0, 0)
+    }
+
+    def PhysicsRevoluteJoint "coupler_to_rocker"
+    {
+        uniform token physics:axis = "X"
+        rel physics:body0 = </fourbar_pole/coupler>
+        rel physics:body1 = </fourbar_pole/rocker>
+        float physics:breakForce = inf
+        float physics:breakTorque = inf
+        point3f physics:localPos0 = (0, 0.4, 0)
+        point3f physics:localPos1 = (0, 0, 0.5)
+        quatf physics:localRot0 = (1, 0, 0, 0)
+        quatf physics:localRot1 = (1, 0, 0, 0)
+    }
+
+    def PhysicsRevoluteJoint "rocker_to_ground"
+    {
+        uniform token physics:axis = "X"
+        rel physics:body0 = </fourbar_pole/rocker>
+        rel physics:body1 = </fourbar_pole/ground_link>
+        float physics:breakForce = inf
+        float physics:breakTorque = inf
+        uniform bool physics:excludeFromArticulation = 1
+        point3f physics:localPos0 = (0, 0, 0)
+        point3f physics:localPos1 = (0, 0.2, 0)
+        quatf physics:localRot0 = (1, 0, 0, 0)
+        quatf physics:localRot1 = (1, 0, 0, 0)
+        float physics:lowerLimit = -60
+        float physics:upperLimit = 60
+    }
+
+    def PhysicsRevoluteJoint "coupler_to_pole" (
+        prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+    )
+    {
+        float drive:angular:physics:damping = 0
+        float drive:angular:physics:maxForce = 1000
+        float drive:angular:physics:stiffness = 0
+        uniform token drive:angular:physics:type = "force"
+        uniform token physics:axis = "X"
+        rel physics:body0 = </fourbar_pole/coupler>
+        rel physics:body1 = </fourbar_pole/coupler/pole>
+        float physics:breakForce = inf
+        float physics:breakTorque = inf
+        point3f physics:localPos0 = (0, 0.2, 0)
+        point3f physics:localPos1 = (0, 0, 0)
+        quatf physics:localRot0 = (1, 0, 0, 0)
+        quatf physics:localRot1 = (1, 0, 0, 0)
+    }
+}

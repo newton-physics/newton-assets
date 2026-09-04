@@ -1,0 +1,4 @@
+<mujocoinclude>
+        <geom class="rubber" name="ball_link_geom" type="mesh" mesh="ball_link" material="dark" pos="0 0 0" euler="0 0 0" contype="4" conaffinity="10"/>
+        <inertial mass="3.021143163744471" pos="2.885352467797298e-17 2.885352467797308e-17 2.886579864025402e-17" fullinertia="0.024537068316026582 0.024537068316026783 0.024537068316026575 1.2502313135099962e-16 2.33620219102254e-17 -1.3441326783345871e-17"/>
+</mujocoinclude>

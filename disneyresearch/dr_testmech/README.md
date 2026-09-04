@@ -8,6 +8,9 @@ DR Test Mechanism (a.k.a. DR TestMech) is a teeny-tiny toy mechanism that serves
 
 ## Changelog
 
+### [06/12/2026]
+- Add articulation to model.
+
 ### [01/11/2025]
 - Initial release.
 

@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a8"
+        string creator = "MuJoCo USD Converter v0.5.0"
     }
     defaultPrim = "ur5e"
     kilogramsPerUnit = 1
@@ -14,12 +14,15 @@ def Xform "ur5e"
     def Scope "Physics"
     {
         def Material "PhysicsMaterial" (
-            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI", "MjcMaterialAPI"]
+            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI"]
         )
         {
+            float newton:contactDamping = 100
+            float newton:contactStiffness = 2500
             float newton:rollingFriction = 0.0001
             float newton:torsionalFriction = 0.005
             float physics:dynamicFriction = 1
+            float physics:staticFriction = 1
         }
 
         def MjcActuator "shoulder_pan"
@@ -101,34 +104,11 @@ def Xform "ur5e"
             prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
         )
         {
+            uniform bool newton:jointsAddMobility = 1
             point3f physics:centerOfMass = (0, 0, 0)
             float3 physics:diagonalInertia = (0.0044333315, 0.0044333315, 0.0072)
             float physics:mass = 4
             quatf physics:principalAxes = (1, 0, 0, 0)
-
-            over "base_0" (
-                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-            )
-            {
-                rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                uniform int mjc:group = 2
-                float newton:contactGap = 0
-                uniform token physics:approximation = "convexHull"
-                bool physics:collisionEnabled = 0
-                float physics:density = 1000
-            }
-
-            over "base_1" (
-                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-            )
-            {
-                rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                uniform int mjc:group = 2
-                float newton:contactGap = 0
-                uniform token physics:approximation = "convexHull"
-                bool physics:collisionEnabled = 0
-                float physics:density = 1000
-            }
 
             def PhysicsFixedJoint "PhysicsFixedJoint"
             {
@@ -149,57 +129,23 @@ def Xform "ur5e"
                 float physics:mass = 3.7
                 quatf physics:principalAxes = (1, 0, 0, 0)
 
-                over "shoulder_0" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                    uniform int mjc:group = 2
-                    float newton:contactGap = 0
-                    uniform token physics:approximation = "convexHull"
-                    bool physics:collisionEnabled = 0
-                    float physics:density = 1000
-                }
-
-                over "shoulder_1" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                    uniform int mjc:group = 2
-                    float newton:contactGap = 0
-                    uniform token physics:approximation = "convexHull"
-                    bool physics:collisionEnabled = 0
-                    float physics:density = 1000
-                }
-
-                over "shoulder_2" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                    uniform int mjc:group = 2
-                    float newton:contactGap = 0
-                    uniform token physics:approximation = "convexHull"
-                    bool physics:collisionEnabled = 0
-                    float physics:density = 1000
-                }
-
                 over "Capsule" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
                 )
                 {
                     rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
                     uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
                     float newton:contactGap = 0
                     float physics:density = 1000
                 }
 
                 def PhysicsRevoluteJoint "shoulder_pan_joint" (
-                    prepend apiSchemas = ["MjcJointAPI"]
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                 )
                 {
                     uniform double mjc:armature = 0.1
+                    float newton:armature = 0.1
                     uniform token physics:axis = "Z"
                     rel physics:body0 = </ur5e/Geometry/base>
                     rel physics:body1 = </ur5e/Geometry/base/shoulder_link>
@@ -220,60 +166,13 @@ def Xform "ur5e"
                     float physics:mass = 8.393
                     quatf physics:principalAxes = (1, 0, 0, 0)
 
-                    over "upperarm_0" (
-                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                        uniform int mjc:group = 2
-                        float newton:contactGap = 0
-                        uniform token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 0
-                        float physics:density = 1000
-                    }
-
-                    over "upperarm_1" (
-                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                        uniform int mjc:group = 2
-                        float newton:contactGap = 0
-                        uniform token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 0
-                        float physics:density = 1000
-                    }
-
-                    over "upperarm_2" (
-                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                        uniform int mjc:group = 2
-                        float newton:contactGap = 0
-                        uniform token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 0
-                        float physics:density = 1000
-                    }
-
-                    over "upperarm_3" (
-                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                        uniform int mjc:group = 2
-                        float newton:contactGap = 0
-                        uniform token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 0
-                        float physics:density = 1000
-                    }
-
                     over "Capsule" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
                     )
                     {
                         rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
                         uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
                         float newton:contactGap = 0
                         float physics:density = 1000
                     }
@@ -284,15 +183,17 @@ def Xform "ur5e"
                     {
                         rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
                         uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
                         float newton:contactGap = 0
                         float physics:density = 1000
                     }
 
                     def PhysicsRevoluteJoint "shoulder_lift_joint" (
-                        prepend apiSchemas = ["MjcJointAPI"]
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                     )
                     {
                         uniform double mjc:armature = 0.1
+                        float newton:armature = 0.1
                         uniform token physics:axis = "Y"
                         rel physics:body0 = </ur5e/Geometry/base/shoulder_link>
                         rel physics:body1 = </ur5e/Geometry/base/shoulder_link/upper_arm_link>
@@ -313,60 +214,13 @@ def Xform "ur5e"
                         float physics:mass = 2.275
                         quatf physics:principalAxes = (1, 0, 0, 0)
 
-                        over "forearm_0" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                            uniform int mjc:group = 2
-                            float newton:contactGap = 0
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
-                        over "forearm_1" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                            uniform int mjc:group = 2
-                            float newton:contactGap = 0
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
-                        over "forearm_2" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                            uniform int mjc:group = 2
-                            float newton:contactGap = 0
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
-                        over "forearm_3" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                            uniform int mjc:group = 2
-                            float newton:contactGap = 0
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 1000
-                        }
-
                         over "Capsule" (
                             prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
                         )
                         {
                             rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
                             uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
                             float newton:contactGap = 0
                             float physics:density = 1000
                         }
@@ -377,15 +231,17 @@ def Xform "ur5e"
                         {
                             rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
                             uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
                             float newton:contactGap = 0
                             float physics:density = 1000
                         }
 
                         def PhysicsRevoluteJoint "elbow_joint" (
-                            prepend apiSchemas = ["MjcJointAPI"]
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                         )
                         {
                             uniform double mjc:armature = 0.1
+                            float newton:armature = 0.1
                             uniform token physics:axis = "Y"
                             rel physics:body0 = </ur5e/Geometry/base/shoulder_link/upper_arm_link>
                             rel physics:body1 = </ur5e/Geometry/base/shoulder_link/upper_arm_link/forearm_link>
@@ -406,57 +262,23 @@ def Xform "ur5e"
                             float physics:mass = 1.219
                             quatf physics:principalAxes = (1, 0, 0, 0)
 
-                            over "wrist1_0" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                                uniform int mjc:group = 2
-                                float newton:contactGap = 0
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 1000
-                            }
-
-                            over "wrist1_1" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                                uniform int mjc:group = 2
-                                float newton:contactGap = 0
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 1000
-                            }
-
-                            over "wrist1_2" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                                uniform int mjc:group = 2
-                                float newton:contactGap = 0
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 1000
-                            }
-
                             over "Capsule" (
                                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
                             )
                             {
                                 rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
                                 uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
                                 float newton:contactGap = 0
                                 float physics:density = 1000
                             }
 
                             def PhysicsRevoluteJoint "wrist_1_joint" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:armature = 0.1
+                                float newton:armature = 0.1
                                 uniform token physics:axis = "Y"
                                 rel physics:body0 = </ur5e/Geometry/base/shoulder_link/upper_arm_link/forearm_link>
                                 rel physics:body1 = </ur5e/Geometry/base/shoulder_link/upper_arm_link/forearm_link/wrist_1_link>
@@ -477,48 +299,13 @@ def Xform "ur5e"
                                 float physics:mass = 1.219
                                 quatf physics:principalAxes = (1, 0, 0, 0)
 
-                                over "wrist2_0" (
-                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                )
-                                {
-                                    rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                                    uniform int mjc:group = 2
-                                    float newton:contactGap = 0
-                                    uniform token physics:approximation = "convexHull"
-                                    bool physics:collisionEnabled = 0
-                                    float physics:density = 1000
-                                }
-
-                                over "wrist2_1" (
-                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                )
-                                {
-                                    rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                                    uniform int mjc:group = 2
-                                    float newton:contactGap = 0
-                                    uniform token physics:approximation = "convexHull"
-                                    bool physics:collisionEnabled = 0
-                                    float physics:density = 1000
-                                }
-
-                                over "wrist2_2" (
-                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                )
-                                {
-                                    rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                                    uniform int mjc:group = 2
-                                    float newton:contactGap = 0
-                                    uniform token physics:approximation = "convexHull"
-                                    bool physics:collisionEnabled = 0
-                                    float physics:density = 1000
-                                }
-
                                 over "Capsule" (
                                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
                                 )
                                 {
                                     rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
                                     uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
                                     float newton:contactGap = 0
                                     float physics:density = 1000
                                 }
@@ -529,15 +316,17 @@ def Xform "ur5e"
                                 {
                                     rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
                                     uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
                                     float newton:contactGap = 0
                                     float physics:density = 1000
                                 }
 
                                 def PhysicsRevoluteJoint "wrist_2_joint" (
-                                    prepend apiSchemas = ["MjcJointAPI"]
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                 )
                                 {
                                     uniform double mjc:armature = 0.1
+                                    float newton:armature = 0.1
                                     uniform token physics:axis = "Z"
                                     rel physics:body0 = </ur5e/Geometry/base/shoulder_link/upper_arm_link/forearm_link/wrist_1_link>
                                     rel physics:body1 = </ur5e/Geometry/base/shoulder_link/upper_arm_link/forearm_link/wrist_1_link/wrist_2_link>
@@ -558,40 +347,30 @@ def Xform "ur5e"
                                     float physics:mass = 0.1889
                                     quatf physics:principalAxes = (0.70710677, 0, 0, 0.70710677)
 
-                                    over "wrist3" (
-                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                    )
-                                    {
-                                        rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
-                                        uniform int mjc:group = 2
-                                        float newton:contactGap = 0
-                                        uniform token physics:approximation = "convexHull"
-                                        bool physics:collisionEnabled = 0
-                                        float physics:density = 1000
-                                    }
-
                                     over "Cylinder" (
                                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
                                     )
                                     {
                                         rel material:binding:physics = </ur5e/Physics/PhysicsMaterial>
                                         uniform int mjc:group = 3
+                                        uniform double[] mjc:solref = [0.02, 1]
                                         float newton:contactGap = 0
                                         float physics:density = 1000
                                     }
 
                                     over "attachment_site" (
-                                        prepend apiSchemas = ["MjcSiteAPI"]
+                                        prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                                     )
                                     {
                                         uniform int mjc:group = 4
                                     }
 
                                     def PhysicsRevoluteJoint "wrist_3_joint" (
-                                        prepend apiSchemas = ["MjcJointAPI"]
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                     )
                                     {
                                         uniform double mjc:armature = 0.1
+                                        float newton:armature = 0.1
                                         uniform token physics:axis = "Y"
                                         rel physics:body0 = </ur5e/Geometry/base/shoulder_link/upper_arm_link/forearm_link/wrist_1_link/wrist_2_link>
                                         rel physics:body1 = </ur5e/Geometry/base/shoulder_link/upper_arm_link/forearm_link/wrist_1_link/wrist_2_link/wrist_3_link>

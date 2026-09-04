@@ -1,0 +1,757 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.5.0"
+    }
+    defaultPrim = "so101"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "so101"
+{
+    def Scope "Physics"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI"]
+        )
+        {
+            float newton:contactDamping = 100
+            float newton:contactStiffness = 2500
+            float newton:rollingFriction = 0.0001
+            float newton:torsionalFriction = 0.005
+            float physics:dynamicFriction = 1
+            float physics:staticFriction = 1
+        }
+
+        def Material "PhysicsMaterial_1" (
+            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI"]
+        )
+        {
+            float newton:contactDamping = 200
+            float newton:contactStiffness = 10000
+            float newton:rollingFriction = 0.0005
+            float newton:torsionalFriction = 0.005
+            float physics:dynamicFriction = 1
+            float physics:staticFriction = 1
+        }
+
+        def MjcActuator "shoulder_pan"
+        {
+            uniform double[] mjc:biasPrm = [0, -998.22, -2.731, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.91986
+            uniform double mjc:ctrlRange:min = -1.91986
+            uniform double mjc:forceRange:max = 2.94
+            uniform double mjc:forceRange:min = -2.94
+            uniform double[] mjc:gainPrm = [998.22, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </so101/Geometry/base/shoulder/shoulder_pan>
+        }
+
+        def MjcActuator "shoulder_lift"
+        {
+            uniform double[] mjc:biasPrm = [0, -998.22, -2.731, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.74533
+            uniform double mjc:ctrlRange:min = -1.74533
+            uniform double mjc:forceRange:max = 2.94
+            uniform double mjc:forceRange:min = -2.94
+            uniform double[] mjc:gainPrm = [998.22, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </so101/Geometry/base/shoulder/upper_arm/shoulder_lift>
+        }
+
+        def MjcActuator "elbow_flex"
+        {
+            uniform double[] mjc:biasPrm = [0, -998.22, -2.731, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.69
+            uniform double mjc:ctrlRange:min = -1.69
+            uniform double mjc:forceRange:max = 2.94
+            uniform double mjc:forceRange:min = -2.94
+            uniform double[] mjc:gainPrm = [998.22, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </so101/Geometry/base/shoulder/upper_arm/lower_arm/elbow_flex>
+        }
+
+        def MjcActuator "wrist_flex"
+        {
+            uniform double[] mjc:biasPrm = [0, -998.22, -2.731, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.65806
+            uniform double mjc:ctrlRange:min = -1.65806
+            uniform double mjc:forceRange:max = 2.94
+            uniform double mjc:forceRange:min = -2.94
+            uniform double[] mjc:gainPrm = [998.22, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </so101/Geometry/base/shoulder/upper_arm/lower_arm/wrist/wrist_flex>
+        }
+
+        def MjcActuator "wrist_roll"
+        {
+            uniform double[] mjc:biasPrm = [0, -998.22, -2.731, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 2.84121
+            uniform double mjc:ctrlRange:min = -2.74385
+            uniform double mjc:forceRange:max = 2.94
+            uniform double mjc:forceRange:min = -2.94
+            uniform double[] mjc:gainPrm = [998.22, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </so101/Geometry/base/shoulder/upper_arm/lower_arm/wrist/gripper/wrist_roll>
+        }
+
+        def MjcActuator "gripper"
+        {
+            uniform double[] mjc:biasPrm = [0, -998.22, -2.731, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.74533
+            uniform double mjc:ctrlRange:min = -0.17453
+            uniform double mjc:forceRange:max = 2.94
+            uniform double mjc:forceRange:min = -2.94
+            uniform double[] mjc:gainPrm = [998.22, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </so101/Geometry/base/shoulder/upper_arm/lower_arm/wrist/gripper/moving_jaw_so101_v1/gripper>
+        }
+    }
+
+    def "Geometry"
+    {
+        def "base" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
+        )
+        {
+            double[] newton:inertia = [0.000114686, 0.000136117, 0.000130364, -4.59787e-7, 0.00000497151, 9.75275e-8]
+            uniform bool newton:jointsAddMobility = 1
+            point3f physics:centerOfMass = (0.0137179, -0.0000519711, 0.0334843)
+            float3 physics:diagonalInertia = (0.00013612688, 0.00013180728, 0.00011323284)
+            float physics:mass = 0.147
+            quatf physics:principalAxes = (0.42051917, 0.5587625, 0.57198, 0.42870387)
+
+            over "baseframe" (
+                prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
+            )
+            {
+                uniform int mjc:group = 3
+            }
+
+            def PhysicsFixedJoint "PhysicsFixedJoint"
+            {
+                rel physics:body0 = </so101>
+                rel physics:body1 = </so101/Geometry/base>
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+            }
+
+            def "shoulder" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+            )
+            {
+                double[] newton:inertia = [0.000083759, 0.0000810403, 0.0000239783, 7.55525e-8, -0.00000116342, 1.54663e-7]
+                point3f physics:centerOfMass = (-0.0307604, -0.000017, -0.0252713)
+                float3 physics:diagonalInertia = (0.000083783554, 0.00008103881, 0.00002395524)
+                float physics:mass = 0.100006
+                quatf physics:principalAxes = (0.9998646, 0.0014956329, 0.009708395, 0.013204317)
+
+                over "Box" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </so101/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    float physics:density = 1000
+                }
+
+                over "Box_1" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </so101/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    float physics:density = 1000
+                }
+
+                def PhysicsRevoluteJoint "shoulder_pan" (
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                )
+                {
+                    uniform double mjc:armature = 0.028
+                    uniform double mjc:damping = 0.6
+                    uniform double mjc:frictionloss = 0.052
+                    float newton:armature = 0.028
+                    float newton:damping = 0.010471975
+                    float newton:friction = 0.052
+                    uniform token physics:axis = "Z"
+                    rel physics:body0 = </so101/Geometry/base>
+                    rel physics:body1 = </so101/Geometry/base/shoulder>
+                    point3f physics:localPos0 = (0.0388353, 0, 0.0624)
+                    point3f physics:localPos1 = (0, 0, 0)
+                    quatf physics:localRot0 = (-1.6081226e-16, 0, 1, 0)
+                    quatf physics:localRot1 = (1, 0, 0, 0)
+                    float physics:lowerLimit = -109.99988
+                    float physics:upperLimit = 109.99988
+                }
+
+                def "upper_arm" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                )
+                {
+                    double[] newton:inertia = [0.0000408002, 0.000147318, 0.000142487, -0.0000197819, -4.03016e-8, 8.97326e-9]
+                    point3f physics:centerOfMass = (-0.089847, -0.008382, 0.018409)
+                    float3 physics:diagonalInertia = (0.00015087317, 0.00014248698, 0.000037245056)
+                    float physics:mass = 0.103
+                    quatf physics:principalAxes = (0.4531947, 0.4540629, 0.5418911, 0.5429507)
+
+                    over "Box" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </so101/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
+                        float newton:contactGap = 0
+                        float physics:density = 1000
+                    }
+
+                    over "Box_1" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </so101/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
+                        float newton:contactGap = 0
+                        float physics:density = 1000
+                    }
+
+                    def PhysicsRevoluteJoint "shoulder_lift" (
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                    )
+                    {
+                        uniform double mjc:armature = 0.028
+                        uniform double mjc:damping = 0.6
+                        uniform double mjc:frictionloss = 0.052
+                        float newton:armature = 0.028
+                        float newton:damping = 0.010471975
+                        float newton:friction = 0.052
+                        uniform token physics:axis = "Z"
+                        rel physics:body0 = </so101/Geometry/base/shoulder>
+                        rel physics:body1 = </so101/Geometry/base/shoulder/upper_arm>
+                        point3f physics:localPos0 = (-0.0303992, -0.0182778, -0.0542)
+                        point3f physics:localPos1 = (0, 0, 0)
+                        quatf physics:localRot0 = (0.5, -0.5, -0.5, -0.5)
+                        quatf physics:localRot1 = (1, 0, 0, 0)
+                        float physics:lowerLimit = -100
+                        float physics:upperLimit = 100
+                    }
+
+                    def "lower_arm" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                    )
+                    {
+                        double[] newton:inertia = [0.0000287438, 0.000159844, 0.00014529, 0.00000741152, 0.00000126409, -4.90188e-8]
+                        point3f physics:centerOfMass = (-0.09807, 0.0032438, 0.018283)
+                        float3 physics:diagonalInertia = (0.0001602617, 0.00014530364, 0.000028312457)
+                        float physics:mass = 0.104
+                        quatf physics:principalAxes = (0.5107293, 0.5170057, 0.48796636, 0.48347652)
+
+                        over "Box" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </so101/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            float physics:density = 1000
+                        }
+
+                        over "Box_1" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </so101/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            float physics:density = 1000
+                        }
+
+                        def PhysicsRevoluteJoint "elbow_flex" (
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                        )
+                        {
+                            uniform double mjc:armature = 0.028
+                            uniform double mjc:damping = 0.6
+                            uniform double mjc:frictionloss = 0.052
+                            float newton:armature = 0.028
+                            float newton:damping = 0.010471975
+                            float newton:friction = 0.052
+                            uniform token physics:axis = "Z"
+                            rel physics:body0 = </so101/Geometry/base/shoulder/upper_arm>
+                            rel physics:body1 = </so101/Geometry/base/shoulder/upper_arm/lower_arm>
+                            point3f physics:localPos0 = (-0.11257, -0.028, -3.469447e-18)
+                            point3f physics:localPos1 = (0, 0, 0)
+                            quatf physics:localRot0 = (0.70710677, 1.4453605e-17, -5.551115e-17, 0.70710677)
+                            quatf physics:localRot1 = (1, 0, 0, 0)
+                            float physics:lowerLimit = -96.829865
+                            float physics:upperLimit = 96.829865
+                        }
+
+                        def "wrist" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                        )
+                        {
+                            double[] newton:inertia = [0.0000368263, 0.000025391, 0.000021, 1.7893e-8, -5.28128e-8, 0.0000036412]
+                            point3f physics:centerOfMass = (-0.000103312, -0.0386143, 0.0281156)
+                            float3 physics:diagonalInertia = (0.00003682648, 0.000027447377, 0.000018943443)
+                            float physics:mass = 0.079
+                            quatf physics:principalAxes = (0.9671434, 0.2542263, 0.0016222629, -0.00014630673)
+
+                            over "Box" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </so101/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
+                                float newton:contactGap = 0
+                                float physics:density = 1000
+                            }
+
+                            over "Box_1" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </so101/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
+                                float newton:contactGap = 0
+                                float physics:density = 1000
+                            }
+
+                            def PhysicsRevoluteJoint "wrist_flex" (
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                            )
+                            {
+                                uniform double mjc:armature = 0.028
+                                uniform double mjc:damping = 0.6
+                                uniform double mjc:frictionloss = 0.052
+                                float newton:armature = 0.028
+                                float newton:damping = 0.010471975
+                                float newton:friction = 0.052
+                                uniform token physics:axis = "Z"
+                                rel physics:body0 = </so101/Geometry/base/shoulder/upper_arm/lower_arm>
+                                rel physics:body1 = </so101/Geometry/base/shoulder/upper_arm/lower_arm/wrist>
+                                point3f physics:localPos0 = (-0.1349, 0.0052, 3.469447e-18)
+                                point3f physics:localPos1 = (0, 0, 0)
+                                quatf physics:localRot0 = (0.70710677, 1.8064076e-17, 1.110223e-16, -0.70710677)
+                                quatf physics:localRot1 = (1, 0, 0, 0)
+                                float physics:lowerLimit = -95.000015
+                                float physics:upperLimit = 95.000015
+                            }
+
+                            def "gripper" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                            )
+                            {
+                                double[] newton:inertia = [0.0000275087, 0.0000433657, 0.0000345059, -3.35241e-7, -0.0000057352, -5.17847e-8]
+                                point3f physics:centerOfMass = (0.000214, 0.000245, -0.025187)
+                                float3 physics:diagonalInertia = (0.000043373493, 0.000037722886, 0.000024283921)
+                                float physics:mass = 0.087
+                                quatf physics:principalAxes = (0.60071737, 0.35599306, 0.35862994, 0.6195096)
+
+                                over "Box" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
+                                    float newton:contactGap = 0
+                                    float physics:density = 1000
+                                }
+
+                                over "fixed_jaw_box1" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                    uniform int mjc:condim = 6
+                                    uniform int mjc:group = 3
+                                    uniform int mjc:priority = 1
+                                    uniform double[] mjc:solref = [0.01, 1]
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "fixed_jaw_box2" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                    uniform int mjc:condim = 6
+                                    uniform int mjc:group = 3
+                                    uniform int mjc:priority = 1
+                                    uniform double[] mjc:solref = [0.01, 1]
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "fixed_jaw_sph_tip1" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                    uniform int mjc:condim = 6
+                                    uniform int mjc:group = 3
+                                    uniform int mjc:priority = 1
+                                    uniform double[] mjc:solref = [0.01, 1]
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "fixed_jaw_sph_tip2" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                    uniform int mjc:condim = 6
+                                    uniform int mjc:group = 3
+                                    uniform int mjc:priority = 1
+                                    uniform double[] mjc:solref = [0.01, 1]
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "fixed_jaw_sph_tip3" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                    uniform int mjc:condim = 6
+                                    uniform int mjc:group = 3
+                                    uniform int mjc:priority = 1
+                                    uniform double[] mjc:solref = [0.01, 1]
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "wrist_roll_follower_so101_gripper_part0_v1" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                    uniform int mjc:condim = 6
+                                    uniform int mjc:group = 4
+                                    uniform int mjc:priority = 1
+                                    uniform double[] mjc:solref = [0.01, 1]
+                                    float newton:contactGap = 0
+                                    uniform int newton:maxHullVertices = 64
+                                    uniform token physics:approximation = "convexHull"
+                                    float physics:mass = 0
+                                }
+
+                                over "fixed_jaw_box3" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                    uniform int mjc:condim = 6
+                                    uniform int mjc:group = 3
+                                    uniform int mjc:priority = 1
+                                    uniform double[] mjc:solref = [0.01, 1]
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "fixed_jaw_box4" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                    uniform int mjc:condim = 6
+                                    uniform int mjc:group = 3
+                                    uniform int mjc:priority = 1
+                                    uniform double[] mjc:solref = [0.01, 1]
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "fixed_jaw_box5" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                    uniform int mjc:condim = 6
+                                    uniform int mjc:group = 3
+                                    uniform int mjc:priority = 1
+                                    uniform double[] mjc:solref = [0.01, 1]
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "fixed_jaw_box6" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                    uniform int mjc:condim = 6
+                                    uniform int mjc:group = 3
+                                    uniform int mjc:priority = 1
+                                    uniform double[] mjc:solref = [0.01, 1]
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "fixed_jaw_box7" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                    uniform int mjc:condim = 6
+                                    uniform int mjc:group = 3
+                                    uniform int mjc:priority = 1
+                                    uniform double[] mjc:solref = [0.01, 1]
+                                    float newton:contactGap = 0
+                                    float physics:mass = 0
+                                }
+
+                                over "gripperframe" (
+                                    prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
+                                )
+                                {
+                                    uniform int mjc:group = 3
+                                }
+
+                                def PhysicsRevoluteJoint "wrist_roll" (
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                                )
+                                {
+                                    uniform double mjc:armature = 0.028
+                                    uniform double mjc:damping = 0.6
+                                    uniform double mjc:frictionloss = 0.052
+                                    float newton:armature = 0.028
+                                    float newton:damping = 0.010471975
+                                    float newton:friction = 0.052
+                                    uniform token physics:axis = "Z"
+                                    rel physics:body0 = </so101/Geometry/base/shoulder/upper_arm/lower_arm/wrist>
+                                    rel physics:body1 = </so101/Geometry/base/shoulder/upper_arm/lower_arm/wrist/gripper>
+                                    point3f physics:localPos0 = (8.326673e-17, -0.0611, 0.0181)
+                                    point3f physics:localPos1 = (0, 0, 0)
+                                    quatf physics:localRot0 = (0.017209107, -0.017209105, 0.7068973, 0.7068973)
+                                    quatf physics:localRot1 = (1, 0, 0, 0)
+                                    float physics:lowerLimit = -157.21088
+                                    float physics:upperLimit = 157.21088
+                                }
+
+                                def "camera_mount" (
+                                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                )
+                                {
+                                    point3f physics:centerOfMass = (-0.00093160215, 0.050159533, -0.035438154)
+                                    float3 physics:diagonalInertia = (0.000004871996, 0.0000038337644, 0.0000011727283)
+                                    float physics:mass = 0.012
+                                    quatf physics:principalAxes = (-0.37099448, 0.6039161, -0.59801334, -0.37420377)
+
+                                    over "camera_box1" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                        uniform int mjc:condim = 6
+                                        uniform int mjc:group = 3
+                                        uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.01, 1]
+                                        float newton:contactGap = 0
+                                        float physics:mass = 0
+                                    }
+
+                                    over "camera_box2" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                        uniform int mjc:condim = 6
+                                        uniform int mjc:group = 3
+                                        uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.01, 1]
+                                        float newton:contactGap = 0
+                                        float physics:mass = 0
+                                    }
+
+                                    def PhysicsFixedJoint "PhysicsFixedJoint"
+                                    {
+                                        rel physics:body0 = </so101/Geometry/base/shoulder/upper_arm/lower_arm/wrist/gripper>
+                                        rel physics:body1 = </so101/Geometry/base/shoulder/upper_arm/lower_arm/wrist/gripper/camera_mount>
+                                        point3f physics:localPos0 = (0, -1.7347235e-18, 0)
+                                        point3f physics:localPos1 = (0, 0, 0)
+                                        quatf physics:localRot0 = (1, 6.4661116e-20, -1.520723e-17, 4.7356493e-19)
+                                        quatf physics:localRot1 = (1, 0, 0, 0)
+                                    }
+                                }
+
+                                def "moving_jaw_so101_v1" (
+                                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                                )
+                                {
+                                    double[] newton:inertia = [0.00000661427, 0.00000189032, 0.00000528738, -3.19807e-7, -5.90717e-9, -1.09945e-7]
+                                    point3f physics:centerOfMass = (-0.001575, -0.0300244, 0.0192755)
+                                    float3 physics:diagonalInertia = (0.000006635824, 0.00000529092, 0.000001865226)
+                                    float physics:mass = 0.012
+                                    quatf physics:principalAxes = (0.69526505, 0.717965, -0.0245618, -0.023009699)
+
+                                    over "moving_jaw_so101_gripper_part0_v1" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                        uniform int mjc:condim = 6
+                                        uniform int mjc:group = 4
+                                        uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.01, 1]
+                                        float newton:contactGap = 0
+                                        uniform int newton:maxHullVertices = 64
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:mass = 0
+                                    }
+
+                                    over "moving_jaw_so101_gripper_part1_v1" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                        uniform int mjc:condim = 6
+                                        uniform int mjc:group = 4
+                                        uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.01, 1]
+                                        float newton:contactGap = 0
+                                        uniform int newton:maxHullVertices = 64
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:mass = 0
+                                    }
+
+                                    over "moving_jaw_box1" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                        uniform int mjc:condim = 6
+                                        uniform int mjc:group = 3
+                                        uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.01, 1]
+                                        float newton:contactGap = 0
+                                        float physics:mass = 0
+                                    }
+
+                                    over "moving_jaw_sph_tip1" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                        uniform int mjc:condim = 6
+                                        uniform int mjc:group = 3
+                                        uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.01, 1]
+                                        float newton:contactGap = 0
+                                        float physics:mass = 0
+                                    }
+
+                                    over "moving_jaw_sph_tip2" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                        uniform int mjc:condim = 6
+                                        uniform int mjc:group = 3
+                                        uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.01, 1]
+                                        float newton:contactGap = 0
+                                        float physics:mass = 0
+                                    }
+
+                                    over "moving_jaw_sph_tip3" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                        uniform int mjc:condim = 6
+                                        uniform int mjc:group = 3
+                                        uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.01, 1]
+                                        float newton:contactGap = 0
+                                        float physics:mass = 0
+                                    }
+
+                                    over "moving_jaw_box2" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                        uniform int mjc:condim = 6
+                                        uniform int mjc:group = 3
+                                        uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.01, 1]
+                                        float newton:contactGap = 0
+                                        float physics:mass = 0
+                                    }
+
+                                    over "moving_jaw_box3" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </so101/Physics/PhysicsMaterial_1>
+                                        uniform int mjc:condim = 6
+                                        uniform int mjc:group = 3
+                                        uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.01, 1]
+                                        float newton:contactGap = 0
+                                        float physics:mass = 0
+                                    }
+
+                                    def PhysicsRevoluteJoint "gripper" (
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                                    )
+                                    {
+                                        uniform double mjc:armature = 0.028
+                                        uniform double mjc:damping = 0.6
+                                        uniform double mjc:frictionloss = 0.052
+                                        float newton:armature = 0.028
+                                        float newton:damping = 0.010471975
+                                        float newton:friction = 0.052
+                                        uniform token physics:axis = "Z"
+                                        rel physics:body0 = </so101/Geometry/base/shoulder/upper_arm/lower_arm/wrist/gripper>
+                                        rel physics:body1 = </so101/Geometry/base/shoulder/upper_arm/lower_arm/wrist/gripper/moving_jaw_so101_v1>
+                                        point3f physics:localPos0 = (0.0202, 0.0188, -0.0234)
+                                        point3f physics:localPos1 = (0, 0, 0)
+                                        quatf physics:localRot0 = (-0.70710677, -0.70710677, 1.0408341e-16, -1.110223e-16)
+                                        quatf physics:localRot1 = (1, 0, 0, 0)
+                                        float physics:lowerLimit = -10.000004
+                                        float physics:upperLimit = 100
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend apiSchemas = ["NewtonSceneAPI", "MjcSceneAPI"]
+)
+{
+    uniform token mjc:compiler:angle = "radian"
+    uniform token mjc:option:cone = "elliptic"
+    uniform double mjc:option:impratio = 10
+    uniform token mjc:option:integrator = "implicitfast"
+    uniform int mjc:option:ls_iterations = 20
+    uniform int newton:maxSolverIterations = 10
+    uniform int newton:timeStepsPerSecond = 200
+    vector3f physics:gravityDirection = (0, 0, -1)
+    float physics:gravityMagnitude = 9.81
+}
+

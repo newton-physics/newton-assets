@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a8"
+        string creator = "MuJoCo USD Converter v0.5.0"
     }
     defaultPrim = "apptronik_apollo"
     kilogramsPerUnit = 1
@@ -21,9 +21,11 @@ def Xform "apptronik_apollo"
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def Mesh "pelvis_link" (
+                prepend apiSchemas = ["MjcImageableAPI"]
                 prepend references = @./GeometryLibrary.usdc@</Geometry/pelvis_link>
             )
             {
+                uniform int mjc:group = 1
                 color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
                     interpolation = "constant"
                 )
@@ -38,11 +40,14 @@ def Xform "apptronik_apollo"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def Capsule "collision_capsule_body_pelvis"
+            def Capsule "collision_capsule_body_pelvis" (
+                prepend apiSchemas = ["MjcImageableAPI"]
+            )
             {
                 uniform token axis = "Z"
                 float3[] extent = [(-0.1, -0.1, -0.19), (0.1, 0.1, 0.19)]
                 double height = 0.18
+                uniform int mjc:group = 3
                 color3f[] primvars:displayColor = [(0, 1, 0)] (
                     interpolation = "constant"
                 )
@@ -83,9 +88,11 @@ def Xform "apptronik_apollo"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "torso_roll_link" (
+                    prepend apiSchemas = ["MjcImageableAPI"]
                     prepend references = @./GeometryLibrary.usdc@</Geometry/torso_roll_link>
                 )
                 {
+                    uniform int mjc:group = 1
                     color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                         interpolation = "constant"
                     )
@@ -108,9 +115,11 @@ def Xform "apptronik_apollo"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "torso_pitch_link" (
+                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/torso_pitch_link>
                     )
                     {
+                        uniform int mjc:group = 1
                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                             interpolation = "constant"
                         )
@@ -133,9 +142,11 @@ def Xform "apptronik_apollo"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "torso_link" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/torso_link>
                         )
                         {
+                            uniform int mjc:group = 1
                             color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
                                 interpolation = "constant"
                             )
@@ -150,11 +161,14 @@ def Xform "apptronik_apollo"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                         }
 
-                        def Capsule "collision_cylinder_torso"
+                        def Capsule "collision_cylinder_torso" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
+                        )
                         {
                             uniform token axis = "Z"
                             float3[] extent = [(-0.16, -0.16, -0.21), (0.16, 0.16, 0.21)]
                             double height = 0.1
+                            uniform int mjc:group = 3
                             color3f[] primvars:displayColor = [(0, 1, 0)] (
                                 interpolation = "constant"
                             )
@@ -172,9 +186,11 @@ def Xform "apptronik_apollo"
                         }
 
                         def Mesh "neck_mount_fix_link" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/neck_mount_fix_link>
                         )
                         {
+                            uniform int mjc:group = 1
                             color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                 interpolation = "constant"
                             )
@@ -190,9 +206,11 @@ def Xform "apptronik_apollo"
                         }
 
                         def Mesh "battery_mount_fix" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/battery_mount_fix>
                         )
                         {
+                            uniform int mjc:group = 1
                             color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                 interpolation = "constant"
                             )
@@ -234,9 +252,11 @@ def Xform "apptronik_apollo"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "neck_yaw_link" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/neck_yaw_link>
                             )
                             {
+                                uniform int mjc:group = 1
                                 color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                     interpolation = "constant"
                                 )
@@ -266,9 +286,11 @@ def Xform "apptronik_apollo"
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                     def Mesh "afh_2_1_link" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
                                         prepend references = @./GeometryLibrary.usdc@</Geometry/afh_2_1_link>
                                     )
                                     {
+                                        uniform int mjc:group = 1
                                         color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
                                             interpolation = "constant"
                                         )
@@ -294,9 +316,11 @@ def Xform "apptronik_apollo"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "l_shoulder_aa_link" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/l_shoulder_aa_link>
                             )
                             {
+                                uniform int mjc:group = 1
                                 color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                     interpolation = "constant"
                                 )
@@ -319,9 +343,11 @@ def Xform "apptronik_apollo"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "l_shoulder_ie_link" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/l_shoulder_ie_link>
                                 )
                                 {
+                                    uniform int mjc:group = 1
                                     color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                         interpolation = "constant"
                                     )
@@ -344,9 +370,11 @@ def Xform "apptronik_apollo"
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                     def Mesh "l_shoulder_fe_link" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
                                         prepend references = @./GeometryLibrary.usdc@</Geometry/l_shoulder_fe_link>
                                     )
                                     {
+                                        uniform int mjc:group = 1
                                         color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
                                             interpolation = "constant"
                                         )
@@ -361,11 +389,14 @@ def Xform "apptronik_apollo"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                     }
 
-                                    def Capsule "collision_capsule_body_l_arm_1"
+                                    def Capsule "collision_capsule_body_l_arm_1" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
+                                    )
                                     {
                                         uniform token axis = "Z"
                                         float3[] extent = [(-0.055, -0.055, -0.195), (0.055, 0.055, 0.195)]
                                         double height = 0.28
+                                        uniform int mjc:group = 3
                                         color3f[] primvars:displayColor = [(0, 1, 0)] (
                                             interpolation = "constant"
                                         )
@@ -382,11 +413,14 @@ def Xform "apptronik_apollo"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                     }
 
-                                    def Capsule "collision_capsule_body_l_arm_2"
+                                    def Capsule "collision_capsule_body_l_arm_2" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
+                                    )
                                     {
                                         uniform token axis = "Z"
                                         float3[] extent = [(-0.055, -0.055, -0.11), (0.055, 0.055, 0.11)]
                                         double height = 0.11
+                                        uniform int mjc:group = 3
                                         color3f[] primvars:displayColor = [(0, 1, 0)] (
                                             interpolation = "constant"
                                         )
@@ -403,11 +437,14 @@ def Xform "apptronik_apollo"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                     }
 
-                                    def Capsule "collision_capsule_body_l_arm_3"
+                                    def Capsule "collision_capsule_body_l_arm_3" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
+                                    )
                                     {
                                         uniform token axis = "Z"
                                         float3[] extent = [(-0.055, -0.055, -0.075), (0.055, 0.055, 0.075)]
                                         double height = 0.04
+                                        uniform int mjc:group = 3
                                         color3f[] primvars:displayColor = [(0, 1, 0)] (
                                             interpolation = "constant"
                                         )
@@ -432,9 +469,11 @@ def Xform "apptronik_apollo"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                         def Mesh "l_elbow_fe_link" (
+                                            prepend apiSchemas = ["MjcImageableAPI"]
                                             prepend references = @./GeometryLibrary.usdc@</Geometry/l_elbow_fe_link>
                                         )
                                         {
+                                            uniform int mjc:group = 1
                                             color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                 interpolation = "constant"
                                             )
@@ -457,9 +496,11 @@ def Xform "apptronik_apollo"
                                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                             def Mesh "l_wrist_roll_link" (
+                                                prepend apiSchemas = ["MjcImageableAPI"]
                                                 prepend references = @./GeometryLibrary.usdc@</Geometry/l_wrist_roll_link>
                                             )
                                             {
+                                                uniform int mjc:group = 1
                                                 color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
                                                     interpolation = "constant"
                                                 )
@@ -474,11 +515,14 @@ def Xform "apptronik_apollo"
                                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                             }
 
-                                            def Capsule "collision_cylinder_l_arm"
+                                            def Capsule "collision_cylinder_l_arm" (
+                                                prepend apiSchemas = ["MjcImageableAPI"]
+                                            )
                                             {
                                                 uniform token axis = "Z"
                                                 float3[] extent = [(-0.04755, -0.04755, -0.15515), (0.04755, 0.04755, 0.15515)]
                                                 double height = 0.2152
+                                                uniform int mjc:group = 3
                                                 color3f[] primvars:displayColor = [(0, 1, 0)] (
                                                     interpolation = "constant"
                                                 )
@@ -503,9 +547,11 @@ def Xform "apptronik_apollo"
                                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                                 def Mesh "l_wrist_yaw_link" (
+                                                    prepend apiSchemas = ["MjcImageableAPI"]
                                                     prepend references = @./GeometryLibrary.usdc@</Geometry/l_wrist_yaw_link>
                                                 )
                                                 {
+                                                    uniform int mjc:group = 1
                                                     color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                         interpolation = "constant"
                                                     )
@@ -528,9 +574,11 @@ def Xform "apptronik_apollo"
                                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                                     def Mesh "l_wrist_pitch_link" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/l_wrist_pitch_link>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -546,10 +594,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "wrist_adapter_mesh" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/wrist_adapter>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -565,10 +615,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "wrist_mesh" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/wristmesh>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -584,10 +636,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "palm_mesh" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/FB_palm_ref>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -603,10 +657,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "index_mesh_1" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -622,10 +678,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "index_mesh_2" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -641,10 +699,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "middle_mesh_1" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -660,10 +720,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "middle_mesh_2" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -679,10 +741,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "ring_mesh_1" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -698,10 +762,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "ring_mesh_2" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -717,10 +783,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "pinky_mesh_1" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -736,10 +804,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "pinky_mesh_2" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -755,10 +825,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "thumb_mesh_1" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__thumbF1_tA>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -774,10 +846,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "thumb_mesh_2" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = ""
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__thumbF2left_nG8>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -792,9 +866,12 @@ def Xform "apptronik_apollo"
                                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                                     }
 
-                                                    def Cube "collision_l_hand_plate"
+                                                    def Cube "collision_l_hand_plate" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
+                                                    )
                                                     {
                                                         float3[] extent = [(-1, -1, -1), (1, 1, 1)]
+                                                        uniform int mjc:group = 3
                                                         color3f[] primvars:displayColor = [(0, 1, 0)] (
                                                             interpolation = "constant"
                                                         )
@@ -826,9 +903,11 @@ def Xform "apptronik_apollo"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "r_shoulder_aa_link" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/r_shoulder_aa_link>
                             )
                             {
+                                uniform int mjc:group = 1
                                 color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                     interpolation = "constant"
                                 )
@@ -851,9 +930,11 @@ def Xform "apptronik_apollo"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "r_shoulder_ie_link" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/r_shoulder_ie_link>
                                 )
                                 {
+                                    uniform int mjc:group = 1
                                     color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                         interpolation = "constant"
                                     )
@@ -876,9 +957,11 @@ def Xform "apptronik_apollo"
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                     def Mesh "r_shoulder_fe_link" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
                                         prepend references = @./GeometryLibrary.usdc@</Geometry/r_shoulder_fe_link>
                                     )
                                     {
+                                        uniform int mjc:group = 1
                                         color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
                                             interpolation = "constant"
                                         )
@@ -893,11 +976,14 @@ def Xform "apptronik_apollo"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                     }
 
-                                    def Capsule "collision_capsule_body_r_arm_1"
+                                    def Capsule "collision_capsule_body_r_arm_1" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
+                                    )
                                     {
                                         uniform token axis = "Z"
                                         float3[] extent = [(-0.055, -0.055, -0.195), (0.055, 0.055, 0.195)]
                                         double height = 0.28
+                                        uniform int mjc:group = 3
                                         color3f[] primvars:displayColor = [(0, 1, 0)] (
                                             interpolation = "constant"
                                         )
@@ -914,11 +1000,14 @@ def Xform "apptronik_apollo"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                     }
 
-                                    def Capsule "collision_capsule_body_r_arm_2"
+                                    def Capsule "collision_capsule_body_r_arm_2" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
+                                    )
                                     {
                                         uniform token axis = "Z"
                                         float3[] extent = [(-0.055, -0.055, -0.11), (0.055, 0.055, 0.11)]
                                         double height = 0.11
+                                        uniform int mjc:group = 3
                                         color3f[] primvars:displayColor = [(0, 1, 0)] (
                                             interpolation = "constant"
                                         )
@@ -935,11 +1024,14 @@ def Xform "apptronik_apollo"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                     }
 
-                                    def Capsule "collision_capsule_body_r_arm_3"
+                                    def Capsule "collision_capsule_body_r_arm_3" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
+                                    )
                                     {
                                         uniform token axis = "Z"
                                         float3[] extent = [(-0.055, -0.055, -0.075), (0.055, 0.055, 0.075)]
                                         double height = 0.04
+                                        uniform int mjc:group = 3
                                         color3f[] primvars:displayColor = [(0, 1, 0)] (
                                             interpolation = "constant"
                                         )
@@ -964,9 +1056,11 @@ def Xform "apptronik_apollo"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                         def Mesh "r_elbow_fe_link" (
+                                            prepend apiSchemas = ["MjcImageableAPI"]
                                             prepend references = @./GeometryLibrary.usdc@</Geometry/r_elbow_fe_link>
                                         )
                                         {
+                                            uniform int mjc:group = 1
                                             color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                 interpolation = "constant"
                                             )
@@ -989,9 +1083,11 @@ def Xform "apptronik_apollo"
                                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                             def Mesh "r_wrist_roll_link" (
+                                                prepend apiSchemas = ["MjcImageableAPI"]
                                                 prepend references = @./GeometryLibrary.usdc@</Geometry/r_wrist_roll_link>
                                             )
                                             {
+                                                uniform int mjc:group = 1
                                                 color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
                                                     interpolation = "constant"
                                                 )
@@ -1006,11 +1102,14 @@ def Xform "apptronik_apollo"
                                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                             }
 
-                                            def Capsule "collision_cylinder_r_arm"
+                                            def Capsule "collision_cylinder_r_arm" (
+                                                prepend apiSchemas = ["MjcImageableAPI"]
+                                            )
                                             {
                                                 uniform token axis = "Z"
                                                 float3[] extent = [(-0.04755, -0.04755, -0.15515), (0.04755, 0.04755, 0.15515)]
                                                 double height = 0.2152
+                                                uniform int mjc:group = 3
                                                 color3f[] primvars:displayColor = [(0, 1, 0)] (
                                                     interpolation = "constant"
                                                 )
@@ -1035,9 +1134,11 @@ def Xform "apptronik_apollo"
                                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                                 def Mesh "r_wrist_yaw_link" (
+                                                    prepend apiSchemas = ["MjcImageableAPI"]
                                                     prepend references = @./GeometryLibrary.usdc@</Geometry/r_wrist_yaw_link>
                                                 )
                                                 {
+                                                    uniform int mjc:group = 1
                                                     color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                         interpolation = "constant"
                                                     )
@@ -1060,9 +1161,11 @@ def Xform "apptronik_apollo"
                                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                                     def Mesh "r_wrist_pitch_link" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/r_wrist_pitch_link>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1078,9 +1181,11 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "wrist_adapter" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/wrist_adapter>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1096,9 +1201,11 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "wristmesh" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/wristmesh>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1114,9 +1221,11 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "FB_palm_ref_MIR" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/FB_palm_ref_MIR>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1132,10 +1241,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "tn__idxF1_u7" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = "idx-F1"
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1151,10 +1262,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "tn__idxF2_u7" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = "idx-F2"
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1170,10 +1283,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "tn__idxF1_1_rA" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = "idx-F1"
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1189,10 +1304,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "tn__idxF2_1_rA" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = "idx-F2"
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1208,10 +1325,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "tn__idxF1_2_rA" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = "idx-F1"
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1227,10 +1346,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "tn__idxF2_2_rA" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = "idx-F2"
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1246,10 +1367,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "tn__idxF1_3_rA" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = "idx-F1"
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF1_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1265,10 +1388,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "tn__idxF2_3_rA" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = "idx-F2"
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__idxF2_u7>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1284,10 +1409,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "tn__thumbF1MIR_ZF8" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = "thumb-F1-MIR"
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__thumbF1MIR_ZF8>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1303,10 +1430,12 @@ def Xform "apptronik_apollo"
                                                     }
 
                                                     def Mesh "tn__thumbF2right_WI8" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
                                                         displayName = "thumb-F2-right"
                                                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__thumbF2right_WI8>
                                                     )
                                                     {
+                                                        uniform int mjc:group = 1
                                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                                             interpolation = "constant"
                                                         )
@@ -1321,9 +1450,12 @@ def Xform "apptronik_apollo"
                                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                                     }
 
-                                                    def Cube "collision_r_hand_plate"
+                                                    def Cube "collision_r_hand_plate" (
+                                                        prepend apiSchemas = ["MjcImageableAPI"]
+                                                    )
                                                     {
                                                         float3[] extent = [(-1, -1, -1), (1, 1, 1)]
+                                                        uniform int mjc:group = 3
                                                         color3f[] primvars:displayColor = [(0, 1, 0)] (
                                                             interpolation = "constant"
                                                         )
@@ -1358,9 +1490,11 @@ def Xform "apptronik_apollo"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "l_hip_ie_link" (
+                    prepend apiSchemas = ["MjcImageableAPI"]
                     prepend references = @./GeometryLibrary.usdc@</Geometry/l_hip_ie_link>
                 )
                 {
+                    uniform int mjc:group = 1
                     color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                         interpolation = "constant"
                     )
@@ -1383,9 +1517,11 @@ def Xform "apptronik_apollo"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "l_hip_aa_link" (
+                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/l_hip_aa_link>
                     )
                     {
+                        uniform int mjc:group = 1
                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                             interpolation = "constant"
                         )
@@ -1408,9 +1544,11 @@ def Xform "apptronik_apollo"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "l_hip_fe_link" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/l_hip_fe_link>
                         )
                         {
+                            uniform int mjc:group = 1
                             color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
                                 interpolation = "constant"
                             )
@@ -1425,11 +1563,14 @@ def Xform "apptronik_apollo"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                         }
 
-                        def Capsule "collision_capsule_body_l_thigh"
+                        def Capsule "collision_capsule_body_l_thigh" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
+                        )
                         {
                             uniform token axis = "Z"
                             float3[] extent = [(-0.105, -0.105, -0.205), (0.105, 0.105, 0.205)]
                             double height = 0.2
+                            uniform int mjc:group = 3
                             color3f[] primvars:displayColor = [(0, 1, 0)] (
                                 interpolation = "constant"
                             )
@@ -1454,9 +1595,11 @@ def Xform "apptronik_apollo"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "l_knee_fe_link" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/l_knee_fe_link>
                             )
                             {
+                                uniform int mjc:group = 1
                                 color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
                                     interpolation = "constant"
                                 )
@@ -1471,11 +1614,14 @@ def Xform "apptronik_apollo"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                             }
 
-                            def Capsule "collision_capsule_body_l_shin"
+                            def Capsule "collision_capsule_body_l_shin" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
+                            )
                             {
                                 uniform token axis = "Z"
                                 float3[] extent = [(-0.071, -0.071, -0.221), (0.071, 0.071, 0.221)]
                                 double height = 0.3
+                                uniform int mjc:group = 3
                                 color3f[] primvars:displayColor = [(0, 1, 0)] (
                                     interpolation = "constant"
                                 )
@@ -1500,9 +1646,11 @@ def Xform "apptronik_apollo"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "l_ankle_ie_link" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/l_ankle_ie_link>
                                 )
                                 {
+                                    uniform int mjc:group = 1
                                     color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                         interpolation = "constant"
                                     )
@@ -1525,9 +1673,11 @@ def Xform "apptronik_apollo"
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                     def Mesh "l_foot_link" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
                                         prepend references = @./GeometryLibrary.usdc@</Geometry/l_foot_link>
                                     )
                                     {
+                                        uniform int mjc:group = 1
                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                             interpolation = "constant"
                                         )
@@ -1542,9 +1692,12 @@ def Xform "apptronik_apollo"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                     }
 
-                                    def Cube "collision_l_sole"
+                                    def Cube "collision_l_sole" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
+                                    )
                                     {
                                         float3[] extent = [(-1, -1, -1), (1, 1, 1)]
+                                        uniform int mjc:group = 3
                                         color3f[] primvars:displayColor = [(0, 1, 0)] (
                                             interpolation = "constant"
                                         )
@@ -1651,9 +1804,11 @@ def Xform "apptronik_apollo"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "r_hip_ie_link" (
+                    prepend apiSchemas = ["MjcImageableAPI"]
                     prepend references = @./GeometryLibrary.usdc@</Geometry/r_hip_ie_link>
                 )
                 {
+                    uniform int mjc:group = 1
                     color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                         interpolation = "constant"
                     )
@@ -1676,9 +1831,11 @@ def Xform "apptronik_apollo"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "r_hip_aa_link" (
+                        prepend apiSchemas = ["MjcImageableAPI"]
                         prepend references = @./GeometryLibrary.usdc@</Geometry/r_hip_aa_link>
                     )
                     {
+                        uniform int mjc:group = 1
                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                             interpolation = "constant"
                         )
@@ -1701,9 +1858,11 @@ def Xform "apptronik_apollo"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "r_hip_fe_link" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             prepend references = @./GeometryLibrary.usdc@</Geometry/r_hip_fe_link>
                         )
                         {
+                            uniform int mjc:group = 1
                             color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
                                 interpolation = "constant"
                             )
@@ -1718,11 +1877,14 @@ def Xform "apptronik_apollo"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                         }
 
-                        def Capsule "collision_capsule_body_r_thigh"
+                        def Capsule "collision_capsule_body_r_thigh" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
+                        )
                         {
                             uniform token axis = "Z"
                             float3[] extent = [(-0.105, -0.105, -0.205), (0.105, 0.105, 0.205)]
                             double height = 0.2
+                            uniform int mjc:group = 3
                             color3f[] primvars:displayColor = [(0, 1, 0)] (
                                 interpolation = "constant"
                             )
@@ -1747,9 +1909,11 @@ def Xform "apptronik_apollo"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "r_knee_fe_link" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/r_knee_fe_link>
                             )
                             {
+                                uniform int mjc:group = 1
                                 color3f[] primvars:displayColor = [(0.960784, 0.960784, 0.952941)] (
                                     interpolation = "constant"
                                 )
@@ -1764,11 +1928,14 @@ def Xform "apptronik_apollo"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                             }
 
-                            def Capsule "collision_capsule_body_r_shin"
+                            def Capsule "collision_capsule_body_r_shin" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
+                            )
                             {
                                 uniform token axis = "Z"
                                 float3[] extent = [(-0.071, -0.071, -0.221), (0.071, 0.071, 0.221)]
                                 double height = 0.3
+                                uniform int mjc:group = 3
                                 color3f[] primvars:displayColor = [(0, 1, 0)] (
                                     interpolation = "constant"
                                 )
@@ -1793,9 +1960,11 @@ def Xform "apptronik_apollo"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "r_ankle_ie_link" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/r_ankle_ie_link>
                                 )
                                 {
+                                    uniform int mjc:group = 1
                                     color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                         interpolation = "constant"
                                     )
@@ -1818,9 +1987,11 @@ def Xform "apptronik_apollo"
                                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                     def Mesh "r_foot_link" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
                                         prepend references = @./GeometryLibrary.usdc@</Geometry/r_foot_link>
                                     )
                                     {
+                                        uniform int mjc:group = 1
                                         color3f[] primvars:displayColor = [(0.0980392, 0.0980392, 0.0980392)] (
                                             interpolation = "constant"
                                         )
@@ -1835,9 +2006,12 @@ def Xform "apptronik_apollo"
                                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
                                     }
 
-                                    def Cube "collision_r_sole"
+                                    def Cube "collision_r_sole" (
+                                        prepend apiSchemas = ["MjcImageableAPI"]
+                                    )
                                     {
                                         float3[] extent = [(-1, -1, -1), (1, 1, 1)]
+                                        uniform int mjc:group = 3
                                         color3f[] primvars:displayColor = [(0, 1, 0)] (
                                             interpolation = "constant"
                                         )

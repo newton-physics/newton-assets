@@ -1,0 +1,1559 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.5.0"
+    }
+    defaultPrim = "seeed_rebot_devarm"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "seeed_rebot_devarm"
+{
+    def Scope "Physics"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI"]
+        )
+        {
+            float newton:contactDamping = 100
+            float newton:contactStiffness = 2500
+            float newton:rollingFriction = 0.0001
+            float newton:torsionalFriction = 0.005
+            float physics:dynamicFriction = 1
+            float physics:staticFriction = 1
+        }
+
+        def MjcActuator "joint1"
+        {
+            uniform double[] mjc:biasPrm = [0, -900, -60, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 2.8
+            uniform double mjc:ctrlRange:min = -2.8
+            uniform double mjc:forceRange:max = 36
+            uniform double mjc:forceRange:min = -36
+            uniform double[] mjc:gainPrm = [900, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </seeed_rebot_devarm/Geometry/base_link/link1/joint1>
+        }
+
+        def MjcActuator "joint2"
+        {
+            uniform double[] mjc:biasPrm = [0, -900, -60, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:min = -3.14
+            uniform double mjc:forceRange:max = 36
+            uniform double mjc:forceRange:min = -36
+            uniform double[] mjc:gainPrm = [900, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </seeed_rebot_devarm/Geometry/base_link/link1/link2/joint2>
+        }
+
+        def MjcActuator "joint3"
+        {
+            uniform double[] mjc:biasPrm = [0, -900, -60, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:min = -3.14
+            uniform double mjc:forceRange:max = 36
+            uniform double mjc:forceRange:min = -36
+            uniform double[] mjc:gainPrm = [900, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/joint3>
+        }
+
+        def MjcActuator "joint4"
+        {
+            uniform double[] mjc:biasPrm = [0, -120, -10, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.69
+            uniform double mjc:ctrlRange:min = -1.79
+            uniform double mjc:forceRange:max = 14
+            uniform double mjc:forceRange:min = -14
+            uniform double[] mjc:gainPrm = [120, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/joint4>
+        }
+
+        def MjcActuator "joint5"
+        {
+            uniform double[] mjc:biasPrm = [0, -120, -10, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 1.57
+            uniform double mjc:ctrlRange:min = -1.57
+            uniform double mjc:forceRange:max = 14
+            uniform double mjc:forceRange:min = -14
+            uniform double[] mjc:gainPrm = [120, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/joint5>
+        }
+
+        def MjcActuator "joint6"
+        {
+            uniform double[] mjc:biasPrm = [0, -120, -10, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 3.14
+            uniform double mjc:ctrlRange:min = -3.14
+            uniform double mjc:forceRange:max = 14
+            uniform double mjc:forceRange:min = -14
+            uniform double[] mjc:gainPrm = [120, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/joint6>
+        }
+
+        def MjcActuator "joint_left"
+        {
+            uniform double[] mjc:biasPrm = [0, -5000, -41.28, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 0.05
+            uniform double mjc:forceRange:max = 1904
+            uniform double mjc:forceRange:min = -1904
+            uniform double[] mjc:gainPrm = [5000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end/gripper_left/joint_left>
+        }
+
+        def MjcActuator "joint_right"
+        {
+            uniform double[] mjc:biasPrm = [0, -5000, -41.28, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:ctrlRange:max = 0.05
+            uniform double mjc:forceRange:max = 1904
+            uniform double mjc:forceRange:min = -1904
+            uniform double[] mjc:gainPrm = [5000, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            rel mjc:target = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end/gripper_right/joint_right>
+        }
+    }
+
+    def "Geometry"
+    {
+        def "base_link" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysicsFilteredPairsAPI"]
+        )
+        {
+            double[] newton:inertia = [0.0013304, 0.00213119, 0.00275877, 1e-8, 0, 0]
+            uniform bool newton:jointsAddMobility = 1
+            point3f physics:centerOfMass = (0.0000028764189, -0.00012230249, 0.024337612)
+            float3 physics:diagonalInertia = (0.00275877, 0.00213119, 0.0013304)
+            prepend rel physics:filteredPairs = </seeed_rebot_devarm/Geometry/base_link/link1>
+            float physics:mass = 1.1774
+            quatf physics:principalAxes = (0.0000044150584, 0.70710677, -0.0000044150584, 0.70710677)
+
+            over "base_link_col_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                uniform int mjc:group = 3
+                uniform double[] mjc:solref = [0.02, 1]
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                float physics:density = 1000
+            }
+
+            over "base_link_col_1" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                uniform int mjc:group = 3
+                uniform double[] mjc:solref = [0.02, 1]
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                float physics:density = 1000
+            }
+
+            over "base_link_col_2" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                uniform int mjc:group = 3
+                uniform double[] mjc:solref = [0.02, 1]
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                float physics:density = 1000
+            }
+
+            over "base_link_col_3" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                uniform int mjc:group = 3
+                uniform double[] mjc:solref = [0.02, 1]
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                float physics:density = 1000
+            }
+
+            over "base_link_col_4" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                uniform int mjc:group = 3
+                uniform double[] mjc:solref = [0.02, 1]
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                float physics:density = 1000
+            }
+
+            over "base_link_col_5" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                uniform int mjc:group = 3
+                uniform double[] mjc:solref = [0.02, 1]
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                float physics:density = 1000
+            }
+
+            over "base_link_col_6" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                uniform int mjc:group = 3
+                uniform double[] mjc:solref = [0.02, 1]
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                float physics:density = 1000
+            }
+
+            over "base_link_col_7" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                uniform int mjc:group = 3
+                uniform double[] mjc:solref = [0.02, 1]
+                float newton:contactGap = 0
+                uniform token physics:approximation = "convexHull"
+                float physics:density = 1000
+            }
+
+            def PhysicsFixedJoint "PhysicsFixedJoint"
+            {
+                rel physics:body0 = </seeed_rebot_devarm>
+                rel physics:body1 = </seeed_rebot_devarm/Geometry/base_link>
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+            }
+
+            def "link1" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI", "PhysicsFilteredPairsAPI"]
+            )
+            {
+                double[] newton:inertia = [0.00025207, 0.00015464, 0.00023416, 0, -0.00002832, 0]
+                point3f physics:centerOfMass = (0.008176523, 0.0012258422, 0.033141967)
+                float3 physics:diagonalInertia = (0.0002728171, 0.0002134129, 0.00015464)
+                prepend rel physics:filteredPairs = </seeed_rebot_devarm/Geometry/base_link/link1/link2>
+                float physics:mass = 0.4655
+                quatf physics:principalAxes = (0.6720656, 0.6720656, 0.2198358, -0.2198358)
+
+                over "link1_col_0" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    float physics:density = 1000
+                }
+
+                over "link1_col_1" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    float physics:density = 1000
+                }
+
+                over "link1_col_2" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    float physics:density = 1000
+                }
+
+                over "link1_col_3" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    float physics:density = 1000
+                }
+
+                over "link1_col_4" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    float physics:density = 1000
+                }
+
+                over "link1_col_5" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    float physics:density = 1000
+                }
+
+                over "link1_col_6" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    float physics:density = 1000
+                }
+
+                over "link1_col_7" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    float physics:density = 1000
+                }
+
+                over "link1_col_8" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    float physics:density = 1000
+                }
+
+                over "link1_col_9" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    float physics:density = 1000
+                }
+
+                over "link1_col_10" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                    uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
+                    float newton:contactGap = 0
+                    uniform token physics:approximation = "convexHull"
+                    float physics:density = 1000
+                }
+
+                def PhysicsRevoluteJoint "joint1" (
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                )
+                {
+                    uniform double mjc:armature = 0.01
+                    uniform double mjc:damping = 5
+                    uniform double mjc:frictionloss = 0.2
+                    float newton:armature = 0.01
+                    float newton:damping = 0.08726646
+                    float newton:friction = 0.2
+                    uniform token physics:axis = "Z"
+                    rel physics:body0 = </seeed_rebot_devarm/Geometry/base_link>
+                    rel physics:body1 = </seeed_rebot_devarm/Geometry/base_link/link1>
+                    point3f physics:localPos0 = (-0.00034283, -0.00098683, 0.075)
+                    point3f physics:localPos1 = (0, 0, 0)
+                    quatf physics:localRot0 = (1, 0, 0, 0)
+                    quatf physics:localRot1 = (1, 0, 0, 0)
+                    float physics:lowerLimit = -160.42818
+                    float physics:upperLimit = 160.42818
+                }
+
+                def "link2" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI", "PhysicsFilteredPairsAPI"]
+                )
+                {
+                    double[] newton:inertia = [0.000577466775, 0.00988484698, 0.0100847496, -3.3841785e-7, 0.00000669752535, 0.00000100738337]
+                    point3f physics:centerOfMass = (-0.11786481, -0.0034222642, -0.027155194)
+                    float3 physics:diagonalInertia = (0.010084759, 0.009884842, 0.000577462)
+                    prepend rel physics:filteredPairs = [
+                        </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3>,
+                        </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5>,
+                    ]
+                    float physics:mass = 1.552
+                    quatf physics:principalAxes = (0.0017676462, 0.7073536, 0.001794665, 0.7068554)
+
+                    over "link2_col_0" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        float physics:density = 1000
+                    }
+
+                    over "link2_col_1" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        float physics:density = 1000
+                    }
+
+                    over "link2_col_2" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        float physics:density = 1000
+                    }
+
+                    over "link2_col_3" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        float physics:density = 1000
+                    }
+
+                    over "link2_col_4" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        float physics:density = 1000
+                    }
+
+                    over "link2_col_5" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        float physics:density = 1000
+                    }
+
+                    over "link2_col_6" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        float physics:density = 1000
+                    }
+
+                    over "link2_col_7" (
+                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                        uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
+                        float newton:contactGap = 0
+                        uniform token physics:approximation = "convexHull"
+                        float physics:density = 1000
+                    }
+
+                    def PhysicsRevoluteJoint "joint2" (
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                    )
+                    {
+                        uniform double mjc:armature = 0.01
+                        uniform double mjc:damping = 5
+                        uniform double mjc:frictionloss = 0.2
+                        float newton:armature = 0.01
+                        float newton:damping = 0.08726646
+                        float newton:friction = 0.2
+                        uniform token physics:axis = "Z"
+                        rel physics:body0 = </seeed_rebot_devarm/Geometry/base_link/link1>
+                        rel physics:body1 = </seeed_rebot_devarm/Geometry/base_link/link1/link2>
+                        point3f physics:localPos0 = (0.020343, 0.027237, 0.07)
+                        point3f physics:localPos1 = (0, 0, 0)
+                        quatf physics:localRot0 = (-0.7071067, -0.7071068, 0, 0)
+                        quatf physics:localRot1 = (0, -1, 0, 0)
+                        float physics:lowerLimit = -179.90875
+                        float physics:upperLimit = 0
+                    }
+
+                    def "link3" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI", "PhysicsFilteredPairsAPI"]
+                    )
+                    {
+                        double[] newton:inertia = [0.000551811337, 0.00745889021, 0.00764192742, -0.0000407430508, -0.0000502214689, 7.07344633e-8]
+                        point3f physics:centerOfMass = (0.10342716, -0.06641379, -0.027106868)
+                        float3 physics:diagonalInertia = (0.007642284, 0.0074591297, 0.0005512153)
+                        prepend rel physics:filteredPairs = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4>
+                        float physics:mass = 1.252
+                        quatf physics:principalAxes = (-0.0013818054, 0.70459276, 0.0027837215, 0.7096051)
+
+                        over "link3_col_0" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            float physics:density = 1000
+                        }
+
+                        over "link3_col_1" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            float physics:density = 1000
+                        }
+
+                        over "link3_col_2" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            float physics:density = 1000
+                        }
+
+                        over "link3_col_3" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            float physics:density = 1000
+                        }
+
+                        over "link3_col_4" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            float physics:density = 1000
+                        }
+
+                        over "link3_col_5" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            float physics:density = 1000
+                        }
+
+                        over "link3_col_6" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            float physics:density = 1000
+                        }
+
+                        over "link3_col_7" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            float physics:density = 1000
+                        }
+
+                        over "link3_col_8" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            float physics:density = 1000
+                        }
+
+                        over "link3_col_9" (
+                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                            uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
+                            float newton:contactGap = 0
+                            uniform token physics:approximation = "convexHull"
+                            float physics:density = 1000
+                        }
+
+                        def PhysicsRevoluteJoint "joint3" (
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                        )
+                        {
+                            uniform double mjc:armature = 0.01
+                            uniform double mjc:damping = 5
+                            uniform double mjc:frictionloss = 0.2
+                            float newton:armature = 0.01
+                            float newton:damping = 0.08726646
+                            float newton:friction = 0.2
+                            uniform token physics:axis = "Z"
+                            rel physics:body0 = </seeed_rebot_devarm/Geometry/base_link/link1/link2>
+                            rel physics:body1 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3>
+                            point3f physics:localPos0 = (-0.236, -2.7755576e-17, 0)
+                            point3f physics:localPos1 = (0, 0, 0)
+                            quatf physics:localRot0 = (1, 0, 0, 0)
+                            quatf physics:localRot1 = (1, 0, 0, 0)
+                            float physics:lowerLimit = -179.90875
+                            float physics:upperLimit = 0
+                        }
+
+                        def "link4" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI", "PhysicsFilteredPairsAPI"]
+                        )
+                        {
+                            double[] newton:inertia = [0.000320508485, 0.000524525455, 0.000465171515, 0.000168799091, 0, 0]
+                            point3f physics:centerOfMass = (0.047554456, -0.04411135, -0.031411193)
+                            float3 physics:diagonalInertia = (0.00061974494, 0.00046517153, 0.00022528903)
+                            prepend rel physics:filteredPairs = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5>
+                            float physics:mass = 0.46
+                            quatf physics:principalAxes = (0.6105979, 0.6105979, 0.35660934, 0.35660934)
+
+                            over "link4_col_0" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                float physics:density = 1000
+                            }
+
+                            over "link4_col_1" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                float physics:density = 1000
+                            }
+
+                            over "link4_col_2" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                float physics:density = 1000
+                            }
+
+                            over "link4_col_3" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                float physics:density = 1000
+                            }
+
+                            over "link4_col_4" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                float physics:density = 1000
+                            }
+
+                            over "link4_col_5" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                float physics:density = 1000
+                            }
+
+                            over "link4_col_6" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                float physics:density = 1000
+                            }
+
+                            over "link4_col_7" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                float physics:density = 1000
+                            }
+
+                            over "link4_col_8" (
+                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
+                                float newton:contactGap = 0
+                                uniform token physics:approximation = "convexHull"
+                                float physics:density = 1000
+                            }
+
+                            def PhysicsRevoluteJoint "joint4" (
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                            )
+                            {
+                                uniform double mjc:armature = 0.01
+                                uniform double mjc:damping = 2
+                                uniform double mjc:frictionloss = 0.2
+                                float newton:armature = 0.01
+                                float newton:damping = 0.034906585
+                                float newton:friction = 0.2
+                                uniform token physics:axis = "Z"
+                                rel physics:body0 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3>
+                                rel physics:body1 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4>
+                                point3f physics:localPos0 = (0.228, -0.072746, 0.0045)
+                                point3f physics:localPos1 = (0, 0, 0)
+                                quatf physics:localRot0 = (1, 0, 0, 0)
+                                quatf physics:localRot1 = (1, 0, 0, 0)
+                                float physics:lowerLimit = -102.55945
+                                float physics:upperLimit = 96.829865
+                            }
+
+                            def "link5" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI", "PhysicsFilteredPairsAPI"]
+                            )
+                            {
+                                double[] newton:inertia = [0.0000984090046, 0.0000739220615, 0.0000710245279, 1.81878283e-8, -0.00000115016294, -1.77912637e-8]
+                                point3f physics:centerOfMass = (-0.011440062, 0.000004790774, 0.04804875)
+                                float3 physics:diagonalInertia = (0.00009845724, 0.00007392214, 0.00007097621)
+                                prepend rel physics:filteredPairs = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6>
+                                float physics:mass = 0.20120457
+                                quatf physics:principalAxes = (0.9997763, -0.0028790135, 0.020948352, 0.00044592068)
+
+                                over "link5_col_0" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    float physics:density = 1000
+                                }
+
+                                over "link5_col_1" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    float physics:density = 1000
+                                }
+
+                                over "link5_col_2" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    float physics:density = 1000
+                                }
+
+                                over "link5_col_3" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    float physics:density = 1000
+                                }
+
+                                over "link5_col_4" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    float physics:density = 1000
+                                }
+
+                                over "link5_col_5" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    float physics:density = 1000
+                                }
+
+                                over "link5_col_6" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    float physics:density = 1000
+                                }
+
+                                over "link5_col_7" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    float physics:density = 1000
+                                }
+
+                                over "link5_col_8" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    float physics:density = 1000
+                                }
+
+                                over "link5_col_9" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                    uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
+                                    float newton:contactGap = 0
+                                    uniform token physics:approximation = "convexHull"
+                                    float physics:density = 1000
+                                }
+
+                                def PhysicsRevoluteJoint "joint5" (
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                                )
+                                {
+                                    uniform double mjc:armature = 0.01
+                                    uniform double mjc:damping = 2
+                                    uniform double mjc:frictionloss = 0.2
+                                    float newton:armature = 0.01
+                                    float newton:damping = 0.034906585
+                                    float newton:friction = 0.2
+                                    uniform token physics:axis = "Z"
+                                    rel physics:body0 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4>
+                                    rel physics:body1 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5>
+                                    point3f physics:localPos0 = (0.087, -0.048, -0.03075)
+                                    point3f physics:localPos1 = (0, 0, 0)
+                                    quatf physics:localRot0 = (-0.7071068, 0.7071067, 0, 0)
+                                    quatf physics:localRot1 = (1, 0, 0, 0)
+                                    float physics:lowerLimit = -89.95438
+                                    float physics:upperLimit = 89.95438
+                                }
+
+                                def "link6" (
+                                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI", "PhysicsFilteredPairsAPI"]
+                                )
+                                {
+                                    double[] newton:inertia = [0.0000147424612, 0.0000145728507, 0.000028476646, 1.05586155e-11, 5.06176061e-10, -7.39546725e-12]
+                                    point3f physics:centerOfMass = (0.000018019602, 2.483346e-8, 0.004348058)
+                                    float3 physics:diagonalInertia = (0.000028476647, 0.000014742461, 0.000014572851)
+                                    prepend rel physics:filteredPairs = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end>
+                                    float physics:mass = 0.1
+                                    quatf physics:principalAxes = (0.49999365, 0.5000248, -0.49997523, 0.5000064)
+
+                                    over "link6_col_0" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solref = [0.02, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:density = 1000
+                                    }
+
+                                    over "link6_col_1" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solref = [0.02, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:density = 1000
+                                    }
+
+                                    over "link6_col_2" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solref = [0.02, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:density = 1000
+                                    }
+
+                                    over "link6_col_3" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solref = [0.02, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:density = 1000
+                                    }
+
+                                    over "link6_col_4" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solref = [0.02, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:density = 1000
+                                    }
+
+                                    over "link6_col_5" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solref = [0.02, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:density = 1000
+                                    }
+
+                                    over "link6_col_6" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solref = [0.02, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:density = 1000
+                                    }
+
+                                    over "link6_col_7" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                        uniform int mjc:group = 3
+                                        uniform double[] mjc:solref = [0.02, 1]
+                                        float newton:contactGap = 0
+                                        uniform token physics:approximation = "convexHull"
+                                        float physics:density = 1000
+                                    }
+
+                                    def PhysicsRevoluteJoint "joint6" (
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                                    )
+                                    {
+                                        uniform double mjc:armature = 0.01
+                                        uniform double mjc:damping = 2
+                                        uniform double mjc:frictionloss = 0.2
+                                        float newton:armature = 0.01
+                                        float newton:damping = 0.034906585
+                                        float newton:friction = 0.2
+                                        uniform token physics:axis = "Z"
+                                        rel physics:body0 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5>
+                                        rel physics:body1 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6>
+                                        point3f physics:localPos0 = (0.0365, 0, 0.048)
+                                        point3f physics:localPos1 = (0, 0, 0)
+                                        quatf physics:localRot0 = (0.7071068, -7.5332596e-17, 0.7071067, -3.5206527e-17)
+                                        quatf physics:localRot1 = (1, 0, 0, 0)
+                                        float physics:lowerLimit = -179.90875
+                                        float physics:upperLimit = 179.90875
+                                    }
+
+                                    def "gripper_end" (
+                                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI", "PhysicsFilteredPairsAPI"]
+                                    )
+                                    {
+                                        double[] newton:inertia = [0.00037354, 0.0001583, 0.00045353, -1.1e-7, 5e-7, 0.00000348]
+                                        point3f physics:centerOfMass = (-0.11275169, 0.00012844308, -0.0000057260245)
+                                        float3 physics:diagonalInertia = (0.00045357412, 0.00037353695, 0.00015825892)
+                                        prepend rel physics:filteredPairs = [
+                                            </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end/gripper_left>,
+                                            </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end/gripper_right>,
+                                        ]
+                                        float physics:mass = 0.65
+                                        quatf physics:principalAxes = (0.5046356, 0.49845588, -0.4956297, 0.50123435)
+
+                                        over "gripper_end_col_0" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        over "gripper_end_col_1" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        over "gripper_end_col_2" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        over "gripper_end_col_3" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        over "gripper_end_col_4" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        over "gripper_end_col_5" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        over "gripper_end_col_6" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        over "gripper_end_col_7" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        over "gripper_end_col_8" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        over "gripper_end_col_9" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        over "gripper_end_col_10" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        over "gripper_end_col_11" (
+                                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                            uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
+                                            float newton:contactGap = 0
+                                            uniform token physics:approximation = "convexHull"
+                                            float physics:density = 1000
+                                        }
+
+                                        def PhysicsFixedJoint "PhysicsFixedJoint"
+                                        {
+                                            rel physics:body0 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6>
+                                            rel physics:body1 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end>
+                                            point3f physics:localPos0 = (0, 0, 0.16621)
+                                            point3f physics:localPos1 = (0, 0, 0)
+                                            quatf physics:localRot0 = (-2.9279643e-10, -0.70710677, 2.9279634e-10, -0.70710677)
+                                            quatf physics:localRot1 = (1, 0, 0, 0)
+                                        }
+
+                                        def "gripper_left" (
+                                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI", "PhysicsFilteredPairsAPI"]
+                                        )
+                                        {
+                                            double[] newton:inertia = [0.0000109877964176176, 0.00000950146036720166, 0.00000930779991911125, 0, 0, 0]
+                                            point3f physics:centerOfMass = (-0.0021800871, 0.018709036, 0.009321886)
+                                            float3 physics:diagonalInertia = (0.0000109877965, 0.00000950146, 0.0000093078)
+                                            prepend rel physics:filteredPairs = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end/gripper_right>
+                                            float physics:mass = 0.0752
+                                            quatf physics:principalAxes = (1, 0, 0, 0)
+
+                                            over "gripper_left_col_0" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_left_col_1" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_left_col_2" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_left_col_3" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_left_col_4" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_left_col_5" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_left_col_6" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_left_col_7" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            def PhysicsPrismaticJoint "joint_left" (
+                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI", "NewtonMimicAPI", "MjcEqualityJointAPI"]
+                                            )
+                                            {
+                                                uniform double mjc:armature = 0.01
+                                                uniform double mjc:damping = 1
+                                                uniform double mjc:frictionloss = 0.2
+                                                uniform double[] mjc:solimp = [0.9999, 0.99999, 0.001, 0.5, 2]
+                                                uniform double[] mjc:solref = [0.004, 1]
+                                                float newton:armature = 0.01
+                                                float newton:damping = 1
+                                                float newton:friction = 0.2
+                                                rel newton:mimicJoint = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end/gripper_right/joint_right>
+                                                uniform token physics:axis = "Z"
+                                                rel physics:body0 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end>
+                                                rel physics:body1 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end/gripper_left>
+                                                point3f physics:localPos0 = (-0.041939, -0.000073385, 2.7755576e-17)
+                                                point3f physics:localPos1 = (0, 0, 0)
+                                                quatf physics:localRot0 = (0.5, 0.5, -0.5, 0.5)
+                                                quatf physics:localRot1 = (1, 0, 0, 0)
+                                                float physics:lowerLimit = 0
+                                                float physics:upperLimit = 0.05
+                                            }
+                                        }
+
+                                        def "gripper_right" (
+                                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                                        )
+                                        {
+                                            double[] newton:inertia = [0.0000109877964176176, 0.00000950146036720166, 0.00000930779991911125, 0, 0, 0]
+                                            point3f physics:centerOfMass = (0.0021800871, -0.018709036, 0.009321886)
+                                            float3 physics:diagonalInertia = (0.0000109877965, 0.00000950146, 0.0000093078)
+                                            float physics:mass = 0.0752
+                                            quatf physics:principalAxes = (1, 0, 0, 0)
+
+                                            over "gripper_right_col_0" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_right_col_1" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_right_col_2" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_right_col_3" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_right_col_4" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_right_col_5" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_right_col_6" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            over "gripper_right_col_7" (
+                                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding:physics = </seeed_rebot_devarm/Physics/PhysicsMaterial>
+                                                uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
+                                                float newton:contactGap = 0
+                                                uniform token physics:approximation = "convexHull"
+                                                float physics:density = 1000
+                                            }
+
+                                            def PhysicsPrismaticJoint "joint_right" (
+                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
+                                            )
+                                            {
+                                                uniform double mjc:armature = 0.01
+                                                uniform double mjc:damping = 1
+                                                uniform double mjc:frictionloss = 0.2
+                                                float newton:armature = 0.01
+                                                float newton:damping = 1
+                                                float newton:friction = 0.2
+                                                uniform token physics:axis = "Z"
+                                                rel physics:body0 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end>
+                                                rel physics:body1 = </seeed_rebot_devarm/Geometry/base_link/link1/link2/link3/link4/link5/link6/gripper_end/gripper_right>
+                                                point3f physics:localPos0 = (-0.041939, 0.000073385, 2.7755576e-17)
+                                                point3f physics:localPos1 = (0, 0, 0)
+                                                quatf physics:localRot0 = (0.5, -0.5, -0.5, -0.5)
+                                                quatf physics:localRot1 = (1, 0, 0, 0)
+                                                float physics:lowerLimit = 0
+                                                float physics:upperLimit = 0.05
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend apiSchemas = ["NewtonSceneAPI", "MjcSceneAPI"]
+)
+{
+    uniform token mjc:compiler:angle = "radian"
+    uniform token mjc:option:cone = "elliptic"
+    uniform double mjc:option:impratio = 10
+    uniform token mjc:option:integrator = "implicitfast"
+    uniform int newton:maxSolverIterations = 100
+    uniform int newton:timeStepsPerSecond = 500
+    vector3f physics:gravityDirection = (0, 0, -1)
+    float physics:gravityMagnitude = 9.81
+}
+

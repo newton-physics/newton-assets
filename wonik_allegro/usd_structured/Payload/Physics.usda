@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a8"
+        string creator = "MuJoCo USD Converter v0.5.0"
     }
     defaultPrim = "allegro_left"
     kilogramsPerUnit = 1
@@ -14,12 +14,15 @@ def Xform "allegro_left"
     def Scope "Physics"
     {
         def Material "PhysicsMaterial" (
-            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI", "MjcMaterialAPI"]
+            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI"]
         )
         {
+            float newton:contactDamping = 100
+            float newton:contactStiffness = 2500
             float newton:rollingFriction = 0.0001
             float newton:torsionalFriction = 0.005
             float physics:dynamicFriction = 1
+            float physics:staticFriction = 1
         }
 
         def MjcActuator "ffa0"
@@ -170,9 +173,12 @@ def Xform "allegro_left"
     def "Geometry"
     {
         def "palm" (
-            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysicsFilteredPairsAPI"]
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysicsFilteredPairsAPI"]
         )
         {
+            uniform bool newton:jointsAddMobility = 1
+            point3f physics:centerOfMass = (-0.008981602, 0.0039536464, -0.040257327)
+            float3 physics:diagonalInertia = (0.0004481273, 0.0003009822, 0.00024373832)
             prepend rel physics:filteredPairs = [
                 </allegro_left/Geometry/palm/ff_base>,
                 </allegro_left/Geometry/palm/mf_base>,
@@ -180,18 +186,8 @@ def Xform "allegro_left"
                 </allegro_left/Geometry/palm/th_base>,
                 </allegro_left/Geometry/palm/th_base/th_proximal>,
             ]
-
-            over "base_link_left" (
-                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-            )
-            {
-                rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                uniform int mjc:group = 2
-                float newton:contactGap = 0
-                uniform token physics:approximation = "convexHull"
-                bool physics:collisionEnabled = 0
-                float physics:density = 800
-            }
+            float physics:mass = 0.35158747
+            quatf physics:principalAxes = (0.47207236, -0.8815445, 0.0031277959, 0.0041546463)
 
             over "Box" (
                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -199,8 +195,8 @@ def Xform "allegro_left"
             {
                 rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                 uniform int mjc:group = 3
+                uniform double[] mjc:solref = [0.02, 1]
                 float newton:contactGap = 0
-                float physics:density = 800
                 float physics:mass = 0
             }
 
@@ -215,20 +211,13 @@ def Xform "allegro_left"
             }
 
             def "rf_base" (
-                prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
             )
             {
-                over "tn__link_00_XB" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                    uniform int mjc:group = 2
-                    float newton:contactGap = 0
-                    uniform token physics:approximation = "convexHull"
-                    bool physics:collisionEnabled = 0
-                    float physics:density = 800
-                }
+                point3f physics:centerOfMass = (-0.00077812717, -0.000010286743, 0.008282494)
+                float3 physics:diagonalInertia = (7.653764e-7, 6.8884293e-7, 3.5504598e-7)
+                float physics:mass = 0.0072320164
+                quatf physics:principalAxes = (0.68420887, 0.68586165, -0.17507692, 0.17549984)
 
                 over "Box" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -236,16 +225,17 @@ def Xform "allegro_left"
                 {
                     rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                     uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
                     float newton:contactGap = 0
-                    float physics:density = 800
                     float physics:mass = 0
                 }
 
                 def PhysicsRevoluteJoint "rfj0" (
-                    prepend apiSchemas = ["MjcJointAPI"]
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                 )
                 {
                     uniform double mjc:damping = 0.1
+                    float newton:damping = 0.0017453292
                     uniform token physics:axis = "Z"
                     rel physics:body0 = </allegro_left/Geometry/palm>
                     rel physics:body1 = </allegro_left/Geometry/palm/rf_base>
@@ -258,20 +248,13 @@ def Xform "allegro_left"
                 }
 
                 def "rf_proximal" (
-                    prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                 )
                 {
-                    over "tn__link_10_XB" (
-                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                        uniform int mjc:group = 2
-                        float newton:contactGap = 0
-                        uniform token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 0
-                        float physics:density = 800
-                    }
+                    point3f physics:centerOfMass = (2.7523313e-8, -0.00009059554, 0.02699977)
+                    float3 physics:diagonalInertia = (0.000011862359, 0.000011276808, 0.0000022658685)
+                    float physics:mass = 0.027276123
+                    quatf physics:principalAxes = (1, 0, 0, 0)
 
                     over "Box" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -279,16 +262,17 @@ def Xform "allegro_left"
                     {
                         rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                         uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
                         float newton:contactGap = 0
-                        float physics:density = 800
                         float physics:mass = 0
                     }
 
                     def PhysicsRevoluteJoint "rfj1" (
-                        prepend apiSchemas = ["MjcJointAPI"]
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                     )
                     {
                         uniform double mjc:damping = 0.1
+                        float newton:damping = 0.0017453292
                         uniform token physics:axis = "Y"
                         rel physics:body0 = </allegro_left/Geometry/palm/rf_base>
                         rel physics:body1 = </allegro_left/Geometry/palm/rf_base/rf_proximal>
@@ -301,20 +285,13 @@ def Xform "allegro_left"
                     }
 
                     def "rf_medial" (
-                        prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                     )
                     {
-                        over "tn__link_20_XB" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                            uniform int mjc:group = 2
-                            float newton:contactGap = 0
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 800
-                        }
+                        point3f physics:centerOfMass = (-0.00019288158, -0.000077904166, 0.022586012)
+                        float3 physics:diagonalInertia = (0.0000042873276, 0.0000036356423, 0.0000016736698)
+                        float physics:mass = 0.018463746
+                        quatf physics:principalAxes = (0.999903, -0.00028931772, 0.013923432, 0.0000040286864)
 
                         over "Box" (
                             prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -322,16 +299,17 @@ def Xform "allegro_left"
                         {
                             rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                             uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
                             float newton:contactGap = 0
-                            float physics:density = 800
                             float physics:mass = 0
                         }
 
                         def PhysicsRevoluteJoint "rfj2" (
-                            prepend apiSchemas = ["MjcJointAPI"]
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                         )
                         {
                             uniform double mjc:damping = 0.1
+                            float newton:damping = 0.0017453292
                             uniform token physics:axis = "Y"
                             rel physics:body0 = </allegro_left/Geometry/palm/rf_base/rf_proximal>
                             rel physics:body1 = </allegro_left/Geometry/palm/rf_base/rf_proximal/rf_medial>
@@ -344,20 +322,13 @@ def Xform "allegro_left"
                         }
 
                         def "rf_distal" (
-                            prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                         )
                         {
-                            over "tn__link_30_XB" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                                uniform int mjc:group = 2
-                                float newton:contactGap = 0
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 800
-                            }
+                            point3f physics:centerOfMass = (-0.0005208062, -0.0000033249908, 0.0072512897)
+                            float3 physics:diagonalInertia = (7.9637954e-7, 7.281658e-7, 3.7775212e-7)
+                            float physics:mass = 0.007512312
+                            quatf physics:principalAxes = (0.68773526, 0.68773526, 0.16437826, -0.16437826)
 
                             over "Box" (
                                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -365,16 +336,17 @@ def Xform "allegro_left"
                             {
                                 rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                                 uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
                                 float newton:contactGap = 0
-                                float physics:density = 800
                                 float physics:mass = 0
                             }
 
                             def PhysicsRevoluteJoint "rfj3" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:damping = 0.1
+                                float newton:damping = 0.0017453292
                                 uniform token physics:axis = "Y"
                                 rel physics:body0 = </allegro_left/Geometry/palm/rf_base/rf_proximal/rf_medial>
                                 rel physics:body1 = </allegro_left/Geometry/palm/rf_base/rf_proximal/rf_medial/rf_distal>
@@ -387,20 +359,13 @@ def Xform "allegro_left"
                             }
 
                             def "rf_tip" (
-                                prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                             )
                             {
-                                over "tn__link_30_tip_VH" (
-                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                )
-                                {
-                                    rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                                    uniform int mjc:group = 2
-                                    float newton:contactGap = 0
-                                    uniform token physics:approximation = "convexHull"
-                                    bool physics:collisionEnabled = 0
-                                    float physics:density = 800
-                                }
+                                point3f physics:centerOfMass = (7.276306e-12, -1.1560279e-7, 0.025402764)
+                                float3 physics:diagonalInertia = (4.5582306e-7, 4.558136e-7, 4.4955877e-7)
+                                float physics:mass = 0.0068445215
+                                quatf physics:principalAxes = (1, 0, 0, 0)
 
                                 over "Capsule" (
                                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -408,8 +373,8 @@ def Xform "allegro_left"
                                 {
                                     rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                                     uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
                                     float newton:contactGap = 0
-                                    float physics:density = 800
                                     float physics:mass = 0
                                 }
 
@@ -429,20 +394,13 @@ def Xform "allegro_left"
             }
 
             def "mf_base" (
-                prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
             )
             {
-                over "tn__link_00_XB" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                    uniform int mjc:group = 2
-                    float newton:contactGap = 0
-                    uniform token physics:approximation = "convexHull"
-                    bool physics:collisionEnabled = 0
-                    float physics:density = 800
-                }
+                point3f physics:centerOfMass = (-0.00077812717, -0.000010286743, 0.008282494)
+                float3 physics:diagonalInertia = (7.653764e-7, 6.8884293e-7, 3.5504598e-7)
+                float physics:mass = 0.0072320164
+                quatf physics:principalAxes = (0.68420887, 0.68586165, -0.17507692, 0.17549984)
 
                 over "Box" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -450,16 +408,17 @@ def Xform "allegro_left"
                 {
                     rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                     uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
                     float newton:contactGap = 0
-                    float physics:density = 800
                     float physics:mass = 0
                 }
 
                 def PhysicsRevoluteJoint "mfj0" (
-                    prepend apiSchemas = ["MjcJointAPI"]
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                 )
                 {
                     uniform double mjc:damping = 0.1
+                    float newton:damping = 0.0017453292
                     uniform token physics:axis = "Z"
                     rel physics:body0 = </allegro_left/Geometry/palm>
                     rel physics:body1 = </allegro_left/Geometry/palm/mf_base>
@@ -472,20 +431,13 @@ def Xform "allegro_left"
                 }
 
                 def "mf_proximal" (
-                    prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                 )
                 {
-                    over "tn__link_10_XB" (
-                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                        uniform int mjc:group = 2
-                        float newton:contactGap = 0
-                        uniform token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 0
-                        float physics:density = 800
-                    }
+                    point3f physics:centerOfMass = (2.7523313e-8, -0.00009059554, 0.02699977)
+                    float3 physics:diagonalInertia = (0.000011862359, 0.000011276808, 0.0000022658685)
+                    float physics:mass = 0.027276123
+                    quatf physics:principalAxes = (1, 0, 0, 0)
 
                     over "Box" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -493,16 +445,17 @@ def Xform "allegro_left"
                     {
                         rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                         uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
                         float newton:contactGap = 0
-                        float physics:density = 800
                         float physics:mass = 0
                     }
 
                     def PhysicsRevoluteJoint "mfj1" (
-                        prepend apiSchemas = ["MjcJointAPI"]
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                     )
                     {
                         uniform double mjc:damping = 0.1
+                        float newton:damping = 0.0017453292
                         uniform token physics:axis = "Y"
                         rel physics:body0 = </allegro_left/Geometry/palm/mf_base>
                         rel physics:body1 = </allegro_left/Geometry/palm/mf_base/mf_proximal>
@@ -515,20 +468,13 @@ def Xform "allegro_left"
                     }
 
                     def "mf_medial" (
-                        prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                     )
                     {
-                        over "tn__link_20_XB" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                            uniform int mjc:group = 2
-                            float newton:contactGap = 0
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 800
-                        }
+                        point3f physics:centerOfMass = (-0.00019288158, -0.000077904166, 0.022586012)
+                        float3 physics:diagonalInertia = (0.0000042873276, 0.0000036356423, 0.0000016736698)
+                        float physics:mass = 0.018463746
+                        quatf physics:principalAxes = (0.999903, -0.00028931772, 0.013923432, 0.0000040286864)
 
                         over "Box" (
                             prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -536,16 +482,17 @@ def Xform "allegro_left"
                         {
                             rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                             uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
                             float newton:contactGap = 0
-                            float physics:density = 800
                             float physics:mass = 0
                         }
 
                         def PhysicsRevoluteJoint "mfj2" (
-                            prepend apiSchemas = ["MjcJointAPI"]
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                         )
                         {
                             uniform double mjc:damping = 0.1
+                            float newton:damping = 0.0017453292
                             uniform token physics:axis = "Y"
                             rel physics:body0 = </allegro_left/Geometry/palm/mf_base/mf_proximal>
                             rel physics:body1 = </allegro_left/Geometry/palm/mf_base/mf_proximal/mf_medial>
@@ -558,20 +505,13 @@ def Xform "allegro_left"
                         }
 
                         def "mf_distal" (
-                            prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                         )
                         {
-                            over "tn__link_30_XB" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                                uniform int mjc:group = 2
-                                float newton:contactGap = 0
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 800
-                            }
+                            point3f physics:centerOfMass = (-0.0005208062, -0.0000033249908, 0.0072512897)
+                            float3 physics:diagonalInertia = (7.9637954e-7, 7.281658e-7, 3.7775212e-7)
+                            float physics:mass = 0.007512312
+                            quatf physics:principalAxes = (0.68773526, 0.68773526, 0.16437826, -0.16437826)
 
                             over "Box" (
                                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -579,16 +519,17 @@ def Xform "allegro_left"
                             {
                                 rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                                 uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
                                 float newton:contactGap = 0
-                                float physics:density = 800
                                 float physics:mass = 0
                             }
 
                             def PhysicsRevoluteJoint "mfj3" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:damping = 0.1
+                                float newton:damping = 0.0017453292
                                 uniform token physics:axis = "Y"
                                 rel physics:body0 = </allegro_left/Geometry/palm/mf_base/mf_proximal/mf_medial>
                                 rel physics:body1 = </allegro_left/Geometry/palm/mf_base/mf_proximal/mf_medial/mf_distal>
@@ -601,20 +542,13 @@ def Xform "allegro_left"
                             }
 
                             def "mf_tip" (
-                                prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                             )
                             {
-                                over "tn__link_30_tip_VH" (
-                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                )
-                                {
-                                    rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                                    uniform int mjc:group = 2
-                                    float newton:contactGap = 0
-                                    uniform token physics:approximation = "convexHull"
-                                    bool physics:collisionEnabled = 0
-                                    float physics:density = 800
-                                }
+                                point3f physics:centerOfMass = (7.276306e-12, -1.1560279e-7, 0.025402764)
+                                float3 physics:diagonalInertia = (4.5582306e-7, 4.558136e-7, 4.4955877e-7)
+                                float physics:mass = 0.0068445215
+                                quatf physics:principalAxes = (1, 0, 0, 0)
 
                                 over "Capsule" (
                                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -622,8 +556,8 @@ def Xform "allegro_left"
                                 {
                                     rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                                     uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
                                     float newton:contactGap = 0
-                                    float physics:density = 800
                                     float physics:mass = 0
                                 }
 
@@ -643,20 +577,13 @@ def Xform "allegro_left"
             }
 
             def "ff_base" (
-                prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
             )
             {
-                over "tn__link_00_XB" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                    uniform int mjc:group = 2
-                    float newton:contactGap = 0
-                    uniform token physics:approximation = "convexHull"
-                    bool physics:collisionEnabled = 0
-                    float physics:density = 800
-                }
+                point3f physics:centerOfMass = (-0.00077812717, -0.000010286743, 0.008282494)
+                float3 physics:diagonalInertia = (7.653764e-7, 6.8884293e-7, 3.5504598e-7)
+                float physics:mass = 0.0072320164
+                quatf physics:principalAxes = (0.68420887, 0.68586165, -0.17507692, 0.17549984)
 
                 over "Box" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -664,16 +591,17 @@ def Xform "allegro_left"
                 {
                     rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                     uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
                     float newton:contactGap = 0
-                    float physics:density = 800
                     float physics:mass = 0
                 }
 
                 def PhysicsRevoluteJoint "ffj0" (
-                    prepend apiSchemas = ["MjcJointAPI"]
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                 )
                 {
                     uniform double mjc:damping = 0.1
+                    float newton:damping = 0.0017453292
                     uniform token physics:axis = "Z"
                     rel physics:body0 = </allegro_left/Geometry/palm>
                     rel physics:body1 = </allegro_left/Geometry/palm/ff_base>
@@ -686,20 +614,13 @@ def Xform "allegro_left"
                 }
 
                 def "ff_proximal" (
-                    prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                 )
                 {
-                    over "tn__link_10_XB" (
-                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                        uniform int mjc:group = 2
-                        float newton:contactGap = 0
-                        uniform token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 0
-                        float physics:density = 800
-                    }
+                    point3f physics:centerOfMass = (2.7523313e-8, -0.00009059554, 0.02699977)
+                    float3 physics:diagonalInertia = (0.000011862359, 0.000011276808, 0.0000022658685)
+                    float physics:mass = 0.027276123
+                    quatf physics:principalAxes = (1, 0, 0, 0)
 
                     over "Box" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -707,16 +628,17 @@ def Xform "allegro_left"
                     {
                         rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                         uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
                         float newton:contactGap = 0
-                        float physics:density = 800
                         float physics:mass = 0
                     }
 
                     def PhysicsRevoluteJoint "ffj1" (
-                        prepend apiSchemas = ["MjcJointAPI"]
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                     )
                     {
                         uniform double mjc:damping = 0.1
+                        float newton:damping = 0.0017453292
                         uniform token physics:axis = "Y"
                         rel physics:body0 = </allegro_left/Geometry/palm/ff_base>
                         rel physics:body1 = </allegro_left/Geometry/palm/ff_base/ff_proximal>
@@ -729,20 +651,13 @@ def Xform "allegro_left"
                     }
 
                     def "ff_medial" (
-                        prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                     )
                     {
-                        over "tn__link_20_XB" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                            uniform int mjc:group = 2
-                            float newton:contactGap = 0
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 800
-                        }
+                        point3f physics:centerOfMass = (-0.00019288158, -0.000077904166, 0.022586012)
+                        float3 physics:diagonalInertia = (0.0000042873276, 0.0000036356423, 0.0000016736698)
+                        float physics:mass = 0.018463746
+                        quatf physics:principalAxes = (0.999903, -0.00028931772, 0.013923432, 0.0000040286864)
 
                         over "Box" (
                             prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -750,16 +665,17 @@ def Xform "allegro_left"
                         {
                             rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                             uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
                             float newton:contactGap = 0
-                            float physics:density = 800
                             float physics:mass = 0
                         }
 
                         def PhysicsRevoluteJoint "ffj2" (
-                            prepend apiSchemas = ["MjcJointAPI"]
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                         )
                         {
                             uniform double mjc:damping = 0.1
+                            float newton:damping = 0.0017453292
                             uniform token physics:axis = "Y"
                             rel physics:body0 = </allegro_left/Geometry/palm/ff_base/ff_proximal>
                             rel physics:body1 = </allegro_left/Geometry/palm/ff_base/ff_proximal/ff_medial>
@@ -772,20 +688,13 @@ def Xform "allegro_left"
                         }
 
                         def "ff_distal" (
-                            prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                         )
                         {
-                            over "tn__link_30_XB" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                                uniform int mjc:group = 2
-                                float newton:contactGap = 0
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 800
-                            }
+                            point3f physics:centerOfMass = (-0.0005208062, -0.0000033249908, 0.0072512897)
+                            float3 physics:diagonalInertia = (7.9637954e-7, 7.281658e-7, 3.7775212e-7)
+                            float physics:mass = 0.007512312
+                            quatf physics:principalAxes = (0.68773526, 0.68773526, 0.16437826, -0.16437826)
 
                             over "Box" (
                                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -793,16 +702,17 @@ def Xform "allegro_left"
                             {
                                 rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                                 uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
                                 float newton:contactGap = 0
-                                float physics:density = 800
                                 float physics:mass = 0
                             }
 
                             def PhysicsRevoluteJoint "ffj3" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:damping = 0.1
+                                float newton:damping = 0.0017453292
                                 uniform token physics:axis = "Y"
                                 rel physics:body0 = </allegro_left/Geometry/palm/ff_base/ff_proximal/ff_medial>
                                 rel physics:body1 = </allegro_left/Geometry/palm/ff_base/ff_proximal/ff_medial/ff_distal>
@@ -815,20 +725,13 @@ def Xform "allegro_left"
                             }
 
                             def "ff_tip" (
-                                prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                             )
                             {
-                                over "tn__link_30_tip_VH" (
-                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                )
-                                {
-                                    rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                                    uniform int mjc:group = 2
-                                    float newton:contactGap = 0
-                                    uniform token physics:approximation = "convexHull"
-                                    bool physics:collisionEnabled = 0
-                                    float physics:density = 800
-                                }
+                                point3f physics:centerOfMass = (7.276306e-12, -1.1560279e-7, 0.025402764)
+                                float3 physics:diagonalInertia = (4.5582306e-7, 4.558136e-7, 4.4955877e-7)
+                                float physics:mass = 0.0068445215
+                                quatf physics:principalAxes = (1, 0, 0, 0)
 
                                 over "Capsule" (
                                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -836,8 +739,8 @@ def Xform "allegro_left"
                                 {
                                     rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                                     uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
                                     float newton:contactGap = 0
-                                    float physics:density = 800
                                     float physics:mass = 0
                                 }
 
@@ -857,20 +760,13 @@ def Xform "allegro_left"
             }
 
             def "th_base" (
-                prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
             )
             {
-                over "tn__link_120_left_VK" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                )
-                {
-                    rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                    uniform int mjc:group = 2
-                    float newton:contactGap = 0
-                    uniform token physics:approximation = "convexHull"
-                    bool physics:collisionEnabled = 0
-                    float physics:density = 800
-                }
+                point3f physics:centerOfMass = (-0.017917829, -0.0077263676, 0.011871054)
+                float3 physics:diagonalInertia = (0.000010974182, 0.000009447706, 0.000007300594)
+                float physics:mass = 0.04008789
+                quatf physics:principalAxes = (0.04688927, 0.7014051, -0.7094709, 0.049832053)
 
                 over "Box" (
                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -878,16 +774,17 @@ def Xform "allegro_left"
                 {
                     rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                     uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
                     float newton:contactGap = 0
-                    float physics:density = 800
                     float physics:mass = 0
                 }
 
                 def PhysicsRevoluteJoint "thj0" (
-                    prepend apiSchemas = ["MjcJointAPI"]
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                 )
                 {
                     uniform double mjc:damping = 0.1
+                    float newton:damping = 0.0017453292
                     uniform token physics:axis = "X"
                     rel physics:body0 = </allegro_left/Geometry/palm>
                     rel physics:body1 = </allegro_left/Geometry/palm/th_base>
@@ -900,20 +797,13 @@ def Xform "allegro_left"
                 }
 
                 def "th_proximal" (
-                    prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                 )
                 {
-                    over "tn__link_130_nC" (
-                        prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                    )
-                    {
-                        rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                        uniform int mjc:group = 2
-                        float newton:contactGap = 0
-                        uniform token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 0
-                        float physics:density = 800
-                    }
+                    point3f physics:centerOfMass = (-0.00078202685, -0.000010249416, 0.008104545)
+                    float3 physics:diagonalInertia = (7.6374823e-7, 6.8739985e-7, 3.539318e-7)
+                    float physics:mass = 0.0072193122
+                    quatf physics:principalAxes = (0.683996, 0.685644, -0.1759155, 0.17633933)
 
                     over "Box" (
                         prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -921,16 +811,17 @@ def Xform "allegro_left"
                     {
                         rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                         uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
                         float newton:contactGap = 0
-                        float physics:density = 800
                         float physics:mass = 0
                     }
 
                     def PhysicsRevoluteJoint "thj1" (
-                        prepend apiSchemas = ["MjcJointAPI"]
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                     )
                     {
                         uniform double mjc:damping = 0.1
+                        float newton:damping = 0.0017453292
                         uniform token physics:axis = "Z"
                         rel physics:body0 = </allegro_left/Geometry/palm/th_base>
                         rel physics:body1 = </allegro_left/Geometry/palm/th_base/th_proximal>
@@ -943,20 +834,13 @@ def Xform "allegro_left"
                     }
 
                     def "th_medial" (
-                        prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                     )
                     {
-                        over "tn__link_140_nC" (
-                            prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                        )
-                        {
-                            rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                            uniform int mjc:group = 2
-                            float newton:contactGap = 0
-                            uniform token physics:approximation = "convexHull"
-                            bool physics:collisionEnabled = 0
-                            float physics:density = 800
-                        }
+                        point3f physics:centerOfMass = (-0.00016433628, 0.000017148155, 0.021111917)
+                        float3 physics:diagonalInertia = (0.000007527637, 0.000006583326, 0.0000021410644)
+                        float physics:mass = 0.022496473
+                        quatf physics:principalAxes = (0.9999598, 0, -0.008964237, 0)
 
                         over "Box" (
                             prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -964,16 +848,17 @@ def Xform "allegro_left"
                         {
                             rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                             uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
                             float newton:contactGap = 0
-                            float physics:density = 800
                             float physics:mass = 0
                         }
 
                         def PhysicsRevoluteJoint "thj2" (
-                            prepend apiSchemas = ["MjcJointAPI"]
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                         )
                         {
                             uniform double mjc:damping = 0.1
+                            float newton:damping = 0.0017453292
                             uniform token physics:axis = "Y"
                             rel physics:body0 = </allegro_left/Geometry/palm/th_base/th_proximal>
                             rel physics:body1 = </allegro_left/Geometry/palm/th_base/th_proximal/th_medial>
@@ -986,20 +871,13 @@ def Xform "allegro_left"
                         }
 
                         def "th_distal" (
-                            prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                         )
                         {
-                            over "tn__link_150_nC" (
-                                prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                            )
-                            {
-                                rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                                uniform int mjc:group = 2
-                                float newton:contactGap = 0
-                                uniform token physics:approximation = "convexHull"
-                                bool physics:collisionEnabled = 0
-                                float physics:density = 800
-                            }
+                            point3f physics:centerOfMass = (8.943978e-16, 0.000003677057, 0.013075033)
+                            float3 physics:diagonalInertia = (0.000002913777, 0.0000025902032, 0.0000013565169)
+                            float physics:mass = 0.016334496
+                            quatf physics:principalAxes = (0.99999815, 0.0019454393, 0, 0)
 
                             over "Box" (
                                 prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -1007,16 +885,17 @@ def Xform "allegro_left"
                             {
                                 rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                                 uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
                                 float newton:contactGap = 0
-                                float physics:density = 800
                                 float physics:mass = 0
                             }
 
                             def PhysicsRevoluteJoint "thj3" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:damping = 0.1
+                                float newton:damping = 0.0017453292
                                 uniform token physics:axis = "Y"
                                 rel physics:body0 = </allegro_left/Geometry/palm/th_base/th_proximal/th_medial>
                                 rel physics:body1 = </allegro_left/Geometry/palm/th_base/th_proximal/th_medial/th_distal>
@@ -1029,20 +908,13 @@ def Xform "allegro_left"
                             }
 
                             def "th_tip" (
-                                prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
                             )
                             {
-                                over "tn__link_150_tip_lI" (
-                                    prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
-                                )
-                                {
-                                    rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
-                                    uniform int mjc:group = 2
-                                    float newton:contactGap = 0
-                                    uniform token physics:approximation = "convexHull"
-                                    bool physics:collisionEnabled = 0
-                                    float physics:density = 800
-                                }
+                                point3f physics:centerOfMass = (7.276311e-12, -1.1560279e-7, 0.041002765)
+                                float3 physics:diagonalInertia = (4.5582306e-7, 4.558136e-7, 4.4955877e-7)
+                                float physics:mass = 0.0068445215
+                                quatf physics:principalAxes = (1, 0, 0, 0)
 
                                 over "Capsule" (
                                     prepend apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "MjcCollisionAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
@@ -1050,8 +922,8 @@ def Xform "allegro_left"
                                 {
                                     rel material:binding:physics = </allegro_left/Physics/PhysicsMaterial>
                                     uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
                                     float newton:contactGap = 0
-                                    float physics:density = 800
                                     float physics:mass = 0
                                 }
 

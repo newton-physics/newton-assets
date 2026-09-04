@@ -1,0 +1,229 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.5.0"
+    }
+    defaultPrim = "seeed_rebot_devarm"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "seeed_rebot_devarm"
+{
+    def Scope "Materials"
+    {
+        def Material "alum" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/alum>
+        )
+        {
+        }
+
+        def Material "black" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/black>
+        )
+        {
+        }
+
+        def Material "lime" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/lime>
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "base_link"
+        {
+            over "base_link" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </seeed_rebot_devarm/Materials/alum>
+            }
+
+            over "link1"
+            {
+                over "link1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </seeed_rebot_devarm/Materials/alum>
+                }
+
+                over "link2"
+                {
+                    over "motor_2_3" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </seeed_rebot_devarm/Materials/black>
+                    }
+
+                    over "cnc2" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </seeed_rebot_devarm/Materials/alum>
+                    }
+
+                    over "pla2_black" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </seeed_rebot_devarm/Materials/black>
+                    }
+
+                    over "pla2_green" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </seeed_rebot_devarm/Materials/lime>
+                    }
+
+                    over "link3"
+                    {
+                        over "cnc3" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </seeed_rebot_devarm/Materials/alum>
+                        }
+
+                        over "motor_4" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </seeed_rebot_devarm/Materials/black>
+                        }
+
+                        over "pla3_black" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </seeed_rebot_devarm/Materials/black>
+                        }
+
+                        over "pla3_green" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </seeed_rebot_devarm/Materials/lime>
+                        }
+
+                        over "link4"
+                        {
+                            over "motor_5" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </seeed_rebot_devarm/Materials/black>
+                            }
+
+                            over "cnc4" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </seeed_rebot_devarm/Materials/alum>
+                            }
+
+                            over "link5"
+                            {
+                                over "motor_6" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </seeed_rebot_devarm/Materials/black>
+                                }
+
+                                over "cnc5" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </seeed_rebot_devarm/Materials/alum>
+                                }
+
+                                over "pla5_green" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </seeed_rebot_devarm/Materials/lime>
+                                }
+
+                                over "link6"
+                                {
+                                    over "link6" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </seeed_rebot_devarm/Materials/alum>
+                                    }
+
+                                    over "gripper_end"
+                                    {
+                                        over "pla7_green" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </seeed_rebot_devarm/Materials/lime>
+                                        }
+
+                                        over "cnc7" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </seeed_rebot_devarm/Materials/alum>
+                                        }
+
+                                        over "motor_7" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </seeed_rebot_devarm/Materials/black>
+                                        }
+
+                                        over "gripper_left"
+                                        {
+                                            over "pla_left" (
+                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding = </seeed_rebot_devarm/Materials/black>
+                                            }
+
+                                            over "cnc_left" (
+                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding = </seeed_rebot_devarm/Materials/alum>
+                                            }
+                                        }
+
+                                        over "gripper_right"
+                                        {
+                                            over "pla_right" (
+                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding = </seeed_rebot_devarm/Materials/black>
+                                            }
+
+                                            over "cnc_right" (
+                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding = </seeed_rebot_devarm/Materials/alum>
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

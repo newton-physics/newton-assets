@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a8"
+        string creator = "MuJoCo USD Converter v0.5.0"
     }
     defaultPrim = "allegro_left"
     kilogramsPerUnit = 1
@@ -21,9 +21,11 @@ def Xform "allegro_left"
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
             def Mesh "base_link_left" (
+                prepend apiSchemas = ["MjcImageableAPI"]
                 prepend references = @./GeometryLibrary.usdc@</Geometry/base_link_left>
             )
             {
+                uniform int mjc:group = 2
                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                     interpolation = "constant"
                 )
@@ -65,10 +67,12 @@ def Xform "allegro_left"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "tn__link_00_XB" (
+                    prepend apiSchemas = ["MjcImageableAPI"]
                     displayName = "link_0.0"
                     prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_00_XB>
                 )
                 {
+                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -110,10 +114,12 @@ def Xform "allegro_left"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "tn__link_10_XB" (
+                        prepend apiSchemas = ["MjcImageableAPI"]
                         displayName = "link_1.0"
                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_10_XB>
                     )
                     {
+                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -155,10 +161,12 @@ def Xform "allegro_left"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "tn__link_20_XB" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             displayName = "link_2.0"
                             prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_20_XB>
                         )
                         {
+                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -200,10 +208,12 @@ def Xform "allegro_left"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "tn__link_30_XB" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 displayName = "link_3.0"
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_30_XB>
                             )
                             {
+                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -245,10 +255,12 @@ def Xform "allegro_left"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "tn__link_30_tip_VH" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     displayName = "link_3.0_tip"
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_30_tip_VH>
                                 )
                                 {
+                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -297,10 +309,12 @@ def Xform "allegro_left"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "tn__link_00_XB" (
+                    prepend apiSchemas = ["MjcImageableAPI"]
                     displayName = "link_0.0"
                     prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_00_XB>
                 )
                 {
+                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -342,10 +356,12 @@ def Xform "allegro_left"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "tn__link_10_XB" (
+                        prepend apiSchemas = ["MjcImageableAPI"]
                         displayName = "link_1.0"
                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_10_XB>
                     )
                     {
+                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -387,10 +403,12 @@ def Xform "allegro_left"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "tn__link_20_XB" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             displayName = "link_2.0"
                             prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_20_XB>
                         )
                         {
+                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -432,10 +450,12 @@ def Xform "allegro_left"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "tn__link_30_XB" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 displayName = "link_3.0"
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_30_XB>
                             )
                             {
+                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -477,10 +497,12 @@ def Xform "allegro_left"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "tn__link_30_tip_VH" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     displayName = "link_3.0_tip"
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_30_tip_VH>
                                 )
                                 {
+                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -529,10 +551,12 @@ def Xform "allegro_left"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "tn__link_00_XB" (
+                    prepend apiSchemas = ["MjcImageableAPI"]
                     displayName = "link_0.0"
                     prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_00_XB>
                 )
                 {
+                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -574,10 +598,12 @@ def Xform "allegro_left"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "tn__link_10_XB" (
+                        prepend apiSchemas = ["MjcImageableAPI"]
                         displayName = "link_1.0"
                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_10_XB>
                     )
                     {
+                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -619,10 +645,12 @@ def Xform "allegro_left"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "tn__link_20_XB" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             displayName = "link_2.0"
                             prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_20_XB>
                         )
                         {
+                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -664,10 +692,12 @@ def Xform "allegro_left"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "tn__link_30_XB" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 displayName = "link_3.0"
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_30_XB>
                             )
                             {
+                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -709,10 +739,12 @@ def Xform "allegro_left"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "tn__link_30_tip_VH" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     displayName = "link_3.0_tip"
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_30_tip_VH>
                                 )
                                 {
+                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )
@@ -761,10 +793,12 @@ def Xform "allegro_left"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                 def Mesh "tn__link_120_left_VK" (
+                    prepend apiSchemas = ["MjcImageableAPI"]
                     displayName = "link_12.0_left"
                     prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_120_left_VK>
                 )
                 {
+                    uniform int mjc:group = 2
                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                         interpolation = "constant"
                     )
@@ -806,10 +840,12 @@ def Xform "allegro_left"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Mesh "tn__link_130_nC" (
+                        prepend apiSchemas = ["MjcImageableAPI"]
                         displayName = "link_13.0"
                         prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_130_nC>
                     )
                     {
+                        uniform int mjc:group = 2
                         color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                             interpolation = "constant"
                         )
@@ -851,10 +887,12 @@ def Xform "allegro_left"
                         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                         def Mesh "tn__link_140_nC" (
+                            prepend apiSchemas = ["MjcImageableAPI"]
                             displayName = "link_14.0"
                             prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_140_nC>
                         )
                         {
+                            uniform int mjc:group = 2
                             color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                 interpolation = "constant"
                             )
@@ -896,10 +934,12 @@ def Xform "allegro_left"
                             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                             def Mesh "tn__link_150_nC" (
+                                prepend apiSchemas = ["MjcImageableAPI"]
                                 displayName = "link_15.0"
                                 prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_150_nC>
                             )
                             {
+                                uniform int mjc:group = 2
                                 color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                     interpolation = "constant"
                                 )
@@ -941,10 +981,12 @@ def Xform "allegro_left"
                                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                                 def Mesh "tn__link_150_tip_lI" (
+                                    prepend apiSchemas = ["MjcImageableAPI"]
                                     displayName = "link_15.0_tip"
                                     prepend references = @./GeometryLibrary.usdc@</Geometry/tn__link_150_tip_lI>
                                 )
                                 {
+                                    uniform int mjc:group = 2
                                     color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)] (
                                         interpolation = "constant"
                                     )

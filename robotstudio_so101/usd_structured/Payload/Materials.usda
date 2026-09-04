@@ -1,0 +1,248 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.5.0"
+    }
+    defaultPrim = "so101"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "so101"
+{
+    def Scope "Materials"
+    {
+        def Material "base_motor_holder_so101_v1_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/base_motor_holder_so101_v1_material>
+        )
+        {
+        }
+
+        def Material "base_so101_v2_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/base_so101_v2_material>
+        )
+        {
+        }
+
+        def Material "sts3215_03a_v1_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/sts3215_03a_v1_material>
+        )
+        {
+        }
+
+        def Material "waveshare_mounting_plate_so101_v2_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/waveshare_mounting_plate_so101_v2_material>
+        )
+        {
+        }
+
+        def Material "motor_holder_so101_base_v1_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/motor_holder_so101_base_v1_material>
+        )
+        {
+        }
+
+        def Material "rotation_pitch_so101_v1_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/rotation_pitch_so101_v1_material>
+        )
+        {
+        }
+
+        def Material "upper_arm_so101_v1_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/upper_arm_so101_v1_material>
+        )
+        {
+        }
+
+        def Material "under_arm_so101_v1_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/under_arm_so101_v1_material>
+        )
+        {
+        }
+
+        def Material "motor_holder_so101_wrist_v1_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/motor_holder_so101_wrist_v1_material>
+        )
+        {
+        }
+
+        def Material "sts3215_03a_no_horn_v1_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/sts3215_03a_no_horn_v1_material>
+        )
+        {
+        }
+
+        def Material "wrist_roll_pitch_so101_v2_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/wrist_roll_pitch_so101_v2_material>
+        )
+        {
+        }
+
+        def Material "wrist_roll_follower_so101_v1_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/wrist_roll_follower_so101_v1_material>
+        )
+        {
+        }
+
+        def Material "moving_jaw_so101_v1_material" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/moving_jaw_so101_v1_material>
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "base"
+        {
+            over "base_motor_holder_so101_v1" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </so101/Materials/base_motor_holder_so101_v1_material>
+            }
+
+            over "base_so101_v2" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </so101/Materials/base_so101_v2_material>
+            }
+
+            over "sts3215_03a_v1" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </so101/Materials/sts3215_03a_v1_material>
+            }
+
+            over "waveshare_mounting_plate_so101_v2" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </so101/Materials/waveshare_mounting_plate_so101_v2_material>
+            }
+
+            over "shoulder"
+            {
+                over "sts3215_03a_v1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </so101/Materials/sts3215_03a_v1_material>
+                }
+
+                over "motor_holder_so101_base_v1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </so101/Materials/motor_holder_so101_base_v1_material>
+                }
+
+                over "rotation_pitch_so101_v1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </so101/Materials/rotation_pitch_so101_v1_material>
+                }
+
+                over "upper_arm"
+                {
+                    over "sts3215_03a_v1" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </so101/Materials/sts3215_03a_v1_material>
+                    }
+
+                    over "upper_arm_so101_v1" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </so101/Materials/upper_arm_so101_v1_material>
+                    }
+
+                    over "lower_arm"
+                    {
+                        over "under_arm_so101_v1" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </so101/Materials/under_arm_so101_v1_material>
+                        }
+
+                        over "motor_holder_so101_wrist_v1" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </so101/Materials/motor_holder_so101_wrist_v1_material>
+                        }
+
+                        over "sts3215_03a_v1" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </so101/Materials/sts3215_03a_v1_material>
+                        }
+
+                        over "wrist"
+                        {
+                            over "sts3215_03a_no_horn_v1" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </so101/Materials/sts3215_03a_no_horn_v1_material>
+                            }
+
+                            over "wrist_roll_pitch_so101_v2" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </so101/Materials/wrist_roll_pitch_so101_v2_material>
+                            }
+
+                            over "gripper"
+                            {
+                                over "sts3215_03a_v1" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </so101/Materials/sts3215_03a_v1_material>
+                                }
+
+                                over "wrist_roll_follower_so101_v1" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </so101/Materials/wrist_roll_follower_so101_v1_material>
+                                }
+
+                                over "camera_mount"
+                                {
+                                    over "wrist_roll_follower_so101_camera_mount" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </so101/Materials/wrist_roll_follower_so101_v1_material>
+                                    }
+                                }
+
+                                over "moving_jaw_so101_v1"
+                                {
+                                    over "moving_jaw_so101_v1" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </so101/Materials/moving_jaw_so101_v1_material>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

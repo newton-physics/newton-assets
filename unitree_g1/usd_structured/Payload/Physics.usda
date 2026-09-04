@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "MuJoCo USD Converter v0.1.0a8"
+        string creator = "MuJoCo USD Converter v0.5.0"
     }
     defaultPrim = "g1_29dof_with_hand_rev_1_0"
     kilogramsPerUnit = 1
@@ -14,21 +14,27 @@ def Xform "g1_29dof_with_hand_rev_1_0"
     def Scope "Physics"
     {
         def Material "PhysicsMaterial" (
-            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI", "MjcMaterialAPI"]
+            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI"]
         )
         {
+            float newton:contactDamping = 100
+            float newton:contactStiffness = 2500
             float newton:rollingFriction = 0.0001
             float newton:torsionalFriction = 0.005
             float physics:dynamicFriction = 1
+            float physics:staticFriction = 1
         }
 
         def Material "PhysicsMaterial_1" (
-            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI", "MjcMaterialAPI"]
+            prepend apiSchemas = ["PhysicsMaterialAPI", "NewtonMaterialAPI"]
         )
         {
+            float newton:contactDamping = 100
+            float newton:contactStiffness = 2500
             float newton:rollingFriction = 0.0001
             float newton:torsionalFriction = 0.005
             float physics:dynamicFriction = 0.6
+            float physics:staticFriction = 0.6
         }
 
         def MjcActuator "left_hip_pitch_joint"
@@ -425,6 +431,7 @@ def Xform "g1_29dof_with_hand_rev_1_0"
             prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI"]
         )
         {
+            uniform bool newton:jointsAddMobility = 1
             point3f physics:centerOfMass = (0, 0, -0.07605)
             float3 physics:diagonalInertia = (0.010549, 0.0093089, 0.0079184)
             float physics:mass = 3.813
@@ -436,13 +443,14 @@ def Xform "g1_29dof_with_hand_rev_1_0"
             {
                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                 uniform int mjc:group = 3
+                uniform double[] mjc:solref = [0.02, 1]
                 float newton:contactGap = 0
                 uniform token physics:approximation = "convexHull"
                 float physics:density = 1000
             }
 
             over "imu_in_pelvis" (
-                prepend apiSchemas = ["MjcSiteAPI"]
+                prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
             )
             {
                 uniform int mjc:group = 5
@@ -463,19 +471,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                 {
                     rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                     uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
                     float newton:contactGap = 0
                     uniform token physics:approximation = "convexHull"
                     float physics:density = 1000
                 }
 
                 def PhysicsRevoluteJoint "left_hip_pitch_joint" (
-                    prepend apiSchemas = ["MjcJointAPI"]
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                 )
                 {
                     uniform double mjc:actuatorfrcrange:max = 88
                     uniform double mjc:actuatorfrcrange:min = -88
                     uniform double mjc:armature = 0.01
                     uniform double mjc:frictionloss = 0.3
+                    float newton:armature = 0.01
+                    float newton:friction = 0.3
                     uniform token physics:axis = "Y"
                     rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis>
                     rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/left_hip_pitch_link>
@@ -502,19 +513,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                     {
                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                         uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
                         float newton:contactGap = 0
                         uniform token physics:approximation = "convexHull"
                         float physics:density = 1000
                     }
 
                     def PhysicsRevoluteJoint "left_hip_roll_joint" (
-                        prepend apiSchemas = ["MjcJointAPI"]
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                     )
                     {
                         uniform double mjc:actuatorfrcrange:max = 139
                         uniform double mjc:actuatorfrcrange:min = -139
                         uniform double mjc:armature = 0.01
                         uniform double mjc:frictionloss = 0.3
+                        float newton:armature = 0.01
+                        float newton:friction = 0.3
                         uniform token physics:axis = "X"
                         rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/left_hip_pitch_link>
                         rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link>
@@ -541,19 +555,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                         {
                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                             uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
                             float newton:contactGap = 0
                             uniform token physics:approximation = "convexHull"
                             float physics:density = 1000
                         }
 
                         def PhysicsRevoluteJoint "left_hip_yaw_joint" (
-                            prepend apiSchemas = ["MjcJointAPI"]
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                         )
                         {
                             uniform double mjc:actuatorfrcrange:max = 88
                             uniform double mjc:actuatorfrcrange:min = -88
                             uniform double mjc:armature = 0.01
                             uniform double mjc:frictionloss = 0.3
+                            float newton:armature = 0.01
+                            float newton:friction = 0.3
                             uniform token physics:axis = "Z"
                             rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link>
                             rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link>
@@ -580,19 +597,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                             {
                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                 uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
                                 float newton:contactGap = 0
                                 uniform token physics:approximation = "convexHull"
                                 float physics:density = 1000
                             }
 
                             def PhysicsRevoluteJoint "left_knee_joint" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:actuatorfrcrange:max = 139
                                 uniform double mjc:actuatorfrcrange:min = -139
                                 uniform double mjc:armature = 0.01
                                 uniform double mjc:frictionloss = 0.3
+                                float newton:armature = 0.01
+                                float newton:friction = 0.3
                                 uniform token physics:axis = "Y"
                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link>
                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link>
@@ -619,19 +639,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                 {
                                     rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                     uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
                                     float newton:contactGap = 0
                                     uniform token physics:approximation = "convexHull"
                                     float physics:density = 1000
                                 }
 
                                 def PhysicsRevoluteJoint "left_ankle_pitch_joint" (
-                                    prepend apiSchemas = ["MjcJointAPI"]
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                 )
                                 {
                                     uniform double mjc:actuatorfrcrange:max = 50
                                     uniform double mjc:actuatorfrcrange:min = -50
                                     uniform double mjc:armature = 0.01
                                     uniform double mjc:frictionloss = 0.3
+                                    float newton:armature = 0.01
+                                    float newton:friction = 0.3
                                     uniform token physics:axis = "Y"
                                     rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link>
                                     rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link/left_ankle_pitch_link>
@@ -659,6 +682,7 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial_1>
                                         uniform int mjc:group = 3
                                         uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.02, 1]
                                         float newton:contactGap = 0
                                         float physics:density = 1000
                                     }
@@ -670,6 +694,7 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial_1>
                                         uniform int mjc:group = 3
                                         uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.02, 1]
                                         float newton:contactGap = 0
                                         float physics:density = 1000
                                     }
@@ -681,6 +706,7 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial_1>
                                         uniform int mjc:group = 3
                                         uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.02, 1]
                                         float newton:contactGap = 0
                                         float physics:density = 1000
                                     }
@@ -692,25 +718,28 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial_1>
                                         uniform int mjc:group = 3
                                         uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.02, 1]
                                         float newton:contactGap = 0
                                         float physics:density = 1000
                                     }
 
                                     over "left_foot" (
-                                        prepend apiSchemas = ["MjcSiteAPI"]
+                                        prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                                     )
                                     {
                                         uniform int mjc:group = 5
                                     }
 
                                     def PhysicsRevoluteJoint "left_ankle_roll_joint" (
-                                        prepend apiSchemas = ["MjcJointAPI"]
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                     )
                                     {
                                         uniform double mjc:actuatorfrcrange:max = 50
                                         uniform double mjc:actuatorfrcrange:min = -50
                                         uniform double mjc:armature = 0.01
                                         uniform double mjc:frictionloss = 0.3
+                                        float newton:armature = 0.01
+                                        float newton:friction = 0.3
                                         uniform token physics:axis = "X"
                                         rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link/left_ankle_pitch_link>
                                         rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/left_hip_pitch_link/left_hip_roll_link/left_hip_yaw_link/left_knee_link/left_ankle_pitch_link/left_ankle_roll_link>
@@ -743,19 +772,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                 {
                     rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                     uniform int mjc:group = 3
+                    uniform double[] mjc:solref = [0.02, 1]
                     float newton:contactGap = 0
                     uniform token physics:approximation = "convexHull"
                     float physics:density = 1000
                 }
 
                 def PhysicsRevoluteJoint "right_hip_pitch_joint" (
-                    prepend apiSchemas = ["MjcJointAPI"]
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                 )
                 {
                     uniform double mjc:actuatorfrcrange:max = 88
                     uniform double mjc:actuatorfrcrange:min = -88
                     uniform double mjc:armature = 0.01
                     uniform double mjc:frictionloss = 0.3
+                    float newton:armature = 0.01
+                    float newton:friction = 0.3
                     uniform token physics:axis = "Y"
                     rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis>
                     rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/right_hip_pitch_link>
@@ -782,19 +814,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                     {
                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                         uniform int mjc:group = 3
+                        uniform double[] mjc:solref = [0.02, 1]
                         float newton:contactGap = 0
                         uniform token physics:approximation = "convexHull"
                         float physics:density = 1000
                     }
 
                     def PhysicsRevoluteJoint "right_hip_roll_joint" (
-                        prepend apiSchemas = ["MjcJointAPI"]
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                     )
                     {
                         uniform double mjc:actuatorfrcrange:max = 139
                         uniform double mjc:actuatorfrcrange:min = -139
                         uniform double mjc:armature = 0.01
                         uniform double mjc:frictionloss = 0.3
+                        float newton:armature = 0.01
+                        float newton:friction = 0.3
                         uniform token physics:axis = "X"
                         rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/right_hip_pitch_link>
                         rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link>
@@ -821,19 +856,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                         {
                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                             uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
                             float newton:contactGap = 0
                             uniform token physics:approximation = "convexHull"
                             float physics:density = 1000
                         }
 
                         def PhysicsRevoluteJoint "right_hip_yaw_joint" (
-                            prepend apiSchemas = ["MjcJointAPI"]
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                         )
                         {
                             uniform double mjc:actuatorfrcrange:max = 88
                             uniform double mjc:actuatorfrcrange:min = -88
                             uniform double mjc:armature = 0.01
                             uniform double mjc:frictionloss = 0.3
+                            float newton:armature = 0.01
+                            float newton:friction = 0.3
                             uniform token physics:axis = "Z"
                             rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link>
                             rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link>
@@ -860,19 +898,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                             {
                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                 uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
                                 float newton:contactGap = 0
                                 uniform token physics:approximation = "convexHull"
                                 float physics:density = 1000
                             }
 
                             def PhysicsRevoluteJoint "right_knee_joint" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:actuatorfrcrange:max = 139
                                 uniform double mjc:actuatorfrcrange:min = -139
                                 uniform double mjc:armature = 0.01
                                 uniform double mjc:frictionloss = 0.3
+                                float newton:armature = 0.01
+                                float newton:friction = 0.3
                                 uniform token physics:axis = "Y"
                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link>
                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link>
@@ -899,19 +940,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                 {
                                     rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                     uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
                                     float newton:contactGap = 0
                                     uniform token physics:approximation = "convexHull"
                                     float physics:density = 1000
                                 }
 
                                 def PhysicsRevoluteJoint "right_ankle_pitch_joint" (
-                                    prepend apiSchemas = ["MjcJointAPI"]
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                 )
                                 {
                                     uniform double mjc:actuatorfrcrange:max = 50
                                     uniform double mjc:actuatorfrcrange:min = -50
                                     uniform double mjc:armature = 0.01
                                     uniform double mjc:frictionloss = 0.3
+                                    float newton:armature = 0.01
+                                    float newton:friction = 0.3
                                     uniform token physics:axis = "Y"
                                     rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link>
                                     rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link/right_ankle_pitch_link>
@@ -939,6 +983,7 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial_1>
                                         uniform int mjc:group = 3
                                         uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.02, 1]
                                         float newton:contactGap = 0
                                         float physics:density = 1000
                                     }
@@ -950,6 +995,7 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial_1>
                                         uniform int mjc:group = 3
                                         uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.02, 1]
                                         float newton:contactGap = 0
                                         float physics:density = 1000
                                     }
@@ -961,6 +1007,7 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial_1>
                                         uniform int mjc:group = 3
                                         uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.02, 1]
                                         float newton:contactGap = 0
                                         float physics:density = 1000
                                     }
@@ -972,25 +1019,28 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial_1>
                                         uniform int mjc:group = 3
                                         uniform int mjc:priority = 1
+                                        uniform double[] mjc:solref = [0.02, 1]
                                         float newton:contactGap = 0
                                         float physics:density = 1000
                                     }
 
                                     over "right_foot" (
-                                        prepend apiSchemas = ["MjcSiteAPI"]
+                                        prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                                     )
                                     {
                                         uniform int mjc:group = 5
                                     }
 
                                     def PhysicsRevoluteJoint "right_ankle_roll_joint" (
-                                        prepend apiSchemas = ["MjcJointAPI"]
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                     )
                                     {
                                         uniform double mjc:actuatorfrcrange:max = 50
                                         uniform double mjc:actuatorfrcrange:min = -50
                                         uniform double mjc:armature = 0.01
                                         uniform double mjc:frictionloss = 0.3
+                                        float newton:armature = 0.01
+                                        float newton:friction = 0.3
                                         uniform token physics:axis = "X"
                                         rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link/right_ankle_pitch_link>
                                         rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/right_hip_pitch_link/right_hip_roll_link/right_hip_yaw_link/right_knee_link/right_ankle_pitch_link/right_ankle_roll_link>
@@ -1018,13 +1068,15 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                 quatf physics:principalAxes = (0.289697, 0.591001, -0.337795, 0.672821)
 
                 def PhysicsRevoluteJoint "waist_yaw_joint" (
-                    prepend apiSchemas = ["MjcJointAPI"]
+                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                 )
                 {
                     uniform double mjc:actuatorfrcrange:max = 88
                     uniform double mjc:actuatorfrcrange:min = -88
                     uniform double mjc:armature = 0.01
                     uniform double mjc:frictionloss = 0.3
+                    float newton:armature = 0.01
+                    float newton:friction = 0.3
                     uniform token physics:axis = "Z"
                     rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis>
                     rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link>
@@ -1046,13 +1098,15 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                     quatf physics:principalAxes = (0.5, 0.5, -0.5, 0.5)
 
                     def PhysicsRevoluteJoint "waist_roll_joint" (
-                        prepend apiSchemas = ["MjcJointAPI"]
+                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                     )
                     {
                         uniform double mjc:actuatorfrcrange:max = 50
                         uniform double mjc:actuatorfrcrange:min = -50
                         uniform double mjc:armature = 0.01
                         uniform double mjc:frictionloss = 0.3
+                        float newton:armature = 0.01
+                        float newton:friction = 0.3
                         uniform token physics:axis = "X"
                         rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link>
                         rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link>
@@ -1079,6 +1133,7 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                         {
                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                             uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
                             float newton:contactGap = 0
                             uniform token physics:approximation = "convexHull"
                             float physics:density = 1000
@@ -1090,26 +1145,29 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                         {
                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                             uniform int mjc:group = 3
+                            uniform double[] mjc:solref = [0.02, 1]
                             float newton:contactGap = 0
                             uniform token physics:approximation = "convexHull"
                             float physics:density = 1000
                         }
 
                         over "imu_in_torso" (
-                            prepend apiSchemas = ["MjcSiteAPI"]
+                            prepend apiSchemas = ["MjcSiteAPI", "NewtonSiteAPI"]
                         )
                         {
                             uniform int mjc:group = 5
                         }
 
                         def PhysicsRevoluteJoint "waist_pitch_joint" (
-                            prepend apiSchemas = ["MjcJointAPI"]
+                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                         )
                         {
                             uniform double mjc:actuatorfrcrange:max = 50
                             uniform double mjc:actuatorfrcrange:min = -50
                             uniform double mjc:armature = 0.01
                             uniform double mjc:frictionloss = 0.3
+                            float newton:armature = 0.01
+                            float newton:friction = 0.3
                             uniform token physics:axis = "Y"
                             rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link>
                             rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
@@ -1136,18 +1194,21 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                             {
                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                 uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
                                 float newton:contactGap = 0
                                 float physics:density = 1000
                             }
 
                             def PhysicsRevoluteJoint "left_shoulder_pitch_joint" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:actuatorfrcrange:max = 25
                                 uniform double mjc:actuatorfrcrange:min = -25
                                 uniform double mjc:armature = 0.01
                                 uniform double mjc:frictionloss = 0.3
+                                float newton:armature = 0.01
+                                float newton:friction = 0.3
                                 uniform token physics:axis = "Y"
                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link>
@@ -1174,18 +1235,21 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                 {
                                     rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                     uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
                                     float newton:contactGap = 0
                                     float physics:density = 1000
                                 }
 
                                 def PhysicsRevoluteJoint "left_shoulder_roll_joint" (
-                                    prepend apiSchemas = ["MjcJointAPI"]
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                 )
                                 {
                                     uniform double mjc:actuatorfrcrange:max = 25
                                     uniform double mjc:actuatorfrcrange:min = -25
                                     uniform double mjc:armature = 0.01
                                     uniform double mjc:frictionloss = 0.3
+                                    float newton:armature = 0.01
+                                    float newton:friction = 0.3
                                     uniform token physics:axis = "X"
                                     rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link>
                                     rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link>
@@ -1212,19 +1276,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                     {
                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                         uniform int mjc:group = 3
+                                        uniform double[] mjc:solref = [0.02, 1]
                                         float newton:contactGap = 0
                                         uniform token physics:approximation = "convexHull"
                                         float physics:density = 1000
                                     }
 
                                     def PhysicsRevoluteJoint "left_shoulder_yaw_joint" (
-                                        prepend apiSchemas = ["MjcJointAPI"]
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                     )
                                     {
                                         uniform double mjc:actuatorfrcrange:max = 25
                                         uniform double mjc:actuatorfrcrange:min = -25
                                         uniform double mjc:armature = 0.01
                                         uniform double mjc:frictionloss = 0.3
+                                        float newton:armature = 0.01
+                                        float newton:friction = 0.3
                                         uniform token physics:axis = "Z"
                                         rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link>
                                         rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link>
@@ -1251,19 +1318,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                         {
                                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                             uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
                                             float newton:contactGap = 0
                                             uniform token physics:approximation = "convexHull"
                                             float physics:density = 1000
                                         }
 
                                         def PhysicsRevoluteJoint "left_elbow_joint" (
-                                            prepend apiSchemas = ["MjcJointAPI"]
+                                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                         )
                                         {
                                             uniform double mjc:actuatorfrcrange:max = 25
                                             uniform double mjc:actuatorfrcrange:min = -25
                                             uniform double mjc:armature = 0.01
                                             uniform double mjc:frictionloss = 0.3
+                                            float newton:armature = 0.01
+                                            float newton:friction = 0.3
                                             uniform token physics:axis = "Y"
                                             rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link>
                                             rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link>
@@ -1290,19 +1360,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                             {
                                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                 uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
                                                 float newton:contactGap = 0
                                                 uniform token physics:approximation = "convexHull"
                                                 float physics:density = 1000
                                             }
 
                                             def PhysicsRevoluteJoint "left_wrist_roll_joint" (
-                                                prepend apiSchemas = ["MjcJointAPI"]
+                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                             )
                                             {
                                                 uniform double mjc:actuatorfrcrange:max = 25
                                                 uniform double mjc:actuatorfrcrange:min = -25
                                                 uniform double mjc:armature = 0.01
                                                 uniform double mjc:frictionloss = 0.3
+                                                float newton:armature = 0.01
+                                                float newton:friction = 0.3
                                                 uniform token physics:axis = "X"
                                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link>
                                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link>
@@ -1329,19 +1402,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                 {
                                                     rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                     uniform int mjc:group = 3
+                                                    uniform double[] mjc:solref = [0.02, 1]
                                                     float newton:contactGap = 0
                                                     uniform token physics:approximation = "convexHull"
                                                     float physics:density = 1000
                                                 }
 
                                                 def PhysicsRevoluteJoint "left_wrist_pitch_joint" (
-                                                    prepend apiSchemas = ["MjcJointAPI"]
+                                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                 )
                                                 {
                                                     uniform double mjc:actuatorfrcrange:max = 5
                                                     uniform double mjc:actuatorfrcrange:min = -5
                                                     uniform double mjc:armature = 0.01
                                                     uniform double mjc:frictionloss = 0.3
+                                                    float newton:armature = 0.01
+                                                    float newton:friction = 0.3
                                                     uniform token physics:axis = "Y"
                                                     rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link>
                                                     rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link>
@@ -1368,6 +1444,7 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                     {
                                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                         uniform int mjc:group = 3
+                                                        uniform double[] mjc:solref = [0.02, 1]
                                                         float newton:contactGap = 0
                                                         uniform token physics:approximation = "convexHull"
                                                         float physics:density = 1000
@@ -1379,19 +1456,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                     {
                                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                         uniform int mjc:group = 3
+                                                        uniform double[] mjc:solref = [0.02, 1]
                                                         float newton:contactGap = 0
                                                         uniform token physics:approximation = "convexHull"
                                                         float physics:density = 1000
                                                     }
 
                                                     def PhysicsRevoluteJoint "left_wrist_yaw_joint" (
-                                                        prepend apiSchemas = ["MjcJointAPI"]
+                                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                     )
                                                     {
                                                         uniform double mjc:actuatorfrcrange:max = 5
                                                         uniform double mjc:actuatorfrcrange:min = -5
                                                         uniform double mjc:armature = 0.01
                                                         uniform double mjc:frictionloss = 0.3
+                                                        float newton:armature = 0.01
+                                                        float newton:friction = 0.3
                                                         uniform token physics:axis = "Z"
                                                         rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link>
                                                         rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link>
@@ -1418,19 +1498,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                         {
                                                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                             uniform int mjc:group = 3
+                                                            uniform double[] mjc:solref = [0.02, 1]
                                                             float newton:contactGap = 0
                                                             uniform token physics:approximation = "convexHull"
                                                             float physics:density = 1000
                                                         }
 
                                                         def PhysicsRevoluteJoint "left_hand_thumb_0_joint" (
-                                                            prepend apiSchemas = ["MjcJointAPI"]
+                                                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                         )
                                                         {
                                                             uniform double mjc:actuatorfrcrange:max = 2.45
                                                             uniform double mjc:actuatorfrcrange:min = -2.45
                                                             uniform double mjc:armature = 0.01
                                                             uniform double mjc:frictionloss = 0.3
+                                                            float newton:armature = 0.01
+                                                            float newton:friction = 0.3
                                                             uniform token physics:axis = "Y"
                                                             rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link>
                                                             rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_hand_thumb_0_link>
@@ -1457,18 +1540,21 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                             {
                                                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                                 uniform int mjc:group = 3
+                                                                uniform double[] mjc:solref = [0.02, 1]
                                                                 float newton:contactGap = 0
                                                                 float physics:density = 1000
                                                             }
 
                                                             def PhysicsRevoluteJoint "left_hand_thumb_1_joint" (
-                                                                prepend apiSchemas = ["MjcJointAPI"]
+                                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                             )
                                                             {
                                                                 uniform double mjc:actuatorfrcrange:max = 1.4
                                                                 uniform double mjc:actuatorfrcrange:min = -1.4
                                                                 uniform double mjc:armature = 0.01
                                                                 uniform double mjc:frictionloss = 0.3
+                                                                float newton:armature = 0.01
+                                                                float newton:friction = 0.3
                                                                 uniform token physics:axis = "Z"
                                                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_hand_thumb_0_link>
                                                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_hand_thumb_0_link/left_hand_thumb_1_link>
@@ -1495,19 +1581,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                                 {
                                                                     rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                                     uniform int mjc:group = 3
+                                                                    uniform double[] mjc:solref = [0.02, 1]
                                                                     float newton:contactGap = 0
                                                                     uniform token physics:approximation = "convexHull"
                                                                     float physics:density = 1000
                                                                 }
 
                                                                 def PhysicsRevoluteJoint "left_hand_thumb_2_joint" (
-                                                                    prepend apiSchemas = ["MjcJointAPI"]
+                                                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                                 )
                                                                 {
                                                                     uniform double mjc:actuatorfrcrange:max = 1.4
                                                                     uniform double mjc:actuatorfrcrange:min = -1.4
                                                                     uniform double mjc:armature = 0.01
                                                                     uniform double mjc:frictionloss = 0.3
+                                                                    float newton:armature = 0.01
+                                                                    float newton:friction = 0.3
                                                                     uniform token physics:axis = "Z"
                                                                     rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_hand_thumb_0_link/left_hand_thumb_1_link>
                                                                     rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_hand_thumb_0_link/left_hand_thumb_1_link/left_hand_thumb_2_link>
@@ -1537,19 +1626,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                         {
                                                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                             uniform int mjc:group = 3
+                                                            uniform double[] mjc:solref = [0.02, 1]
                                                             float newton:contactGap = 0
                                                             uniform token physics:approximation = "convexHull"
                                                             float physics:density = 1000
                                                         }
 
                                                         def PhysicsRevoluteJoint "left_hand_middle_0_joint" (
-                                                            prepend apiSchemas = ["MjcJointAPI"]
+                                                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                         )
                                                         {
                                                             uniform double mjc:actuatorfrcrange:max = 1.4
                                                             uniform double mjc:actuatorfrcrange:min = -1.4
                                                             uniform double mjc:armature = 0.01
                                                             uniform double mjc:frictionloss = 0.3
+                                                            float newton:armature = 0.01
+                                                            float newton:friction = 0.3
                                                             uniform token physics:axis = "Z"
                                                             rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link>
                                                             rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_hand_middle_0_link>
@@ -1576,19 +1668,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                             {
                                                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                                 uniform int mjc:group = 3
+                                                                uniform double[] mjc:solref = [0.02, 1]
                                                                 float newton:contactGap = 0
                                                                 uniform token physics:approximation = "convexHull"
                                                                 float physics:density = 1000
                                                             }
 
                                                             def PhysicsRevoluteJoint "left_hand_middle_1_joint" (
-                                                                prepend apiSchemas = ["MjcJointAPI"]
+                                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                             )
                                                             {
                                                                 uniform double mjc:actuatorfrcrange:max = 1.4
                                                                 uniform double mjc:actuatorfrcrange:min = -1.4
                                                                 uniform double mjc:armature = 0.01
                                                                 uniform double mjc:frictionloss = 0.3
+                                                                float newton:armature = 0.01
+                                                                float newton:friction = 0.3
                                                                 uniform token physics:axis = "Z"
                                                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_hand_middle_0_link>
                                                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_hand_middle_0_link/left_hand_middle_1_link>
@@ -1617,19 +1712,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                         {
                                                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                             uniform int mjc:group = 3
+                                                            uniform double[] mjc:solref = [0.02, 1]
                                                             float newton:contactGap = 0
                                                             uniform token physics:approximation = "convexHull"
                                                             float physics:density = 1000
                                                         }
 
                                                         def PhysicsRevoluteJoint "left_hand_index_0_joint" (
-                                                            prepend apiSchemas = ["MjcJointAPI"]
+                                                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                         )
                                                         {
                                                             uniform double mjc:actuatorfrcrange:max = 1.4
                                                             uniform double mjc:actuatorfrcrange:min = -1.4
                                                             uniform double mjc:armature = 0.01
                                                             uniform double mjc:frictionloss = 0.3
+                                                            float newton:armature = 0.01
+                                                            float newton:friction = 0.3
                                                             uniform token physics:axis = "Z"
                                                             rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link>
                                                             rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_hand_index_0_link>
@@ -1656,19 +1754,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                             {
                                                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                                 uniform int mjc:group = 3
+                                                                uniform double[] mjc:solref = [0.02, 1]
                                                                 float newton:contactGap = 0
                                                                 uniform token physics:approximation = "convexHull"
                                                                 float physics:density = 1000
                                                             }
 
                                                             def PhysicsRevoluteJoint "left_hand_index_1_joint" (
-                                                                prepend apiSchemas = ["MjcJointAPI"]
+                                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                             )
                                                             {
                                                                 uniform double mjc:actuatorfrcrange:max = 1.4
                                                                 uniform double mjc:actuatorfrcrange:min = -1.4
                                                                 uniform double mjc:armature = 0.01
                                                                 uniform double mjc:frictionloss = 0.3
+                                                                float newton:armature = 0.01
+                                                                float newton:friction = 0.3
                                                                 uniform token physics:axis = "Z"
                                                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_hand_index_0_link>
                                                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/left_shoulder_pitch_link/left_shoulder_roll_link/left_shoulder_yaw_link/left_elbow_link/left_wrist_roll_link/left_wrist_pitch_link/left_wrist_yaw_link/left_hand_index_0_link/left_hand_index_1_link>
@@ -1704,18 +1805,21 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                             {
                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                 uniform int mjc:group = 3
+                                uniform double[] mjc:solref = [0.02, 1]
                                 float newton:contactGap = 0
                                 float physics:density = 1000
                             }
 
                             def PhysicsRevoluteJoint "right_shoulder_pitch_joint" (
-                                prepend apiSchemas = ["MjcJointAPI"]
+                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                             )
                             {
                                 uniform double mjc:actuatorfrcrange:max = 25
                                 uniform double mjc:actuatorfrcrange:min = -25
                                 uniform double mjc:armature = 0.01
                                 uniform double mjc:frictionloss = 0.3
+                                float newton:armature = 0.01
+                                float newton:friction = 0.3
                                 uniform token physics:axis = "Y"
                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link>
                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link>
@@ -1742,18 +1846,21 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                 {
                                     rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                     uniform int mjc:group = 3
+                                    uniform double[] mjc:solref = [0.02, 1]
                                     float newton:contactGap = 0
                                     float physics:density = 1000
                                 }
 
                                 def PhysicsRevoluteJoint "right_shoulder_roll_joint" (
-                                    prepend apiSchemas = ["MjcJointAPI"]
+                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                 )
                                 {
                                     uniform double mjc:actuatorfrcrange:max = 25
                                     uniform double mjc:actuatorfrcrange:min = -25
                                     uniform double mjc:armature = 0.01
                                     uniform double mjc:frictionloss = 0.3
+                                    float newton:armature = 0.01
+                                    float newton:friction = 0.3
                                     uniform token physics:axis = "X"
                                     rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link>
                                     rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link>
@@ -1780,19 +1887,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                     {
                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                         uniform int mjc:group = 3
+                                        uniform double[] mjc:solref = [0.02, 1]
                                         float newton:contactGap = 0
                                         uniform token physics:approximation = "convexHull"
                                         float physics:density = 1000
                                     }
 
                                     def PhysicsRevoluteJoint "right_shoulder_yaw_joint" (
-                                        prepend apiSchemas = ["MjcJointAPI"]
+                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                     )
                                     {
                                         uniform double mjc:actuatorfrcrange:max = 25
                                         uniform double mjc:actuatorfrcrange:min = -25
                                         uniform double mjc:armature = 0.01
                                         uniform double mjc:frictionloss = 0.3
+                                        float newton:armature = 0.01
+                                        float newton:friction = 0.3
                                         uniform token physics:axis = "Z"
                                         rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link>
                                         rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link>
@@ -1819,19 +1929,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                         {
                                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                             uniform int mjc:group = 3
+                                            uniform double[] mjc:solref = [0.02, 1]
                                             float newton:contactGap = 0
                                             uniform token physics:approximation = "convexHull"
                                             float physics:density = 1000
                                         }
 
                                         def PhysicsRevoluteJoint "right_elbow_joint" (
-                                            prepend apiSchemas = ["MjcJointAPI"]
+                                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                         )
                                         {
                                             uniform double mjc:actuatorfrcrange:max = 25
                                             uniform double mjc:actuatorfrcrange:min = -25
                                             uniform double mjc:armature = 0.01
                                             uniform double mjc:frictionloss = 0.3
+                                            float newton:armature = 0.01
+                                            float newton:friction = 0.3
                                             uniform token physics:axis = "Y"
                                             rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link>
                                             rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link>
@@ -1858,19 +1971,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                             {
                                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                 uniform int mjc:group = 3
+                                                uniform double[] mjc:solref = [0.02, 1]
                                                 float newton:contactGap = 0
                                                 uniform token physics:approximation = "convexHull"
                                                 float physics:density = 1000
                                             }
 
                                             def PhysicsRevoluteJoint "right_wrist_roll_joint" (
-                                                prepend apiSchemas = ["MjcJointAPI"]
+                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                             )
                                             {
                                                 uniform double mjc:actuatorfrcrange:max = 25
                                                 uniform double mjc:actuatorfrcrange:min = -25
                                                 uniform double mjc:armature = 0.01
                                                 uniform double mjc:frictionloss = 0.3
+                                                float newton:armature = 0.01
+                                                float newton:friction = 0.3
                                                 uniform token physics:axis = "X"
                                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link>
                                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link>
@@ -1897,19 +2013,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                 {
                                                     rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                     uniform int mjc:group = 3
+                                                    uniform double[] mjc:solref = [0.02, 1]
                                                     float newton:contactGap = 0
                                                     uniform token physics:approximation = "convexHull"
                                                     float physics:density = 1000
                                                 }
 
                                                 def PhysicsRevoluteJoint "right_wrist_pitch_joint" (
-                                                    prepend apiSchemas = ["MjcJointAPI"]
+                                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                 )
                                                 {
                                                     uniform double mjc:actuatorfrcrange:max = 5
                                                     uniform double mjc:actuatorfrcrange:min = -5
                                                     uniform double mjc:armature = 0.01
                                                     uniform double mjc:frictionloss = 0.3
+                                                    float newton:armature = 0.01
+                                                    float newton:friction = 0.3
                                                     uniform token physics:axis = "Y"
                                                     rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link>
                                                     rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link>
@@ -1936,6 +2055,7 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                     {
                                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                         uniform int mjc:group = 3
+                                                        uniform double[] mjc:solref = [0.02, 1]
                                                         float newton:contactGap = 0
                                                         uniform token physics:approximation = "convexHull"
                                                         float physics:density = 1000
@@ -1947,19 +2067,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                     {
                                                         rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                         uniform int mjc:group = 3
+                                                        uniform double[] mjc:solref = [0.02, 1]
                                                         float newton:contactGap = 0
                                                         uniform token physics:approximation = "convexHull"
                                                         float physics:density = 1000
                                                     }
 
                                                     def PhysicsRevoluteJoint "right_wrist_yaw_joint" (
-                                                        prepend apiSchemas = ["MjcJointAPI"]
+                                                        prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                     )
                                                     {
                                                         uniform double mjc:actuatorfrcrange:max = 5
                                                         uniform double mjc:actuatorfrcrange:min = -5
                                                         uniform double mjc:armature = 0.01
                                                         uniform double mjc:frictionloss = 0.3
+                                                        float newton:armature = 0.01
+                                                        float newton:friction = 0.3
                                                         uniform token physics:axis = "Z"
                                                         rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link>
                                                         rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link>
@@ -1986,19 +2109,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                         {
                                                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                             uniform int mjc:group = 3
+                                                            uniform double[] mjc:solref = [0.02, 1]
                                                             float newton:contactGap = 0
                                                             uniform token physics:approximation = "convexHull"
                                                             float physics:density = 1000
                                                         }
 
                                                         def PhysicsRevoluteJoint "right_hand_thumb_0_joint" (
-                                                            prepend apiSchemas = ["MjcJointAPI"]
+                                                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                         )
                                                         {
                                                             uniform double mjc:actuatorfrcrange:max = 2.45
                                                             uniform double mjc:actuatorfrcrange:min = -2.45
                                                             uniform double mjc:armature = 0.01
                                                             uniform double mjc:frictionloss = 0.3
+                                                            float newton:armature = 0.01
+                                                            float newton:friction = 0.3
                                                             uniform token physics:axis = "Y"
                                                             rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link>
                                                             rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_hand_thumb_0_link>
@@ -2025,18 +2151,21 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                             {
                                                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                                 uniform int mjc:group = 3
+                                                                uniform double[] mjc:solref = [0.02, 1]
                                                                 float newton:contactGap = 0
                                                                 float physics:density = 1000
                                                             }
 
                                                             def PhysicsRevoluteJoint "right_hand_thumb_1_joint" (
-                                                                prepend apiSchemas = ["MjcJointAPI"]
+                                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                             )
                                                             {
                                                                 uniform double mjc:actuatorfrcrange:max = 1.4
                                                                 uniform double mjc:actuatorfrcrange:min = -1.4
                                                                 uniform double mjc:armature = 0.01
                                                                 uniform double mjc:frictionloss = 0.3
+                                                                float newton:armature = 0.01
+                                                                float newton:friction = 0.3
                                                                 uniform token physics:axis = "Z"
                                                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_hand_thumb_0_link>
                                                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_hand_thumb_0_link/right_hand_thumb_1_link>
@@ -2063,19 +2192,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                                 {
                                                                     rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                                     uniform int mjc:group = 3
+                                                                    uniform double[] mjc:solref = [0.02, 1]
                                                                     float newton:contactGap = 0
                                                                     uniform token physics:approximation = "convexHull"
                                                                     float physics:density = 1000
                                                                 }
 
                                                                 def PhysicsRevoluteJoint "right_hand_thumb_2_joint" (
-                                                                    prepend apiSchemas = ["MjcJointAPI"]
+                                                                    prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                                 )
                                                                 {
                                                                     uniform double mjc:actuatorfrcrange:max = 1.4
                                                                     uniform double mjc:actuatorfrcrange:min = -1.4
                                                                     uniform double mjc:armature = 0.01
                                                                     uniform double mjc:frictionloss = 0.3
+                                                                    float newton:armature = 0.01
+                                                                    float newton:friction = 0.3
                                                                     uniform token physics:axis = "Z"
                                                                     rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_hand_thumb_0_link/right_hand_thumb_1_link>
                                                                     rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_hand_thumb_0_link/right_hand_thumb_1_link/right_hand_thumb_2_link>
@@ -2105,19 +2237,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                         {
                                                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                             uniform int mjc:group = 3
+                                                            uniform double[] mjc:solref = [0.02, 1]
                                                             float newton:contactGap = 0
                                                             uniform token physics:approximation = "convexHull"
                                                             float physics:density = 1000
                                                         }
 
                                                         def PhysicsRevoluteJoint "right_hand_middle_0_joint" (
-                                                            prepend apiSchemas = ["MjcJointAPI"]
+                                                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                         )
                                                         {
                                                             uniform double mjc:actuatorfrcrange:max = 1.4
                                                             uniform double mjc:actuatorfrcrange:min = -1.4
                                                             uniform double mjc:armature = 0.01
                                                             uniform double mjc:frictionloss = 0.3
+                                                            float newton:armature = 0.01
+                                                            float newton:friction = 0.3
                                                             uniform token physics:axis = "Z"
                                                             rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link>
                                                             rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_hand_middle_0_link>
@@ -2144,19 +2279,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                             {
                                                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                                 uniform int mjc:group = 3
+                                                                uniform double[] mjc:solref = [0.02, 1]
                                                                 float newton:contactGap = 0
                                                                 uniform token physics:approximation = "convexHull"
                                                                 float physics:density = 1000
                                                             }
 
                                                             def PhysicsRevoluteJoint "right_hand_middle_1_joint" (
-                                                                prepend apiSchemas = ["MjcJointAPI"]
+                                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                             )
                                                             {
                                                                 uniform double mjc:actuatorfrcrange:max = 1.4
                                                                 uniform double mjc:actuatorfrcrange:min = -1.4
                                                                 uniform double mjc:armature = 0.01
                                                                 uniform double mjc:frictionloss = 0.3
+                                                                float newton:armature = 0.01
+                                                                float newton:friction = 0.3
                                                                 uniform token physics:axis = "Z"
                                                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_hand_middle_0_link>
                                                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_hand_middle_0_link/right_hand_middle_1_link>
@@ -2185,19 +2323,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                         {
                                                             rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                             uniform int mjc:group = 3
+                                                            uniform double[] mjc:solref = [0.02, 1]
                                                             float newton:contactGap = 0
                                                             uniform token physics:approximation = "convexHull"
                                                             float physics:density = 1000
                                                         }
 
                                                         def PhysicsRevoluteJoint "right_hand_index_0_joint" (
-                                                            prepend apiSchemas = ["MjcJointAPI"]
+                                                            prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                         )
                                                         {
                                                             uniform double mjc:actuatorfrcrange:max = 1.4
                                                             uniform double mjc:actuatorfrcrange:min = -1.4
                                                             uniform double mjc:armature = 0.01
                                                             uniform double mjc:frictionloss = 0.3
+                                                            float newton:armature = 0.01
+                                                            float newton:friction = 0.3
                                                             uniform token physics:axis = "Z"
                                                             rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link>
                                                             rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_hand_index_0_link>
@@ -2224,19 +2365,22 @@ def Xform "g1_29dof_with_hand_rev_1_0"
                                                             {
                                                                 rel material:binding:physics = </g1_29dof_with_hand_rev_1_0/Physics/PhysicsMaterial>
                                                                 uniform int mjc:group = 3
+                                                                uniform double[] mjc:solref = [0.02, 1]
                                                                 float newton:contactGap = 0
                                                                 uniform token physics:approximation = "convexHull"
                                                                 float physics:density = 1000
                                                             }
 
                                                             def PhysicsRevoluteJoint "right_hand_index_1_joint" (
-                                                                prepend apiSchemas = ["MjcJointAPI"]
+                                                                prepend apiSchemas = ["MjcJointAPI", "NewtonJointAPI"]
                                                             )
                                                             {
                                                                 uniform double mjc:actuatorfrcrange:max = 1.4
                                                                 uniform double mjc:actuatorfrcrange:min = -1.4
                                                                 uniform double mjc:armature = 0.01
                                                                 uniform double mjc:frictionloss = 0.3
+                                                                float newton:armature = 0.01
+                                                                float newton:friction = 0.3
                                                                 uniform token physics:axis = "Z"
                                                                 rel physics:body0 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_hand_index_0_link>
                                                                 rel physics:body1 = </g1_29dof_with_hand_rev_1_0/Geometry/pelvis/waist_yaw_link/waist_roll_link/torso_link/right_shoulder_pitch_link/right_shoulder_roll_link/right_shoulder_yaw_link/right_elbow_link/right_wrist_roll_link/right_wrist_pitch_link/right_wrist_yaw_link/right_hand_index_0_link/right_hand_index_1_link>
