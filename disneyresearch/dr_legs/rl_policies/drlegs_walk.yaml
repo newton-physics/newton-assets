@@ -7,7 +7,7 @@
 
 # Policy
 action_scale: 0.4           # joint position scale [rad]
-policy_file: "drlegs_walk.pt"
+policy_file: "drlegs_walk.onnx"
 
 # Gait timing
 contact_duration: 0.3       # seconds per foot contact phase

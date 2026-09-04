@@ -40,6 +40,7 @@ The following assets are provided for this model:
 | `usd/meshes/` | USD (text) | Per-body mesh geometry referenced by `usd/dr_legs.usda` and `usd/dr_legs_with_meshes_and_boxes.usda`, one folder per rigid body. |
 | `animation/dr_legs_animation_100fps.npy` | `numpy` (binary) | Array containing a walking animation parameterized in joint-space and time-discretized at `dt=0.01s`, i.e. `100Hz` |
 | `rl_policies/drlegs_walk.pt` | PyTorch (binary) | Trained RL walk policy checkpoint. |
+| `rl_policies/drlegs_walk.onnx` | ONNX (binary) | Trained RL walk policy used by `drlegs_walk.yaml`. |
 | `rl_policies/drlegs_walk.yaml` | YAML (text) | Configuration for the RL walk policy. |
 
 
