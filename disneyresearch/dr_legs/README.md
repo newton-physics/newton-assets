@@ -9,6 +9,9 @@ and actuated joints with multiple closed kinematic loops, originally presented b
 
 ## Changelog
 
+### [10/10/2026]
+- Add per-body `UsdPreviewSurface` visual materials (bone, dark, sage grey) to all model variants with geometry, so Newton viewers render the Kamino RL example color scheme directly from the USD.
+
 ### [06/26/2026]
 - Update models for latest design changes.
 - Add model variant without meshes.

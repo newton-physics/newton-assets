@@ -35,6 +35,57 @@ def PhysicsScene "PhysicsScene" (
 
 def Xform "dr_legs"
 {
+    def Scope "Looks"
+    {
+        def Material "bone"
+        {
+            token outputs:surface.connect = </dr_legs/Looks/bone/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.520995573, 0.514917665, 0.445201195) (
+                    doc = "Linear; displays as sRGB (191, 190, 178) / 255"
+                )
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "dark"
+        {
+            token outputs:surface.connect = </dr_legs/Looks/dark/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.0331047666, 0.0331047666, 0.0331047666) (
+                    doc = "Linear; displays as sRGB (0.2, 0.2, 0.2)"
+                )
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "sage_grey"
+        {
+            token outputs:surface.connect = </dr_legs/Looks/sage_grey/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.28314874, 0.337163615, 0.230740049) (
+                    doc = "Linear; displays as sRGB (145, 157, 132) / 255"
+                )
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+    }
+
     def Scope "Joints"
     {
         uniform token purpose = "default"
@@ -894,13 +945,14 @@ def Xform "dr_legs"
     }
 
     def Xform "pelvis" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "b94e9fc1-7daf-4ca6-8ea3-39f618072e50"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/bone>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -940,13 +992,14 @@ def Xform "dr_legs"
     }
 
     def Xform "hip_servos_l_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "f3d50162-a95d-4f08-a10d-3626ca60bf1f"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -966,13 +1019,14 @@ def Xform "dr_legs"
     }
 
     def Xform "hip_servos_l_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "b70bb03a-7c34-4197-9de8-c88d823b6b81"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -992,13 +1046,14 @@ def Xform "dr_legs"
     }
 
     def Xform "hip_servos_r_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "8b6c729d-ca7a-423d-a53c-3f2dc47039d4"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1018,13 +1073,14 @@ def Xform "dr_legs"
     }
 
     def Xform "hip_servos_r_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "86e0ff1e-17ec-4f68-ac30-6a4797cb0bb3"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1044,13 +1100,14 @@ def Xform "dr_legs"
     }
 
     def Xform "upperleg_link_l_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "49ef5afd-8a42-46f7-9f11-a87a1612a674"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1070,13 +1127,14 @@ def Xform "dr_legs"
     }
 
     def Xform "upperleg_link_l_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "8b06e5f0-0bdd-4014-a260-c8aaa4003fce"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1096,13 +1154,14 @@ def Xform "dr_legs"
     }
 
     def Xform "upperleg_link_r_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "12e08857-e73b-4a9c-916c-81cf1dd6ba93"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1122,13 +1181,14 @@ def Xform "dr_legs"
     }
 
     def Xform "upperleg_link_r_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "fce8bd12-ed33-4518-a678-57c7d1a1883c"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1148,13 +1208,14 @@ def Xform "dr_legs"
     }
 
     def Xform "lowerleg_link_l_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "ba62261f-7c64-4b74-86fd-edb7c601c3f9"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/bone>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1174,13 +1235,14 @@ def Xform "dr_legs"
     }
 
     def Xform "lowerleg_link_l_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "6c435cdd-aef0-485a-942f-6773d13f56f4"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/bone>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1200,13 +1262,14 @@ def Xform "dr_legs"
     }
 
     def Xform "lowerleg_link_r_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "25cb9d12-8781-4792-be54-82d268167a79"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/bone>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1226,13 +1289,14 @@ def Xform "dr_legs"
     }
 
     def Xform "lowerleg_link_r_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "314a7cab-22cd-4f9f-870c-884f8af3aaeb"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/bone>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1252,13 +1316,14 @@ def Xform "dr_legs"
     }
 
     def Xform "ankle_bracket_a_l_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "dd8d49a3-243f-4e21-8125-7e1deaa485ce"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1278,13 +1343,14 @@ def Xform "dr_legs"
     }
 
     def Xform "ankle_bracket_a_l_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "2d88e8b0-9515-4e34-883b-15c476ead6ce"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1304,13 +1370,14 @@ def Xform "dr_legs"
     }
 
     def Xform "ankle_bracket_a_r_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "3dd8c33b-e577-48b1-b224-6ec62d1b98f6"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1330,13 +1397,14 @@ def Xform "dr_legs"
     }
 
     def Xform "ankle_bracket_a_r_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "391e9452-9806-4517-8b39-82229eb6a64f"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1356,13 +1424,14 @@ def Xform "dr_legs"
     }
 
     def Xform "ankle_bracket_b_l_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "e371a9bf-7a61-4e20-ab92-829c35b40f11"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1382,13 +1451,14 @@ def Xform "dr_legs"
     }
 
     def Xform "ankle_bracket_b_l_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "abe6791c-a1c0-47e3-9071-7bc7aea80695"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1408,13 +1478,14 @@ def Xform "dr_legs"
     }
 
     def Xform "ankle_bracket_b_r_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "3a527421-833f-4a05-9679-9df029e6f3be"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1434,13 +1505,14 @@ def Xform "dr_legs"
     }
 
     def Xform "ankle_bracket_b_r_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "f8e405bd-e950-42bb-8145-b4aac497c796"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/sage_grey>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1460,13 +1532,14 @@ def Xform "dr_legs"
     }
 
     def Xform "foot_l" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "a8d7ce27-5aae-4fc4-b780-d30d3664ebb8"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1506,13 +1579,14 @@ def Xform "dr_legs"
     }
 
     def Xform "foot_r" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "86f5a3a3-7959-43c9-b231-33eaad9278af"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1552,13 +1626,14 @@ def Xform "dr_legs"
     }
 
     def Xform "servohorn_l_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "21648279-f424-46bf-8e41-9c8da7e9f9ff"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1578,13 +1653,14 @@ def Xform "dr_legs"
     }
 
     def Xform "servohorn_l_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "20a8feb5-185c-459f-b9ca-5514fa4fc6f9"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1604,13 +1680,14 @@ def Xform "dr_legs"
     }
 
     def Xform "servohorn_r_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "396d463c-1eae-42a6-aa2a-1e779a446ae1"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1630,13 +1707,14 @@ def Xform "dr_legs"
     }
 
     def Xform "servohorn_r_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "8517edda-bfa2-4272-9056-397d97a0e2bb"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1656,13 +1734,14 @@ def Xform "dr_legs"
     }
 
     def Xform "upperleg_rod_l_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "0b67781e-d201-4620-b89f-73bf159858c6"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1682,13 +1761,14 @@ def Xform "dr_legs"
     }
 
     def Xform "upperleg_rod_l_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "e87c54a9-ef94-4239-89fb-6b8a50e3620e"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1708,13 +1788,14 @@ def Xform "dr_legs"
     }
 
     def Xform "upperleg_rod_r_i" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "266f0f84-ef9c-454a-9334-c06a5f3eb2bb"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
@@ -1734,13 +1815,14 @@ def Xform "dr_legs"
     }
 
     def Xform "upperleg_rod_r_o" (
-        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "MaterialBindingAPI"]
         customData = {
             string userDocBrief = "Concrete prim schema for a transform, which implements Xformable."
             string uuid = "4135d3d9-6213-45f4-9d75-ef354a078806"
         }
     )
     {
+        rel material:binding = </dr_legs/Looks/dark>
         custom vector3f physics:angularVelocity = (0, 0, 0)
         custom point3f physics:centerOfMass = (0, 0, 0)
         custom float physics:density = 0
