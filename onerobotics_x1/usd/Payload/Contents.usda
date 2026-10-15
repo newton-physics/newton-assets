@@ -1,0 +1,20 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.3"
+    }
+    defaultPrim = "onerobotics_x1"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./Physics.usda@,
+        @./Geometry.usda@,
+        @./Materials.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "onerobotics_x1"
+{
+}
+

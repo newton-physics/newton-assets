@@ -1,0 +1,149 @@
+#usda 1.0
+(
+    "OneRobotics A1 right-arm asset converted from urdf/a1_right.urdf for Newton; CC BY 4.0."
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.3"
+    }
+    defaultPrim = "onerobotics_a1_right"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "onerobotics_a1_right"
+{
+    def Scope "Materials"
+    {
+        def Material "material_1" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_1>
+        )
+        {
+        }
+
+        def Material "material_2" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_2>
+        )
+        {
+        }
+
+        def Material "material_3" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_3>
+        )
+        {
+        }
+
+        def Material "material_4" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_4>
+        )
+        {
+        }
+
+        def Material "material_5" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_5>
+        )
+        {
+        }
+
+        def Material "material_6" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_6>
+        )
+        {
+        }
+
+        def Material "material_7" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_7>
+        )
+        {
+        }
+
+        def Material "material_8" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_8>
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "base_link"
+        {
+            over "base_link" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </onerobotics_a1_right/Materials/material_1>
+            }
+
+            over "Link1"
+            {
+                over "Link1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </onerobotics_a1_right/Materials/material_2>
+                }
+
+                over "Link2"
+                {
+                    over "Link2" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </onerobotics_a1_right/Materials/material_3>
+                    }
+
+                    over "Link3"
+                    {
+                        over "Link3" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </onerobotics_a1_right/Materials/material_4>
+                        }
+
+                        over "Link4"
+                        {
+                            over "Link4" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </onerobotics_a1_right/Materials/material_5>
+                            }
+
+                            over "Link5"
+                            {
+                                over "Link5" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </onerobotics_a1_right/Materials/material_6>
+                                }
+
+                                over "Link6"
+                                {
+                                    over "Link6" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </onerobotics_a1_right/Materials/material_7>
+                                    }
+
+                                    over "Link7"
+                                    {
+                                        over "Link7" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </onerobotics_a1_right/Materials/material_8>
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
