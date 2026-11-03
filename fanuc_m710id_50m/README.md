@@ -20,14 +20,13 @@ The following changes were made to the source asset.
 
 **Joint drives and actuators**
 
-A drive is the motor model on a joint. Stiffness pulls the joint to its target angle. Damping slows its motion.
+A drive is the motor model on a joint. Stiffness pulls the joint to its target angle. An actuator is the motor model that MuJoCo uses.
 
-- On all six joints, the drive stiffness changed from 2,500 to 1,000,000.
-- On all six joints, the drive damping changed from 100 to 3,000.
 - The drive force limit was removed. It was 8,000, 10,000, 5,000, 2,000, 1,000 and 900 for J1 to J6.
 - The drive target velocity was removed.
+- The `PhysicsDriveAPI` and `PhysicsJointStateAPI` tags were removed from the joints. The MuJoCo variant of the source removes them in the same way.
 - Each joint got a `mjc:ref` value of 0 and starting position and velocity values of 0.
-- A new `Physics` group holds six MuJoCo actuators, one per joint. An actuator is the motor model that MuJoCo uses. Each one has a position gain and a velocity damping term. The gains for J1 to J6 are 358,099.7, 520,787.6, 2,665,959.5, 622,515.2, 251,896.2 and 165.9. The damping terms are 14,324, 20,831.5, 106,638.4, 24,900.6, 10,075.8 and 6.6.
+- A new `Physics` group holds six MuJoCo actuators, one per joint. Each one has a position gain and a velocity damping term. The gains for J1 to J6 are 358,099.7, 520,787.6, 2,665,959.5, 622,515.2, 251,896.2 and 165.9. The damping terms are 14,324, 20,831.5, 106,638.4, 24,900.6, 10,075.8 and 6.6.
 
 **End-of-arm tool**
 
@@ -38,14 +37,11 @@ A drive is the motor model on a joint. Stiffness pulls the joint to its target a
 **Structure**
 
 - The source is split into several files and has MuJoCo, Newton, PhysX and Sensor variants. This file is one flat file with no variants. The Newton and PhysX settings of the source are not included.
-- The root prim was renamed from `m710id_50m` to `Robot`.
-- The root has a placement transform. It moves the robot to (-0.955, 0.282, 0.750) and turns it by -90 degrees about the Z axis.
-- Empty `World` and `Environment` prims were added. So were render settings and viewport camera settings. These come from the scene the file was saved from.
 - The collision meshes of the six links and the base are stored as shared instances. The geometry is the same.
 
 **Not changed**
 
-The visual and collision meshes of the base and links J1 to J6 are identical to the source. So are the link masses and inertias, and the joint axes, limits and positions.
+The visual and collision meshes of the base and links J1 to J6 are identical to the source. So are the link masses and inertias, and the joint axes, limits and positions. The joint drive stiffness, damping, target position and type are also the same as the source.
 
 ## Attribution
 
