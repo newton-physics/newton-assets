@@ -18,15 +18,24 @@ The USD file was adapted from the [fanuc_m710id_50m](https://huggingface.co/data
 
 The following changes were made to the source asset.
 
-**Joint drives and actuators**
+**Joint drives**
 
-A drive is the motor model on a joint. Stiffness pulls the joint to its target angle. An actuator is the motor model that MuJoCo uses.
+A drive is the motor model on a joint. Stiffness pulls the joint to its target angle. Damping slows its motion. Equivalent inertia is how hard a joint is to turn.
+
+- The drive stiffness and damping have a different value for each joint. The source uses 2,500 and 100 for all joints. Each stiffness is 10,000 times the equivalent inertia of the joint. Each damping is 0.04 times the stiffness. The values are per degree, as USD requires.
+
+  | Joint | Stiffness | Damping |
+  |---|---|---|
+  | J1 | 6,250.02 | 250.00 |
+  | J2 | 9,089.46 | 363.58 |
+  | J3 | 46,529.77 | 1,861.19 |
+  | J4 | 10,864.94 | 434.60 |
+  | J5 | 4,396.42 | 175.86 |
+  | J6 | 2.90 | 0.12 |
 
 - The drive force limit was removed. It was 8,000, 10,000, 5,000, 2,000, 1,000 and 900 for J1 to J6.
-- The drive target velocity was removed.
-- The `PhysicsDriveAPI` and `PhysicsJointStateAPI` tags were removed from the joints. The MuJoCo variant of the source removes them in the same way.
+- The `PhysicsJointStateAPI` tag was removed from the joints.
 - Each joint got a `mjc:ref` value of 0 and starting position and velocity values of 0.
-- A new `Physics` group holds six MuJoCo actuators, one per joint. Each one has a position gain and a velocity damping term. The gains for J1 to J6 are 358,099.7, 520,787.6, 2,665,959.5, 622,515.2, 251,896.2 and 165.9. The damping terms are 14,324, 20,831.5, 106,638.4, 24,900.6, 10,075.8 and 6.6.
 
 **End-of-arm tool**
 
@@ -41,7 +50,7 @@ A drive is the motor model on a joint. Stiffness pulls the joint to its target a
 
 **Not changed**
 
-The visual and collision meshes of the base and links J1 to J6 are identical to the source. So are the link masses and inertias, and the joint axes, limits and positions. The joint drive stiffness, damping, target position and type are also the same as the source.
+The visual and collision meshes of the base and links J1 to J6 are identical to the source. So are the link masses and inertias, and the joint axes, limits and positions. The joint drive target position, target velocity and type are also the same as the source.
 
 ## Attribution
 
