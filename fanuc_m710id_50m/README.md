@@ -20,9 +20,9 @@ The following changes were made to the source asset.
 
 **Joint drives**
 
-A drive is the motor model on a joint. Stiffness pulls the joint to its target angle. Damping slows its motion. Equivalent inertia is how hard a joint is to turn.
+A drive is the motor model on a joint. Stiffness pulls the joint to its target angle. Damping slows its motion.
 
-- The drive stiffness and damping have a different value for each joint. The source uses 2,500 and 100 for all joints. Each stiffness is 10,000 times the equivalent inertia of the joint. Each damping is 0.04 times the stiffness. The values are per degree, as USD requires.
+- The drive stiffness and damping have a different value for each joint. The source uses 2,500 and 100 for all joints. The values below are per degree, as USD requires.
 
   | Joint | Stiffness | Damping |
   |---|---|---|
@@ -34,8 +34,6 @@ A drive is the motor model on a joint. Stiffness pulls the joint to its target a
   | J6 | 2.90 | 0.12 |
 
 - The drive force limit was removed. It was 8,000, 10,000, 5,000, 2,000, 1,000 and 900 for J1 to J6.
-- The `PhysicsJointStateAPI` tag was removed from the joints.
-- Each joint got a `mjc:ref` value of 0 and starting position and velocity values of 0.
 
 **End-of-arm tool**
 
