@@ -12,7 +12,7 @@ The subfolders contain:
 
 ### USD
 
-The model is adapted from the Fanuc M-710iD/50M asset in the [NVIDIA Isaac Sim Assets](https://huggingface.co/datasets/nvidia/isaacsim-assets/tree/main/fanuc_m710id_50m) dataset.
+The USD file was adapted from the [fanuc_m710id_50m](https://huggingface.co/datasets/nvidia/isaacsim-assets/tree/ea6ff6d95aa7d7e9c578a584711a242c2ad476ee/fanuc_m710id_50m) package in the [NVIDIA Isaac Sim Assets](https://huggingface.co/datasets/nvidia/isaacsim-assets) dataset at ea6ff6d.
 
 ### Changes
 
@@ -25,7 +25,7 @@ The following changes were made to the source asset:
 
 Fanuc M-710iD/50M asset from the [NVIDIA Isaac Sim Assets](https://huggingface.co/datasets/nvidia/isaacsim-assets) dataset. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-The license text was copied from the [source dataset](https://huggingface.co/datasets/nvidia/isaacsim-assets/blob/main/fanuc_m710id_50m/.metadata/license.txt).
+The license text was copied from the [source dataset](https://huggingface.co/datasets/nvidia/isaacsim-assets/blob/ea6ff6d95aa7d7e9c578a584711a242c2ad476ee/fanuc_m710id_50m/.metadata/license.txt).
 
 Fanuc is a trademark of FANUC Corporation. This asset is not endorsed by FANUC Corporation.
 
