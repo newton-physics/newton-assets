@@ -32,7 +32,7 @@ A drive is the motor model on a joint. Stiffness pulls the joint to its target a
 **End-of-arm tool**
 
 - The `flange` group on `J6_link` was removed. It held `ee_link` and `fanuc_flange`.
-- An `EOAT` group (end-of-arm tool) was added to `J6_link`. It has a base and four fingers named `Finger_01` to `Finger_04`. Each part has a visual mesh and a convex hull collision mesh.
+- An `EOAT` group (end-of-arm tool) was added to `J6_link`. It is made of three cuboids. `base` is 0.075 m by 0.200 m by 0.200 m. `arm_y` and `arm_z` are two arms that cross in front of the base. They are 0.322 m and 0.472 m long, 0.040 m wide and 0.032 m thick. Each cuboid is both visible and a collision shape.
 - A `GripperPads` group was added to `J6_link`. It holds the visual geometry of the suction cups. It has four cylinders, `pad_0` to `pad_3`. Each is 0.03 m in radius and 0.008 m tall. They are blue and have no collision.
 
 **Structure**
