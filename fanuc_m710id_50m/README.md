@@ -43,7 +43,7 @@ A drive is the motor model on a joint. Stiffness pulls the joint to its target a
 
 **Structure**
 
-- The source is split into several files and has MuJoCo, Newton, PhysX and Sensor variants. This file is one flat file with no variants. The Newton and PhysX settings of the source are not included.
+- The source is split into several files and has MuJoCo, Newton, PhysX and Sensor variants. This file is one flat file with no variants. The MuJoCo, Newton and PhysX settings of the source are not included.
 - The collision meshes of the six links and the base are stored as shared instances. The geometry is the same.
 
 **Not changed**
