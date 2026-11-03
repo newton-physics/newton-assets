@@ -45,6 +45,7 @@ A drive is the motor model on a joint. Stiffness pulls the joint to its target a
 
 - The source is split into several files and has MuJoCo, Newton, PhysX and Sensor variants. This file is one flat file with no variants. The MuJoCo, Newton and PhysX settings of the source are not included.
 - The collision meshes of the six links and the base are stored as shared instances. The geometry is the same.
+- The materials refer to `OmniPBR.mdl` by name. MDL is NVIDIA's material definition language. The source refers to `../materials/mdl/OmniPBR.mdl` and ships the MDL files with the asset. They are not included here, so the viewer has to supply `OmniPBR.mdl`. Every material also has a preview-surface output, which is the standard USD material.
 
 **Not changed**
 
@@ -52,7 +53,7 @@ The visual and collision meshes of the base and links J1 to J6 are identical to 
 
 ## Attribution
 
-Fanuc M-710iD/50M asset from the [NVIDIA Isaac Sim Assets](https://huggingface.co/datasets/nvidia/isaacsim-assets) dataset. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Original asset author: Fanuc, as identified in the upstream metadata. Distributed through the [NVIDIA Isaac Sim Assets](https://huggingface.co/datasets/nvidia/isaacsim-assets) dataset and adapted for Newton as described above. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 The license text was copied from the [source dataset](https://huggingface.co/datasets/nvidia/isaacsim-assets/blob/ea6ff6d95aa7d7e9c578a584711a242c2ad476ee/fanuc_m710id_50m/.metadata/license.txt).
 
