@@ -1,0 +1,30 @@
+#usda 1.0
+(
+    "OneRobotics A1 bimanual-stand asset converted from urdf/a1_bimanual_stand.urdf for Newton; CC BY 4.0."
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.3"
+    }
+    defaultPrim = "onerobotics_a1_bimanual_stand"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "onerobotics_a1_bimanual_stand" (
+    prepend apiSchemas = ["GeomModelAPI"]
+    assetInfo = {
+        string name = "onerobotics_a1_bimanual_stand"
+    }
+    kind = "component"
+    prepend payload = @./Payload/Contents.usda@
+)
+{
+    float3[] extentsHint = [(-0.1316869, -0.24485967, -0.23770066), (0.0704987, 0.24486363, 0.39), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-0.1316869, -0.24485967, -0.23770066), (0.0704987, 0.24486363, 0.39)]
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend payload = @./Payload/Contents.usda@</PhysicsScene>
+)
+{
+}
+

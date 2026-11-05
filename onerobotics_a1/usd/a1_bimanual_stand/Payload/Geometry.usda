@@ -1,0 +1,587 @@
+#usda 1.0
+(
+    "OneRobotics A1 bimanual-stand asset converted from urdf/a1_bimanual_stand.urdf for Newton; CC BY 4.0."
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.3"
+    }
+    defaultPrim = "onerobotics_a1_bimanual_stand"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "onerobotics_a1_bimanual_stand"
+{
+    def Scope "Geometry"
+    {
+        def Xform "base_link"
+        {
+            def Mesh "base_link" (
+                prepend references = @./GeometryLibrary.usdc@</Geometry/base_link>
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Mesh "base_link_1" (
+                displayName = "base_link"
+                prepend references = @./GeometryLibrary.usdc@</Geometry/base_link>
+                uiHints = {
+                    string displayName = "base_link"
+                }
+            )
+            {
+                uniform token purpose = "guide"
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "Link_r0"
+            {
+                quatf xformOp:orient = (-0.5, -0.5, 0.5, -0.5)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.080655, -0.036, 0.336)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Mesh "Link_r0" (
+                    prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r0>
+                )
+                {
+                    quatf xformOp:orient = (-0.5, 0.5, -0.5, 0.5)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Mesh "Link_r0_1" (
+                    displayName = "Link_r0"
+                    prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r0>
+                    uiHints = {
+                        string displayName = "Link_r0"
+                    }
+                )
+                {
+                    uniform token purpose = "guide"
+                    quatf xformOp:orient = (-0.5, 0.5, -0.5, 0.5)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "Link_r1"
+                {
+                    quatf xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.06025)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Mesh "Link_r1" (
+                        prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r1>
+                    )
+                    {
+                        quatf xformOp:orient = (-0.70710677, -0.0000012986685, 0.0000012986685, 0.70710677)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Mesh "Link_r1_1" (
+                        displayName = "Link_r1"
+                        prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r1>
+                        uiHints = {
+                            string displayName = "Link_r1"
+                        }
+                    )
+                    {
+                        uniform token purpose = "guide"
+                        quatf xformOp:orient = (-0.70710677, -0.0000012986685, 0.0000012986685, 0.70710677)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "Link_r2"
+                    {
+                        quatf xformOp:orient = (0.5, 0.50000185, 0.5, -0.49999815)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-3.625453437003069e-7, 0, 0.09869999999933415)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Mesh "Link_r2" (
+                            prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r2>
+                        )
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Mesh "Link_r2_1" (
+                            displayName = "Link_r2"
+                            prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r2>
+                            uiHints = {
+                                string displayName = "Link_r2"
+                            }
+                        )
+                        {
+                            uniform token purpose = "guide"
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "Link_r3"
+                        {
+                            quatf xformOp:orient = (-0.5, -0.49999815, 0.50000185, -0.5)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, -0.1215, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Mesh "Link_r3" (
+                                prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r3>
+                            )
+                            {
+                                quatf xformOp:orient = (-0.70710546, -0.000002597337, 2.994708e-22, 0.7071081)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Mesh "Link_r3_1" (
+                                displayName = "Link_r3"
+                                prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r3>
+                                uiHints = {
+                                    string displayName = "Link_r3"
+                                }
+                            )
+                            {
+                                uniform token purpose = "guide"
+                                quatf xformOp:orient = (-0.70710546, -0.000002597337, 2.994708e-22, 0.7071081)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "Link_r4"
+                            {
+                                quatf xformOp:orient = (-0.70710677, 0.70710677, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (-4.117679450246721e-7, -0.00010086139745906392, 0.11199999962951541)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                def Mesh "Link_r4" (
+                                    prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r4>
+                                )
+                                {
+                                    quatf xformOp:orient = (-0.0000036731983, 1, -0.0000018366026, -5.568929e-24)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Mesh "Link_r4_1" (
+                                    displayName = "Link_r4"
+                                    prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r4>
+                                    uiHints = {
+                                        string displayName = "Link_r4"
+                                    }
+                                )
+                                {
+                                    uniform token purpose = "guide"
+                                    quatf xformOp:orient = (-0.0000036731983, 1, -0.0000018366026, -5.568929e-24)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Xform "Link_r5"
+                                {
+                                    quatf xformOp:orient = (0.70710546, 0.7071081, -0.0000012986717, -0.0000012986765)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (-4.077257678212814e-7, -0.11100000073420146, 0.00009963454996201507)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                    def Mesh "Link_r5" (
+                                        prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r5>
+                                    )
+                                    {
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0, 0, 0)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Mesh "Link_r5_1" (
+                                        displayName = "Link_r5"
+                                        prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r5>
+                                        uiHints = {
+                                            string displayName = "Link_r5"
+                                        }
+                                    )
+                                    {
+                                        uniform token purpose = "guide"
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0, 0, 0)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Xform "Link_r6"
+                                    {
+                                        quatf xformOp:orient = (0.70710546, 0.7071081, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0, 0, 0.11)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                        def Mesh "Link_r6" (
+                                            prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r6>
+                                        )
+                                        {
+                                            quatf xformOp:orient = (1, 0, 0, 0)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            double3 xformOp:translate = (0, 0, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                        }
+
+                                        def Mesh "Link_r6_1" (
+                                            displayName = "Link_r6"
+                                            prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r6>
+                                            uiHints = {
+                                                string displayName = "Link_r6"
+                                            }
+                                        )
+                                        {
+                                            uniform token purpose = "guide"
+                                            quatf xformOp:orient = (1, 0, 0, 0)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            double3 xformOp:translate = (0, 0, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                        }
+
+                                        def Xform "Link_r7"
+                                        {
+                                            quatf xformOp:orient = (-0.0000025973434, -0.000002597353, 0.7071081, 0.70710546)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            double3 xformOp:translate = (0, 0.112, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                            def Mesh "Link_r7" (
+                                                prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r7>
+                                            )
+                                            {
+                                                quatf xformOp:orient = (1, 0, 0, 0)
+                                                float3 xformOp:scale = (1, 1, 1)
+                                                double3 xformOp:translate = (0, 0, 0)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                            }
+
+                                            def Mesh "Link_r7_1" (
+                                                displayName = "Link_r7"
+                                                prepend references = @./GeometryLibrary.usdc@</Geometry/Link_r7>
+                                                uiHints = {
+                                                    string displayName = "Link_r7"
+                                                }
+                                            )
+                                            {
+                                                uniform token purpose = "guide"
+                                                quatf xformOp:orient = (1, 0, 0, 0)
+                                                float3 xformOp:scale = (1, 1, 1)
+                                                double3 xformOp:translate = (0, 0, 0)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            def Xform "Link_l0"
+            {
+                quatf xformOp:orient = (-0.5, 0.5, 0.5, 0.5)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.080655, 0.036, 0.336)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Mesh "Link_l0" (
+                    prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l0>
+                )
+                {
+                    quatf xformOp:orient = (0.5, 0.5, 0.5, 0.5)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Mesh "Link_l0_1" (
+                    displayName = "Link_l0"
+                    prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l0>
+                    uiHints = {
+                        string displayName = "Link_l0"
+                    }
+                )
+                {
+                    uniform token purpose = "guide"
+                    quatf xformOp:orient = (0.5, 0.5, 0.5, 0.5)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "Link_l1"
+                {
+                    quatf xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.06025)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Mesh "Link_l1" (
+                        prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l1>
+                    )
+                    {
+                        quatf xformOp:orient = (0.70710677, -0.0000012986685, -0.0000012986685, 0.70710677)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Mesh "Link_l1_1" (
+                        displayName = "Link_l1"
+                        prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l1>
+                        uiHints = {
+                            string displayName = "Link_l1"
+                        }
+                    )
+                    {
+                        uniform token purpose = "guide"
+                        quatf xformOp:orient = (0.70710677, -0.0000012986685, -0.0000012986685, 0.70710677)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "Link_l2"
+                    {
+                        quatf xformOp:orient = (-0.5, 0.5, 0.5, 0.5)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-3.625453437003069e-7, 0, 0.09869999999933415)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Mesh "Link_l2" (
+                            prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l2>
+                        )
+                        {
+                            quatf xformOp:orient = (-0.70710546, -0.000002597337, 4.7702758e-12, 0.7071081)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Mesh "Link_l2_1" (
+                            displayName = "Link_l2"
+                            prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l2>
+                            uiHints = {
+                                string displayName = "Link_l2"
+                            }
+                        )
+                        {
+                            uniform token purpose = "guide"
+                            quatf xformOp:orient = (-0.70710546, -0.000002597337, 4.7702758e-12, 0.7071081)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "Link_l3"
+                        {
+                            quatf xformOp:orient = (-0.5, -0.5, 0.5, -0.5)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (-4.459270981940221e-7, -0.12149999963104151, -0.00010044629441870738)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Mesh "Link_l3" (
+                                prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l3>
+                            )
+                            {
+                                quatf xformOp:orient = (-0.000050000002, -0.0000018366819, 0.0000018366886, 1)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Mesh "Link_l3_1" (
+                                displayName = "Link_l3"
+                                prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l3>
+                                uiHints = {
+                                    string displayName = "Link_l3"
+                                }
+                            )
+                            {
+                                uniform token purpose = "guide"
+                                quatf xformOp:orient = (-0.000050000002, -0.0000018366819, 0.0000018366886, 1)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "Link_l4"
+                            {
+                                quatf xformOp:orient = (0.70710677, 0.70710677, 0.000036654033, 0.00003925135)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (-4.214836003022273e-7, 0.00010086139846659004, 0.11199999962947839)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                def Mesh "Link_l4" (
+                                    prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l4>
+                                )
+                                {
+                                    quatf xformOp:orient = (1, 0, 0, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Mesh "Link_l4_1" (
+                                    displayName = "Link_l4"
+                                    prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l4>
+                                    uiHints = {
+                                        string displayName = "Link_l4"
+                                    }
+                                )
+                                {
+                                    uniform token purpose = "guide"
+                                    quatf xformOp:orient = (1, 0, 0, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Xform "Link_l5"
+                                {
+                                    quatf xformOp:orient = (-0.70710546, 0.7071081, 0, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0.111, 0.00010045)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                    def Mesh "Link_l5" (
+                                        prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l5>
+                                    )
+                                    {
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0, 0, 0)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Mesh "Link_l5_1" (
+                                        displayName = "Link_l5"
+                                        prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l5>
+                                        uiHints = {
+                                            string displayName = "Link_l5"
+                                        }
+                                    )
+                                    {
+                                        uniform token purpose = "guide"
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0, 0, 0)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+
+                                    def Xform "Link_l6"
+                                    {
+                                        quatf xformOp:orient = (-0.70710546, 0.7071081, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        double3 xformOp:translate = (0, 0, 0.11)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                        def Mesh "Link_l6" (
+                                            prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l6>
+                                        )
+                                        {
+                                            quatf xformOp:orient = (1, 0, 0, 0)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            double3 xformOp:translate = (0, 0, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                        }
+
+                                        def Mesh "Link_l6_1" (
+                                            displayName = "Link_l6"
+                                            prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l6>
+                                            uiHints = {
+                                                string displayName = "Link_l6"
+                                            }
+                                        )
+                                        {
+                                            uniform token purpose = "guide"
+                                            quatf xformOp:orient = (1, 0, 0, 0)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            double3 xformOp:translate = (0, 0, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                        }
+
+                                        def Xform "Link_l7"
+                                        {
+                                            quatf xformOp:orient = (0.70710546, 0.7071081, 0.000023807534, -0.000023807623)
+                                            float3 xformOp:scale = (1, 1, 1)
+                                            double3 xformOp:translate = (0, -0.112, 0)
+                                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                            def Mesh "Link_l7" (
+                                                prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l7>
+                                            )
+                                            {
+                                                quatf xformOp:orient = (1, 0, 0, 0)
+                                                float3 xformOp:scale = (1, 1, 1)
+                                                double3 xformOp:translate = (0, 0, 0)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                            }
+
+                                            def Mesh "Link_l7_1" (
+                                                displayName = "Link_l7"
+                                                prepend references = @./GeometryLibrary.usdc@</Geometry/Link_l7>
+                                                uiHints = {
+                                                    string displayName = "Link_l7"
+                                                }
+                                            )
+                                            {
+                                                uniform token purpose = "guide"
+                                                quatf xformOp:orient = (1, 0, 0, 0)
+                                                float3 xformOp:scale = (1, 1, 1)
+                                                double3 xformOp:translate = (0, 0, 0)
+                                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        def Scope "custom"
+        {
+            def Scope "mujoco"
+            {
+                def Scope "compiler"
+                {
+                    custom string urdf:balanceinertia = "true"
+                    custom string urdf:meshdir = "meshes"
+                    custom string urdf:strippath = "true"
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,293 @@
+#usda 1.0
+(
+    "OneRobotics A1 bimanual-stand asset converted from urdf/a1_bimanual_stand.urdf for Newton; CC BY 4.0."
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.3"
+    }
+    defaultPrim = "onerobotics_a1_bimanual_stand"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "onerobotics_a1_bimanual_stand"
+{
+    def Scope "Materials"
+    {
+        def Material "material_1" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_1>
+        )
+        {
+        }
+
+        def Material "material_2" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_2>
+        )
+        {
+        }
+
+        def Material "material_3" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_3>
+        )
+        {
+        }
+
+        def Material "material_4" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_4>
+        )
+        {
+        }
+
+        def Material "material_5" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_5>
+        )
+        {
+        }
+
+        def Material "material_6" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_6>
+        )
+        {
+        }
+
+        def Material "material_7" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_7>
+        )
+        {
+        }
+
+        def Material "material_8" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_8>
+        )
+        {
+        }
+
+        def Material "material_9" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_9>
+        )
+        {
+        }
+
+        def Material "material_10" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_10>
+        )
+        {
+        }
+
+        def Material "material_11" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_11>
+        )
+        {
+        }
+
+        def Material "material_12" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_12>
+        )
+        {
+        }
+
+        def Material "material_13" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_13>
+        )
+        {
+        }
+
+        def Material "material_14" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_14>
+        )
+        {
+        }
+
+        def Material "material_15" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_15>
+        )
+        {
+        }
+
+        def Material "material_16" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_16>
+        )
+        {
+        }
+
+        def Material "material_17" (
+            prepend references = @./MaterialsLibrary.usdc@</Materials/material_17>
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "base_link"
+        {
+            over "base_link" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_1>
+            }
+
+            over "Link_r0"
+            {
+                over "Link_r0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_2>
+                }
+
+                over "Link_r1"
+                {
+                    over "Link_r1" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_3>
+                    }
+
+                    over "Link_r2"
+                    {
+                        over "Link_r2" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_4>
+                        }
+
+                        over "Link_r3"
+                        {
+                            over "Link_r3" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_5>
+                            }
+
+                            over "Link_r4"
+                            {
+                                over "Link_r4" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_6>
+                                }
+
+                                over "Link_r5"
+                                {
+                                    over "Link_r5" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_7>
+                                    }
+
+                                    over "Link_r6"
+                                    {
+                                        over "Link_r6" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_8>
+                                        }
+
+                                        over "Link_r7"
+                                        {
+                                            over "Link_r7" (
+                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_9>
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "Link_l0"
+            {
+                over "Link_l0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_10>
+                }
+
+                over "Link_l1"
+                {
+                    over "Link_l1" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_11>
+                    }
+
+                    over "Link_l2"
+                    {
+                        over "Link_l2" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_12>
+                        }
+
+                        over "Link_l3"
+                        {
+                            over "Link_l3" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_13>
+                            }
+
+                            over "Link_l4"
+                            {
+                                over "Link_l4" (
+                                    prepend apiSchemas = ["MaterialBindingAPI"]
+                                )
+                                {
+                                    rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_14>
+                                }
+
+                                over "Link_l5"
+                                {
+                                    over "Link_l5" (
+                                        prepend apiSchemas = ["MaterialBindingAPI"]
+                                    )
+                                    {
+                                        rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_15>
+                                    }
+
+                                    over "Link_l6"
+                                    {
+                                        over "Link_l6" (
+                                            prepend apiSchemas = ["MaterialBindingAPI"]
+                                        )
+                                        {
+                                            rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_16>
+                                        }
+
+                                        over "Link_l7"
+                                        {
+                                            over "Link_l7" (
+                                                prepend apiSchemas = ["MaterialBindingAPI"]
+                                            )
+                                            {
+                                                rel material:binding = </onerobotics_a1_bimanual_stand/Materials/material_17>
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
