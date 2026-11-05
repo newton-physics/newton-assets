@@ -1,0 +1,9 @@
+# Python 3.12; versions used to generate the checked-in standard USD output.
+mujoco-usd-converter==0.5.0
+mujoco==3.11.0
+usd-exchange==2.2.2
+newton-usd-schemas==0.5.0
+numpy==2.5.3
+numpy-stl==4.0.1
+tinyobjloader==2.0.0rc13
+python-utils==4.1.0
