@@ -1,0 +1,118 @@
+# robot
+robot: "g1"
+
+# sim asset 
+asset_path: "mjcf/g1_29dof_rev_1_0_box_foot.xml"
+
+# policy 
+policy_path: "rl_policies/g1_29DOF_sand.pt" # trained with hydro-elastic contact model
+# policy_path: "rl_policies/g1_29DOF_rigid.pt" # trained with IsaacLab rigid ground
+
+# dof parameters
+num_dofs: 29
+num_policy_dofs: 29
+action_scale: 0.25
+
+# joint order in mjwarp
+mjw_joint_names:
+  # legs
+  - "left_hip_pitch_joint"
+  - "left_hip_roll_joint"
+  - "left_hip_yaw_joint"
+  - "left_knee_joint"
+  - "left_ankle_pitch_joint"
+  - "left_ankle_roll_joint"
+
+  - "right_hip_pitch_joint"
+  - "right_hip_roll_joint"
+  - "right_hip_yaw_joint"
+  - "right_knee_joint"
+  - "right_ankle_pitch_joint"
+  - "right_ankle_roll_joint"
+
+  # waist
+  - "waist_yaw_joint"
+  - "waist_roll_joint"
+  - "waist_pitch_joint"
+
+  # arms
+  - "left_shoulder_pitch_joint"
+  - "left_shoulder_roll_joint"
+  - "left_shoulder_yaw_joint"
+  - "left_elbow_joint"
+
+  - "left_wrist_roll_joint"
+  - "left_wrist_pitch_joint"
+  - "left_wrist_yaw_joint"
+
+  - "right_shoulder_pitch_joint"
+  - "right_shoulder_roll_joint"
+  - "right_shoulder_yaw_joint"
+  - "right_elbow_joint"
+
+  - "right_wrist_roll_joint"
+  - "right_wrist_pitch_joint"
+  - "right_wrist_yaw_joint"
+
+# default joint pos
+mjw_init_pos: [0.0, -0.5, 0.95]
+mjw_init_quat: [0.0, 0.0, 0.7071, 0.7071]
+mjw_joint_pos: [
+  -0.2, 0.0, 0.0, 0.42, -0.23, 0.0, 
+  -0.2, 0.0, 0.0, 0.42, -0.23, 0.0, 
+
+  0.0, 0.0, 0.0, 
+
+  0.35, 0.18, 0.0, 0.87, 
+  0.0, 0.0, 0.0, 
+  
+  0.35, -0.18, 0.0, 0.87, 
+  0.0, 0.0, 0.0
+  ]
+  
+# joint gains
+mjw_joint_stiffness: [
+  200.0, 150.0, 150.0, 200.0, 20.0, 20.0, 
+  200.0, 150.0, 150.0, 200.0, 20.0, 20.0, 
+  
+  200.0, 200.0, 200.0, 
+  
+  100.0, 100.0, 50.0, 50.0, 
+  40.0, 40.0, 40.0, 
+  
+  100.0, 100.0, 50.0, 50.0, 
+  40.0, 40.0, 40.0
+  ]
+mjw_joint_damping: [
+  5.0, 5.0, 5.0, 5.0, 2.0, 2.0, 
+  5.0, 5.0, 5.0, 5.0, 2.0, 2.0, 
+  
+  5.0, 5.0, 5.0, 
+  
+  2.0, 2.0, 2.0, 2.0, 
+  2.0, 2.0, 2.0, 
+  
+  2.0, 2.0, 2.0, 2.0, 
+  2.0, 2.0, 2.0
+  ]
+mjw_joint_armature: [
+  0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 
+  0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 
+  
+  0.01, 0.01, 0.01, 
+  
+  0.01, 0.01, 0.01, 0.01, 
+  0.01, 0.01, 0.01, 
+  
+  0.01, 0.01, 0.01, 0.01, 
+  0.01, 0.01, 0.01, 
+  ]
+
+# observation
+history_length: 10
+ang_vel_scale: 0.25
+projected_gravity_scale: 1.0
+command_scale: 1.0
+joint_pos_scale: 1.0
+joint_vel_scale: 0.05
+last_action_scale: 1.0
